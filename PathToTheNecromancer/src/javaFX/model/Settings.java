@@ -1,6 +1,7 @@
 package javaFX.model;
 
 public class Settings {
+	private boolean isNewGame;
 	private int gameSound;
 	private boolean mute;
 	private boolean lineSpeed;
@@ -84,7 +85,7 @@ public class Settings {
 
 	public boolean isNewGame() {
 		// TODO Auto-generated method stub
-		return true;
+		return this.isNewGame;
 	}
 
 	public Difficulty getDifficulty() {
@@ -95,6 +96,10 @@ public class Settings {
 
 	public void setDifficulty(Difficulty difficulty) {
 		this.difficulty = difficulty;
+	}
+
+	public void setNewGame(boolean isNewGame) {
+		this.isNewGame = isNewGame;
 	}
 
 

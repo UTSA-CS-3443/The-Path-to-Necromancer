@@ -6,7 +6,6 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import game.model.PathToNecromancer;
-import javaFX.model.Difficulty;
 import javaFX.model.Settings;
 import javaFX.view.DesktopLauncher;
 
@@ -40,6 +39,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	 * starts the game
 	 */
    @Override public void handle(ActionEvent e) {
+	   		this.settings.setNewGame(true);
 		   LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 	        new LwjglApplication(new PathToNecromancer(settings), config);
 	        DesktopLauncher.theStage.close();
@@ -77,10 +77,6 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	private void settingSetup() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(DesktopLauncher.class.getResource("/Settings.fxml"));
-		if(this.settings == null) {
-			this.settings = new Settings(100, false, false, 100, 100, false, false, Difficulty.EASY);
-		}
-		
 		try {
 			this.settingMenu = loader.load();
 	
@@ -109,6 +105,8 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	public void setSettings(Settings settings) {
 		this.settings = settings;
 	}
+	
+	
 	
 
 }
