@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 /**
  * Contains the DesktopLauncher method of the game.
  * 
- * @author enigma-phi
+ * @author HangedDragon96
  *
  */
 public class DesktopLauncher extends Application {
