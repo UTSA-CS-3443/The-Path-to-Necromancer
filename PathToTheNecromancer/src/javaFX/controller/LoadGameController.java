@@ -107,7 +107,7 @@ public void DesktopLauncherMenu() {
 		this.mainMenu = loader.load();
 		scene = new Scene(mainMenu,400,400);
 		DesktopLauncher.theStage.setScene(scene);
-	
+		((LoadGameController)loader.getController()).setSettings(settings);
 		DesktopLauncher.theStage.show();
 	} catch(Exception e) {
 		e.printStackTrace();
