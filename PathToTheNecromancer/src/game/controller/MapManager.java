@@ -78,7 +78,7 @@ public class MapManager {
         this.gameMap.addSprite(this.screen.getPlayer());
         
         // set up the sprites for the map
-        this.gameMap.createSprites();
+        this.gameMap.createSprites(world);
     }
 
     /**

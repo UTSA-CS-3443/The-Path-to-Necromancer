@@ -95,23 +95,24 @@ public class GameController implements InputProcessor {
         this.player = player;
     }
 
+    /**
+     * Respond to player input.
+     * @param gives an int corresponding to the key the player pressed.
+     */
     @Override
     public boolean keyDown(int keycode) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
         switch(keycode) {
         case Keys.ESCAPE:
             // render a menu
             break;
-        case Keys.SPACE:
-        case Keys.ENTER:
-            // interact with a person
-            break;
+        default:
         }
+        return true;
+    }
+
+    
+    @Override
+    public boolean keyUp(int keycode) {
         return false;
     }
 
