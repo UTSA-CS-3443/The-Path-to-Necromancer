@@ -15,6 +15,7 @@ import game.controller.MapManager;
 import game.controller.GameController;
 import game.controller.InitializeGame;
 import game.model.PathToNecromancer;
+import game.model.sprites.GameSprites;
 import game.model.sprites.player.Player;
 import javaFX.model.Settings;
 
@@ -26,6 +27,10 @@ import javaFX.model.Settings;
  *
  */
 public class PlayScreen implements Screen {
+    /**
+     * The game class
+     */
+    private PathToNecromancer game;
     /**
      * World holding all collision objects
      */
@@ -77,6 +82,7 @@ public class PlayScreen implements Screen {
         // Grab some parameters passed
         this.batch = game.getBatch();
         this.settings = game.getSettings();
+        this.game = game;
 
         // Set up the camera
         gameCam = new OrthographicCamera(300, 200); // set the camera size
@@ -124,8 +130,9 @@ public class PlayScreen implements Screen {
      */
     @Override
     public void render(float delta) {
+
         // update world
-        this.update(Gdx.graphics.getDeltaTime());
+        this.update(delta);
 
         // clear the screen
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -140,7 +147,11 @@ public class PlayScreen implements Screen {
         // draw characters
         this.batch.setProjectionMatrix(this.gameCam.combined);
         this.batch.begin();
-        this.player.draw(this.batch);
+
+        for (GameSprites sprite : this.mapManager.getSprites()) {
+            sprite.draw(batch);
+        }
+
         this.batch.end();
 
     }
@@ -256,5 +267,14 @@ public class PlayScreen implements Screen {
      */
     public MapManager getMapManager() {
         return this.mapManager;
+    }
+
+    /**
+     * Get the game controller for the whole game
+     * 
+     * @return the game controller
+     */
+    public GameController getInputProcessor() {
+        return this.gameController;
     }
 }
