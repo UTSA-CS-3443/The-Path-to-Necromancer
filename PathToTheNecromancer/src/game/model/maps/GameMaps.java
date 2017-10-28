@@ -1,8 +1,13 @@
 package game.model.maps;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.World;
+
+import game.model.sprites.EnemySprites;
+import game.model.sprites.GameSprites;
 
 /**
  * An abstract class establishing features present in all maps in the game.
@@ -17,9 +22,13 @@ public abstract class GameMaps {
      */
     private String mapName;
     /**
-     * The tiled map 
+     * The tiled map
      */
     private TiledMap map;
+    /**
+     * ArrayList of all the sprites in a map
+     */
+    private ArrayList<GameSprites> sprites;
     /**
      * Transition to the north
      */
@@ -45,11 +54,13 @@ public abstract class GameMaps {
      * Set the name of the map's path in the assets folder. Each map has to have
      * this.
      * 
-     * @param mapName is the map's file path
+     * @param mapName
+     *            is the map's file path
      */
     public GameMaps(String mapName) {
         super();
         this.mapName = mapName;
+        this.sprites = new ArrayList<GameSprites>();
     }
 
     /**
@@ -104,4 +115,38 @@ public abstract class GameMaps {
         this.map.dispose();
     }
 
+    /**
+     * Add a sprite to the arraylist of sprites
+     * 
+     * @param sprite
+     *            the sprite to add
+     */
+    public void addSprite(GameSprites sprite) {
+        this.sprites.add(sprite);
+    }
+
+    /**
+     * Return the arraylist of sprites
+     * 
+     * @return a sorted arraylist of sprites
+     */
+    public ArrayList<GameSprites> getSprites() {
+        Collections.sort(this.sprites);
+        return this.sprites;
+    }
+
+    /**
+     * Create all of the sprites for the map
+     * 
+     * @param world
+     *            allows sprites with box2d bodies to be generated in the map
+     */
+    public abstract void createSprites(World world);
+
+    /**
+     * Return an enemy from the map
+     * 
+     * @return the enemy
+     */
+    public abstract EnemySprites getEnemy();
 }

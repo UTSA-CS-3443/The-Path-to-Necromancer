@@ -4,6 +4,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
+import game.model.sprites.EnemySprites;
 
 /**
  * The second map of the game. The area outside of OogLag's tavern.
@@ -16,7 +17,7 @@ public class OogLagExterior extends GameMaps {
     /**
      * The name of the map file
      */
-    private static final String MAPNAME = "Maps/Map02-NewOog-lag Tavern.tmx";
+    private static final String MAPNAME = "Maps/Map02-Oog-lag Tavern.tmx";
 
     /**
      * layer 3 = south transition
@@ -75,6 +76,8 @@ public class OogLagExterior extends GameMaps {
     /**
      * Transition between areas
      * 
+     * North: PlainsArea South: IntroArea Door: OogLagInterior
+     * 
      * @param the
      *            type of transition for the map
      */
@@ -96,5 +99,23 @@ public class OogLagExterior extends GameMaps {
             break;
         }
     }
+
+    /**
+     * Return an enemy from the specific gameMap
+     * 
+     * @return an EnemySprite
+     */
+    public EnemySprites getEnemy() {
+        return null;
+    }
+
+    /**
+     * Create all of the sprites for the map.
+     * 
+     * @param world
+     *            allows sprites with box2d bodies to be generated in the map
+     */
+    public void createSprites(World world) {
+    };
 
 }

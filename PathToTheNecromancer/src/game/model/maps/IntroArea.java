@@ -4,6 +4,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
+import game.model.sprites.EnemySprites;
 
 /**
  * The first area of the game. Where the user starts on a new game.
@@ -16,7 +17,7 @@ public class IntroArea extends GameMaps {
     /**
      * The name of the map file
      */
-    private static final String MAPNAME = "Maps/Map01-NewIntroArea(4x4tiles).tmx";
+    private static final String MAPNAME = "Maps/Map01-IntroArea.tmx";
     /**
      * layers 6,7 = collision layers
      */
@@ -65,6 +66,8 @@ public class IntroArea extends GameMaps {
     /**
      * Transition between areas
      * 
+     * North: OogLagExterior
+     * 
      * @param the
      *            type of transition for the map
      */
@@ -73,4 +76,21 @@ public class IntroArea extends GameMaps {
         this.manager.setMap(new OogLagExterior(this.manager), 390, 50);
     }
 
+    /**
+     * Return an enemy from the specific gameMap
+     * 
+     * @return an EnemySprite
+     */
+    public EnemySprites getEnemy() {
+        return null;
+    }
+
+    /**
+     * Create all of the sprites for the map.
+     * 
+     * @param world
+     *            allows sprites with box2d bodies to be generated in the map
+     */
+    public void createSprites(World world) {
+    };
 }
