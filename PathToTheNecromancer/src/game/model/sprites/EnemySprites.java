@@ -1,5 +1,5 @@
 package game.model.sprites;
 
-public class EnemySprites {
+public abstract class EnemySprites extends GameSprites {
 
 }

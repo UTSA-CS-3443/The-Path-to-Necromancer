@@ -14,7 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
  * @author enigma-phi
  *
  */
-public abstract class CharacterSprites extends Sprite {
+public abstract class CharacterSprites extends GameSprites {
     /**
      * Region for a standing Animation
      */
