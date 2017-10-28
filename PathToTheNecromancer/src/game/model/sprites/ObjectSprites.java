@@ -20,16 +20,16 @@ public class ObjectSprites extends GameSprites {
      * Create the object sprite. Use the filename passed in to determine the image
      * and the position of the sprite.
      * 
-     * @param fileName
-     *            is the name of the file the sprite is in
+     * @param texture
+     *            is the sprite's texture to render.
      * @param x
      *            is the x-coordinate of the sprite
      * @param y
      *            is the y-coordinate of the sprite
      */
-    public ObjectSprites(String fileName, float x, float y) {
+    public ObjectSprites(Texture texture, float x, float y) {
         super();
-        this.objectTexture = new Texture(fileName);
+        this.objectTexture = texture;
         super.setRegion(objectTexture);
         super.setPosition(x, y);
         super.setBounds(x, y, objectTexture.getWidth(), objectTexture.getHeight());

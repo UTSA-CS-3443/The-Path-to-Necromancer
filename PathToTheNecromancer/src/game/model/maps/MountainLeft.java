@@ -1,5 +1,6 @@
 package game.model.maps;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
@@ -98,10 +99,10 @@ public class MountainLeft extends GameMaps {
         int height = 1600;
 
         // file locations of different trees
-        String T1 = "Game Tilesets/T1.png";
-        String T2 = "Game Tilesets/T2.png";
-        String T3 = "Game Tilesets/T3.png";
-        String T4 = "Game Tilesets/T4.png";
+        Texture T1 = new Texture("Game Tilesets/T1.png");
+        Texture T2 = new Texture("Game Tilesets/T2.png");
+        Texture T3 = new Texture("Game Tilesets/T3.png");
+        Texture T4 = new Texture("Game Tilesets/T4.png");
         
         // add all of the trees
         this.addSprite(new ObjectSprites(T1, -12, height - 119));
