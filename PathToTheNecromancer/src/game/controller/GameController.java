@@ -22,7 +22,7 @@ public class GameController implements InputProcessor {
     /**
      * Character's speed of motion
      */
-    private final int VELOCITY = 100;
+    private final int VELOCITY = 50;
 
     /**
      * Construct the controller object
@@ -43,20 +43,26 @@ public class GameController implements InputProcessor {
         int xVel = 0; // not moving
         int yVel = 0; // not moving
 
+        // Set motion = to true if any of the different direction keys is working
+        boolean up = Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.W);
+        boolean down = Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S);
+        boolean left = Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A);
+        boolean right = Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D);
+        
         // If keys in opposite directions are pressed, they cancel each other out
-        boolean leftRight = Gdx.input.isKeyPressed(Keys.LEFT) ^ Gdx.input.isKeyPressed(Keys.RIGHT);
-        boolean upDown = Gdx.input.isKeyPressed(Keys.UP) ^ Gdx.input.isKeyPressed(Keys.DOWN);
+        boolean leftRight = left ^ right;
+        boolean upDown = up ^ down;
 
         // determine which x-direction key is pressed
         if (leftRight) {
-            if (Gdx.input.isKeyPressed(Keys.RIGHT))
+            if (right)
                 xVel = VELOCITY;
             else
                 xVel = -1 * VELOCITY;
         }
         // determine which y-direction key is pressed
         if (upDown) {
-            if (Gdx.input.isKeyPressed(Keys.UP))
+            if (up)
                 yVel = VELOCITY;
             else
                 yVel = -1 * VELOCITY;
@@ -97,7 +103,15 @@ public class GameController implements InputProcessor {
 
     @Override
     public boolean keyUp(int keycode) {
-        // TODO Auto-generated method stub
+        switch(keycode) {
+        case Keys.ESCAPE:
+            // render a menu
+            break;
+        case Keys.SPACE:
+        case Keys.ENTER:
+            // interact with a person
+            break;
+        }
         return false;
     }
 
