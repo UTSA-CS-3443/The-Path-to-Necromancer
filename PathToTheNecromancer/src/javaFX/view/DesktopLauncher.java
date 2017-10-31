@@ -2,6 +2,9 @@ package javaFX.view;
 
 
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import javaFX.controller.DesktopLauncherController;
 import javaFX.model.Difficulty;
 import javaFX.model.Settings;
@@ -40,17 +43,23 @@ public class DesktopLauncher extends Application {
 	 * starts the menus
 	 */
 	private Settings settings;
+	/**
+	 * Array list for picutres
+	 */
+	private ArrayList <String> urls;
+	
 	@Override
 	public void start(Stage primaryStage) {
-		Image img = new Image("SabHunger.jpg");
+		urlSetup();	
+		Image img = new Image(urls.get((new Random()).nextInt(urls.size())));
 		BackgroundImage bgImg = new BackgroundImage(img, 
 		    BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 		    BackgroundPosition.DEFAULT, 
 		    new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
 		Background bkImg = new Background(bgImg);
 		theStage = primaryStage;
-		 settings = new Settings(100, false, false, 100, 100, false, false, Difficulty.EASY);
-		 primaryStage.setTitle("Path to the Necromancer");
+		settings = new Settings(100, false, false, 100, 100, false, false, Difficulty.EASY);
+		primaryStage.setTitle("Path to the Necromancer");
 		 try {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(DesktopLauncher.class.getResource("/MainMenu.fxml"));
@@ -59,6 +68,7 @@ public class DesktopLauncher extends Application {
 				scene = new Scene(mainMenu,400,400);
 				DesktopLauncherController controller = loader.getController();
 				controller.setSettings(settings);
+				controller.setBkImg(bkImg);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				primaryStage.show();
@@ -69,6 +79,14 @@ public class DesktopLauncher extends Application {
 	}
 
 	
+	private void urlSetup() {
+		urls = new ArrayList <String>();
+		urls.add("fire.jpg");
+		urls.add("SabHunger.jpg");
+		
+	}
+
+
 	/**
 	 * main method starts the main Menu
 	 * @param args

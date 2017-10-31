@@ -13,6 +13,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 /**
  * Controller for the settings menu
  * @author HangedDragon
@@ -57,6 +58,10 @@ public class SettingsController implements EventHandler<ActionEvent> {
 	 * the scene to return to the main menu
 	 */
 	private Scene scene;
+	/**
+	 * Background image for the game
+	 */
+	private Background bkImg;
 	/**
 	 * sets the setting object then returns to the main menu
 	 * @param e the action that triggered this event
@@ -108,9 +113,11 @@ public class SettingsController implements EventHandler<ActionEvent> {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(DesktopLauncher.class.getResource("/MainMenu.fxml"));
 				this.mainMenu = loader.load();
+				this.mainMenu.setBackground(bkImg);
 				scene = new Scene(mainMenu,400,400);
 				DesktopLauncher.theStage.setScene(scene);
 				((DesktopLauncherController)loader.getController()).setSettings(settings);
+				((DesktopLauncherController)loader.getController()).setBkImg(bkImg);
 				DesktopLauncher.theStage.show();
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -133,5 +140,11 @@ public class SettingsController implements EventHandler<ActionEvent> {
 			this.settings = settings;
 			
 		}
+	public Background getBkImg() {
+		return bkImg;
+	}
+	public void setBkImg(Background bkImg) {
+		this.bkImg = bkImg;
+	}
 	
 }

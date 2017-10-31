@@ -14,8 +14,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 
 /**
  * Controller for the MainMenu
@@ -36,6 +37,10 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	 */
 	private AnchorPane settingMenu;
 	/**
+	 * Background image for the game
+	 */
+	private Background bkImg;
+	/**
 	 * starts the game
 	 */
    @Override public void handle(ActionEvent e) {
@@ -53,6 +58,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 		loader.setLocation(DesktopLauncher.class.getResource("/LoadGame.fxml"));
 		try {
 			this.settingMenu = loader.load();
+			this.settingMenu.setBackground(bkImg);
 	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -60,6 +66,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 		}	
 		scene = new Scene(settingMenu,400,400);
 		((LoadGameController)loader.getController()).setSettings(settings);
+		((LoadGameController)loader.getController()).setBkImg(bkImg);
 		DesktopLauncher.theStage.setScene(scene);
 	}
 	/**
@@ -79,13 +86,14 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 		loader.setLocation(DesktopLauncher.class.getResource("/Settings.fxml"));
 		try {
 			this.settingMenu = loader.load();
-	
+			this.settingMenu.setBackground(bkImg);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		SettingsController controller = loader.getController();
 		controller.setSettings(settings);
+		controller.setBkImg(bkImg);
 		controller.settingMenuSetup();
 		scene = new Scene(settingMenu,400,400);
 		DesktopLauncher.theStage.setScene(scene);
@@ -104,6 +112,12 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	 */
 	public void setSettings(Settings settings) {
 		this.settings = settings;
+	}
+	public Background getBkImg() {
+		return bkImg;
+	}
+	public void setBkImg(Background bkImg) {
+		this.bkImg = bkImg;
 	}
 	
 	

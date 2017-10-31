@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 /**
  * Controller for the load class
  * @author HangedDragon96
@@ -74,6 +75,10 @@ private Scene scene;
  */
 private Settings settings;
 /**
+ * Background image for the game
+ */
+private Background bkImg;
+/**
  * Load the game from the state that is read
  */
 @Override
@@ -105,9 +110,11 @@ public void DesktopLauncherMenu() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(DesktopLauncher.class.getResource("/MainMenu.fxml"));
 		this.mainMenu = loader.load();
+		this.mainMenu.setBackground(bkImg);
 		scene = new Scene(mainMenu,400,400);
 		DesktopLauncher.theStage.setScene(scene);
 		((DesktopLauncherController)loader.getController()).setSettings(settings);
+		((DesktopLauncherController)loader.getController()).setBkImg(bkImg);
 		DesktopLauncher.theStage.show();
 	} catch(Exception e) {
 		e.printStackTrace();
@@ -162,4 +169,11 @@ public void setSettings(Settings settings) {
 	        this.save3.setText("No Saves Available");
 		}
 	}
+public Background getBkImg() {
+	return bkImg;
+}
+public void setBkImg(Background bkImg) {
+	this.bkImg = bkImg;
+}
+
 }
