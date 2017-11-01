@@ -1,7 +1,6 @@
 package game.model.sprites;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -131,7 +130,10 @@ public abstract class CharacterSprites extends GameSprites {
     public TextureRegion getFrame(float dt) {
         // get the character's current state of motion
         currentState = getState();
-
+        int animationSpeed = 4;
+        
+        if(this.body.getLinearVelocity().x > 50 || this.body.getLinearVelocity().y > 50)
+            animationSpeed = 3;
         TextureRegion region;
 
         // set the current texture region for the animation
@@ -172,7 +174,7 @@ public abstract class CharacterSprites extends GameSprites {
         }
 
         // move the animation forward
-        stateTimer = currentState == previousState ? stateTimer + dt / 4 : 0;
+        stateTimer = currentState == previousState ? stateTimer + dt / animationSpeed : 0;
         previousState = currentState;
         this.currentRegion = region;
         return region;
