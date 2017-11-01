@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 
 import game.model.sprites.player.Player;
+import game.view.Menu;
+import game.view.PlayScreen;
 
 /**
  * Controller for user input
@@ -20,9 +22,13 @@ public class GameController implements InputProcessor {
      */
     private Player player;
     /**
+     * The screen of the current game
+     */
+    private PlayScreen screen;
+    /**
      * Character's speed of motion
      */
-    private final int VELOCITY = 50;
+    private int velocity = 50;
 
     /**
      * Construct the controller object
@@ -30,14 +36,21 @@ public class GameController implements InputProcessor {
      * @param player
      *            is the user
      */
-    public GameController(Player player) {
-        this.player = player;
+    public GameController(PlayScreen screen) {
+        this.player = screen.getPlayer();
+        this.screen = screen;
     }
 
     /**
      * Control the input for the character. Controls character motion.
      */
     public void handleInput() {
+
+        // set the player's s
+        if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))
+            this.velocity = 100;
+        else
+            this.velocity = 50;
 
         // Control 8-way motion
         int xVel = 0; // not moving
@@ -48,7 +61,7 @@ public class GameController implements InputProcessor {
         boolean down = Gdx.input.isKeyPressed(Keys.DOWN) || Gdx.input.isKeyPressed(Keys.S);
         boolean left = Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A);
         boolean right = Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D);
-        
+
         // If keys in opposite directions are pressed, they cancel each other out
         boolean leftRight = left ^ right;
         boolean upDown = up ^ down;
@@ -56,16 +69,16 @@ public class GameController implements InputProcessor {
         // determine which x-direction key is pressed
         if (leftRight) {
             if (right)
-                xVel = VELOCITY;
+                xVel = velocity;
             else
-                xVel = -1 * VELOCITY;
+                xVel = -1 * velocity;
         }
         // determine which y-direction key is pressed
         if (upDown) {
             if (up)
-                yVel = VELOCITY;
+                yVel = velocity;
             else
-                yVel = -1 * VELOCITY;
+                yVel = -1 * velocity;
         }
 
         // set the player's velocity
@@ -97,20 +110,21 @@ public class GameController implements InputProcessor {
 
     /**
      * Respond to player input.
-     * @param gives an int corresponding to the key the player pressed.
+     * 
+     * @param gives
+     *            an int corresponding to the key the player pressed.
      */
     @Override
     public boolean keyDown(int keycode) {
-        switch(keycode) {
+        switch (keycode) {
         case Keys.ESCAPE:
-            // render a menu
+            screen.getGame().setScreen(new Menu(this.screen, this.screen.getGame()));
             break;
         default:
         }
         return true;
     }
 
-    
     @Override
     public boolean keyUp(int keycode) {
         return false;
