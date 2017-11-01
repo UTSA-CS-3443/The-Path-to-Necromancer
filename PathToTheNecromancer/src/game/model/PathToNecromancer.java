@@ -48,18 +48,39 @@ public class PathToNecromancer extends Game {
         setScreen(this.playscreen);
     }
 
+    /**
+     * Get the SpriteBatch
+     * 
+     * @return the batch
+     */
     public SpriteBatch getBatch() {
         return batch;
     }
 
+    /*
+     * Set the SpriteBatch
+     * 
+     * @param is the sprite batch to set to
+     */
     public void setBatch(SpriteBatch batch) {
         this.batch = batch;
     }
 
+    /**
+     * Get the Settings object for the game
+     * 
+     * @return the settings
+     */
     public Settings getSettings() {
         return settings;
     }
 
+    /**
+     * Set the Settings object
+     * 
+     * @param settings
+     *            is the settings object to set to
+     */
     public void setSettings(Settings settings) {
         this.settings = settings;
     }

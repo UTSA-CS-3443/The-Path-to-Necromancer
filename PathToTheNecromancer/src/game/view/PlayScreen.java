@@ -10,7 +10,6 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
 import game.controller.MapManager;
 import game.controller.GameController;
 import game.controller.InitializeGame;
@@ -96,8 +95,9 @@ public class PlayScreen implements Screen {
         new InitializeGame(this); // initialize the game for loading and new
                                   // game purposes
 
-        gameController = new GameController(this.player); // controller for the game
+        gameController = new GameController(this); // controller for the game
         Gdx.input.setInputProcessor(gameController); // handle user input
+        
     }
 
     @Override
@@ -123,6 +123,7 @@ public class PlayScreen implements Screen {
         // camera view
         this.gameController.updateCamera(this.gameCam);
         this.renderer.setView(this.gameCam);
+        this.mapManager.combat(dt);
     }
 
     /**
@@ -276,5 +277,21 @@ public class PlayScreen implements Screen {
      */
     public GameController getInputProcessor() {
         return this.gameController;
+    }
+    
+    /**
+     * Get the viewport the game uses
+     * @return the viewport
+     */
+    public Viewport getViewPort() {
+        return this.gamePort;
+    }
+    
+    /**
+     * Get the main game class
+     * @return the game class
+     */
+    public PathToNecromancer getGame() {
+        return this.game;
     }
 }
