@@ -2,6 +2,7 @@ package game.controller;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -10,6 +11,8 @@ import com.badlogic.gdx.physics.box2d.World;
 import game.model.maps.GameMaps;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.GameSprites;
+import game.model.sprites.player.Player;
+import game.view.CombatScreen;
 import game.view.PlayScreen;
 
 /**
@@ -19,7 +22,6 @@ import game.view.PlayScreen;
  *
  */
 public class MapManager {
-
     /**
      * The screen that the MapManager manages
      */
@@ -32,6 +34,10 @@ public class MapManager {
      * Load the TiledMaps
      */
     private TmxMapLoader mapLoader;
+    /**
+     * Time count used to ensure that combat does not happen too often
+     */
+    private float time;
 
     /**
      * Initialize the MapManager
@@ -73,32 +79,34 @@ public class MapManager {
 
         // set the player's position
         this.screen.getPlayer().defineBody(world, x, y);
-        
+
         // add the player to the arraylist of sprites
         this.gameMap.addSprite(this.screen.getPlayer());
-        
+
         // set up the sprites for the map
         this.gameMap.createSprites(world);
     }
 
     /**
-     * Get an enemy from a specific map
-     * Note: returns null if the map does not have an enemy
+     * Get an enemy from a specific map Note: returns null if the map does not have
+     * an enemy
+     * 
      * @return an enemy
      */
     public EnemySprites getEnemy() {
         return this.gameMap.getEnemy();
     }
-    
+
     /**
-     * Get all of the sprites from a specific map sorted by height. Greater 
+     * Get all of the sprites from a specific map sorted by height. Greater
      * y-coordinate sprites are rendered first.
+     * 
      * @return all of the sprites with the sprites at the top first
      */
-    public ArrayList<GameSprites> getSprites(){
+    public ArrayList<GameSprites> getSprites() {
         return this.gameMap.getSprites();
     }
-    
+
     /**
      * Add a sprite to the arraylist of sprites
      * 
@@ -108,12 +116,24 @@ public class MapManager {
     public void addSprite(GameSprites sprite) {
         this.gameMap.addSprite(sprite);
     }
-    
+
     /**
      * Throw away the garbage.
      */
     public void dispose() {
         this.gameMap.dispose();
+    }
+
+    /**
+     * Determine if the player has entered combat. If so, start a new combat scene
+     */
+    public void combat(float dt) {
+        Player player = this.screen.getPlayer();
+        this.time -= dt;
+        if (this.time <= 0 && player.getVelocity() != 0 && this.gameMap.hasCombat()) {
+            this.time = 5;
+            this.screen.getGame().setScreen(new CombatScreen(this.screen, this.screen.getGame()));
+        }
     }
 
 }

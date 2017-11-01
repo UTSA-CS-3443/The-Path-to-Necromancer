@@ -2,6 +2,8 @@ package game.model.maps;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
+
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.World;
@@ -51,16 +53,27 @@ public abstract class GameMaps {
     protected static final short DOOR = 16;
 
     /**
+     * Whether or not the specific GameMap has combat
+     */
+    private boolean mapHasCombat;
+    /**
+     * Random object for getting random int
+     */
+    private Random random;
+
+    /**
      * Set the name of the map's path in the assets folder. Each map has to have
      * this.
      * 
      * @param mapName
      *            is the map's file path
      */
-    public GameMaps(String mapName) {
+    public GameMaps(String mapName, boolean hasCombat) {
         super();
         this.mapName = mapName;
+        this.mapHasCombat = hasCombat;
         this.sprites = new ArrayList<GameSprites>();
+        this.random = new Random();
     }
 
     /**
@@ -149,4 +162,18 @@ public abstract class GameMaps {
      * @return the enemy
      */
     public abstract EnemySprites getEnemy();
+
+    /**
+     * Returns whether the current map has combat
+     * 
+     * @return a boolean for combat
+     */
+    public boolean hasCombat() {
+        if (mapHasCombat) {
+            int x = random.nextInt(100);
+            return x < 5 ? true : false;
+
+        } else
+            return false;
+    }
 }

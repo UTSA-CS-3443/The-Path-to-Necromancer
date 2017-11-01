@@ -1,5 +1,7 @@
 package game.model.maps;
 
+import java.util.Random;
+
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
@@ -51,7 +53,7 @@ public class OogLagExterior extends GameMaps {
      *            for managing map transitions
      */
     public OogLagExterior(MapManager manager) {
-        super(MAPNAME);
+        super(MAPNAME, false);
         this.manager = manager; // manager for loading maps
         this.creator = B2WorldCreator.getInstance(); // for creating the game's physics
     }
@@ -115,7 +117,8 @@ public class OogLagExterior extends GameMaps {
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {
-    };
+    public void createSprites(World world) {}
+    
+    
 
 }

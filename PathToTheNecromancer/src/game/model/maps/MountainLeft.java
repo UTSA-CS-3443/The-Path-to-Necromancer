@@ -47,7 +47,7 @@ public class MountainLeft extends GameMaps {
      *            for managing map transitions
      */
     public MountainLeft(MapManager manager) {
-        super(MAPNAME);
+        super(MAPNAME, true);
         this.manager = manager; // get the map manager to load the map
         this.creator = B2WorldCreator.getInstance(); // get the instance for the creator
     }

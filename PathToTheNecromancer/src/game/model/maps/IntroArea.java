@@ -43,7 +43,7 @@ public class IntroArea extends GameMaps {
      */
 
     public IntroArea(MapManager manager) {
-        super(MAPNAME);
+        super(MAPNAME, false);
         this.manager = manager; // get the map manager to load the map
         this.creator = B2WorldCreator.getInstance();
 
@@ -91,6 +91,5 @@ public class IntroArea extends GameMaps {
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {
-    };
+    public void createSprites(World world) {};
 }
