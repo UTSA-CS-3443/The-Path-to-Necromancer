@@ -152,4 +152,14 @@ public class DefaultCharacter extends Player {
         this.getBody().createFixture(fdef).setUserData("Player");
     }
 
+    /**
+     * Get the Character's Class
+     * 
+     * @return the class name
+     */
+    @Override
+    public String getCharClass() {
+        return "Default";
+    }
+
 }
