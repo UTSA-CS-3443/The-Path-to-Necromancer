@@ -1,5 +1,6 @@
 package game.model.maps;
 
+
 import java.util.Random;
 
 import com.badlogic.gdx.physics.box2d.World;
@@ -8,36 +9,31 @@ import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
 
-/**
- * The second map of the game. The area outside of OogLag's tavern.
- * Connects with IntroArea, InsideTavern, and PlainsArea
- * @author enigma-phi
- * @author ToTryHardRay 
+/** 
+ * Right side of the mountain map 
+ * Connects with MountainLeft and LavaFields
+ * @author ToTryHardRay
  *
  */
-public class OogLagExterior extends GameMaps {
-
+public class MountainRight extends GameMaps {
+	
     /**
      * The name of the map file
      */
-    private static final String MAPNAME = "Maps/Map02-Oog-lag Tavern.tmx";
+    private static final String MAPNAME = "Maps/Map07-RightMountain.tmx";
 
     /**
-     * layer 3 = south transition
+     * layer 2 = south transition
      */
-    private static final int SOUTHTRANSITION = 3;
+    private static final int SOUTHTRANSITION = 2;
     /**
      * layer 4 = north transition
      */
     private static final int NORTHTRANSITION = 4;
     /**
-     * layer 5 = tavern interior transition
+     * layer 3 = map collision layer
      */
-    private static final int TAVERNTRANSITION = 5;
-    /**
-     * layer 6 = map collision layer
-     */
-    private static final int[] COLLISIONLAYERS = { 6 };
+    private static final int[] COLLISIONLAYERS = { 3 };
     /**
      * Used to manage map transitions.
      */
@@ -53,7 +49,7 @@ public class OogLagExterior extends GameMaps {
      * @param manager
      *            for managing map transitions
      */
-    public OogLagExterior(MapManager manager) {
+    public MountainRight(MapManager manager) {
         super(MAPNAME, false);
         this.manager = manager; // manager for loading maps
         this.creator = B2WorldCreator.getInstance(); // for creating the game's physics
@@ -72,7 +68,7 @@ public class OogLagExterior extends GameMaps {
         // create the transition areas
         this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
         this.creator.createTransition(world, this, SOUTHTRANSITION, SOUTH);
-        this.creator.createTransition(world, this, TAVERNTRANSITION, DOOR);
+       
 
     }
 
@@ -89,15 +85,11 @@ public class OogLagExterior extends GameMaps {
         switch (transitionType) {
         // the transition to the north
         case NORTH:
-        	this.manager.setMap(new PlainsArea(this.manager), 525, 30);
+        	 this.manager.setMap(new MountainLeft(this.manager), 295, 1575);
             break;
         // the transition to the south
         case SOUTH:
-            this.manager.setMap(new IntroArea(this.manager), 130, 375);
-            break;
-        // the transition through the door
-        case DOOR:
-        	this.manager.setMap(new InsideTavern(this.manager), 420, 30);
+            this.manager.setMap(new LavaFields(this.manager), 440, 1160);
             break;
         // no transition
         default:
@@ -111,7 +103,20 @@ public class OogLagExterior extends GameMaps {
      * @return an EnemySprite
      */
     public EnemySprites getEnemy(int level) {
-        return null;
+    	int enemyCount = 2;
+    	Random rand = new Random();
+    	int enemyNum = rand.nextInt(enemyCount);
+    	switch(enemyNum){
+    	case 0:
+    		//return new troll(level);
+    		break;
+    	case 1:
+    		//return new golem(level);
+    		break;
+    	default:
+    		return null;
+    	}
+    	return null;
     }
 
     /**
@@ -121,7 +126,6 @@ public class OogLagExterior extends GameMaps {
      *            allows sprites with box2d bodies to be generated in the map
      */
     public void createSprites(World world) {}
-    
-    
+   
 
 }

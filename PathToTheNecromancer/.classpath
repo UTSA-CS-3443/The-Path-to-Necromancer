@@ -9,5 +9,33 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LibGDXLibraryJars"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/box2dlights-1.4.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-1.9.6.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-1.9.6-sources.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-ai-1.8.0.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-backend-headless-1.9.6.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-backend-lwjgl-1.9.6.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-backend-lwjgl-1.9.6-sources.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-box2d-1.9.6.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-box2d-platform-1.9.6-natives-desktop.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-controllers-1.9.6.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-controllers-desktop-1.9.6.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-controllers-platform-1.9.6-natives-desktop.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-freetype-1.9.6.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-freetype-platform-1.9.6-natives-desktop.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-platform-1.9.6-natives-desktop.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/gdx-tools-1.9.6.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/jinput-2.0.5.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/jinput-platform-2.0.5-natives-linux.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/jinput-platform-2.0.5-natives-osx.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/jinput-platform-2.0.5-natives-windows.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/jlayer-1.0.1-gdx.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/jorbis-0.0.17.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/jutils-1.0.0.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/lwjgl_util-2.9.2.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/lwjgl-2.9.2.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/lwjgl-platform-2.9.2-natives-linux.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/lwjgl-platform-2.9.2-natives-osx.jar"/>
+	<classpathentry kind="lib" path="V:/git/The-Path-to-Necromancer/LibGDX Library Jars/lwjgl-platform-2.9.2-natives-windows.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
