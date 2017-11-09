@@ -8,8 +8,9 @@ import game.model.sprites.EnemySprites;
 
 /**
  * The first area of the game. Where the user starts on a new game.
- * 
+ * Connects to Oog-LagExterior
  * @author enigma-phi
+ * @author ToTryHardRay - modified getEnemy()
  *
  */
 public class IntroArea extends GameMaps {
@@ -81,7 +82,7 @@ public class IntroArea extends GameMaps {
      * 
      * @return an EnemySprite
      */
-    public EnemySprites getEnemy() {
+    public EnemySprites getEnemy(int level) {
         return null;
     }
 

@@ -1,6 +1,7 @@
 package game.model.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
  * Create an object sprite for animation. The object will consist of only a
@@ -14,7 +15,7 @@ public class ObjectSprites extends GameSprites {
     /**
      * The texture to render.
      */
-    private Texture objectTexture;
+    private TextureRegion objectTexture;
 
     /**
      * Create the object sprite. Use the filename passed in to determine the image
@@ -27,12 +28,12 @@ public class ObjectSprites extends GameSprites {
      * @param y
      *            is the y-coordinate of the sprite
      */
-    public ObjectSprites(Texture texture, float x, float y) {
+    public ObjectSprites(TextureRegion texture, float x, float y) {
         super();
         this.objectTexture = texture;
         super.setRegion(objectTexture);
         super.setPosition(x, y);
-        super.setBounds(x, y, objectTexture.getWidth(), objectTexture.getHeight());
+        super.setBounds(x, y, objectTexture.getRegionWidth(), objectTexture.getRegionHeight());
     }
 
     /**
@@ -42,6 +43,8 @@ public class ObjectSprites extends GameSprites {
      */
     @Override
     public float getY() {
-        return super.getY() - objectTexture.getHeight() / 3;
+        return super.getY();
     }
+    
+    public void update(float dt) {};
 }

@@ -159,9 +159,10 @@ public abstract class GameMaps {
     /**
      * Return an enemy from the map
      * 
+     * @param the player's current level
      * @return the enemy
      */
-    public abstract EnemySprites getEnemy();
+    public abstract EnemySprites getEnemy(int level);
 
     /**
      * Returns whether the current map has combat
@@ -175,5 +176,12 @@ public abstract class GameMaps {
 
         } else
             return false;
+    }
+    /**
+     * Returns a String specifying the specific map
+     * @return the map's name
+     */
+    public String getMapName() {
+    	return this.mapName;
     }
 }

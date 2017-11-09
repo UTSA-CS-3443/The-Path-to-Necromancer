@@ -1,5 +1,8 @@
 package game.model.maps;
 
+
+import java.util.Random;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -10,7 +13,9 @@ import game.model.sprites.ObjectSprites;
 
 /**
  * The area to the left of the mountain in the game.
+ * Connects with PlainsArea and Mountain Right
  * @author enigma-phi
+ * @author ToTryHardRay - added tree sprites
  *
  */
 public class MountainLeft extends GameMaps {
@@ -24,13 +29,13 @@ public class MountainLeft extends GameMaps {
      */
     private static final int[] COLLISIONLAYERS = { 5 };
     /**
-     * layer 6 = north transition
-     */
-    private static final int NORTHTRANSITION = 6;
-    /**
      * layer 7 = north transition
      */
-    private static final int SOUTHTRANSITION = 7;
+    private static final int NORTHTRANSITION = 7;
+    /**
+     * layer 6 = north transition
+     */
+    private static final int SOUTHTRANSITION = 6;
     /**
      * Use to manage map transitions
      */
@@ -47,7 +52,7 @@ public class MountainLeft extends GameMaps {
      *            for managing map transitions
      */
     public MountainLeft(MapManager manager) {
-        super(MAPNAME, true);
+        super(MAPNAME, false);
         this.manager = manager; // get the map manager to load the map
         this.creator = B2WorldCreator.getInstance(); // get the instance for the creator
     }
@@ -73,6 +78,17 @@ public class MountainLeft extends GameMaps {
      */
     @Override
     public void transitionAreas(short transitionType) {
+    	switch (transitionType) {
+    	
+    	// the transition to the north
+        case NORTH:
+        	 this.manager.setMap(new MountainRight(this.manager), 30, 2275);
+             break;
+        // the transition to the south
+        case SOUTH:
+            this.manager.setMap(new PlainsArea(this.manager), 400, 2250);
+            break;
+    	}
 
     }
 
@@ -82,8 +98,21 @@ public class MountainLeft extends GameMaps {
      * @return an EnemySprite
      */
     @Override
-    public EnemySprites getEnemy() {
-        return null;
+    public EnemySprites getEnemy(int level) {
+    	int enemyCount = 2;
+    	Random rand = new Random();
+    	int enemyNum = rand.nextInt(enemyCount);
+    	switch(enemyNum){
+    	case 0:
+    		//return new troll(level);
+    		break;
+    	case 1:
+    		//return new golem(level);
+    		break;
+    	default:
+    		return null;
+    	}
+    	return null;
     }
 
     /**

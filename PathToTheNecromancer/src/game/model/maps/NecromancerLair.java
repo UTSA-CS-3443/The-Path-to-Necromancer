@@ -1,7 +1,5 @@
 package game.model.maps;
 
-import java.util.Random;
-
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
@@ -9,35 +7,25 @@ import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
 
 /**
- * The second map of the game. The area outside of OogLag's tavern.
- * Connects with IntroArea, InsideTavern, and PlainsArea
- * @author enigma-phi
- * @author ToTryHardRay 
+ * The Necromancer Lair
+ * Connects with NecromancerEntry
+ * @author ToTryHardRay
  *
  */
-public class OogLagExterior extends GameMaps {
-
+public class NecromancerLair extends GameMaps {
     /**
      * The name of the map file
      */
-    private static final String MAPNAME = "Maps/Map02-Oog-lag Tavern.tmx";
+    private static final String MAPNAME = "Maps/Map10-Necromancer'sLair.tmx";
 
     /**
-     * layer 3 = south transition
+     * layer 5 = south transition
      */
-    private static final int SOUTHTRANSITION = 3;
+    private static final int SOUTHTRANSITION = 5;
     /**
-     * layer 4 = north transition
+     * layer 7 = map collision layer
      */
-    private static final int NORTHTRANSITION = 4;
-    /**
-     * layer 5 = tavern interior transition
-     */
-    private static final int TAVERNTRANSITION = 5;
-    /**
-     * layer 6 = map collision layer
-     */
-    private static final int[] COLLISIONLAYERS = { 6 };
+    private static final int[] COLLISIONLAYERS = { 7 };
     /**
      * Used to manage map transitions.
      */
@@ -53,7 +41,7 @@ public class OogLagExterior extends GameMaps {
      * @param manager
      *            for managing map transitions
      */
-    public OogLagExterior(MapManager manager) {
+    public NecromancerLair(MapManager manager) {
         super(MAPNAME, false);
         this.manager = manager; // manager for loading maps
         this.creator = B2WorldCreator.getInstance(); // for creating the game's physics
@@ -70,9 +58,8 @@ public class OogLagExterior extends GameMaps {
         // create the static non-moving bodies
         this.creator.createWorld(world, this, COLLISIONLAYERS);
         // create the transition areas
-        this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
+       // this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
         this.creator.createTransition(world, this, SOUTHTRANSITION, SOUTH);
-        this.creator.createTransition(world, this, TAVERNTRANSITION, DOOR);
 
     }
 
@@ -87,18 +74,11 @@ public class OogLagExterior extends GameMaps {
     @Override
     public void transitionAreas(short transitionType) {
         switch (transitionType) {
-        // the transition to the north
-        case NORTH:
-        	this.manager.setMap(new PlainsArea(this.manager), 525, 30);
-            break;
         // the transition to the south
         case SOUTH:
-            this.manager.setMap(new IntroArea(this.manager), 130, 375);
+            this.manager.setMap(new NecromancerEntry(this.manager), 325, 575);
             break;
-        // the transition through the door
-        case DOOR:
-        	this.manager.setMap(new InsideTavern(this.manager), 420, 30);
-            break;
+
         // no transition
         default:
             break;
@@ -110,7 +90,7 @@ public class OogLagExterior extends GameMaps {
      * 
      * @return an EnemySprite
      */
-    public EnemySprites getEnemy(int level) {
+    public EnemySprites getEnemy( int level) {
         return null;
     }
 
@@ -121,7 +101,6 @@ public class OogLagExterior extends GameMaps {
      *            allows sprites with box2d bodies to be generated in the map
      */
     public void createSprites(World world) {}
-    
-    
+   
 
 }
