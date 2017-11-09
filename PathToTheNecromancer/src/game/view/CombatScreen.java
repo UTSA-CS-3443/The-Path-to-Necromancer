@@ -54,7 +54,7 @@ public class CombatScreen implements Screen
     private boolean IntroScreen;          //Used to determine when to play the intro screen           | Intro Screen basics
     private int introScreenAnimation; //Used to determine for how long to play the intro screen       |
     
-    private int Battle; //Will always be true as long as your or the enemy's health have not reach 0
+    private int battle; //Will always be true as long as your or the enemy's health have not reach 0
     
     private int ExitScreen;          //Used to determine when to play the exit screen             | Exit Screen basics
     private int ExitScreenAnimation; //Used to determine for how long to play the exit screen     |
@@ -69,12 +69,7 @@ public class CombatScreen implements Screen
     private boolean Intro1End = false;
    
     private Player p = playScreen.getPlayer();
-    //Test variables
-    Stage stage;
-    TextButton button;
-    TextButtonStyle textButtonStyle;
-    Skin skin;
-    TextureAtlas buttonAtlas;
+    private CombatController controller;
     
     private int NextAction;
     private boolean resetTime;
@@ -89,8 +84,8 @@ public class CombatScreen implements Screen
     	this.enemyNPC = Enemy.getTexture();
     	this.time = 0;
     	this.NextAction = 1;
-    	this.Battle = this.Animate.getWhoGoFirst(this.p, this.Enemy);  //Will tell us who will be going first
-    	create();
+    	this.battle = this.Animate.getWhoGoFirst(this.p, this.Enemy);  //Will tell us who will be going first
+    	this.controller = new CombatController();
     	
     	
         // You use the playscreen to set the screen and gain information, 
@@ -108,44 +103,6 @@ public class CombatScreen implements Screen
         
         // You may need to use a camera or a 
         // fitscreen, look at playscreen mostly for that
-    }
-    public void create() 
-    {      
-    	stage = new Stage();
-    	TextureRegion button = new TextureRegion(box, 440, 0, 200, 80);
-    	TextureRegionDrawable drawable = new TextureRegionDrawable(button);
-    	TextButton.TextButtonStyle style = new TextButton.TextButtonStyle(drawable, drawable, drawable, font);
-    	TextButton button2 = new TextButton("button1", style);
-    	button2.addListener(new InputListener() 
-    	{
-    		@Override
-    		public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-    		{
-    			System.out.println("YOU HAVE PRESSED THE BUTTON");
-    			return true;
-    		}
-    		@Override
-    		public void touchUp(InputEvent event, float x, float y, int pointer, int button)
-    		{
-    			System.out.println("YOU HAVE NOT PRESSED THE BUTTON");
-    		}
-    		public void clicked(InputEvent event, float x, float y) {
-                // TODO Auto-generated method stub
-                System.out.println("ABC");
-    		}    	
-    });
-    	
-    	Table table = new Table();
-    	table.setFillParent(true);
-    	table.bottom();
-
-    	table.add(button2).padLeft(5);
-    	table.add(button2);
-    	table.row();
-    	table.add(button2).padLeft(5);
-    	table.add(button2);
-
-    	stage.addActor(table);
     }
     //Calls the garbage collector |
     @Override
@@ -236,31 +193,33 @@ public class CombatScreen implements Screen
     	 */
     	else if(this.IntroScreen)
     	{	
-    		if(this.resetTime)
+    		if(!this.resetTime)
     		{
     			this.time = 0;
     		}
     		
     		//Awaiting user input, so just draw what you need
-    		if (this.Battle == 0)
+    		if (this.battle == 0)
     		{
     			this.Animate.drawDefaultCombatBackground();
+    			// In order to render the buttons
+    			this.controller.act(this);
     		}
     		
     		//Will run into StartBattleSequence until the animation is done, then will reset based on the action taken via the controller
-    		if(this.Battle > 0) 
+    		if(this.battle > 0) 
     		{
         		//Attack = 1, Inventory = 2, Interact = 3, Run = 4
-    			this.Battle = this.Animate.StartPlayerSequence(this.Battle, this.Enemy, this.time);
+    			this.battle = this.Animate.StartPlayerSequence(this.battle, this.Enemy, this.time);
     			
     			//Be done with the sequence, reset time, then re-enter the waiting period for user controls
-    			if(this.Battle == -5)
+    			if(this.battle == -5)
     			{
     				this.time = 0;
-    				this.Battle = 0;
+    				this.battle = 0;
     			}
     			//Player has died
-    			else if(this.Battle == -1 || this.Battle == -2) 
+    			else if(this.battle == -1 || this.battle == -2) 
     			{
     				endCombat();
     			}
@@ -316,6 +275,9 @@ public class CombatScreen implements Screen
     }
     
 
+    public Texture getCombatButtonTexture() {
+    	return this.box;
+    }
     @Override
     public void resize(int width, int height) 
     {
@@ -338,6 +300,9 @@ public class CombatScreen implements Screen
 
 	public int getMovement() {
 		return movement;
+	}
+	public void setBattle(int battle) {
+		this.battle = battle;
 	}
 
 	public void setMovement(int movement) {

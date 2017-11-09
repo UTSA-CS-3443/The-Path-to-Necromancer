@@ -134,8 +134,14 @@ public class CombatScreenAnimations implements Screen
 	    	//Will draw the attack 
 	    	int amIdone = attackAnimation(1, 490, 330); 
 	    	
+	    	if(this.EnemyHealth - this.p.getAttack() <= 0 && amIdone == 0) //You have killed the enemy
+	    	{
+	    		wasAttackedAnimation(490,300,p.getTexture());
+	    		return -1;
+	    	}
+	    	
 	    	//Begin the "taken damage" animation for the enemy
-	    	if(this.EnemyHealth - this.p.getAttack() > 0  && amIdone == 0)
+	    	else if(this.EnemyHealth - this.p.getAttack() > 0  && amIdone == 0) //Just dealing damage to the enemy
 	    	{
 	    		wasAttackedAnimation(490, 330, p.getTexture());
 	    	}
