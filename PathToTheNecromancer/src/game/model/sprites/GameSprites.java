@@ -24,5 +24,11 @@ public abstract class GameSprites extends Sprite implements Comparable<GameSprit
     public int compareTo(GameSprites sprite) {
         return (int) (sprite.getY() - this.getY());
     }
+    
+    /**
+     * Update the sprite
+     * @param dt is the change in time sinse the last render
+     */
+    public abstract void update(float dt);
 
 }

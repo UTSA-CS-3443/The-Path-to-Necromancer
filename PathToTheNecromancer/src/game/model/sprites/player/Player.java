@@ -38,7 +38,14 @@ public abstract class Player extends CharacterSprites {
      * The player's luck for critical hits
      */
     private int luck;
-
+    /**
+     * The player's max health
+     */
+    private int maxHealth;
+    /**
+     * The player's current health (for combat only)
+     */
+    private int currentHealth;
     /**
      * Get the Character's Class
      * 
@@ -169,6 +176,35 @@ public abstract class Player extends CharacterSprites {
     public double getVelocity() {
         return Math.sqrt(
                 Math.pow(this.getBody().getLinearVelocity().x, 2) + Math.pow(this.getBody().getLinearVelocity().x, 2));
+    }
+    
+    /**
+     * Return the player's max health
+     * @return the max health
+     */
+    public int getHealth() {
+    	return this.maxHealth;
+    }
+    /**
+     * Set the player's max health
+     * @param the player's new max health
+     */
+    public void setHealth(int health) {
+    	this.maxHealth = health;
+    }
+    /**
+     * Get the player's current health
+     * @return the player's current health
+     */
+    public int getCurrentHealth() {
+    	return this.currentHealth;
+    }
+    /**
+     * Set the player's current health
+     * @param health to set it to
+     */
+    public void setCurrentHealth(int health) {
+    	this.currentHealth = health;
     }
 
 }

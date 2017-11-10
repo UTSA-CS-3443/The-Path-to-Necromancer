@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.World;
 
+import game.model.sprites.CharacterSprites;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.GameSprites;
 
@@ -60,7 +61,6 @@ public abstract class GameMaps {
      * Random object for getting random int
      */
     private Random random;
-
     /**
      * Set the name of the map's path in the assets folder. Each map has to have
      * this.
@@ -183,5 +183,13 @@ public abstract class GameMaps {
      */
     public String getMapName() {
     	return this.mapName;
+    }
+    
+    /**
+     * Remove a specific character sprite
+     * @param character
+     */
+    public void remove(CharacterSprites character) {
+    	this.sprites.remove(character);
     }
 }
