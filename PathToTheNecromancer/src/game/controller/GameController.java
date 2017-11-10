@@ -5,9 +5,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.utils.Array;
 
 import game.model.sprites.player.Player;
-import game.view.Menu;
 import game.view.PlayScreen;
 
 /**
@@ -118,8 +119,12 @@ public class GameController implements InputProcessor {
     public boolean keyDown(int keycode) {
         switch (keycode) {
         case Keys.ESCAPE:
-            screen.getGame().setScreen(new Menu(this.screen, this.screen.getGame()));
+        	this.screen.setMenu();
             break;
+        case Keys.ENTER:
+        	Array<Contact> contacts = this.screen.getWorld().getContactList();
+        	Gdx.app.log("Contact", String.valueOf(contacts.size));
+        	break;
         default:
         }
         return true;

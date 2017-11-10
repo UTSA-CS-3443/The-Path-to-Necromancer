@@ -1,8 +1,10 @@
 package game.model;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import game.controller.ScreenManager;
 import game.view.PlayScreen;
 import javaFX.model.Settings;
 
@@ -25,7 +27,10 @@ public class PathToNecromancer extends Game {
      * The game's settings
      */
     private Settings settings;
-
+    /**
+     * The screen manager for the game
+     */
+    private ScreenManager screenManager;
     /**
      * Constructor for the game
      * 
@@ -42,10 +47,9 @@ public class PathToNecromancer extends Game {
      */
     @Override
     public void create() {
-        batch = new SpriteBatch();
-        this.playscreen = new PlayScreen(this);
+        this.batch = new SpriteBatch();
+        this.screenManager = new ScreenManager(this);
 
-        setScreen(this.playscreen);
     }
 
     /**
@@ -54,7 +58,7 @@ public class PathToNecromancer extends Game {
      * @return the batch
      */
     public SpriteBatch getBatch() {
-        return batch;
+        return this.batch;
     }
 
     /*
@@ -90,7 +94,8 @@ public class PathToNecromancer extends Game {
      */
     @Override
     public void render() {
-        super.render();
+    	float dt = Gdx.graphics.getDeltaTime();
+        screenManager.render(dt);
     }
 
     /**
@@ -99,6 +104,6 @@ public class PathToNecromancer extends Game {
     @Override
     public void dispose() {
         batch.dispose();
-        super.dispose();
+        screenManager.dispose();
     }
 }

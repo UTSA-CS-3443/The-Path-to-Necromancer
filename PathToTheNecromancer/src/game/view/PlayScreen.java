@@ -11,9 +11,11 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import game.controller.MapManager;
+import game.controller.ScreenManager;
 import game.controller.GameController;
 import game.controller.InitializeGame;
 import game.model.PathToNecromancer;
+import game.model.sprites.EnemySprites;
 import game.model.sprites.GameSprites;
 import game.model.sprites.player.Player;
 import javaFX.model.Settings;
@@ -71,17 +73,21 @@ public class PlayScreen implements Screen {
      * The settings for the game
      */
     private Settings settings;
+    /**
+     * The manager for the screen transitions
+     */
+    private ScreenManager screenManager;
 
     /**
      * This constructor sets up the game and initializes game objects.
      * 
      * @param game
      */
-    public PlayScreen(PathToNecromancer game) {
+    public PlayScreen(ScreenManager screenManager) {
         // Grab some parameters passed
-        this.batch = game.getBatch();
-        this.settings = game.getSettings();
-        this.game = game;
+        this.screenManager = screenManager;
+        this.batch = screenManager.getBatch();
+        this.settings = screenManager.getSettings();
 
         // Set up the camera
         gameCam = new OrthographicCamera(300, 200); // set the camera size
@@ -110,12 +116,12 @@ public class PlayScreen implements Screen {
      * Determine if the character has moved and move the camera accordingly. Update
      * the game world and character animations.
      * 
-     * @param dt
+     * @param dt is the change in time since the last render
      */
     public void update(float dt) {
         // update position
         this.gameController.handleInput();
-        this.player.update(dt);
+        this.mapManager.updateSprites(dt);
 
         // handle physics
         this.world.step(1 / 60f, 6, 2);
@@ -143,7 +149,7 @@ public class PlayScreen implements Screen {
         this.renderer.render();
 
         // render the physics
-        // b2dr.render(world, gameCam.combined);
+        b2dr.render(world, gameCam.combined);
 
         // draw characters
         this.batch.setProjectionMatrix(this.gameCam.combined);
@@ -154,6 +160,7 @@ public class PlayScreen implements Screen {
         }
 
         this.batch.end();
+        
 
     }
 
@@ -286,12 +293,32 @@ public class PlayScreen implements Screen {
     public Viewport getViewPort() {
         return this.gamePort;
     }
+
+    /**
+     * Start the combat sequence
+     */
+    public void beginCombat() {
+    	this.screenManager.setCombat();
+    }
     
     /**
-     * Get the main game class
-     * @return the game class
+     * Get a random EnemySprite 
+     * @return the enemy sprite
      */
-    public PathToNecromancer getGame() {
-        return this.game;
+    public EnemySprites getEnemy() {
+    	return this.mapManager.getEnemy();
+    }
+    /**
+     * Return the name of the current map
+     * @return the map name
+     */
+    public String getMapName() {
+    	return this.mapManager.getMapName();
+    }
+    /**
+     * Start the in-game menu
+     */
+    public void setMenu() {
+    	this.screenManager.setMenu();
     }
 }
