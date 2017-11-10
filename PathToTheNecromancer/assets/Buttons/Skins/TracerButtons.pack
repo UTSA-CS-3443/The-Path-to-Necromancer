@@ -1,0 +1,68 @@
+
+TracerButtons.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+select-box-over
+  rotate: false
+  xy: 1, 28
+  size: 123, 32
+  orig: 123, 32
+  offset: 0, 0
+  index: -1
+select-box
+  rotate: false
+  xy: 126, 28
+  size: 123, 32
+  orig: 123, 32
+  offset: 0, 0
+  index: -1
+button-over
+  rotate: false
+  xy: 251, 27
+  size: 85, 33
+  orig: 85, 33
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 338, 27
+  size: 85, 33
+  orig: 85, 33
+  offset: 0, 0
+  index: -1
+slider-knob-horizontal
+  rotate: false
+  xy: 1, 16
+  size: 41, 10
+  orig: 41, 10
+  offset: 0, 0
+  index: -1
+slider-knob-vertical
+  rotate: false
+  xy: 425, 18
+  size: 11, 42
+  orig: 11, 42
+  offset: 0, 0
+  index: -1
+checkbox-on
+  rotate: false
+  xy: 1, 1
+  size: 17, 13
+  orig: 17, 13
+  offset: 0, 0
+  index: -1
+checkbox
+  rotate: false
+  xy: 438, 47
+  size: 17, 13
+  orig: 17, 13
+  offset: 0, 0
+  index: -1
+title-bg
+  rotate: false
+  xy: 44, 18
+  size: 7, 8
+  orig: 7, 8
+  offset: 0, 0
+  index: -1
