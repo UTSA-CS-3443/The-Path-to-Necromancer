@@ -4,8 +4,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.MassData;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
@@ -21,20 +23,16 @@ public class DefaultCharacter extends Player {
     /**
      * The pixel width of the character sprite
      */
-    private static final int PLAYER_WIDTH = 40;
+    private static final int PLAYER_WIDTH = 15;
     /**
      * The pixel height of the character sprite
      */
-    private static final int PLAYER_HEIGHT = 50;
+    private static final int PLAYER_HEIGHT = 30;
 
     /**
      * The texture used to draw and render the character sprite
      */
     private Texture defaultPlayerTexture;
-    /**
-     * The scaling factor used to draw the character on the screen proportionally.
-     */
-    private static float SCALINGFACTOR = 0.65f;
 
     /**
      * Create the DefaultPlayer object.
@@ -44,7 +42,7 @@ public class DefaultCharacter extends Player {
         // Initialize the different texture regions associated with the character
         setTextureValues();
         // Set the size of the character
-        setBounds(0, 0, PLAYER_WIDTH * SCALINGFACTOR, PLAYER_HEIGHT * SCALINGFACTOR);
+        setBounds(0, 0, PLAYER_WIDTH, PLAYER_HEIGHT);
 
         // Set the initial animation
         setRegion(super.getStandingRegion());
@@ -57,61 +55,146 @@ public class DefaultCharacter extends Player {
 
     @Override
     public void setTextureValues() {
-        // Use the Necromancer animations until we have the player SpriteSheet
-        defaultPlayerTexture = new Texture("Necromancer2.png");
+    	int rowHeight = 0;
+    	int width = 31;
+    	int height = 70;
+    	
+        // Use the Default Character animations until we have the player SpriteSheet
+        defaultPlayerTexture = new Texture("CharacterSprites/MainCharacter-Adjusted.png");
 
         // Set the default standing region of the character.
-        super.setStandingRegion(new TextureRegion(defaultPlayerTexture, 20, 140, 40, 50));
+        super.setStandingRegion(new TextureRegion(defaultPlayerTexture, 0, 0, width, height));
         // Array of frames used for the animations
         Array<TextureRegion> frames = new Array<TextureRegion>();
 
-        // Set the animations for moving Down on the map
-        frames.add(new TextureRegion(defaultPlayerTexture, 20, 140, 40, 50));
-        frames.add(new TextureRegion(defaultPlayerTexture, 20, 201, 40, 50));
+        for(int i = 0; i <= 3; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 2; i >= 1; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 6; i >= 4; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 5; i <= 6; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
         super.setMoveDown(new Animation<TextureRegion>(0.1f, frames));
         frames.clear();
 
         // Set the animations for moving Up on the map
-        frames.add(new TextureRegion(defaultPlayerTexture, 60, 140, 50, 50));
-        frames.add(new TextureRegion(defaultPlayerTexture, 60, 201, 50, 50));
+        for(int i = 0+7; i <= 3+7; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 2+7; i >= 1+7; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 6+7; i >= 4+7; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 5+7; i <= 6+7; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
         super.setMoveUp(new Animation<TextureRegion>(0.1f, frames));
         frames.clear();
 
-        // Set the animations for moving Left on the map
-        frames.add(new TextureRegion(defaultPlayerTexture, 120, 140, 40, 50));
-        frames.add(new TextureRegion(defaultPlayerTexture, 120, 201, 40, 50));
-        super.setMoveLeft(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
-
-        // Set the animations for moving Right on the map
-        frames.add(new TextureRegion(defaultPlayerTexture, 160, 140, 40, 50));
-        frames.add(new TextureRegion(defaultPlayerTexture, 160, 201, 40, 50));
-        super.setMoveRight(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
-
         // Set the animations for moving Down-Left on the map
-        frames.add(new TextureRegion(defaultPlayerTexture, 200, 140, 40, 50));
-        frames.add(new TextureRegion(defaultPlayerTexture, 200, 201, 40, 50));
+        for(int i = 0+14; i < 4+14; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 2+14; i > 0+14; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 5+14; i < 6+14; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 6+14; i > 3+14; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
         super.setMoveDownLeft(new Animation<TextureRegion>(0.1f, frames));
         frames.clear();
 
         // Set the animations for moving Down-Right on the map
-        frames.add(new TextureRegion(defaultPlayerTexture, 260, 140, 40, 50));
-        frames.add(new TextureRegion(defaultPlayerTexture, 260, 201, 40, 50));
+        for(int i = 28-1; i >= 28-4; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 28-3; i <= 28-2; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 28-5; i >= 28-7; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 28-6; i <= 28-5; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
         super.setMoveDownRight(new Animation<TextureRegion>(0.1f, frames));
         frames.clear();
 
-        // Set the animations for moving Up-Right on the map
-        frames.add(new TextureRegion(defaultPlayerTexture, 310, 140, 40, 50));
-        frames.add(new TextureRegion(defaultPlayerTexture, 310, 201, 40, 50));
-        super.setMoveUpRight(new Animation<TextureRegion>(0.1f, frames));
+        // Set the animations for moving Right on the map
+        for(int i = 0+28; i <= 3+28; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 2+28; i >= 1+28; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 4+28; i <= 6+28; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 5+28; i >= 4+28; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        super.setMoveRight(new Animation<TextureRegion>(0.1f, frames));
+        frames.clear();
+
+        // Set the animations for moving Left on the map
+        for(int i = 42-1; i >= 42-4; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 42-3; i <= 42-2; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 42-5; i >= 42-7; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 42-6; i <= 42-5; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        super.setMoveLeft(new Animation<TextureRegion>(0.1f, frames));
         frames.clear();
 
         // Set the animations for moving Up-Left on the map
-        frames.add(new TextureRegion(defaultPlayerTexture, 350, 140, 40, 50));
-        frames.add(new TextureRegion(defaultPlayerTexture, 350, 201, 40, 50));
+        for(int i = 0+42; i <= 3+42; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 2+42; i >= 1+42; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 4+42; i <= 6+42; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 5+42; i >= 4+42; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
         super.setMoveUpLeft(new Animation<TextureRegion>(0.1f, frames));
         frames.clear();
+
+        // Set the animations for moving Up-Right on the map
+        for(int i = 56-1; i >= 56-4; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 56-3; i <= 56-2; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        for(int i = 56-5; i >= 56-7; i--) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        
+        for(int i = 56-6; i <= 56-5; i++) {
+        	frames.add(new TextureRegion(defaultPlayerTexture, i*width, rowHeight, width, height));
+        }
+        super.setMoveUpRight(new Animation<TextureRegion>(0.1f, frames));
+        frames.clear();
+        super.setAnimationSpeed(2);
     }
 
     /**
@@ -132,6 +215,13 @@ public class DefaultCharacter extends Player {
         bdef.position.set(x, y); // position
         bdef.type = BodyDef.BodyType.DynamicBody; // body type
         this.setBody(world.createBody(bdef)); // place into the world
+        
+        // Create the body and add mass
+        Body body = world.createBody(bdef);
+        MassData mass = new MassData();
+        mass.mass = 0;
+        body.setMassData(mass);
+        this.setBody(body); // place into the world
 
         // create the world fixture for collision
         FixtureDef fdef = new FixtureDef();
@@ -139,17 +229,37 @@ public class DefaultCharacter extends Player {
 
         // coordinates of the character's collision box
         Vector2[] vertice = new Vector2[4];
-        vertice[0] = new Vector2(-(PLAYER_WIDTH * SCALINGFACTOR) / 2 + 5, 0); // top left
-        vertice[1] = new Vector2((PLAYER_WIDTH * SCALINGFACTOR) / 2 - 5, 0); // top right
-        vertice[2] = new Vector2(-(PLAYER_WIDTH * SCALINGFACTOR) / 2 + 5, -(PLAYER_HEIGHT * SCALINGFACTOR) / 2); // bottom
-                                                                                                                 // left
-        vertice[3] = new Vector2((PLAYER_WIDTH * SCALINGFACTOR) / 2 - 5, -(PLAYER_HEIGHT * SCALINGFACTOR) / 2); // bottom
+        vertice[0] = new Vector2(-(PLAYER_WIDTH) / 2, 0); // top left
+        vertice[1] = new Vector2((PLAYER_WIDTH) / 2, 0); // top right
+        vertice[2] = new Vector2(-(PLAYER_WIDTH) / 2, -(PLAYER_HEIGHT) / 2); // bottom
+                         
+        // left
+        vertice[3] = new Vector2((PLAYER_WIDTH) / 2, -(PLAYER_HEIGHT) / 2); // bottom
         // right
 
         // put the character's collision box in the world
         rect.set(vertice);
         fdef.shape = rect;
-        this.getBody().createFixture(fdef).setUserData("Player");
+        this.getBody().createFixture(fdef).setUserData(this);
+        
+        // create the world fixture for collision
+        fdef = new FixtureDef();
+        rect = new PolygonShape();
+
+        // coordinates of the character's collision box
+        vertice = new Vector2[4];
+        vertice[0] = new Vector2(-(PLAYER_WIDTH) / 2 + 5 - 20, (PLAYER_HEIGHT) - 10); // top left
+        vertice[1] = new Vector2((PLAYER_WIDTH) / 2 - 5 + 20, (PLAYER_HEIGHT) - 10); // top right
+        vertice[2] = new Vector2(-(PLAYER_WIDTH) / 2 + 5 - 20, -(PLAYER_HEIGHT) / 2 - 10); // bottom
+                                                                                                                 // left
+        vertice[3] = new Vector2((PLAYER_WIDTH) / 2 - 5 + 20, -(PLAYER_HEIGHT) / 2 - 10); // bottom
+        // right
+
+        // put the character's collision box in the world
+        rect.set(vertice);
+        fdef.isSensor = true;
+        fdef.shape = rect;
+        this.getBody().createFixture(fdef).setUserData("Interact");
     }
 
     /**
