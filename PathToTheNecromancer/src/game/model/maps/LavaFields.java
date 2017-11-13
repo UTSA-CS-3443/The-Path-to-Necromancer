@@ -3,11 +3,15 @@ package game.model.maps;
 
 import java.util.Random;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
+import game.model.sprites.ObjectSprites;
 
 /**
  * Lava Fields map
@@ -131,7 +135,35 @@ public class LavaFields extends GameMaps {
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {}
+    public void createSprites(World world) {
+    	// height of the map
+    	int height = 1200;
+    	
+    	// create tree textures
+    	TextureAtlas atlas = new TextureAtlas("Game Tilesets/Trees/Trees.pack");
+        Skin skin = new Skin();
+        skin.addRegions(atlas);
+        TextureRegion T5 = skin.getRegion("T5");
+    	
+        // tree sprite locations for rendering
+    	this.addSprite(new ObjectSprites(T5, -18, height - 342));
+        this.addSprite(new ObjectSprites(T5, 98, height - 342));
+        this.addSprite(new ObjectSprites(T5, 34, height - 230));
+        this.addSprite(new ObjectSprites(T5, 62, height - 118));
+        this.addSprite(new ObjectSprites(T5, 158, height - 122));
+        this.addSprite(new ObjectSprites(T5, 154, height - 230));
+        this.addSprite(new ObjectSprites(T5, 250, height - 58));
+        this.addSprite(new ObjectSprites(T5, 254, height - 190));
+        this.addSprite(new ObjectSprites(T5, 582, height - 170));
+        this.addSprite(new ObjectSprites(T5, 586, height - 270));
+        this.addSprite(new ObjectSprites(T5, 682, height - 242));
+        this.addSprite(new ObjectSprites(T5, 678, height - 146));
+        this.addSprite(new ObjectSprites(T5, 778, height - 90));
+        this.addSprite(new ObjectSprites(T5, 850, height - 70));
+        this.addSprite(new ObjectSprites(T5, 762, height - 190));
+        this.addSprite(new ObjectSprites(T5, 862, height - 166));
+        this.addSprite(new ObjectSprites(T5, 802, height - 282));
+    }
    
 
 }

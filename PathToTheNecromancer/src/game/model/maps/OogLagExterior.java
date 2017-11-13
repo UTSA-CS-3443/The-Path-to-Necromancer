@@ -2,11 +2,15 @@ package game.model.maps;
 
 import java.util.Random;
 
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
+import game.model.sprites.ObjectSprites;
 
 /**
  * The second map of the game. The area outside of OogLag's tavern.
@@ -120,7 +124,41 @@ public class OogLagExterior extends GameMaps {
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {}
+    public void createSprites(World world) {
+    	// height of the map
+    	int height = 1200;
+    	
+    	// create the tree sprites
+    	TextureAtlas atlas = new TextureAtlas("Game Tilesets/Trees/Trees.pack");
+        Skin skin = new Skin();
+        skin.addRegions(atlas);
+        TextureRegion T8 = skin.getRegion("T8");
+        
+        // location to render the tree sprites
+        this.addSprite(new ObjectSprites(T8, 227, height - 106));
+        this.addSprite(new ObjectSprites(T8, 263, height - 126));
+        this.addSprite(new ObjectSprites(T8, 239, height - 186));
+        this.addSprite(new ObjectSprites(T8, 295, height - 182));
+        this.addSprite(new ObjectSprites(T8, 239, height - 254));
+        this.addSprite(new ObjectSprites(T8, 279, height - 258));
+        this.addSprite(new ObjectSprites(T8, 335, height - 234));
+        this.addSprite(new ObjectSprites(T8, 395, height - 234));
+        this.addSprite(new ObjectSprites(T8, 439, height - 246));
+        this.addSprite(new ObjectSprites(T8, 471, height - 242));
+        this.addSprite(new ObjectSprites(T8, 523, height - 258));
+        this.addSprite(new ObjectSprites(T8, 547, height - 302));
+        this.addSprite(new ObjectSprites(T8, 519, height - 338));
+        this.addSprite(new ObjectSprites(T8, 491, height - 290));
+        this.addSprite(new ObjectSprites(T8, 480, height - 341));
+        this.addSprite(new ObjectSprites(T8, 411, height - 342));
+        this.addSprite(new ObjectSprites(T8, 387, height - 314));
+        this.addSprite(new ObjectSprites(T8, 347, height - 286));
+        this.addSprite(new ObjectSprites(T8, 311, height - 306));
+        this.addSprite(new ObjectSprites(T8, 283, height - 334));
+        this.addSprite(new ObjectSprites(T8, 251, height - 322));
+        this.addSprite(new ObjectSprites(T8, 259, height - 402));
+        this.addSprite(new ObjectSprites(T8, 223, height - 434));
+     }
     
     
 

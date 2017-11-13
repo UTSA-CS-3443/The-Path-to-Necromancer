@@ -3,7 +3,10 @@ package game.model.maps;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
@@ -134,33 +137,35 @@ public class PlainsArea extends GameMaps{
         int height = 2400;
 
         // file locations of different trees
-        Texture T1 = new Texture("Game Tilesets/T1.png");
-        Texture T2 = new Texture("Game Tilesets/T2.png");
-        Texture T3 = new Texture("Game Tilesets/T3.png");
-        Texture T4 = new Texture("Game Tilesets/T4.png");
+       TextureAtlas atlas = new TextureAtlas("Game Tilesets/Trees/Trees.pack");
+       Skin skin = new Skin();
+       skin.addRegions(atlas);
+       TextureRegion T3 = skin.getRegion("T3");
+       TextureRegion T7 = skin.getRegion("T7");
+       TextureRegion T9 = skin.getRegion("T9");
         
         // add all of the trees
-        //this.addSprite(new ObjectSprites(T4, 629, height - 1855));
-        //this.addSprite(new ObjectSprites(T4, 689, height - 1635));
-        //this.addSprite(new ObjectSprites(T4, 181, height - 1799));
-        //this.addSprite(new ObjectSprites(T4, 365, height - 1591));
+        this.addSprite(new ObjectSprites(T9, 622, height - 1907));
+        this.addSprite(new ObjectSprites(T9, 684, height - 1687));
+        this.addSprite(new ObjectSprites(T9, 176, height - 1851));
+        this.addSprite(new ObjectSprites(T9, 361, height - 1643));
         
-        this.addSprite(new ObjectSprites(T3, 571, height - 1315));
-        this.addSprite(new ObjectSprites(T3, -1, height - 1436));
-        this.addSprite(new ObjectSprites(T3, -9, height - 1669));
-        this.addSprite(new ObjectSprites(T3, 675, height - 1440));
-        this.addSprite(new ObjectSprites(T3, 415, height - 1863));
+        this.addSprite(new ObjectSprites(T3, 573, height - 1354));
+        this.addSprite(new ObjectSprites(T3, 1, height - 1475));
+        this.addSprite(new ObjectSprites(T3, -6, height - 1707));
+        this.addSprite(new ObjectSprites(T3, 678, height - 1479));
+        this.addSprite(new ObjectSprites(T3, 418, height - 1903));
         
-        this.addSprite(new ObjectSprites(T3, 596, height - 999));
-        this.addSprite(new ObjectSprites(T3, -28, height - 915));
-        this.addSprite(new ObjectSprites(T3, 480, height - 795));
-        this.addSprite(new ObjectSprites(T3, 644, height - 655));
-        this.addSprite(new ObjectSprites(T3, 424, height - 2084));
+        this.addSprite(new ObjectSprites(T3, 598, height - 1038));
+        this.addSprite(new ObjectSprites(T3, -32, height - 988));
+        this.addSprite(new ObjectSprites(T3, 476, height - 864));
+        this.addSprite(new ObjectSprites(T3, 640, height - 725));
+        this.addSprite(new ObjectSprites(T3, 422, height - 2123));
         
-        this.addSprite(new ObjectSprites(T4, 148, height - 1319));
-        this.addSprite(new ObjectSprites(T4, 88, height - 1907));
-        this.addSprite(new ObjectSprites(T4, 588, height - 2003));
-        this.addSprite(new ObjectSprites(T4, 296, height - 2276));
+        this.addSprite(new ObjectSprites(T7, 145, height - 1347));
+        this.addSprite(new ObjectSprites(T7, 83, height - 1935));
+        this.addSprite(new ObjectSprites(T7, 585, height - 2031));
+        this.addSprite(new ObjectSprites(T7, 290, height - 2304));
     }
 }
     
