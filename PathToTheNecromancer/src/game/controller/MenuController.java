@@ -323,11 +323,13 @@ public class MenuController {
 		Label movement = new Label("Movement", whiteLabel);
 		Label movementControls = new Label("WASD or Arrow Keys", whiteLabel);
 		Label run = new Label("Run", whiteLabel);
-		Label runControls = new Label("Left Shift of Right Shift", whiteLabel);
+		Label runControls = new Label("Left Shift or Right Shift", whiteLabel);
 		Label openMenu = new Label("Open Menu", whiteLabel);
 		Label openMenuControl = new Label("Escape Key", whiteLabel);
 		Label interact = new Label("Interact", whiteLabel);
-		Label interactKey = new Label("Unknown", whiteLabel);
+		Label interactKey = new Label("Enter Key", whiteLabel);
+		Label textMove = new Label("Skip text", whiteLabel);
+		Label textMoveKey = new Label("Spacebar", whiteLabel);
 
 		// Fill the table with values
 		Table table = new Table();
@@ -349,6 +351,10 @@ public class MenuController {
 		table.add(interact).left().padLeft(20);
 		table.add(interactKey).right().padRight(20);
 		table.row();
+		table.add(textMove).left().padLeft(20);
+		table.add(textMoveKey).right().padRight(20);
+		table.row();
+		
 		table.add(combat).left().padLeft(20);
 		table.add();
 
