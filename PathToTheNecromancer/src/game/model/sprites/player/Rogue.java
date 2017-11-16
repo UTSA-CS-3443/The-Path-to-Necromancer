@@ -258,7 +258,7 @@ public class Rogue extends Player{
         rect.set(vertice);
         fdef.isSensor = true;
         fdef.shape = rect;
-        this.getBody().createFixture(fdef).setUserData("Interact");
+        this.getBody().createFixture(fdef).setUserData("Interaction");
     }
     /**
      * Get the Character's Class
