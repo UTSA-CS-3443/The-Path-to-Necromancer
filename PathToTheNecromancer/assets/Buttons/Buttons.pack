@@ -1,75 +1,75 @@
-
 Buttons.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-ReturntoGameButton
+CharacterButton
   rotate: false
   xy: 1, 85
+  size: 155, 40
+  orig: 155, 40
+  offset: 0, 0
+  index: -1
+ControlButton
+  rotate: false
+  xy: 158, 85
+  size: 141, 40
+  orig: 141, 40
+  offset: 0, 0
+  index: -1
+LoadButton
+  rotate: false
+  xy: 301, 85
+  size: 93, 40
+  orig: 93, 40
+  offset: 0, 0
+  index: -1
+PlayerButton
+  rotate: false
+  xy: 396, 85
+  size: 112, 40
+  orig: 112, 40
+  offset: 0, 0
+  index: -1
+QuitGameButton
+  rotate: false
+  xy: 1, 43
+  size: 163, 40
+  orig: 163, 40
+  offset: 0, 0
+  index: -1
+ReturntoGameButton
+  rotate: false
+  xy: 166, 43
   size: 223, 40
   orig: 223, 40
   offset: 0, 0
   index: -1
+SaveButton
+  rotate: false
+  xy: 391, 43
+  size: 92, 40
+  orig: 92, 40
+  offset: 0, 0
+  index: -1
 Save&LoadButton
   rotate: false
-  xy: 1, 43
+  xy: 1, 1
   size: 177, 40
   orig: 177, 40
   offset: 0, 0
   index: -1
 Save&Quit
   rotate: false
-  xy: 226, 85
+  xy: 180, 1
   size: 175, 40
   orig: 175, 40
   offset: 0, 0
   index: -1
-QuitGameButton
-  rotate: false
-  xy: 1, 1
-  size: 163, 40
-  orig: 163, 40
-  offset: 0, 0
-  index: -1
-CharacterButton
-  rotate: false
-  xy: 180, 43
-  size: 155, 40
-  orig: 155, 40
-  offset: 0, 0
-  index: -1
 SettingsButton
   rotate: false
-  xy: 166, 1
+  xy: 357, 1
   size: 137, 40
   orig: 137, 40
   offset: 0, 0
   index: -1
-LoadButton
-  rotate: false
-  xy: 403, 85
-  size: 93, 40
-  orig: 93, 40
-  offset: 0, 0
-  index: -1
-ControlButton
-  rotate: false
-  xy: 337, 43
-  size: 124, 40
-  orig: 124, 40
-  offset: 0, 0
-  index: -1
-PlayerButton
-  rotate: false
-  xy: 305, 1
-  size: 112, 40
-  orig: 112, 40
-  offset: 0, 0
-  index: -1
-SaveButton
-  rotate: false
-  xy: 419, 1
-  size: 92, 40
-  orig: 92, 40
-  offset: 0, 0
-  index: -1
+
