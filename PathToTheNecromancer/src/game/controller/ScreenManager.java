@@ -15,8 +15,8 @@ import game.view.PlayScreen;
 import javaFX.model.Settings;
 
 /**
- * Manages the connections between the different screens in the game, with
- * the PlayScreen as the base screen.
+ * Manages the connections between the different screens in the game, with the
+ * PlayScreen as the base screen.
  * 
  * @author enigma-phi
  *
@@ -38,11 +38,14 @@ public class ScreenManager {
 	 * The CurrentScreen that the ScreenManager is rendering
 	 */
 	private Screen currentScreen;
-	
+
 	/**
 	 * Create and initialize important values in the ScreenManager
-	 * @param screen is the main screen for the entire game
-	 * @param game is the main game that the screens are running off of
+	 * 
+	 * @param screen
+	 *            is the main screen for the entire game
+	 * @param game
+	 *            is the main game that the screens are running off of
 	 */
 	public ScreenManager(PathToNecromancer game) {
 		this.game = game;
@@ -51,7 +54,7 @@ public class ScreenManager {
 		this.mainInputProcessor = mainScreen.getInputProcessor();
 		this.toMainScreen();
 	}
-	
+
 	/**
 	 * Set the menu as the current screen
 	 */
@@ -59,18 +62,23 @@ public class ScreenManager {
 		this.currentScreen = new Menu(this);
 		this.setScreen();
 	}
+
+	/**
+	 * Set Combat as the current screen. Begin Combat.
+	 */
 	public void setCombat() {
 		this.currentScreen = new CombatScreen(this.mainScreen, this.game);
 		this.setScreen();
 	}
-	
+
 	/**
-	 * Set the the screen to the current screen. Whichever screen
-	 * you are working with now
+	 * Set the the screen to the current screen. Whichever screen you are working
+	 * with now
 	 */
 	private void setScreen() {
 		this.game.setScreen(this.currentScreen);
 	}
+
 	/**
 	 * Return whichever screen you are on back to the main PlayScreen
 	 */
@@ -79,26 +87,50 @@ public class ScreenManager {
 		this.currentScreen = this.mainScreen;
 		Gdx.input.setInputProcessor(this.mainInputProcessor);
 		this.setScreen();
-		if(tempScreen != this.mainScreen && tempScreen != null) 
+		if (tempScreen != this.mainScreen && tempScreen != null)
 			tempScreen.dispose();
 	}
+
+	/**
+	 * Reset the input processor to the main processor
+	 */
+	public void resetInput() {
+		Gdx.input.setInputProcessor(this.mainInputProcessor);
+	}
+
+	/**
+	 * Set whether or not dialogue is occurring
+	 * 
+	 * @param b
+	 *            is a boolean relating to dialogue
+	 */
+	public void setDialogue(boolean b) {
+		this.mainScreen.setDialogue(b);
+	}
+
 	/**
 	 * Get the player for the main game
+	 * 
 	 * @return the player
 	 */
 	public Player getPlayer() {
 		return this.mainScreen.getPlayer();
 	}
+
 	/**
 	 * Get the viewport the game renders from
+	 * 
 	 * @return the viewport
 	 */
 	public Viewport getViewport() {
 		return this.mainScreen.getViewPort();
 	}
+
 	/**
 	 * Render the current screen
-	 * @param dt is the amount of time since the last render
+	 * 
+	 * @param dt
+	 *            is the amount of time since the last render
 	 */
 	public void render(float dt) {
 		this.currentScreen.render(dt);
@@ -106,37 +138,51 @@ public class ScreenManager {
 
 	/**
 	 * Get the SpriteBatch for the entire game
+	 * 
 	 * @return the SpriteBatch
 	 */
 	public SpriteBatch getBatch() {
 		return this.game.getBatch();
 	}
+
 	/**
 	 * Return the Settings for the main game
+	 * 
 	 * @return the game's settings
 	 */
 	public Settings getSettings() {
 		return this.game.getSettings();
 	}
+
 	/**
 	 * Get an EnemySprite from the main game screen
+	 * 
 	 * @return the enemy sprite
 	 */
 	public EnemySprites getEnemy() {
 		return this.mainScreen.getEnemy();
 	}
-	
+
 	/**
-	 * Get the name of the current map 
+	 * Get the name of the current map
+	 * 
 	 * @return the map's name
 	 */
 	public String getMapName() {
 		return this.mainScreen.getMapName();
 	}
+
 	/**
 	 * Dispose of the screen manager
 	 */
 	public void dispose() {
 		this.mainScreen.dispose();
+	}
+
+	/**
+	 * Get the map manager for the classes
+	 */
+	public MapManager getMapManager() {
+		return this.mainScreen.getMapManager();
 	}
 }

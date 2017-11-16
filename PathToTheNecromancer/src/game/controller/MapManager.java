@@ -7,10 +7,13 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import game.controller.story.Interaction;
+import game.controller.story.StoryManager;
 import game.model.maps.GameMaps;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.GameSprites;
 import game.model.sprites.player.Player;
+import game.view.DialogueBox;
 import game.view.PlayScreen;
 
 /**
@@ -36,6 +39,10 @@ public class MapManager {
 	 * Time count used to ensure that combat does not happen too often
 	 */
 	private float time;
+	/**
+	 * The current story manager for the game
+	 */
+	private StoryManager storyManager;
 
 	/**
 	 * Initialize the MapManager
@@ -46,6 +53,7 @@ public class MapManager {
 	public MapManager(PlayScreen screen) {
 		this.screen = screen;
 		this.mapLoader = new TmxMapLoader();
+		this.storyManager = new StoryManager(this);
 	}
 
 	/**
@@ -83,6 +91,10 @@ public class MapManager {
 
 		// set up the sprites for the map
 		this.gameMap.createSprites(world);
+
+		// update the story manager
+		this.storyManager.updateWorld();
+		this.storyManager.updateStory();
 	}
 
 	/**
@@ -147,6 +159,12 @@ public class MapManager {
 		for (GameSprites sprite : this.getSprites()) {
 			sprite.update(dt);
 		}
+		try {
+			this.storyManager.act(dt);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -156,6 +174,50 @@ public class MapManager {
 	 */
 	public String getMapName() {
 		return this.gameMap.getMapName();
+	}
+
+	/**
+	 * Get the player's character
+	 * 
+	 * @return the player
+	 */
+	public Player getPlayer() {
+		return this.screen.getPlayer();
+	}
+
+	/**
+	 * Get the current World for the game
+	 * 
+	 * @return the world
+	 */
+	public World getWorld() {
+		return this.screen.getWorld();
+	}
+
+	/**
+	 * Start a chat sequence
+	 */
+	public void startChat() {
+		this.screen.startChat();
+	}
+
+	/**
+	 * Set the interaction for the dialogue
+	 * 
+	 * @param interact
+	 *            the interaction to set to
+	 */
+	public void setInteraction(Interaction interact) {
+		this.screen.getDialogueBox().setInteraction(interact);
+	}
+
+	/**
+	 * Get the dialogue box for the screen
+	 * 
+	 * @return the dialogue box
+	 */
+	public DialogueBox getDialogueBox() {
+		return this.screen.getDialogueBox();
 	}
 
 }
