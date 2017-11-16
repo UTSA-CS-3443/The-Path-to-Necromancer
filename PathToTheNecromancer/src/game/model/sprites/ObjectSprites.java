@@ -1,6 +1,5 @@
 package game.model.sprites;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
@@ -46,5 +45,9 @@ public class ObjectSprites extends GameSprites {
         return super.getY();
     }
     
+    /**
+     * Update the sprite. Since it is a static object, do nothing
+     * @param dt is the change in time since the last render
+     */
     public void update(float dt) {};
 }

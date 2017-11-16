@@ -1,5 +1,7 @@
 package game.model.sprites;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -79,15 +81,53 @@ public abstract class CharacterSprites extends GameSprites {
      * The physics body for the character
      */
     private Body body;
+    /**
+     * The rate at which animations are rendered
+     */
+    private float animationSpeed;
+    /**
+     * The rate at which running animations are rendered
+     */
+    private float runningSpeed;
+    /**
+     * The time for keeping the same velocity if isTimedVelocity is true
+     */
+    private float timeForVelocity;
+    /**
+     * Whether or not the character is keeping the same velocity for a specific
+     * amount of time
+     */
+    private boolean isTimedVelocity;
+    /**
+     * Whether or not the player is simply moving back and forth between velocities
+     * in a loop
+     */
+    private boolean isTimedLoop;
+    /**
+     * The velocities to loop through if isTimedLoop is true
+     */
+    private ArrayList<Vector2> loopVelocities;
+    /**
+     * The times for each value if isTimedLoop is true
+     */
+    private ArrayList<Float> loopTimes;
+    /**
+     * The current velocity the character is set to for looping
+     */
+    private int currentVelocity;
 
     /**
      * Construct the character and initialize values.
      */
     public CharacterSprites() {
         super();
+        this.animationSpeed = 4;
         this.stateTimer = 0;
         this.currentState = State.STANDING;
         this.previousState = State.STANDING;
+        this.isTimedLoop = false;
+        this.loopTimes = new ArrayList<Float>();
+        this.loopVelocities = new ArrayList<Vector2>();
     }
 
     public abstract void defineBody(World world, int x, int y);
@@ -128,12 +168,10 @@ public abstract class CharacterSprites extends GameSprites {
      * @return the texture region to render
      */
     public TextureRegion getFrame(float dt) {
+
         // get the character's current state of motion
         currentState = getState();
-        int animationSpeed = 4;
-        
-        if(this.body.getLinearVelocity().x > 50 || this.body.getLinearVelocity().y > 50)
-            animationSpeed = 3;
+
         TextureRegion region;
 
         // set the current texture region for the animation
@@ -174,10 +212,38 @@ public abstract class CharacterSprites extends GameSprites {
         }
 
         // move the animation forward
-        stateTimer = currentState == previousState ? stateTimer + dt / animationSpeed : 0;
+        if (Math.abs(this.body.getLinearVelocity().x) > 50 || Math.abs(this.body.getLinearVelocity().y) > 50)
+            stateTimer = currentState == previousState ? stateTimer + dt / runningSpeed : 0;
+        else
+            stateTimer = currentState == previousState ? stateTimer + dt / animationSpeed : 0;
         previousState = currentState;
         this.currentRegion = region;
         return region;
+    }
+
+    /**
+     * Whether or not the character continues in a timed velocity loop
+     * 
+     * @param b
+     *            is whether or not it is true
+     */
+    public void isVelocityLooping(boolean b) {
+        this.isTimedLoop = true;
+        this.currentVelocity = -1;
+    }
+
+    /**
+     * Add a value to the timed loop
+     * 
+     * @param velocity
+     *            is the new velocity to add to the loop
+     * @param time
+     *            is the time to hold this velocity
+     */
+    public void addVelocity(Vector2 velocity, float time) {
+        this.loopTimes.add(time);
+        this.loopVelocities.add(velocity);
+        this.isTimedVelocity = true;
     }
 
     /**
@@ -188,11 +254,42 @@ public abstract class CharacterSprites extends GameSprites {
     }
 
     /**
+     * Check for a velocity change and change it accordingly
+     * 
+     * @param dt
+     *            is the change in time since the last render
+     */
+    private void setVelocityTimed(float dt) {
+        if (isTimedVelocity) {
+            this.timeForVelocity -= dt;
+            // If it is time for a velocity change
+            if (this.timeForVelocity <= 0) {
+                this.currentVelocity++;
+                // If you finish running the timing and need to move on to the next sequence
+                if (this.currentVelocity >= this.loopVelocities.size() || this.currentVelocity < 0) {
+                    // If it is not a timed loop, set the Velocity to 0
+                    if (!this.isTimedLoop) {
+                        this.setVelocity(new Vector2(0, 0));
+                        this.isTimedVelocity = false;
+                        return;
+                    }
+                    this.currentVelocity = 0;
+                }
+                this.setVelocity(this.loopVelocities.get(this.currentVelocity));
+                this.timeForVelocity = this.loopTimes.get(this.currentVelocity);
+            }
+        }
+    }
+
+    /**
      * Update the character's position
      * 
      * @param dt
      */
+    @Override
     public void update(float dt) {
+        if (isTimedVelocity || isTimedLoop)
+            setVelocityTimed(dt);
         setPosition(this.body.getPosition().x - getWidth() / 2, this.body.getPosition().y - getHeight() / 2);
         setRegion(getFrame(dt));
     }
@@ -392,4 +489,26 @@ public abstract class CharacterSprites extends GameSprites {
         return this.body;
     }
 
+    /**
+     * Set the speed of the animation and additionally modify the running speed
+     * accordingly
+     * 
+     * @param speed
+     *            is the new animation speed
+     */
+    public void setAnimationSpeed(float speed) {
+        this.animationSpeed = speed;
+        this.runningSpeed = speed - 1;
+    }
+
+    /**
+     * Set the speed of the running
+     * 
+     * @param is
+     *            the new running speed
+     * @param speed
+     */
+    public void setRunningSpeed(float speed) {
+        this.runningSpeed = speed;
+    }
 }
