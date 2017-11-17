@@ -1,5 +1,6 @@
 package game.controller;
 
+import game.model.Savestate;
 import game.model.maps.IntroArea;
 import game.model.sprites.player.DefaultCharacter;
 import game.view.PlayScreen;
@@ -21,21 +22,23 @@ public class InitializeGame {
      * The game screen
      */
     private PlayScreen screen;
-
+    
+   
     /**
      * Create the game
+     * @param save 
      * 
      * @param the main game screen
      */
-    public InitializeGame(PlayScreen screen) {
+    public InitializeGame(PlayScreen screen, Savestate save) {
         this.settings = screen.getSettings();
         this.screen = screen;
         // Determine if the user wanted to start a new game or load an old
         // game
-        if (this.settings.isNewGame())
+        if (save == null)
             this.newGame();
         else
-            this.loadGame();
+            this.loadGame(save);
     }
 
     /**
@@ -51,8 +54,12 @@ public class InitializeGame {
     /**
      * Load the game. Open the save game text file and read it using a Scanner.
      * Set values based off of what you read.
+     * @param save 
      */
-    public void loadGame() {
-        // Set the player
+    public void loadGame(Savestate save) {
+    	 // create a new player character
+        screen.setPlayer(new DefaultCharacter());
+        // Simply load up the first map.
+        this.screen.getMapManager().setMap(new IntroArea(this.screen.getMapManager()), save.getplayerX(), save.getplayerY());
     }
 }

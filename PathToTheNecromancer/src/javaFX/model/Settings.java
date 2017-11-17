@@ -1,10 +1,17 @@
 package javaFX.model;
+
+import java.io.Serializable;
+
 /**
  * Setting for path of the Necromancer
  * @author HangedDragon96
  *
  */
-public class Settings {
+public class Settings implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * New game boolean
 	 */

@@ -1,5 +1,7 @@
 package game.controller;
 
+import java.io.IOException;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -23,6 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import game.model.Savestate;
 import game.model.sprites.player.Player;
 import game.view.Menu;
 
@@ -130,7 +133,10 @@ public class MenuController {
 	 * Texture atlas for the settings men
 	 */
 	private TextureAtlas buttonAtlas2;
-
+	/**
+	 * Save state for the game
+	 */
+	private Savestate save;
 	/**
 	 * Create the MenuController
 	 * 
@@ -480,7 +486,14 @@ public class MenuController {
 		saveButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				menu.returnToGame();
+				save = new Savestate(player.getX(), player.getY(), menu.getMapName(),
+						menu.getSettings(), player.isWarrior(), player.isRogue(), player.isMage());
+				try {
+					SaveGame.saveGame(save);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return true;
 			}
 

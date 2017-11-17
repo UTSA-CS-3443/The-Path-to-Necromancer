@@ -32,14 +32,19 @@ public class PathToNecromancer extends Game {
      */
     private ScreenManager screenManager;
     /**
+	 * Save state for the game
+	 */
+	private Savestate save;
+    /**
      * Constructor for the game
      * 
      * @param settings
      *            is the settings object for the game
      */
-    public PathToNecromancer(Settings settings) {
+    public PathToNecromancer(Settings settings, Savestate save) {
         super();
         this.settings = settings;
+        this.save = save;
     }
 
     /**
@@ -48,7 +53,7 @@ public class PathToNecromancer extends Game {
     @Override
     public void create() {
         this.batch = new SpriteBatch();
-        this.screenManager = new ScreenManager(this);
+        this.screenManager = new ScreenManager(this, save);
 
     }
 

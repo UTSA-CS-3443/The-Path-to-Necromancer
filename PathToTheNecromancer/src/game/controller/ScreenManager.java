@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import game.model.PathToNecromancer;
+import game.model.Savestate;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.player.Player;
 import game.view.CombatScreen;
@@ -46,10 +47,11 @@ public class ScreenManager {
 	 *            is the main screen for the entire game
 	 * @param game
 	 *            is the main game that the screens are running off of
+	 * @param save 
 	 */
-	public ScreenManager(PathToNecromancer game) {
+	public ScreenManager(PathToNecromancer game, Savestate save) {
 		this.game = game;
-		this.mainScreen = new PlayScreen(this);
+		this.mainScreen = new PlayScreen(this, save);
 		this.currentScreen = this.mainScreen;
 		this.mainInputProcessor = mainScreen.getInputProcessor();
 		this.toMainScreen();

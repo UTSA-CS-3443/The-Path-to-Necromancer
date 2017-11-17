@@ -14,7 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 
@@ -41,12 +41,36 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	 */
 	private Background bkImg;
 	/**
+	 * is pancakes background
+	 */
+	private Boolean isPancakes;
+	/**
+	 * new game
+	 */
+	@FXML
+	private Button newGame = new Button();
+	/**
+	 * load game Button
+	 */
+	@FXML
+	private Button loadGame = new Button();
+	/**
+	 * settings button
+	 */
+	@FXML
+	private Button settingButton = new Button();
+	/**
+	 * quit Button
+	 */
+	@FXML
+	private Button quit = new Button();
+	/**
 	 * starts the game
 	 */
    @Override public void handle(ActionEvent e) {
 	   		this.settings.setNewGame(true);
 		   LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-	        new LwjglApplication(new PathToNecromancer(settings), config);
+	        new LwjglApplication(new PathToNecromancer(settings, null), config);
 	        DesktopLauncher.theStage.close();
 	    }
 	 /**
@@ -56,10 +80,11 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	private void loadGame() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(DesktopLauncher.class.getResource("/LoadGame.fxml"));
-		try {
+		
+		try {	
 			this.settingMenu = loader.load();
 			this.settingMenu.setBackground(bkImg);
-	
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,6 +92,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 		scene = new Scene(settingMenu,400,400);
 		((LoadGameController)loader.getController()).setSettings(settings);
 		((LoadGameController)loader.getController()).setBkImg(bkImg);
+		((LoadGameController)loader.getController()).isItPancakes(isPancakes);
 		DesktopLauncher.theStage.setScene(scene);
 	}
 	/**
@@ -95,10 +121,34 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 		controller.setSettings(settings);
 		controller.setBkImg(bkImg);
 		controller.settingMenuSetup();
+		controller.isItPancakes(isPancakes);
 		scene = new Scene(settingMenu,400,400);
 		DesktopLauncher.theStage.setScene(scene);
 		
 	}
+	@FXML
+	public void initialize() {
+	setup();
+	}
+	
+	private void setup() {
+		this.newGame.setStyle("-fx-base: #00FFFF;");
+	    this.loadGame.setStyle("-fx-base: #00FFFF;");
+	    this.settingButton.setStyle("-fx-base: #00FFFF;");
+	    this.quit.setStyle("-fx-base: #00FFFF;");
+	}
+	
+	
+	public void isItPancakes(Boolean isPancakes) {
+		if(isPancakes) {
+		
+		    this.newGame.setStyle("-fx-base: #D2691E;");
+		    this.loadGame.setStyle("-fx-base: #D2691E;");
+		    this.settingButton.setStyle("-fx-base: #D2691E;");
+		    this.quit.setStyle("-fx-base: #D2691E;");
+		}
+		this.isPancakes = isPancakes;
+}
 	/**
 	 * gets the settings object
 	 * @return the settings
@@ -119,6 +169,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	public void setBkImg(Background bkImg) {
 		this.bkImg = bkImg;
 	}
+
 	
 	
 	

@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import game.controller.MenuController;
 import game.controller.ScreenManager;
 import game.model.sprites.player.Player;
+import javaFX.model.Settings;
 
 /**
  * The in-game menu screen. Contains stages for the character's stats, the
@@ -179,6 +180,14 @@ public class Menu implements Screen {
 	 */
 	public String getMapName() {
 		return this.screenManager.getMapName();
+	}
+	/**
+	 * Get the settings for the game
+	 * 
+	 * @return the settings object for the game
+	 */
+	public Settings getSettings() {
+		return this.screenManager.getSettings();
 	}
 
 }

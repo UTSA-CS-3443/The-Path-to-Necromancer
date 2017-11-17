@@ -47,6 +47,18 @@ public abstract class Player extends CharacterSprites {
 	 */
 	private int currentHealth;
 	private int necEncounters;
+	/**
+	 * is the player a warrior
+	 */
+	private boolean isWarrior;
+	/**
+	 * is the player a rogue
+	 */
+	private boolean isRogue;
+	/**
+	 * is the player a mage
+	 */
+	private boolean isMage;
 
 	/**
 	 * Get the Character's Class
@@ -224,5 +236,29 @@ public abstract class Player extends CharacterSprites {
 
 	public int getNecEncounters() {
 		return this.necEncounters;
+	}
+
+	public boolean isWarrior() {
+		return isWarrior;
+	}
+
+	public void setWarrior(boolean isWarrior) {
+		this.isWarrior = isWarrior;
+	}
+
+	public boolean isRogue() {
+		return isRogue;
+	}
+
+	public void setRogue(boolean isRogue) {
+		this.isRogue = isRogue;
+	}
+
+	public boolean isMage() {
+		return isMage;
+	}
+
+	public void setMage(boolean isMage) {
+		this.isMage = isMage;
 	}
 }

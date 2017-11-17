@@ -1,11 +1,27 @@
 package javaFX.controller;
 
+import java.io.Externalizable;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import game.model.PathToNecromancer;
+
+import game.model.Savestate;
 import javaFX.model.Settings;
 import javaFX.view.DesktopLauncher;
 import javafx.event.ActionEvent;
@@ -13,17 +29,19 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 /**
  * Controller for the load class
  * @author HangedDragon96
  *
  */
-public class LoadGameController implements EventHandler<ActionEvent>{
+public class LoadGameController implements Externalizable, EventHandler<ActionEvent>{
 
 @FXML
 /**
@@ -55,10 +73,25 @@ private Label save2Date = new Label();
  */
 @FXML
 private Label save3Date = new Label();
+
+
+
 /**
  * the toggle group the the 3 save buttons
  */
 private ToggleGroup saveGroup = new ToggleGroup();
+/**
+ * load button
+ */
+@FXML
+private Button loadGame = new Button();
+/**
+ * cancel Button
+ */
+@FXML
+private Button cancelButton = new Button();
+
+
 
 /**
  * Pane for the main menu
@@ -79,19 +112,66 @@ private Settings settings;
  */
 private Background bkImg;
 /**
+ * Background image for the game
+ */
+private Savestate save;
+/**
+ * is pancakes background
+ */
+private Boolean isPancakes;
+/**
  * Load the game from the state that is read
  */
 @Override
 public void handle(ActionEvent event) {
-	/* just does what new game does now because I wanted to see what save 
-	 * does before I coded this since I know I am reading a text file but
-	 * I don't know what will be stored in the file until we code it
-	 * other wise load is pretty much done
-	 */
-	LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-    new LwjglApplication(new PathToNecromancer(settings), config);
-    DesktopLauncher.theStage.close();
+	// checking which save is called
+	if(this.saveGroup.getSelectedToggle().equals(save1)) {
+		save = load("save1.txt");
+		 LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+	     new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+	    DesktopLauncher.theStage.close();
+	} else if(this.saveGroup.getSelectedToggle().equals(save2)) {
+		save = load("save2.txt");
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+	    DesktopLauncher.theStage.close();
+	} else if (this.saveGroup.getSelectedToggle().equals(save3)){
+		save = load("save3.txt");
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+	    DesktopLauncher.theStage.close();
+	}
+
 	
+	
+}
+/**
+ * loads the game from a file
+ * @param string
+ */
+private Savestate load(String saveName) {
+	   InputStream fileIs = null;
+       ObjectInputStream objIs = null;
+       Savestate save = null;
+       try {
+           fileIs = new FileInputStream("Saves/"+ saveName);
+           objIs = new ObjectInputStream(fileIs);
+           save = (Savestate) objIs.readObject();
+          
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       } catch (ClassNotFoundException e) {
+           e.printStackTrace();
+       } finally {
+           try {
+               if(objIs != null) objIs.close();
+           } catch (Exception ex){
+                
+           }
+       }
+	return save;
 }
 /**
  * goes make to the main menu if the cancel button is hit
@@ -115,6 +195,7 @@ public void DesktopLauncherMenu() {
 		DesktopLauncher.theStage.setScene(scene);
 		((DesktopLauncherController)loader.getController()).setSettings(settings);
 		((DesktopLauncherController)loader.getController()).setBkImg(bkImg);
+		((DesktopLauncherController)loader.getController()).isItPancakes(isPancakes);
 		DesktopLauncher.theStage.show();
 	} catch(Exception e) {
 		e.printStackTrace();
@@ -145,17 +226,23 @@ public void setSettings(Settings settings) {
  * sets up the toggle buttons for the load page
  */
 	private void loadSetup() {
-		File theDir = new File("C:\\Users\\danie\\git\\The-Path-to-Necromancer\\PathToTheNecromancer\\saves");
+		File theDir = new File("Saves");
+		this.save1.setToggleGroup(saveGroup);
+	    this.save2.setToggleGroup(saveGroup);
+	    this.save3.setToggleGroup(saveGroup);
+	   
+	    this.save1.setStyle("-fx-base: #00FFFF;");
+	    this.save2.setStyle("-fx-base: #00FFFF;");
+	    this.save3.setStyle("-fx-base: #00FFFF;");
+	    this.loadGame.setStyle("-fx-base: #00FFFF;");
+	    this.cancelButton.setStyle("-fx-base: #00FFFF;");
 		// if the directory does not exist, create it
 		if (!theDir.exists()) {    
 		    try{
-		        theDir.mkdir();
-		        save1.setToggleGroup(saveGroup);
-		        save2.setToggleGroup(saveGroup);
-		        save3.setToggleGroup(saveGroup);
-		        save1.setText("No Saves Available");
-		        save2.setText("No Saves Available");
-		        save3.setText("No Saves Available");
+		        System.out.println(theDir.mkdirs());
+		        this.save1.setText("No Saves Available");
+		        this.save2.setText("No Saves Available");
+		        this.save3.setText("No Saves Available");
 		        
 		    } 
 		    catch(SecurityException se){
@@ -163,17 +250,81 @@ public void setSettings(Settings settings) {
 		    }        
 		    
 		
-		} else if(theDir.length() == 0) {
+		} else if(theDir.list().length == 0) {
 			this.save1.setText("No Saves Available");
 	        this.save2.setText("No Saves Available");
 	        this.save3.setText("No Saves Available");
+		} else {
+			
+			File[] listOfFiles = theDir.listFiles();
+			BasicFileAttributes attr;
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			for(int i = 0; i < listOfFiles.length; i++) {
+				if(i == 0) {
+				Path file = Paths.get("Saves/save1.txt");
+				try {
+					attr = Files.readAttributes(file, BasicFileAttributes.class);
+					this.save1.setText("Save 1 : " + format.format(new Date(attr.creationTime().toMillis())));
+					
+				
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				}
+				else if(i == 1) {
+					Path file = Paths.get("Saves/save2.txt");
+					try {
+						attr = Files.readAttributes(file, BasicFileAttributes.class);
+						this.save2.setText("Save 2 : " + format.format(new Date(attr.creationTime().toMillis())));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}				}
+				else if(i == 2) {
+					Path file = Paths.get("Saves/save3.txt");
+					try {
+						attr = Files.readAttributes(file, BasicFileAttributes.class);
+						this.save3.setText("Save 3 : " + format.format(new Date(attr.creationTime().toMillis())));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}
 		}
+		
 	}
 public Background getBkImg() {
 	return bkImg;
 }
 public void setBkImg(Background bkImg) {
 	this.bkImg = bkImg;
+}
+public Boolean getIsPancakes() {
+	return isPancakes;
+}
+public void isItPancakes(Boolean isPancakes) {
+			if(isPancakes) {
+				this.save1.setStyle("-fx-base: #D2691E;");
+			    this.save2.setStyle("-fx-base: #D2691E;");
+			    this.save3.setStyle("-fx-base: #D2691E;");
+			    this.cancelButton.setStyle("-fx-base: #D2691E;");
+			    this.loadGame.setStyle("-fx-base: #D2691E;");
+			}
+			this.isPancakes = isPancakes;
+}
+@Override
+public void writeExternal(ObjectOutput out) throws IOException {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+	// TODO Auto-generated method stub
+	
 }
 
 }

@@ -15,6 +15,7 @@ import game.controller.MapManager;
 import game.controller.ScreenManager;
 import game.controller.GameController;
 import game.controller.InitializeGame;
+import game.model.Savestate;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.GameSprites;
 import game.model.sprites.player.Player;
@@ -84,10 +85,11 @@ public class PlayScreen implements Screen {
 
 	/**
 	 * This constructor sets up the game and initializes game objects.
+	 * @param save 
 	 * 
 	 * @param game
 	 */
-	public PlayScreen(ScreenManager screenManager) {
+	public PlayScreen(ScreenManager screenManager, Savestate save) {
 		// Grab some parameters passed
 		this.screenManager = screenManager;
 		this.batch = screenManager.getBatch();
@@ -102,7 +104,7 @@ public class PlayScreen implements Screen {
 		// Set up the controller and elements of the game
 		this.mapManager = new MapManager(this); // initialize the mapManager
 		this.b2dr = new Box2DDebugRenderer(); // set up for debugging
-		new InitializeGame(this); // initialize the game for loading and new
+		new InitializeGame(this, save); // initialize the game for loading and new
 									// game purposes
 
 		this.gameController = new GameController(this); // controller for the game
