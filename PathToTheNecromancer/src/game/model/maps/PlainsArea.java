@@ -2,7 +2,6 @@ package game.model.maps;
 
 import java.util.Random;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.World;
@@ -105,7 +104,8 @@ public class PlainsArea extends GameMaps{
      * 
      * @return an EnemySprite
      */
-    public EnemySprites getEnemy(int level) {
+    @Override
+	public EnemySprites getEnemy(int level) {
     	int enemyCount = 3;
     	Random rand = new Random();
     	int enemyNum = rand.nextInt(enemyCount);
@@ -131,7 +131,8 @@ public class PlainsArea extends GameMaps{
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {
+    @Override
+	public void createSprites(World world) {
     	// the height of the map since 0,0 in Tiled is in the top left
         // compared to the TiledMap's 0,0 in the bottom left
         int height = 2400;
@@ -140,27 +141,31 @@ public class PlainsArea extends GameMaps{
        TextureAtlas atlas = new TextureAtlas("Game Tilesets/Trees/Trees.pack");
        Skin skin = new Skin();
        skin.addRegions(atlas);
+       TextureRegion T2 = skin.getRegion("T2");
        TextureRegion T3 = skin.getRegion("T3");
        TextureRegion T7 = skin.getRegion("T7");
        TextureRegion T9 = skin.getRegion("T9");
         
         // add all of the trees
+       	this.addSprite(new ObjectSprites(T2, 236, height - 1490));
+       
         this.addSprite(new ObjectSprites(T9, 622, height - 1907));
-        this.addSprite(new ObjectSprites(T9, 684, height - 1687));
-        this.addSprite(new ObjectSprites(T9, 176, height - 1851));
+        this.addSprite(new ObjectSprites(T9, 683, height - 1687));
+        this.addSprite(new ObjectSprites(T9, 174, height - 1851));
         this.addSprite(new ObjectSprites(T9, 361, height - 1643));
-        
-        this.addSprite(new ObjectSprites(T3, 573, height - 1354));
-        this.addSprite(new ObjectSprites(T3, 1, height - 1475));
-        this.addSprite(new ObjectSprites(T3, -6, height - 1707));
-        this.addSprite(new ObjectSprites(T3, 678, height - 1479));
-        this.addSprite(new ObjectSprites(T3, 418, height - 1903));
-        
-        this.addSprite(new ObjectSprites(T3, 598, height - 1038));
+       
+        // this.addSprite(new ObjectSprites(T3, 572, height - 1354));
+        // this.addSprite(new ObjectSprites(T3, 0, height - 1475));
+        // this.addSprite(new ObjectSprites(T3, -9, height - 1707));
+        // this.addSprite(new ObjectSprites(T3, 675, height - 1479));
+        // this.addSprite(new ObjectSprites(T3, 416, height - 1903));
+
+        this.addSprite(new ObjectSprites(T3, 428, height - 1453));
+        this.addSprite(new ObjectSprites(T3, 596, height - 1122));
         this.addSprite(new ObjectSprites(T3, -32, height - 988));
         this.addSprite(new ObjectSprites(T3, 476, height - 864));
         this.addSprite(new ObjectSprites(T3, 640, height - 725));
-        this.addSprite(new ObjectSprites(T3, 422, height - 2123));
+        this.addSprite(new ObjectSprites(T3, 424, height - 2123));
         
         this.addSprite(new ObjectSprites(T7, 145, height - 1347));
         this.addSprite(new ObjectSprites(T7, 83, height - 1935));

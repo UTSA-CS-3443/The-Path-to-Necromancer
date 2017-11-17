@@ -185,7 +185,7 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 		this.dialogueGraph.addNode("Hey you can't blame a man for trying!"); // 14
 		this.dialogueGraph.addNode("*Chuckles* guess not"); // 15
 		this.dialogueGraph.addNode("Well I'm Oog-Lag, the keeper of Oog-Lag tavern."); // 16
-
+		
 		// add the edges to the graph
 		this.dialogueGraph.addEdge(0, 1);
 		this.dialogueGraph.addEdge(0, 2);

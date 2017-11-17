@@ -71,17 +71,13 @@ public class DialogueBox {
 	 */
 	private ScreenManager manager;
 	/**
-	 * The time since the space bar was last hit to skip to the end the line
+	 * Whether or not to change to the next interaction
 	 */
-	private float timeSinceEndLine;
+	private boolean changeText;
 	/**
-	 * The time since the space bar was last hit to move to the next line
+	 * Whether or not to skip to the end of the text
 	 */
-	private float timeSinceNextLine;
-	/**
-	 * Whether or not the space button was pressed previously.
-	 */
-	private boolean spaced;
+	private boolean skipText;
 	/**
 	 * The interaction to work with
 	 */
@@ -97,8 +93,6 @@ public class DialogueBox {
 		this.manager = manager;
 		this.dialogueStage = new Stage(manager.getViewport());
 		Gdx.input.setInputProcessor(this.dialogueStage);
-		this.timeSinceEndLine = 0;
-		this.spaced = false;
 
 		font = new BitmapFont(Gdx.files.internal("MagicCardFont.fnt"), false);
 		font.getData().setScale(.4f);
@@ -117,6 +111,21 @@ public class DialogueBox {
 		table.setBackground(draw);
 		this.dialogueStage.addActor(table);
 
+		// Add a listener for when the user hits the space bar
+		this.dialogueStage.addListener(new InputListener() {
+			@Override
+			public boolean keyDown(InputEvent event, int keycode) {
+				if (keycode == Keys.SPACE && !buttonsWaiting) {
+					if (skipText)
+						changeText = true;
+					else {
+						changeText = false;
+						skipText = true;
+					}
+				}
+				return true;
+			}
+		});
 	}
 
 	/**
@@ -127,6 +136,7 @@ public class DialogueBox {
 	 */
 	public void setText(String text) {
 		this.buttonsWaiting = false;
+		this.skipText = false;
 
 		this.textToRender = new Stack<Character>();
 		for (int i = text.length() - 1; i >= 0; i--) {
@@ -150,14 +160,12 @@ public class DialogueBox {
 	 *            is the change in time
 	 */
 	public void update(float dt) {
-		this.timeSinceNextLine += dt;
-		if (this.spaced) {
-			this.timeSinceEndLine += dt;
-		}
 
 		// if there is no more text to render do not update the text
-		if (textToRender.isEmpty())
+		if (textToRender.isEmpty()) {
 			completed = true;
+			this.skipText = true;
+		}
 		if (completed)
 			return;
 
@@ -168,17 +176,14 @@ public class DialogueBox {
 			this.time = 0;
 			if (textToRender.isEmpty()) {
 				completed = true;
-				this.spaced = true;
+				this.skipText = true;
 			}
 		}
 
 		// if the user hits the space button, finish rendering text
-		if (Gdx.input.isKeyPressed(Keys.SPACE) && this.timeSinceNextLine > 0.25) {
+		if (this.skipText) {
 			while (!textToRender.isEmpty())
 				this.currentText += textToRender.pop();
-			completed = true;
-			this.spaced = true;
-			this.timeSinceEndLine = 0;
 		}
 
 		// set the current text to use
@@ -194,12 +199,13 @@ public class DialogueBox {
 	public void render(float dt) {
 		// If the user hits space after the text has completed rendering,
 		// move on to the next interaction
-		if (Gdx.input.isKeyPressed(Keys.SPACE) && completed && this.timeSinceEndLine >= 0.25) {
-			this.timeSinceEndLine = 0;
-			this.timeSinceNextLine = 0;
+		// if (Gdx.input.isKeyPressed(Keys.SPACE) && completed && this.timeSinceEndLine
+		// >= 0.25) {
+		if (this.changeText) {
+			this.changeText = false;
+			this.skipText = false;
 			this.interaction.act(this.manager.getPlayer(), this.manager.getMapManager());
 			this.interaction.getNextInteraction();
-			this.spaced = false;
 		}
 
 		// The user can simply exit from dialogue
