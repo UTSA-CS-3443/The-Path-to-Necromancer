@@ -4,6 +4,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.Color;
 
@@ -21,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
+import game.controller.CombatController;
 import game.controller.GameController;
 import game.model.PathToNecromancer;
 import game.model.sprites.EnemySprites;
@@ -85,7 +87,7 @@ public class CombatScreen implements Screen
     	this.time = 0;
     	this.NextAction = 1;
     	this.battle = this.Animate.getWhoGoFirst(this.p, this.Enemy);  //Will tell us who will be going first
-    	this.controller = new CombatController();
+    	this.controller = new CombatController(this);
     	
     	
         // You use the playscreen to set the screen and gain information, 
@@ -203,7 +205,7 @@ public class CombatScreen implements Screen
     		{
     			this.Animate.drawDefaultCombatBackground();
     			// In order to render the buttons
-    			this.controller.act(this);
+    			this.controller.act();
     		}
     		
     		//Will run into StartBattleSequence until the animation is done, then will reset based on the action taken via the controller
@@ -307,5 +309,8 @@ public class CombatScreen implements Screen
 
 	public void setMovement(int movement) {
 		this.movement += movement;
+	}
+	public Viewport getViewport(){
+		return this.playScreen.getViewPort();
 	}
 }
