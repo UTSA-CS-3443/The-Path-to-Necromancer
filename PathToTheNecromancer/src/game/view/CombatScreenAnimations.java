@@ -24,10 +24,10 @@ public class CombatScreenAnimations implements Screen
 	    private SpriteBatch batch;
 	    private BitmapFont font =  new BitmapFont();
 	    
-	    private Texture background = new Texture(Gdx.files.internal("NewPaper.jpg"));
-	    private Texture box = new Texture(Gdx.files.internal("Box.jpg"));
-	    private Texture black = new Texture(Gdx.files.internal("BlackBack.jpg"));
-	    private Texture enemy = new Texture(Gdx.files.internal("Box.jpg"));
+	    private Texture background = new Texture(Gdx.files.internal("assets/NewPaper.jpg"));
+	    private Texture box = new Texture(Gdx.files.internal("assets/Box.jpg"));
+	    private Texture black = new Texture(Gdx.files.internal("assets/BlackBack.jpg"));
+	    private Texture enemy = new Texture(Gdx.files.internal("assets/Box.jpg"));
 	    private Texture player;
 	    private Texture frame = new Texture(Gdx.files.internal("Sprite Image.jpg"));
 	   // Gdx.input.setInputProcessor(new combatController());
@@ -55,8 +55,10 @@ public class CombatScreenAnimations implements Screen
 	    private boolean miscBoolean;
 	    
 	    private int rest;
+	    private int amIDone;
 	    public CombatScreenAnimations(PathToNecromancer game, SpriteBatch batch, PlayScreen playScreen) 
 	    {
+	    	this.amIDone = 1;
 	    	this.batch = batch;
 	        this.font.setColor(Color.BLACK);
 	    	this.X = 0;
@@ -88,9 +90,9 @@ public class CombatScreenAnimations implements Screen
 	     */
 	    public int StartBattleSequence(int Action, EnemySprites e, int time)
 	    { 		
+	    	this.e = e;
 	    	this.time = time;
 	    	
-	    	int myReturn;
 	    	if(Action == 1)  //Attack
 	    	{
 	    		return beginPlayerAttack(); 
@@ -122,6 +124,34 @@ public class CombatScreenAnimations implements Screen
 	    	{
 	    		return 0;
 	    	}
+
+	    	return -1;
+	    }
+	    
+	    
+	    
+	    
+	    public int beginEnemyAttack()
+	    {
+	    	int amIdone = attackAnimation(1, 490, 330); 
+	    	
+	    	if(this.EnemyHealth - this.p.getIntelligence() <= 0 && amIdone == 0) //You have killed the enemy
+	    	{
+	    		wasAttackedAnimation(490,300,p.getTexture());
+	    		return -1;
+	    	}
+	    	
+	    	//Begin the "taken damage" animation for the enemy
+	    	else if(this.EnemyHealth - this.p.getIntelligence() > 0  && amIdone == 0) //Just dealing damage to the enemy
+	    	{
+	    		wasAttackedAnimation(490, 330, p.getTexture());
+	    		if(this.time == 100)
+	    		{
+	    			this.PlayerHealth-= this.e.getAttack();
+	    		}
+	    	}
+	    	
+	    	return 2;
 	    }
 	    
 	    /** ALL THE FOLLOWING WILL RETURN THE FOLLOWING:
@@ -131,9 +161,21 @@ public class CombatScreenAnimations implements Screen
 	     */
 	    public int beginPlayerAttack()
 	    {
-	    	//Will draw the attack 
-	    	int amIdone = attackAnimation(1, 490, 330); 
+	    	System.out.println("HELLO player attack animation " + this.amIDone + " and your time is " + this.time);
 	    	
+	    	//Customize time to fit the following method (this works with the speed of player attack
+	    	this.time = this.time * 4;  //Higher the x in this.time * x, the faster the animation
+	    	
+	    	
+	    	//Will draw the attack 
+	    	this.amIDone = attackAnimation(this.amIDone, 60, 180);
+	    	if(this.amIDone == 0 && this.time != 101)
+	    	{
+	    			wasAttackedAnimation(490, 330, e.getTexture());
+	    	}
+	    	
+	    		
+	    	/*
 	    	if(this.EnemyHealth - this.p.getAttack() <= 0 && amIdone == 0) //You have killed the enemy
 	    	{
 	    		wasAttackedAnimation(490,300,p.getTexture());
@@ -144,11 +186,14 @@ public class CombatScreenAnimations implements Screen
 	    	else if(this.EnemyHealth - this.p.getAttack() > 0  && amIdone == 0) //Just dealing damage to the enemy
 	    	{
 	    		wasAttackedAnimation(490, 330, p.getTexture());
-	    	}
-	    	else
-	    	{
+	    		if(this.time == 100)
+	    		{
 	    		this.EnemyHealth-= this.p.getAttack();
-	    	}
+	    		}
+	    	}*/
+	    	if(this.amIDone == 0)
+	    		return 1;
+	    	
 	    	return 1;
 	    }
 	    
@@ -166,48 +211,66 @@ public class CombatScreenAnimations implements Screen
 	     */
 	    public int attackAnimation(int whoAmI, int originalX, int originalY)
 	    {
+	    	drawDefaultCombatBackground();
 	    	//Player animation
 	    	if(whoAmI == 1)
 	    	{
+	    		batch.draw(this.e.getTexture(), 490, 330,  120, 120); //Draw enemy NPC
 	    		//Go forward animation
 	    		if(this.time <= 50)
 	    		{
 	    			DrawObjectSprites(originalX, originalY, 90, 180, this.time, this.p.getTexture(), 120, 120);
-	    			this.time+=2;
-	    			return 1;
+	    			this.time+=4;	    			
+	    			return 1;	
 	    		}
-	    		
 	    		//Go backward animation
-	    		if(this.time > 50)
+	    		else if(this.time > 50)
 	    		{
-	    			DrawObjectSpritesBackwards(90, 180, originalX, originalY, this.time, this.p.getTexture(), 120, 120);
-	    			this.time+=2;
-	    			return 0; //animation is done
+	    			//iTime - 50 allows it to still decrement by 1 rather than 50
+	    			DrawObjectSpritesBackwards(90, 180, originalX, originalY, this.time-50, this.p.getTexture(), 120, 120);
+	    			
+	    			if(this.time >= 100)
+	    			{
+	    				System.out.println("--------------RESET TIME----------");
+	    				this.time = 0;	
+	    				return 0;
+	    			}
+	    			else
+	    			{
+		    			this.time+=4;
+	    				return 1;
+	    			}
 	    		}
-	    		
 	    	}
-	    	
+	    	/**
+	    	 * This begins the enemy's animation after being attacked
+	    	 */
 	    	//Enemy animation
-	    	if(whoAmI == 2)
+	    	else if(whoAmI == 2)
 	    	{
 	    		//Go forward animation
-	    		if(this.time <= 50)
+	    		if(this.time <= 150)
 	    		{
-	    			DrawObjectSpritesBackwards(originalX, originalY, 460, 330, this.time, this.e.getTexture(), 120, 120);
+	    			DrawObjectSpritesBackwards(originalX, originalY, 460, 330, this.time, e.getTexture(), 120, 120);
 	    			this.time+=2;
-	    			return 1;
+	    			return 2;
 	    		}
 	    		
 	    		//Go backward animation
-	    		if(this.time > 50)
+	    		else if(this.time <= 200)
 	    		{
-	    			DrawObjectSprites(460, 330, originalX, originalY, this.time, this.e.getTexture(), 120, 120);
+	    			DrawObjectSprites(460, 330, originalX, originalY, this.time, e.getTexture(), 120, 120);	
+	    			
+	    			if(this.time == 200)
+	    				return 0;
+	    			
 	    			this.time+=2;
-	    			return 0; //Animation is done
+	    			return 2; //Animation is done
+	    			
 	    		}
 	    	}
-	    	return -1;
-	    	
+
+	    		return 0;
 	    }
 	    
 	    /**
@@ -218,14 +281,16 @@ public class CombatScreenAnimations implements Screen
 	     */
 	    public void wasAttackedAnimation(int x, int y, Texture t)
 	    {
+	    	System.out.println("You are in attacked Animation with a time of " + this.time);
 	    	//every 20th frame, don't draw for 5 frames
-	    	if(this.time%25 == 0  && this.rest != 11)
+	    	if(this.time%25 == 0  && this.rest != 5)
 	    	{
 		    	batch.draw(t, x, y, 120, 120);  
 		    	this.rest++;
 	    	}
-	    	else
+	    	else if(this.rest == 5)
 	    	{
+	    		batch.draw(t, x, y, 120, 120);  
 	    		rest = 0;
 	    	}
 	    }
@@ -233,14 +298,6 @@ public class CombatScreenAnimations implements Screen
 	    /**
 	     * 
 	     */
-	    /**
-	     * Called by beginAttack which will then begin the attack sequence
-	     * 
-	     */
-	    public void attackAnimation()
-	    {
-	    	
-	    }
 	    public int beginInventory()
 	    {
 	    	return 1;
@@ -270,8 +327,8 @@ public class CombatScreenAnimations implements Screen
     		batch.draw(box, 440, 85, 200, 80);
     		batch.draw(box, 235, 0, 200, 80);
     		
-    		batch.draw(e.getTexture(), 490, 330,120,120);
-    		batch.draw(this.player, 60, 180,100,100);
+    		//batch.draw(e.getTexture(), 490, 330,120,120);
+    		batch.draw(this.p.getTexture(), 60, 180,100,100);
     		
     		batch.draw(frame, 0,0, 110, 165);
         
@@ -385,23 +442,24 @@ public class CombatScreenAnimations implements Screen
 	    }
 	    public void DrawObjectSpritesBackwards(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
 	    {
-	    	if(xFrom - iTime < xTo)
+			System.out.println("YOU ARE INSIDE THE OTHER LOOP");
+	    	if(xFrom - iTime > xTo)
 	    	{
-	    		this.X = iTime+xFrom;
+	    		this.X = xFrom - iTime;
 	    	}
 	    	
-	    	else if(xFrom - iTime > xTo)
+	    	else if(xFrom - iTime <= xTo)
 	    	{
 	    		this.X = xTo; 
 	    	}
 	    	
 	    	
-	    	if(yFrom - iTime < yTo)
+	    	if(yFrom - iTime > yTo)
 	    	{
-	    		this.Y = iTime + yFrom;
+	    		this.Y = yFrom - iTime;
 	    	}
 	    	
-	    	else if(yFrom - iTime > yTo)
+	    	else if(yFrom - iTime <= yTo)
 	    	{
 	    		this.Y = yTo;
 	    	}

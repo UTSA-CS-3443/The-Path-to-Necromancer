@@ -4,7 +4,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.Color;
 
@@ -22,7 +21,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-import game.controller.CombatController;
 import game.controller.GameController;
 import game.model.PathToNecromancer;
 import game.model.sprites.EnemySprites;
@@ -42,10 +40,10 @@ public class CombatScreen implements Screen
     private BitmapFont font =  new BitmapFont();//(Gdx.files.internal("type_writer.ttf"));
     
     //Batches used to draw the pictures required
-    private Texture background = new Texture(Gdx.files.internal("NewPaper.jpg"));
-    private Texture box = new Texture(Gdx.files.internal("Box.jpg"));
-    private Texture black = new Texture(Gdx.files.internal("BlackBack.jpg"));
-    private Texture frame = new Texture(Gdx.files.internal("Sprite Image.jpg"));
+    private Texture background = new Texture(Gdx.files.internal("assets/NewPaper.jpg"));
+    private Texture box = new Texture(Gdx.files.internal("assets/Box.jpg"));
+    private Texture black = new Texture(Gdx.files.internal("assets/BlackBack.jpg"));
+    private Texture frame = new Texture(Gdx.files.internal("assets/Sprite Image.jpg"));
     
     //If crashing on textures, the path(or name) are incorrect
     private Texture enemyNPC; 
@@ -70,13 +68,14 @@ public class CombatScreen implements Screen
     private int time;
     private boolean Intro1End = false;
    
-    private Player p = playScreen.getPlayer();
-    private CombatController controller;
+    private Player p;
+   // private CombatController controller;
     
     private int NextAction;
     private boolean resetTime;
     public CombatScreen(PlayScreen playscreen, PathToNecromancer game) 
     {
+    	this.p = playscreen.getPlayer();
         this.font.setColor(Color.BLACK);
     	this.prevPlayScreen = playscreen;
     	this.playScreen = playscreen;
@@ -87,7 +86,8 @@ public class CombatScreen implements Screen
     	this.time = 0;
     	this.NextAction = 1;
     	this.battle = this.Animate.getWhoGoFirst(this.p, this.Enemy);  //Will tell us who will be going first
-    	this.controller = new CombatController(this);
+    	//this.controller = new CombatController();
+    	this.battle = 1;
     	
     	
         // You use the playscreen to set the screen and gain information, 
@@ -192,34 +192,42 @@ public class CombatScreen implements Screen
     	/**
     	 * BEGIN BATTLE SEQUENCE
     	 * After IntroScreen has run, it will then move to the battle sequence, allowing you to fight
+    	 * The battle sequence will then jump to endCombat later
     	 */
-    	else if(this.IntroScreen)
+    	else if(!this.IntroScreen)
     	{	
-    		if(!this.resetTime)
+    		if(this.resetTime)
     		{
     			this.time = 0;
+    			this.resetTime = false;
     		}
-    		
-    		//Awaiting user input, so just draw what you need
+    		//Awaiting user input, so just draw the background with the player and enemy
     		if (this.battle == 0)
     		{
     			this.Animate.drawDefaultCombatBackground();
     			// In order to render the buttons
-    			this.controller.act();
+    			//this.controller.act(this);
     		}
     		
     		//Will run into StartBattleSequence until the animation is done, then will reset based on the action taken via the controller
     		if(this.battle > 0) 
     		{
-        		//Attack = 1, Inventory = 2, Interact = 3, Run = 4
-    			this.battle = this.Animate.StartPlayerSequence(this.battle, this.Enemy, this.time);
     			
+        		//Attack = 1, Inventory = 2, Interact = 3, Run = 4
+    			this.battle = this.Animate.StartBattleSequence(this.battle, this.Enemy, this.time);
+    			this.time++;
+    			//Resets time to always, and I mean always, run with 100s for every animation
+    			if(this.time == 100)
+    			{
+    				this.time = 0;
+    			}
     			//Be done with the sequence, reset time, then re-enter the waiting period for user controls
     			if(this.battle == -5)
     			{
     				this.time = 0;
     				this.battle = 0;
     			}
+    			
     			//Player has died
     			else if(this.battle == -1 || this.battle == -2) 
     			{
@@ -228,6 +236,8 @@ public class CombatScreen implements Screen
     			
     		}
     	}
+		batch.end();
+		/*
         // clear the screen
     	else {
     		
@@ -257,10 +267,10 @@ public class CombatScreen implements Screen
     		//stage.act();
         	//stage.draw();
     		
-    	}
+    	}*/
     	this.update(delta);
     	
-    	batch.end();
+    	//batch.end();
     }
     
     /**
@@ -309,8 +319,5 @@ public class CombatScreen implements Screen
 
 	public void setMovement(int movement) {
 		this.movement += movement;
-	}
-	public Viewport getViewport(){
-		return this.playScreen.getViewPort();
 	}
 }
