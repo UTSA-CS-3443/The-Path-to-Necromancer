@@ -138,7 +138,7 @@ public class SettingsController implements EventHandler<ActionEvent> {
 			// setting up brightness slider
 			brightnessSlider.setValue(settings.getBrightness());
 			brightnessSlider.setStyle("-fx-base: #00FFFF;");
-			brightnessLabel.setStyle("-fx-base: #006400;");
+			brightnessLabel.setStyle("-fx-base:  #FFFFFF;");
 			// check buttons
 			mute.setSelected(settings.isMute());
 			mute.setStyle("-fx-base: #00FFFF;");
