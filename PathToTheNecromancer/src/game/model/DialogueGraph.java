@@ -3,8 +3,9 @@ package game.model;
 import java.util.ArrayList;
 
 /**
- * An implementation of a graph. Contains an ArrayList of BasicGraphNodes that
- * may connect to a later node.
+ * An implementation of a graph. Contains an ArrayList of GraphNode that
+ * may connect to a later node. It is important to node, that the names of the 
+ * nodes in the graph correspond to their index in the ArrayList of nodes.
  * 
  * @author enigma-phi
  *

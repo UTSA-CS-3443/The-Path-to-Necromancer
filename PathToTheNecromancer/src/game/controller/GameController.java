@@ -148,6 +148,8 @@ public class GameController implements InputProcessor {
 			}
 			break;
 		case Keys.NUM_1:
+			Gdx.app.log("X", String.valueOf(player.getX()));
+			Gdx.app.log("Y", String.valueOf(player.getY()));
 		default:
 		}
 		return true;

@@ -154,14 +154,14 @@ public class MountainLeft extends GameMaps {
         this.addSprite(new ObjectSprites(T1, 644, height - 826));
         
         
-        this.addSprite(new ObjectSprites(T2, 625, height - 1204));
+        this.addSprite(new ObjectSprites(T2, 624, height - 1204));
 
-        this.addSprite(new ObjectSprites(T3, 788 - 128, height - 1081));
-        this.addSprite(new ObjectSprites(T3, 112 - 128, height - 1337));
-        this.addSprite(new ObjectSprites(T3, 151 - 127, height - 1592));
+        this.addSprite(new ObjectSprites(T3, 788 - 128, height - 1078));
+        this.addSprite(new ObjectSprites(T3, 112 - 128, height - 1335));
+        this.addSprite(new ObjectSprites(T3, 151 - 127, height - 1591));
         
-        this.addSprite(new ObjectSprites(T4, 98, height - 1211));
-        this.addSprite(new ObjectSprites(T4, 661, height - 1523));
+        this.addSprite(new ObjectSprites(T4, 100, height - 1211));
+        this.addSprite(new ObjectSprites(T4, 661, height - 1522));
         
         this.addSprite(new ObjectSprites(H3, 224, height - 1440));
         

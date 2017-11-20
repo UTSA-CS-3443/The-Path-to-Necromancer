@@ -45,6 +45,9 @@ public class Warrior extends Player {
 
         // Set the initial animation
         setRegion(super.getStandingRegion());
+        super.setBaseStats(5, 1, 0, 2, 20, 0);
+        if (this.isLevelUp() == true)
+        	super.LevelUpStats(3, 1, 1, 3, 15, 0);
     }
 
     /**

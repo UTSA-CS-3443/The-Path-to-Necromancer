@@ -24,6 +24,13 @@ T3
   orig: 132, 130
   offset: 0, 0
   index: -1
+T10
+  rotate: false
+  xy: 419, 131
+  size: 126, 124
+  orig: 126, 124
+  offset: 0, 0
+  index: -1
 T4
   rotate: false
   xy: 285, 1
@@ -40,28 +47,28 @@ T7
   index: -1
 T5
   rotate: false
-  xy: 419, 132
+  xy: 547, 132
   size: 105, 123
   orig: 105, 123
   offset: 0, 0
   index: -1
 T6
   rotate: false
-  xy: 526, 132
+  xy: 654, 132
   size: 100, 123
   orig: 100, 123
   offset: 0, 0
   index: -1
 T2
   rotate: false
-  xy: 628, 157
+  xy: 756, 157
   size: 96, 98
   orig: 96, 98
   offset: 0, 0
   index: -1
 T8
   rotate: false
-  xy: 726, 199
+  xy: 854, 199
   size: 30, 56
   orig: 30, 56
   offset: 0, 0

@@ -45,6 +45,9 @@ public class Rogue extends Player{
 
         // Set the initial animation
         setRegion(super.getStandingRegion());
+        super.setBaseStats(2, 2, 5, 4, 15, 0);
+        if (this.isLevelUp() == true)
+        	super.LevelUpStats(2, 1, 5, 4, 10, 0);
     }
 
     /**
