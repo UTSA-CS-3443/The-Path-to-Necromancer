@@ -145,6 +145,7 @@ public class PlainsArea extends GameMaps{
        TextureRegion T3 = skin.getRegion("T3");
        TextureRegion T7 = skin.getRegion("T7");
        TextureRegion T9 = skin.getRegion("T9");
+       TextureRegion T10 = skin.getRegion("T10");
         
         // add all of the trees
        	this.addSprite(new ObjectSprites(T2, 236, height - 1490));
@@ -154,11 +155,11 @@ public class PlainsArea extends GameMaps{
         this.addSprite(new ObjectSprites(T9, 174, height - 1851));
         this.addSprite(new ObjectSprites(T9, 361, height - 1643));
        
-        // this.addSprite(new ObjectSprites(T3, 572, height - 1354));
-        // this.addSprite(new ObjectSprites(T3, 0, height - 1475));
-        // this.addSprite(new ObjectSprites(T3, -9, height - 1707));
-        // this.addSprite(new ObjectSprites(T3, 675, height - 1479));
-        // this.addSprite(new ObjectSprites(T3, 416, height - 1903));
+        this.addSprite(new ObjectSprites(T10, 572, height - 1354));
+        this.addSprite(new ObjectSprites(T10, 0, height - 1475));
+        this.addSprite(new ObjectSprites(T10, -9, height - 1707));
+        this.addSprite(new ObjectSprites(T10, 675, height - 1479));
+        this.addSprite(new ObjectSprites(T10, 416, height - 1903));
 
         this.addSprite(new ObjectSprites(T3, 428, height - 1453));
         this.addSprite(new ObjectSprites(T3, 596, height - 1122));

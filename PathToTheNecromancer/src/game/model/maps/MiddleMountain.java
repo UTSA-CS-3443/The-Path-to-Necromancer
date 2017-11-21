@@ -12,6 +12,12 @@ import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.ObjectSprites;
 
+/**
+ * 
+ * @author ToTryHardRay
+ * This is the class for the middle mountain map
+ *
+ */
 public class MiddleMountain extends GameMaps {
 	
 	/**
@@ -20,13 +26,13 @@ public class MiddleMountain extends GameMaps {
     private static final String MAPNAME = "Maps/Map06-MiddleMountain.tmx";
 
     /**
-     * layer 2 = south transition
+     * layer 4 = south transition
      */
-    private static final int SOUTHTRANSITION = 2;
+    private static final int SOUTHTRANSITION = 4;
     /**
-     * layer 4 = north transition
+     * layer 2 = north transition
      */
-    private static final int NORTHTRANSITION = 4;
+    private static final int NORTHTRANSITION = 2;
     /**
      * layer 3 = map collision layer
      */
@@ -61,10 +67,10 @@ public class MiddleMountain extends GameMaps {
     @Override
     public void generateWorld(World world) {
         // create the static non-moving bodies
-       // this.creator.createWorld(world, this, COLLISIONLAYERS);
+        this.creator.createWorld(world, this, COLLISIONLAYERS);
         // create the transition areas
-        //this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
-        //this.creator.createTransition(world, this, SOUTHTRANSITION, SOUTH);
+        this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
+        this.creator.createTransition(world, this, SOUTHTRANSITION, SOUTH);
        
 
     }

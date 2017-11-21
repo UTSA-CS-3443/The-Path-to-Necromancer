@@ -85,7 +85,7 @@ public class MountainLeft extends GameMaps {
     	
     	// the transition to the north
         case NORTH:
-        	 this.manager.setMap(new MiddleMountain(this.manager), 30, 2275);
+        	 this.manager.setMap(new MiddleMountain(this.manager), 60, 30);
              break;
         // the transition to the south
         case SOUTH:
