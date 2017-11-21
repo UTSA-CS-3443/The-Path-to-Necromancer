@@ -10,43 +10,9 @@ import game.model.sprites.CharacterSprites;
  */
 public abstract class Player extends CharacterSprites {
 	/**
-	 * The player's current level
+	 * Player stats
 	 */
-	private int level;
-	/**
-	 * The player's current experience. After reaching a new level, the player's
-	 * experience will be reset to zero.
-	 */
-	private int experience;
-
-	/**
-	 * The player's strength for physical attack and defense
-	 */
-	private int strength;
-
-	/**
-	 * The player's intelligence for magic attack and defense
-	 */
-	private int intelligence;
-
-	/**
-	 * The player's dexterity for intiative and reflex
-	 */
-	private int dexterity;
-
-	/**
-	 * The player's luck for critical hits
-	 */
-	private int luck;
-	/**
-	 * The player's max health
-	 */
-	private int maxHealth;
-	/**
-	 * The player's current health (for combat only)
-	 */
-	private int currentHealth;
-	private int necEncounters;
+	private Stats stats;
 	/**
 	 * is the player a warrior
 	 */
@@ -73,7 +39,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the level
 	 */
 	public int getLevel() {
-		return level;
+		return this.stats.getLevel();
 	}
 
 	/**
@@ -83,7 +49,7 @@ public abstract class Player extends CharacterSprites {
 	 *            is the new level
 	 */
 	public void setLevel(int level) {
-		this.level = level;
+		this.stats.setLevel(level);
 	}
 
 	/**
@@ -92,7 +58,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the experience
 	 */
 	public int getExperience() {
-		return experience;
+		return this.stats.getExperience();
 	}
 
 	/**
@@ -102,7 +68,7 @@ public abstract class Player extends CharacterSprites {
 	 *            is the new experience
 	 */
 	public void setExperience(int experience) {
-		this.experience = experience;
+		this.stats.setExperience(experience);
 	}
 
 	/**
@@ -111,7 +77,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the strength
 	 */
 	public int getStrength() {
-		return strength;
+		return this.stats.getStrength();
 	}
 
 	/**
@@ -121,7 +87,7 @@ public abstract class Player extends CharacterSprites {
 	 *            is the new strength
 	 */
 	public void setStrength(int strength) {
-		this.strength = strength;
+		this.stats.setStrength(strength);
 	}
 
 	/**
@@ -130,7 +96,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the intelligence
 	 */
 	public int getIntelligence() {
-		return intelligence;
+		return this.stats.getIntelligence();
 	}
 
 	/**
@@ -140,7 +106,7 @@ public abstract class Player extends CharacterSprites {
 	 *            is the new intelligence
 	 */
 	public void setIntelligence(int intelligence) {
-		this.intelligence = intelligence;
+		this.stats.setIntelligence(intelligence);
 	}
 
 	/**
@@ -149,7 +115,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the dexterity
 	 */
 	public int getDexterity() {
-		return dexterity;
+		return this.stats.getDexterity();
 	}
 
 	/**
@@ -159,7 +125,7 @@ public abstract class Player extends CharacterSprites {
 	 *            is the new dexterity
 	 */
 	public void setDexterity(int dexterity) {
-		this.dexterity = dexterity;
+		this.stats.setDexterity(dexterity);
 	}
 
 	/**
@@ -168,7 +134,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the luck
 	 */
 	public int getLuck() {
-		return luck;
+		return this.stats.getLuck();
 	}
 
 	/**
@@ -178,7 +144,7 @@ public abstract class Player extends CharacterSprites {
 	 *            is the new luck
 	 */
 	public void setLuck(int luck) {
-		this.luck = luck;
+		this.stats.setLuck(luck);
 	}
 
 	/**
@@ -198,7 +164,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the max health
 	 */
 	public int getHealth() {
-		return this.maxHealth;
+		return this.stats.getMaxHealth();
 	}
 
 	/**
@@ -208,7 +174,7 @@ public abstract class Player extends CharacterSprites {
 	 *            player's new max health
 	 */
 	public void setHealth(int health) {
-		this.maxHealth = health;
+		this.stats.setMaxHealth(health);
 	}
 
 	/**
@@ -217,7 +183,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the player's current health
 	 */
 	public int getCurrentHealth() {
-		return this.currentHealth;
+		return this.stats.getCurrentHealth();
 	}
 
 	/**
@@ -227,15 +193,15 @@ public abstract class Player extends CharacterSprites {
 	 *            to set it to
 	 */
 	public void setCurrentHealth(int health) {
-		this.currentHealth = health;
+		this.stats.setCurrentHealth(health);
 	}
 
 	public void setNecEncounters(int set) {
-		this.necEncounters = set;
+		this.stats.setNecEncounters(set);
 	}
 
 	public int getNecEncounters() {
-		return this.necEncounters;
+		return this.stats.getNecEncounters();
 	}
 
 	public boolean isWarrior() {
@@ -260,5 +226,25 @@ public abstract class Player extends CharacterSprites {
 
 	public void setMage(boolean isMage) {
 		this.isMage = isMage;
+	}
+
+	public void setBaseStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth,
+			int currentHealth, int necEncounters) {
+		this.stats = new Stats(level,experience,strength,intelligence,dexterity,luck,maxHealth,currentHealth,necEncounters);
+		
+	}
+
+	public void LevelUpStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
+		// TODO Auto-generated method stub
+		this.stats.setLevel(level + this.stats.getLevel());
+		this.stats.setExperience(experience + this.stats.getExperience());
+		this.stats.setStrength(strength + this.stats.getStrength());
+		this.stats.setIntelligence(intelligence + this.stats.getIntelligence());
+		this.stats.setDexterity(dexterity + this.stats.getDexterity());
+		this.stats.setLuck(luck + this.stats.getLuck());
+		this.stats.setMaxHealth(maxHealth + this.stats.getMaxHealth());
+		this.stats.setCurrentHealth(maxHealth);
+		
+		
 	}
 }

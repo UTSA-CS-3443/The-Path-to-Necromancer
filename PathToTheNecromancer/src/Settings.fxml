@@ -12,7 +12,7 @@
       <Slider id="Music" fx:id="musicSlider" layoutX="138.0" layoutY="63.0" />
       <Label fx:id="soundLabel" layoutX="26.0" layoutY="91.0" text="Sound Effects" />
       <CheckBox id="mute" fx:id="mute" layoutX="139.0" layoutY="166.0" mnemonicParsing="false" text="Disable Sound" />
-      <CheckBox id="autoForward" fx:id="autoForward" layoutX="138.0" layoutY="192.0" mnemonicParsing="false" text="Auto Forward" />
+      <CheckBox id="autoForward" fx:id="autoForward" layoutX="139.0" layoutY="192.0" mnemonicParsing="false" text="Auto Forward" />
       <Button fx:id="applyButton" layoutX="54.0" layoutY="341.0" mnemonicParsing="false" onAction="#handle" text="Apply" />
       <Button fx:id="cancelButton" layoutX="286.0" layoutY="341.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
       <Label fx:id="brightnessLabel" layoutX="26.0" layoutY="123.0" text="Brightness" />
