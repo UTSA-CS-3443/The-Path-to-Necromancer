@@ -1,5 +1,7 @@
 package game.model.sprites.npc;
 
+import java.util.Random;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -12,7 +14,10 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
+import game.model.DialogueGraph;
 import game.model.sprites.CharacterSprites;
+import game.model.sprites.InteractionSprites;
+import game.model.sprites.player.Player;
 
 /**
  * 
@@ -20,7 +25,7 @@ import game.model.sprites.CharacterSprites;
  * This is the class for the animation of the villagers
  *
  */
-public class Villagers extends CharacterSprites {
+public class Villagers extends CharacterSprites implements InteractionSprites {
 	private ColorAndGender color;
 	private ColorAndGender gender;
 	private Texture villagerTexture;
@@ -190,6 +195,37 @@ public class Villagers extends CharacterSprites {
 		rect.set(vertice);
 		fdef.shape = rect;
 		this.getBody().createFixture(fdef).setUserData(this);
-
-	}
+		
+		}
+		public DialogueGraph getDialogue(Player player) {
+			DialogueGraph graph = new DialogueGraph();
+			Random rand = new Random();
+			int x = rand.nextInt(7);
+			switch(x){
+			default:
+				break;
+			case 0:
+				graph.addNode("I do admit, my little boy rides a horse like he was born on one, crying, naked, and confused");
+				break;
+			case 1:
+				graph.addNode("I must admit, after the necromancer's general came in, everyone has been free of sickness, free of pain!");
+				break;
+			case 2:
+				graph.addNode("Thought my kid was a picky eater until I saw him try only the most exotic of foods, like dirt, and some green stuff in the corner of my house");
+				break;
+			case 3:
+				graph.addNode("While I do like the fact the necromancer's general is coming in everyday to cure us, I hate the fact he(or she?) is so...weird...");
+				break;
+			case 4:
+				graph.addNode("Communist jokes are never funny unless everyone gets them!");
+				break;
+			case 5:
+				graph.addNode("I have to admit, the sounds of the necromancer's skeleton army is slightly less offputting thanks to the xylophone sound the skeletons mke as they walk");
+				break;
+			case 6:
+				graph.addNode("If there are infinite universes, what if we're in one where there only exists one universe?");
+				break;
+			}
+			return graph;
+		}
 }

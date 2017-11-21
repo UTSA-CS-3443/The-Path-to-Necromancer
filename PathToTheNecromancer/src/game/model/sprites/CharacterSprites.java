@@ -2,6 +2,7 @@ package game.model.sprites;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -228,7 +229,7 @@ public abstract class CharacterSprites extends GameSprites {
      *            is whether or not it is true
      */
     public void isVelocityLooping(boolean b) {
-        this.isTimedLoop = true;
+        this.isTimedLoop = b;
         this.currentVelocity = -1;
     }
 

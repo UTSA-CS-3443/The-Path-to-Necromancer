@@ -2,6 +2,7 @@ package game.model.maps;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -9,6 +10,8 @@ import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.ObjectSprites;
+import game.model.sprites.npc.ColorAndGender;
+import game.model.sprites.npc.Villagers;
 
 /**
  * The second map of the game. The area outside of OogLag's tavern.
@@ -160,6 +163,26 @@ public class OogLagExterior extends GameMaps {
         this.addSprite(new ObjectSprites(T8, 251, height - 322));
         this.addSprite(new ObjectSprites(T8, 259, height - 402));
         this.addSprite(new ObjectSprites(T8, 223, height - 434));
+        
+        Villagers villager1 = new Villagers(ColorAndGender.BLUE,ColorAndGender.MALE);
+        villager1.isVelocityLooping(true);
+        villager1.addVelocity(new Vector2(20,0), 4);
+        villager1.addVelocity(new Vector2(-20,0), 4);
+        villager1.defineBody(world, 583, 806);
+        this.addSprite(villager1);
+        
+        Villagers villager2 = new Villagers(ColorAndGender.GREEN,ColorAndGender.MALE);
+        villager2.isVelocityLooping(false);
+        villager2.addVelocity(new Vector2(-10,0), 1);
+        villager2.defineBody(world, 320, 676);
+        this.addSprite(villager2);
+        
+        Villagers villager3 = new Villagers(ColorAndGender.WHITE,ColorAndGender.FEMALE);
+        villager3.isVelocityLooping(true);
+        villager3.addVelocity(new Vector2(0,20), 4);
+        villager3.addVelocity(new Vector2(0,-20), 4);
+        villager3.defineBody(world, 547, 690);
+        this.addSprite(villager3);
      }
     
     
