@@ -6,8 +6,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LibGDXLibraryJars"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LibGDX Game Libraries"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LibGDX Libarary Jars"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="assets"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LibGDXGameLibrary"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

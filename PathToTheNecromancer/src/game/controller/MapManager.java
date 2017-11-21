@@ -220,4 +220,6 @@ public class MapManager {
 		return this.screen.getDialogueBox();
 	}
 
+
+
 }

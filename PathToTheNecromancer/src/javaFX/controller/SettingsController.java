@@ -66,10 +66,10 @@ public class SettingsController implements EventHandler<ActionEvent> {
 	private ChoiceBox<Difficulty> difficulty = new ChoiceBox<Difficulty>();
 	
 	/**
-	 * check boxes for mute, auto forward, vsync
+	 * check boxes for mute, auto forward
 	 */	
 	@FXML
-	private CheckBox mute, autoForward, vsync;
+	private CheckBox mute, autoForward;
 	/**
 	 * apply button
 	 */
@@ -112,7 +112,6 @@ public class SettingsController implements EventHandler<ActionEvent> {
 	       settings.setMusicSound((int) musicSlider.getValue()) ;
 	       settings.setMute(mute.isSelected());
 	       settings.setAutoSkip(autoForward.isSelected());
-	       settings.setvSync(vsync.isSelected());
 	       DesktopLauncherMenu();
 	       
 	    }
@@ -146,9 +145,6 @@ public class SettingsController implements EventHandler<ActionEvent> {
 			autoForward.setSelected(settings.isAutoSkip());
 			autoForward.setStyle("-fx-base: #00FFFF;");
 			autoForward.setTextFill(Color.WHITE);
-			vsync.setSelected(settings.isvSync());
-			vsync.setStyle("-fx-base: #00FFFF;");
-			vsync.setTextFill(Color.WHITE);
 			// choice box
 			difficulty.setItems(FXCollections.observableArrayList(
 					  Difficulty.EASY, Difficulty.MEDIUM,  Difficulty.HARD, Difficulty.INSANE));
@@ -215,12 +211,8 @@ public class SettingsController implements EventHandler<ActionEvent> {
 						
 			this.mute.setStyle("-fx-base: #D2691E;");
 						
-			this.autoForward.setStyle("-fx-base: #D2691E;");
-						
-			this.vsync.setStyle("-fx-base: #D2691E;");
-				
-			this.difficulty.setStyle("-fx-base: #D2691E;");
-		    
+			this.autoForward.setStyle("-fx-base: #D2691E;");	
+			this.difficulty.setStyle("-fx-base: #D2691E;");    
 		    this.applyButton.setStyle("-fx-base: #D2691E;");
 		    this.cancelButton.setStyle("-fx-base: #D2691E;");
 		}
