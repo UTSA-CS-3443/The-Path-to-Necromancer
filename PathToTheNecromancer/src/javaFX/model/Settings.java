@@ -40,10 +40,7 @@ public class Settings implements Serializable{
 	 * auto skip control
 	 */
 	private boolean autoSkip;
-	/**
-	 * is vysnc on
-	 */
-	private boolean vSync;
+
 	/** 
 	 * the difficulty
 	 */
@@ -65,15 +62,14 @@ public class Settings implements Serializable{
 	 * @param vSync Is vSync turned on
 	 * @param difficulty The difficulty 
 	 */
-	public Settings(int gameSound, boolean mute, boolean lineSpeed, int brightness, int musicSound, boolean autoSkip,
-			boolean vSync, Difficulty difficulty) {
+	public Settings(int gameSound, boolean mute, boolean lineSpeed, int brightness, int musicSound, boolean autoSkip, Difficulty difficulty) {
 		this.gameSound = gameSound;
 		this.mute = mute;
 		this.lineSpeed = lineSpeed;
 		this.brightness = brightness;
 		this.musicSound = musicSound;
 		this.autoSkip = autoSkip;
-		this.vSync = vSync;
+	
 		this.difficulty = difficulty;
 	}
 	/**
@@ -160,21 +156,7 @@ public class Settings implements Serializable{
 	public void setAutoSkip(boolean autoSkip) {
 		this.autoSkip = autoSkip;
 	}
-	/**
-	 * gets vSync
-	 * @return true if vSync is set false otherwise
-	 */
-	public boolean isvSync() {
-		return vSync;
-	}
-	/**
-	 * sets vSync 
-	 * @param vSync a boolean if vSync is set
-	 */
-	public void setvSync(boolean vSync) {
-		this.vSync = vSync;
-	}
-
+	
 
 	/**
 	 * gets difficulty

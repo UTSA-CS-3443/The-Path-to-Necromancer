@@ -66,7 +66,7 @@ public class DesktopLauncher extends Application {
 		    new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
 		Background bkImg = new Background(bgImg);
 		theStage = primaryStage;
-		settings = new Settings(100, false, false, 100, 100, false, false, Difficulty.EASY);
+		settings = new Settings(100, false, false, 100, 100, false, Difficulty.EASY);
 		primaryStage.setTitle("Path to the Necromancer");
 		 try {
 				FXMLLoader loader = new FXMLLoader();
