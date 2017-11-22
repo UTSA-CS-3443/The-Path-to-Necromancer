@@ -4,13 +4,20 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.MassData;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
+import game.controller.MapManager;
+import game.controller.story.DialogueActor;
+import game.model.DialogueGraph;
 import game.model.sprites.CharacterSprites;
+import game.model.sprites.InteractionSprites;
+import game.model.sprites.player.Player;
 
 /**
  * 
@@ -19,7 +26,7 @@ import game.model.sprites.CharacterSprites;
  * @author enigma-phi
  *
  */
-public class Necromancer extends CharacterSprites {
+public class Necromancer extends CharacterSprites implements InteractionSprites{
     /**
      * The pixel width of the Necromancer sprite
      */
@@ -28,7 +35,6 @@ public class Necromancer extends CharacterSprites {
      * The pixel height of the Necromancer sprite
      */
     private static final int NEC_HEIGHT = 50;
-
     /**
      * The texture used to draw and render the Necromancer sprite
      */
@@ -132,7 +138,13 @@ public class Necromancer extends CharacterSprites {
         BodyDef bdef = new BodyDef();
         bdef.position.set(x, y); // position
         bdef.type = BodyDef.BodyType.DynamicBody; // body type
-        this.setBody(world.createBody(bdef)); // place into the world
+        
+        // Create the body and add mass
+        Body body = world.createBody(bdef);
+        MassData mass = new MassData();
+        mass.mass = 1000000f;
+        body.setMassData(mass);
+        this.setBody(body); 
 
         // create the world fixture for collision
         FixtureDef fdef = new FixtureDef();
@@ -150,7 +162,48 @@ public class Necromancer extends CharacterSprites {
         // set the world
         rect.set(vertice);
         fdef.shape = rect;
-        this.getBody().createFixture(fdef).setUserData("Necromancer");
+        this.getBody().createFixture(fdef).setUserData(this);
     }
 
+    /**
+     * Get the Necromancer's Dialogue Graph
+     * @param the player to base the graph off of
+     * @return the dialogue graph 
+     */
+	@Override
+	public DialogueGraph getDialogue(Player player) {
+		if(player.getNecEncounters() == 1) 
+			return this.getFirstEncounter();
+		return null;
+	}
+
+	/**
+	 * Get the necromancer's dialogue for the player's first encounter
+	 * @return the dialogue box for the first encounter
+	 */
+	private DialogueGraph getFirstEncounter() {
+		DialogueGraph graph = new DialogueGraph();
+		graph.addNode("Hello there mortals. I am a mighty Necromancer. Here to see the new opponent. And I ..."); // 0
+		graph.addNode("\"You are unable to hear him as the thunder from outside is too loud\""); // 1
+		graph.addNode("MUAHAHA and I \"CRASH\" will murder \"BOOM\" puppies, kittens, none shall escape \"KERSHACK\" and I will...\""); // 2
+		graph.addNode("\"Thunder booms again\""); // 3
+		graph.addNode("Farewell you fools! MUAHAHA"); // 4
+		
+		// add edges 
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 3);
+		graph.addEdge(3, 4);
+		
+		graph.getNode(4).addActor(new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.setNecEncounters(3);
+			}
+			
+		});
+		
+		return graph;
+	}
 }

@@ -47,10 +47,6 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 	 * The current cup washing animation region
 	 */
 	private TextureRegion currentAnimation;
-	/**
-	 * Adjacency list graph of all of OogLag's dialogue options
-	 */
-	private DialogueGraph dialogueGraph;
 
 	/**
 	 * Create the Merchant object.
@@ -63,8 +59,6 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 		setTextureValues();
 		// Set the size of the Merchant
 		setBounds(0, 0, OOGLAG_WIDTH, OOGLAG_HEIGHT);
-		this.dialogueGraph = new DialogueGraph();
-		setUpDialogue();
 	}
 
 	/**
@@ -157,59 +151,90 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 	 */
 	@Override
 	public DialogueGraph getDialogue(Player player) {
-		return this.dialogueGraph;
+		if (player.getNecEncounters() < 2)
+			return getFirstDialogue();
+		else
+			return getDefaultDialogue();
 	}
 
 	/**
-	 * Set up OogLag's dialogue graph.
+	 * Set up Oog-Lag's first dialogue graph.
+	 * @return Oog-Lag's first dialogue graph
 	 */
-	public void setUpDialogue() {
+	private DialogueGraph getFirstDialogue() {
+		DialogueGraph dialogueGraph = new DialogueGraph();
+
 		// create the nodes in the graph
-		this.dialogueGraph.addNode("Why hello there sir! How can I help you today?"); // 0
-		this.dialogueGraph.addNode("Where am I?"); // 1
-		this.dialogueGraph.addNode("Who are you?"); // 2
-		this.dialogueGraph.addNode("Give me your finest beer!"); // 3
-		this.dialogueGraph.addNode(
+		dialogueGraph.addNode("Why hello there sir! How can I help you today?"); // 0
+		dialogueGraph.addNode("Where am I?"); // 1
+		dialogueGraph.addNode("Who are you?"); // 2
+		dialogueGraph.addNode("Give me your finest beer!"); // 3
+		dialogueGraph.addNode(
 				"Well, you, my fine sir, are in the land Niarzul, land of adventure, gold, and very convenient plot devices."); // 4
-		this.dialogueGraph.addNode("What is there to do around here?"); // 5
-		this.dialogueGraph.addNode("Know where I can get some weapons?"); // 6
-		this.dialogueGraph
+		dialogueGraph.addNode("What is there to do around here?"); // 5
+		dialogueGraph.addNode("Know where I can get some weapons?"); // 6
+		dialogueGraph
 				.addNode("Well mostly drink, talk, and give out the occasional quest!... Well what do we have here? "); // 7
-		this.dialogueGraph.addNode(
+		dialogueGraph.addNode(
 				"Well normally you could talk to the nearest merchant. Thanks to the monsters, however, merchants don't go through here anymore."); // 8
-		this.dialogueGraph.addNode("Coming right up! That'll be 20 gold and I am going to have to see your license."); // 9
-		this.dialogueGraph.addNode("You know what? Nevermind."); // 10
-		this.dialogueGraph.addNode("*Give license*"); // 11
-		this.dialogueGraph.addNode("*Laughs* Alrighty then, have some milk. ON THE HOUSE!"); // 12
-		this.dialogueGraph.addNode("This license is obviously fake. You crudely drew in a signature with a crayon."); // 13
-		this.dialogueGraph.addNode("Hey you can't blame a man for trying!"); // 14
-		this.dialogueGraph.addNode("*Chuckles* guess not"); // 15
-		this.dialogueGraph.addNode("Well I'm Oog-Lag, the keeper of Oog-Lag tavern."); // 16
-		
+		dialogueGraph.addNode("Coming right up! That'll be 20 gold and I am going to have to see your license."); // 9
+		dialogueGraph.addNode("You know what? Nevermind."); // 10
+		dialogueGraph.addNode("*Give license*"); // 11
+		dialogueGraph.addNode("*Laughs* Alrighty then, have some milk. ON THE HOUSE!"); // 12
+		dialogueGraph.addNode("This license is obviously fake. You crudely drew in a signature with a crayon."); // 13
+		dialogueGraph.addNode("Hey you can't blame a man for trying!"); // 14
+		dialogueGraph.addNode("*Chuckles* guess not"); // 15
+		dialogueGraph.addNode("Well I'm Oog-Lag, the keeper of Oog-Lag tavern."); // 16
+
 		// add the edges to the graph
-		this.dialogueGraph.addEdge(0, 1);
-		this.dialogueGraph.addEdge(0, 2);
-		this.dialogueGraph.addEdge(0, 3);
-		this.dialogueGraph.addEdge(1, 4);
-		this.dialogueGraph.addEdge(4, 5);
-		this.dialogueGraph.addEdge(4, 6);
-		this.dialogueGraph.addEdge(5, 7);
-		this.dialogueGraph.addEdge(6, 8);
-		this.dialogueGraph.addEdge(3, 9);
-		this.dialogueGraph.addEdge(9, 10);
-		this.dialogueGraph.addEdge(9, 11);
-		this.dialogueGraph.addEdge(10, 12);
-		this.dialogueGraph.addEdge(11, 13);
-		this.dialogueGraph.addEdge(13, 14);
-		this.dialogueGraph.addEdge(14, 15);
-		this.dialogueGraph.addEdge(2, 16);
+		dialogueGraph.addEdge(0, 1);
+		dialogueGraph.addEdge(0, 2);
+		dialogueGraph.addEdge(0, 3);
+		dialogueGraph.addEdge(1, 4);
+		dialogueGraph.addEdge(4, 5);
+		dialogueGraph.addEdge(4, 6);
+		dialogueGraph.addEdge(5, 7);
+		dialogueGraph.addEdge(6, 8);
+		dialogueGraph.addEdge(3, 9);
+		dialogueGraph.addEdge(9, 10);
+		dialogueGraph.addEdge(9, 11);
+		dialogueGraph.addEdge(10, 12);
+		dialogueGraph.addEdge(11, 13);
+		dialogueGraph.addEdge(13, 14);
+		dialogueGraph.addEdge(14, 15);
+		dialogueGraph.addEdge(2, 16);
 
 		// add an actor to a node that gets acted upon when the user hits that node
-		GraphNode node = this.dialogueGraph.getNode(7);
+		GraphNode node = dialogueGraph.getNode(0);
 		node.addActor(new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
+				player.setNecEncounters(1);
 			}
 		});
+		return dialogueGraph;
+	}
+
+	/**
+	 * Get Oog-Lag's default DialogueGraph after the first Necromancer encounter
+	 * 
+	 * @return the default DialogueGraph
+	 */
+	private DialogueGraph getDefaultDialogue() {
+		DialogueGraph graph = new DialogueGraph();
+		graph.addNode("No need to feel scared young adventurer."); // 0
+		graph.addNode("\"What did he say?\""); // 1
+		graph.addNode(
+				"Gah, nothing. Just some stuff about murdering you, hanging you from the rafters. You know, normal Necromancer stuff."); // 2
+		graph.addNode("\"What should I do?\""); // 3
+		graph.addNode("Well, I say go after him. He's probably just lonely."); // 4
+
+		// add edges
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 3);
+		graph.addEdge(3, 4);
+
+		return graph;
 	}
 }

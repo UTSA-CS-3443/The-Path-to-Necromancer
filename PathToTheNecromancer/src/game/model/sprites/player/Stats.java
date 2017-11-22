@@ -1,5 +1,11 @@
 package game.model.sprites.player;
 
+/**
+ * Store different stats
+ * 
+ * @author HangedDragon96
+ * @author enigma-phi
+ */
 public class Stats {
 	/**
 	 * The player's current level
@@ -38,9 +44,21 @@ public class Stats {
 	 * The player's current health (for combat only)
 	 */
 	private int currentHealth;
-	private int necEncounters;
+
+	/**
+	 * Constructor for the stats object. Set different statistics for the character.
+	 * 
+	 * @param level
+	 * @param experience
+	 * @param strength
+	 * @param intelligence
+	 * @param dexterity
+	 * @param luck
+	 * @param maxHealth
+	 * @param currentHealth
+	 */
 	public Stats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth,
-			int currentHealth, int necEncounters) {
+			int currentHealth) {
 		super();
 		this.level = level;
 		this.experience = experience;
@@ -50,62 +68,70 @@ public class Stats {
 		this.luck = luck;
 		this.maxHealth = maxHealth;
 		this.currentHealth = currentHealth;
-		this.necEncounters = necEncounters;
 	}
+
 	public int getLevel() {
 		return level;
 	}
+
 	public void setLevel(int level) {
 		this.level = level;
 	}
+
 	public int getExperience() {
 		return experience;
 	}
+
 	public void setExperience(int experience) {
 		this.experience = experience;
 	}
+
 	public int getStrength() {
 		return strength;
 	}
+
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
+
 	public int getIntelligence() {
 		return intelligence;
 	}
+
 	public void setIntelligence(int intelligence) {
 		this.intelligence = intelligence;
 	}
+
 	public int getDexterity() {
 		return dexterity;
 	}
+
 	public void setDexterity(int dexterity) {
 		this.dexterity = dexterity;
 	}
+
 	public int getLuck() {
 		return luck;
 	}
+
 	public void setLuck(int luck) {
 		this.luck = luck;
 	}
+
 	public int getMaxHealth() {
 		return maxHealth;
 	}
+
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
 	}
+
 	public int getCurrentHealth() {
 		return currentHealth;
 	}
+
 	public void setCurrentHealth(int currentHealth) {
 		this.currentHealth = currentHealth;
 	}
-	public int getNecEncounters() {
-		return necEncounters;
-	}
-	public void setNecEncounters(int necEncounters) {
-		this.necEncounters = necEncounters;
-	}
-	
-	
+
 }

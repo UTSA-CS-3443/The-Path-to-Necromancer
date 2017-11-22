@@ -10,9 +10,17 @@ import game.model.sprites.CharacterSprites;
  */
 public abstract class Player extends CharacterSprites {
 	/**
-	 * Player stats
+	 * The player's current level
 	 */
 	private Stats stats;
+	/**
+	 * The player's position in the the book encounter's tree
+	 */
+	private int bookEncounters = 0;
+	/**
+	 * The player's position in the necromancer encounter's tree
+	 */
+	private int necEncounters = 0;
 	/**
 	 * is the player a warrior
 	 */
@@ -196,12 +204,18 @@ public abstract class Player extends CharacterSprites {
 		this.stats.setCurrentHealth(health);
 	}
 
+	public int getBookEncounters() {
+		return this.bookEncounters;
+	}
+	public void setBookEncounters(int set) {
+		this.bookEncounters = set;
+	}
 	public void setNecEncounters(int set) {
-		this.stats.setNecEncounters(set);
+		this.necEncounters = set;
 	}
 
 	public int getNecEncounters() {
-		return this.stats.getNecEncounters();
+		return this.necEncounters;
 	}
 
 	public boolean isWarrior() {
@@ -229,13 +243,12 @@ public abstract class Player extends CharacterSprites {
 	}
 
 	public void setBaseStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth,
-			int currentHealth, int necEncounters) {
-		this.stats = new Stats(level,experience,strength,intelligence,dexterity,luck,maxHealth,currentHealth,necEncounters);
+			int currentHealth) {
+		this.stats = new Stats(level,experience,strength,intelligence,dexterity,luck,maxHealth,currentHealth);
 		
 	}
 
 	public void LevelUpStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
-		// TODO Auto-generated method stub
 		this.stats.setLevel(level + this.stats.getLevel());
 		this.stats.setExperience(experience + this.stats.getExperience());
 		this.stats.setStrength(strength + this.stats.getStrength());

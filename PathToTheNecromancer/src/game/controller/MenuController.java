@@ -3,6 +3,7 @@ package game.controller;
 import java.io.IOException;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -167,6 +168,7 @@ public class MenuController {
 	 */
 	private void mainMenu() {
 		Stage stage = new Stage(menu.getViewPort());
+		this.setUpStage(stage);
 		Gdx.input.setInputProcessor(stage);
 		stage.addActor(twinDragonTable);
 		this.font.getData().setScale(0.5f);
@@ -229,6 +231,7 @@ public class MenuController {
 	 */
 	private void settingsMenu() {
 		Stage stage = new Stage(viewport);
+		this.setUpStage(stage);
 		Gdx.input.setInputProcessor(stage);
 		stage.addActor(twinDragonTable);
 		this.font.getData().setScale(0.4f);
@@ -292,6 +295,7 @@ public class MenuController {
 	 */
 	private void saveMenu() {
 		Stage stage = new Stage(viewport);
+		this.setUpStage(stage);
 		stage.addActor(twinDragonTable);
 		Gdx.input.setInputProcessor(stage);
 		this.font.getData().setScale(0.6f);
@@ -318,6 +322,7 @@ public class MenuController {
 	 */
 	private void controlMenu() {
 		Stage stage = new Stage(viewport);
+		this.setUpStage(stage);
 		Gdx.input.setInputProcessor(stage);
 		stage.addActor(twinDragonTable);
 		this.font.getData().setScale(0.4f);
@@ -678,6 +683,21 @@ public class MenuController {
 			}
 		});
 
+	}
+	/**
+	 * Set up the stage initially
+	 */
+	private void setUpStage(Stage stage)
+	{
+		stage.addListener(new InputListener() {
+			@Override
+			public boolean keyDown(InputEvent event, int keycode) {
+				
+				if(keycode == Keys.ESCAPE)
+					menu.returnToGame();
+				return true;
+			}
+		});
 	}
 
 	/**

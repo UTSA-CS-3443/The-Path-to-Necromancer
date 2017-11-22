@@ -82,15 +82,18 @@ public class IntroArea extends GameMaps {
      * 
      * @return an EnemySprite
      */
-    public EnemySprites getEnemy(int level) {
+    @Override
+	public EnemySprites getEnemy(int level) {
         return null;
     }
 
     /**
+     * 
      * Create all of the sprites for the map.
      * 
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {};
+    @Override
+	public void createSprites(World world) {};
 }

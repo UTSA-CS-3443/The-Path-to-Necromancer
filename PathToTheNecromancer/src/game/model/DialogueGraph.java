@@ -14,15 +14,15 @@ public class DialogueGraph {
 	/**
 	 * The array list of nodes
 	 */
-	public ArrayList<GraphNode> nodes;
+	private ArrayList<GraphNode> nodes;
 	/**
 	 * The current node. This is used for iterating through the graph
 	 */
-	public int currentNode;
+	private int currentNode;
 	/**
 	 * The previous node held
 	 */
-	public int previousNode;
+	private int previousNode;
 
 	/**
 	 * Constructor. Initialize values in the graph

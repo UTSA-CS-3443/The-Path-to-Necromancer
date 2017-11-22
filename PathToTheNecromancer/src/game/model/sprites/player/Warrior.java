@@ -45,17 +45,12 @@ public class Warrior extends Player {
 
         // Set the initial animation
         setRegion(super.getStandingRegion());
-        super.setBaseStats(1, 0, 15, 5, 5, 5, 100, 100, 0);
-        if (this.isLevelUp() == true)
-        	super.LevelUpStats(1, 1, 1, 3, 15, 0, 50);
+//        super.setBaseStats(5, 1, 0, 2, 20, 0);
+//        if (this.isLevelUp() == true)
+//        	super.LevelUpStats(3, 1, 1, 3, 15, 0);
     }
 
-    private boolean isLevelUp() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
+    /**
      * Set the different TextureRegions associated with the Default Character for
      * animation.
      */

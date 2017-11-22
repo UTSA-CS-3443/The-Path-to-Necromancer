@@ -184,7 +184,4 @@ public class OogLagExterior extends GameMaps {
         villager3.defineBody(world, 547, 690);
         this.addSprite(villager3);
      }
-    
-    
-
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
+import game.model.sprites.npc.OogLag;
 
 /**
  * The inside of oog-lag's tavern
@@ -102,7 +103,9 @@ public class InsideTavern extends GameMaps{
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {}
-   
-
+    public void createSprites(World world) {
+    	OogLag ooglag = new OogLag();
+    	ooglag.defineBody(world, 350, 150);
+    	super.addSprite(ooglag);
+    }
 }

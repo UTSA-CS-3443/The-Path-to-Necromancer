@@ -45,18 +45,12 @@ public class Mage extends Player{
 
         // Set the initial animation
         setRegion(super.getStandingRegion());
-        super.setBaseStats(1, 0, 2, 10, 3, 4, 100, 100,0);
-        super.setMage(true);
-        if (this.isLevelUp() == true)
-        	super.LevelUpStats(1, 4, 2, 3, 5, 0, 20);
+//        super.setBaseStats(1, 5, 2, 3, 10, 0);
+//        if (this.isLevelUp() == true)
+//        	super.LevelUpStats(1, 4, 2, 3, 5, 0);
     }
 
-    private boolean isLevelUp() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
+    /**
      * Set the different TextureRegions associated with the Default Character for
      * animation.
      */

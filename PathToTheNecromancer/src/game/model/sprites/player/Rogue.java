@@ -45,17 +45,12 @@ public class Rogue extends Player{
 
         // Set the initial animation
         setRegion(super.getStandingRegion());
-        super.setBaseStats(1, 0, 5, 5, 15, 4, 100, 100,0);
-        if (this.isLevelUp() == true)
-        	super.LevelUpStats(2, 1, 5, 4, 10, 0, 30);
+//        super.setBaseStats(2, 2, 5, 4, 15, 0);
+//        if (this.isLevelUp() == true)
+//        	super.LevelUpStats(2, 1, 5, 4, 10, 0);
     }
 
-    private boolean isLevelUp() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
+    /**
      * Set the different TextureRegions associated with the Default Character for
      * animation.
      */

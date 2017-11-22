@@ -219,6 +219,23 @@ public class MapManager {
 	public DialogueBox getDialogueBox() {
 		return this.screen.getDialogueBox();
 	}
+	/**
+	 * Set the player for everything
+	 * @param player is the player to set to
+	 */
+	public void setPlayer(Player player) {
+		if(this.storyManager != null)
+			this.storyManager.setPlayer(player);
+	}
+	/**
+	 * Get the main screen
+	 * @return the main play screen
+	 */
+	public PlayScreen getMainScreen() {
+		return this.screen;
+	}
+
+
 
 
 
