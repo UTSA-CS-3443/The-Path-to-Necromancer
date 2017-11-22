@@ -114,7 +114,7 @@ public abstract class CharacterSprites extends GameSprites {
 	/**
 	 * The current velocity the character is set to for looping
 	 */
-	private int currentVelocity = -1;
+	private int currentVelocity;
 
 	/**
 	 * Construct the character and initialize values.
@@ -128,6 +128,7 @@ public abstract class CharacterSprites extends GameSprites {
 		this.isTimedLoop = false;
 		this.loopTimes = new ArrayList<Float>();
 		this.loopVelocities = new ArrayList<Vector2>();
+		this.currentVelocity = -1;
 	}
 
 	public abstract void defineBody(World world, int x, int y);
@@ -229,7 +230,6 @@ public abstract class CharacterSprites extends GameSprites {
 	 */
 	public void isVelocityLooping(boolean b) {
 		this.isTimedLoop = b;
-		this.currentVelocity = -1;
 	}
 
 	/**
@@ -241,15 +241,21 @@ public abstract class CharacterSprites extends GameSprites {
 	 *            is the time to hold this velocity
 	 */
 	public void addVelocity(Vector2 velocity, float time) {
-		this.loopTimes.add(time);
 		this.loopVelocities.add(velocity);
-		if(!this.isTimedVelocity) {
-			this.timeForVelocity = time;
-			this.setVelocity(velocity);
-		}
+		this.loopTimes.add(time);
 		this.isTimedVelocity = true;
 	}
 
+	/**
+	 * Clear the set of timed velocities
+	 */
+	private void clearVelocities() {
+		this.loopTimes.clear();
+		this.isTimedLoop = false;
+		this.loopVelocities.clear();
+		this.currentVelocity = -1;
+	}
+	
 	/**
 	 * Set the current velocity of the character
 	 */
@@ -275,6 +281,7 @@ public abstract class CharacterSprites extends GameSprites {
 					if (!this.isTimedLoop) {
 						this.setVelocity(new Vector2(0, 0));
 						this.isTimedVelocity = false;
+						this.clearVelocities();
 						return;
 					}
 					this.currentVelocity = 0;
