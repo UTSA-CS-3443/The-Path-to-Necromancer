@@ -206,4 +206,80 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		
 		return graph;
 	}
+	
+	private DialogueGraph getUnionization() {
+		DialogueGraph graph = new DialogueGraph();
+		graph.addNode("Whoa, whoa, whoa, what's going on here? You should be killing each other right now?!!"); // 0
+		graph.addNode("We have moved past senselless killing ever since Bloody Foot willingly abdicated the throne."); // 1
+		graph.addNode("What we have done and still are doing is seizing the means of plundering."); // 2
+		graph.addNode("*hide behind slightly larger bandit*"); // 3
+		graph.addNode("You killed him?"); // 4
+		graph.addNode("My goodness, you made the badits into communists?!"); // 5
+		graph.addNode("I still see you. Get out here."); // 6
+		graph.addNode("No, why would you think that?"); // 7
+		graph.addNode("\'Kill\' is such a strong word. What about, \'Passed away forcibly?\'"); // 8
+		graph.addNode("Yes"); // 9
+		graph.addNode("He's absent and I saw a mysterious grave that wasn't here yesterday."); // 10
+		graph.addNode("Really? How strange I must say!"); // 11
+		graph.addNode("*sigh* I don't have time for this. Just to let you all know, I will not be paying you and will leave a negative review on Yelp."); // 12
+		graph.addNode("You don't have the guts!"); // 13
+		graph.addNode("I pushed these bandits towards the future of equal work, employment, and wages!"); // 14
+		graph.addNode("I don't make them into Russians, sheesh, we all agreed to be Mexican from now on. We're done being Italian."); // 15
+		graph.addNode("Why the heck Mexicans??"); // 16
+		graph.addNode("They have better hats... and tacos."); // 17
+		graph.addNode("Wouldn't you want to know?"); // 18
+		graph.addNode("*whisper to bandit* Ha! Look at this greengo!"); // 19
+		graph.addNode("Come get me if you dare!");
+		graph.addNode("Sounds like someone is jealous."); // 21
+		graph.addNode("So, communism?"); // 22
+		graph.addNode("You do know that I'm able to obliterate all that stand in front of me right?"); // 23
+		graph.addNode("Yes I would. I really want to know."); // 24
+		graph.addNode("Well too bad!"); // 25
+		graph.addNode("Esta deletreado \'gringo!\'"); // 26
+		graph.addNode("Sorry, we don't speak that language here greengo."); // 27
+		graph.addNode("*continue hiding behind bandit*"); // 28
+		graph.addNode("I said get out here now!"); // 29
+		graph.addNode("*continue hiding*"); // 30
+		
+		// add the edges
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 4);
+		graph.addEdge(0, 2);
+		graph.addEdge(2, 5);
+		graph.addEdge(0, 3);
+		graph.addEdge(3, 6);
+		graph.addEdge(4, 7);
+		graph.addEdge(4, 8);
+		graph.addEdge(4, 9);
+		graph.addEdge(7, 10);
+		graph.addEdge(10, 11);
+		graph.addEdge(11, 12);
+		graph.addEdge(8, 12);
+		graph.addEdge(9, 12);
+		graph.addEdge(5, 14);
+		graph.addEdge(5, 15);
+		graph.addEdge(14, 22);
+		graph.addEdge(22, 21);
+		graph.addEdge(21, 12);
+		graph.addEdge(15, 16);
+		graph.addEdge(16, 17);
+		graph.addEdge(17, 20);
+		graph.addEdge(16, 18);
+		graph.addEdge(18, 24);
+		graph.addEdge(24, 25);
+		graph.addEdge(16, 19);
+		graph.addEdge(19, 26);
+		graph.addEdge(26, 27);
+		graph.addEdge(6, 28);
+		graph.addEdge(28, 29);
+		graph.addEdge(29, 30);
+		graph.addEdge(6, 20);
+		graph.addEdge(20, 23);
+		graph.addEdge(23, 13);
+		graph.addEdge(30, 12);
+		graph.addEdge(13, 12);
+		
+		
+		return graph;
+	}
 }

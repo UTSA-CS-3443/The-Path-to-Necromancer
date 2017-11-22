@@ -1,6 +1,7 @@
 package game.model.sprites.npc;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.MassData;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 import game.model.DialogueGraph;
 import game.model.sprites.CharacterSprites;
@@ -16,13 +18,21 @@ import game.model.sprites.InteractionSprites;
 import game.model.sprites.player.Player;
 /**
  * 
- * @author ToTryHardRay
  * The class for the bandit sprite with the dialogue
+ * 
+ * @author ToTryHardRay
+ * @author enigma-phi
  *
  */
 public class Bandit extends CharacterSprites implements InteractionSprites {
+	/**
+	 * The bandit's height
+	 */
 	private static final int BANDIT_HEIGHT = 30;
-	private static final int BANDIT_WIDTH = 15;
+	/**
+	 * The bandit's width
+	 */
+	private static final int BANDIT_WIDTH = 20;
 	private Texture banditTexture;
 
 	public Bandit() {
@@ -35,6 +45,31 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	}
 	@Override
 	public DialogueGraph getDialogue(Player player) {
+		return getInitialBanditDialogue();
+		
+	}
+	/**
+	 * Get the leader's dialogue snippet for the unionization encounter 
+	 * @return the dialogueGraph
+	 */ 
+	private DialogueGraph getLeaderSnippet() {
+		DialogueGraph graph = new DialogueGraph();
+		graph.addNode("So, after we draft the Bill of Fights, we will then move onto providing equal plundering and make a cultural change ...");
+		graph.addNode("from Italian bandits to Mexican bandits as they have better hats...");
+		graph.addNode("*Thunder*");
+		
+		// add the edges
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 2);
+		
+		return graph;		
+	}
+	
+	/**
+	 * Get the initial bandit dialogue
+	 * @return the dialogueGraph
+	 */
+	private DialogueGraph getInitialBanditDialogue() {
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("Be still traveler you are about to walk upon the land of bloody foot himself, and his mother was foot herself!");
 		graph.addNode("No need to worry fellow citizen bandit, I'm here as a representative for the badit/Don union");
@@ -61,7 +96,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.addNode("The chosen one?");
 		graph.addNode("haha, you think we allow sissies to pass through our camp?! ie weak one!");
 		graph.addNode("Yes I am the chosen bandit, the one to lead all bandits to banditdom!");
-		graph.addNode("COOL! Have any powers?");
+		graph.addNode("COOL! Do I have any powers?");
 		graph.addNode("Yes, watch me remove my thumb from my hand!");
 		graph.addNode("I can't your eyes would melt from your eye sockets");
 		graph.addNode("The Don can do that too! Except he just chops them off of those who snitch on him!");
@@ -145,9 +180,9 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.addEdge(44,48);
 		graph.addEdge(45,49);
 		
-		return null;
+		return graph;
 	}
-
+	
 	@Override
 	public void defineBody(World world, int x, int y) {
 		// set the body of the character
@@ -185,9 +220,22 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	public void setTextureValues() {
 		
 		// Use the Guard animations until we have the player SpriteSheet
-		 banditTexture = new Texture("EnemySprites/Bandit.png");
+		banditTexture = new Texture("EnemySprites/Bandit.png");
+		TextureRegion banditTextureRegion = new TextureRegion(banditTexture, 0, 0, banditTexture.getWidth(), banditTexture.getHeight());
+		Array<TextureRegion> banditRegions = new Array<TextureRegion>();
+		banditRegions.add(banditTextureRegion);
+		Animation<TextureRegion> banditAnimation = new Animation<TextureRegion>(0.1f, banditRegions); 
+		
 		// Set the default standing region of the character.
 		super.setStandingRegion(new TextureRegion(banditTexture, 0, 0, banditTexture.getWidth(), banditTexture.getHeight()));
+		super.setMoveUp(banditAnimation);
+		super.setMoveDown(banditAnimation);
+		super.setMoveLeft(banditAnimation);
+		super.setMoveRight(banditAnimation);
+		super.setMoveUpLeft(banditAnimation);
+		super.setMoveUpRight(banditAnimation);
+		super.setMoveDownLeft(banditAnimation);
+		super.setMoveDownRight(banditAnimation);
 	}
 	
 
