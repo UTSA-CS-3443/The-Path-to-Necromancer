@@ -197,20 +197,12 @@ public class DialogueBox {
 	 *            is the change in time since the last render
 	 */
 	public void render(float dt) {
-		// If the user hits space after the text has completed rendering,
-		// move on to the next interaction
-		// if (Gdx.input.isKeyPressed(Keys.SPACE) && completed && this.timeSinceEndLine
-		// >= 0.25) {
 		if (this.changeText) {
 			this.changeText = false;
 			this.skipText = false;
 			this.interaction.act(this.manager.getPlayer(), this.manager.getMapManager());
 			this.interaction.getNextInteraction();
 		}
-
-		// The user can simply exit from dialogue
-		if (Gdx.input.isKeyPressed(Keys.ESCAPE))
-			this.endDialogue();
 
 		// If you are waiting for a button, don't update the text because there
 		// is nothing to update.

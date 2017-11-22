@@ -271,13 +271,32 @@ public class PlayScreen implements Screen {
 	}
 
 	/**
-	 * Set the player character
+	 * Set the player character. If the player has already been set, we 
+	 * need to replace the player in other classes.
 	 * 
 	 * @param player
 	 *            is the player character
 	 */
 	public void setPlayer(Player player) {
+		float x = 100;
+		float y = 100;
+		if(this.player != null) {
+			x = this.player.getX() + this.player.getWidth()/2;
+			y = this.player.getY() + this.player.getHeight()/2;
+			if(world != null)
+				this.world.destroyBody(this.player.getBody());
+			if(this.mapManager.getSprites().contains(this.player)) {
+				this.mapManager.getSprites().remove(this.player);
+				this.mapManager.getSprites().add(player);
+			}
+			this.gameController.setPlayer(player);
+			this.mapManager.setPlayer(player);
+		}  
+		
 		this.player = player;
+		if(this.world != null)
+			this.player.defineBody(this.world, (int) x, (int) y);
+		
 	}
 
 	/**

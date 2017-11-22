@@ -2,7 +2,6 @@ package game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -28,13 +27,6 @@ public class Menu implements Screen {
 	 * The current stage for the menu
 	 */
 	private Stage stage;
-
-	/**
-	 * If the user hits escape to enter the menu, without this boolean the menu will
-	 * automatically return to the main game. This ensures that this does not happen
-	 */
-	private boolean stillPressed;
-
 	/**
 	 * Controls the stage the menu is currently on.
 	 */
@@ -59,7 +51,6 @@ public class Menu implements Screen {
 	public Menu(ScreenManager screenManager) {
 		this.screenManager = screenManager;
 		this.player = screenManager.getPlayer();
-		this.stillPressed = true;
 		this.viewport = screenManager.getViewport();
 		this.controller = new MenuController(this);
 	}
@@ -102,14 +93,6 @@ public class Menu implements Screen {
 	 */
 	@Override
 	public void render(float delta) {
-		// determine whether to return to the game based off of the keys
-		// the user presses
-		if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
-			if (!stillPressed)
-				returnToGame();
-		} else
-			stillPressed = false;
-
 		// clear the screen
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
