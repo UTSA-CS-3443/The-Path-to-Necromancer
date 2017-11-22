@@ -237,7 +237,6 @@ public abstract class Player extends CharacterSprites {
 		this.stats.setLuck(luck + this.stats.getLuck());
 		this.stats.setMaxHealth(maxHealth + this.stats.getMaxHealth());
 		this.stats.setLevelUp(false);
-		this.stats.setCurrentHealth(maxHealth);
 
 	}
 	
