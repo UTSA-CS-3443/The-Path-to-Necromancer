@@ -12,6 +12,7 @@ import game.model.sprites.EnemySprites;
 import game.model.sprites.ObjectSprites;
 import game.model.sprites.npc.ColorAndGender;
 import game.model.sprites.npc.Villagers;
+import game.model.sprites.objectSprites.BillBoard;
 
 /**
  * The second map of the game. The area outside of OogLag's tavern.
@@ -183,5 +184,8 @@ public class OogLagExterior extends GameMaps {
         villager3.addVelocity(new Vector2(0,-20), 4);
         villager3.defineBody(world, 547, 690);
         this.addSprite(villager3);
+        
+        BillBoard billboard = new BillBoard();
+        billboard.defineBody(world, 460, 645);
      }
 }

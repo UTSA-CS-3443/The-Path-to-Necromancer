@@ -41,11 +41,6 @@ public class Stats {
 	 */
 	private int maxHealth;
 	/**
-	 * The player's current health (for combat only)
-	 */
-	private int currentHealth;
-
-	/**
 	 * Constructor for the stats object. Set different statistics for the character.
 	 * 
 	 * @param level
@@ -57,8 +52,7 @@ public class Stats {
 	 * @param maxHealth
 	 * @param currentHealth
 	 */
-	public Stats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth,
-			int currentHealth) {
+	public Stats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
 		super();
 		this.level = level;
 		this.experience = experience;
@@ -67,7 +61,6 @@ public class Stats {
 		this.dexterity = dexterity;
 		this.luck = luck;
 		this.maxHealth = maxHealth;
-		this.currentHealth = currentHealth;
 	}
 
 	public int getLevel() {
@@ -124,14 +117,6 @@ public class Stats {
 
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
-	}
-
-	public int getCurrentHealth() {
-		return currentHealth;
-	}
-
-	public void setCurrentHealth(int currentHealth) {
-		this.currentHealth = currentHealth;
 	}
 
 }

@@ -185,25 +185,6 @@ public abstract class Player extends CharacterSprites {
 		this.stats.setMaxHealth(health);
 	}
 
-	/**
-	 * Get the player's current health
-	 * 
-	 * @return the player's current health
-	 */
-	public int getCurrentHealth() {
-		return this.stats.getCurrentHealth();
-	}
-
-	/**
-	 * Set the player's current health
-	 * 
-	 * @param health
-	 *            to set it to
-	 */
-	public void setCurrentHealth(int health) {
-		this.stats.setCurrentHealth(health);
-	}
-
 	public int getBookEncounters() {
 		return this.bookEncounters;
 	}
@@ -242,9 +223,8 @@ public abstract class Player extends CharacterSprites {
 		this.isMage = isMage;
 	}
 
-	public void setBaseStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth,
-			int currentHealth) {
-		this.stats = new Stats(level,experience,strength,intelligence,dexterity,luck,maxHealth,currentHealth);
+	public void setBaseStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
+		this.stats = new Stats(level,experience,strength,intelligence,dexterity,luck,maxHealth);
 		
 	}
 
@@ -256,8 +236,5 @@ public abstract class Player extends CharacterSprites {
 		this.stats.setDexterity(dexterity + this.stats.getDexterity());
 		this.stats.setLuck(luck + this.stats.getLuck());
 		this.stats.setMaxHealth(maxHealth + this.stats.getMaxHealth());
-		this.stats.setCurrentHealth(maxHealth);
-		
-		
 	}
 }

@@ -156,7 +156,7 @@ public class PlayScreen implements Screen {
 		this.renderer.render();
 
 		// render the physics
-		// b2dr.render(world, gameCam.combined);
+		b2dr.render(world, gameCam.combined);
 
 		// draw characters
 		this.batch.setProjectionMatrix(this.gameCam.combined);

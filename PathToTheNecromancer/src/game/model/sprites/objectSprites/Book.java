@@ -21,7 +21,7 @@ import game.model.sprites.player.Warrior;
 /**
  * The book that gives the player the tutorial at the start of the game
  * 
- * @author Sabrina
+ * @author enigma-phi
  *
  */
 public class Book extends GameSprites implements InteractionSprites {
@@ -47,6 +47,10 @@ public class Book extends GameSprites implements InteractionSprites {
 	@Override
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();
+		if(player.getBookEncounters() > 0) {
+			graph.addNode("It's a book. It contains strange magical symbols.");
+			return graph;
+		}
 		graph.addNode("Note: Hit SPACEBAR to move text forward and skip text."); // 0
 		graph.addNode("It is a book..."); // 1
 		graph.addNode("Walk away."); // 2
@@ -82,7 +86,8 @@ public class Book extends GameSprites implements InteractionSprites {
 		graph.addNode("And luck affects your critical hit rate."); // 30
 		graph.addNode("Warriors have a high strength. Mages have a high intelligence. Rogues have a high dexterity."); // 31
 		graph.addNode("Multiple options will be surrounded by quotation marks. Click the dialogue option of your choice.");// 32
-
+		graph.addNode("You approach the book and begin reading it."); // 33
+		
 		// Add the edges to the graph
 		graph.addEdge(0, 32);
 		graph.addEdge(32, 1);
@@ -99,11 +104,12 @@ public class Book extends GameSprites implements InteractionSprites {
 		graph.addEdge(9, 12);
 		graph.addEdge(4, 13);
 		graph.addEdge(13, 14);
-		graph.addEdge(10, 15);
-		graph.addEdge(11, 15);
-		graph.addEdge(12, 15);
-		graph.addEdge(14, 15);
-		graph.addEdge(3, 15);
+		graph.addEdge(33, 15);
+		graph.addEdge(10, 33);
+		graph.addEdge(11, 33);
+		graph.addEdge(12, 33);
+		graph.addEdge(14, 33);
+		graph.addEdge(3, 33);
 		graph.addEdge(15, 16);
 		graph.addEdge(15, 17);
 		graph.addEdge(15, 18);
@@ -126,6 +132,45 @@ public class Book extends GameSprites implements InteractionSprites {
 		graph.addEdge(30, 31);
 
 		// add the actors
+		graph.getNode(0).addActor(new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.addVelocity(new Vector2(0, 10), 1);
+			}
+			
+		});
+		graph.getNode(2).addActor(new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.addVelocity(new Vector2(0, -5), 1);
+			}
+			
+		});
+		graph.getNode(5).addActor(new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.addVelocity(new Vector2(0, -5), 1);
+			}
+			
+		});
+		graph.getNode(7).addActor(new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.addVelocity(new Vector2(0, -5), 1);
+			}
+			
+		});
+		graph.getNode(33).addActor(new DialogueActor() {
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.addVelocity(new Vector2(0, 5), 3);
+			}
+
+		});
 		graph.getNode(16).addActor(new DialogueActor() {
 
 			@Override
