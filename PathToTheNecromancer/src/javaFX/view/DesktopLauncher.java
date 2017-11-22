@@ -57,7 +57,7 @@ public class DesktopLauncher extends Application {
 		urlSetup();	
 		String background = urls.get((new Random()).nextInt(urls.size()));
 		Image img = new Image(background);
-		if(background.equals("Necro Pictures\\SabHunger.jpg")) {
+		if(background.equals("/Necro Pictures/SabHunger.jpg")) {
 			isPancakes = true;
 		}
 		BackgroundImage bgImg = new BackgroundImage(img, 
@@ -78,6 +78,7 @@ public class DesktopLauncher extends Application {
 				controller.setSettings(settings);
 				controller.setBkImg(bkImg);
 				controller.isItPancakes(isPancakes);
+				controller.setBackground(background);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				primaryStage.show();
@@ -90,15 +91,13 @@ public class DesktopLauncher extends Application {
 	
 	private void urlSetup() {
 		urls = new ArrayList <String>();
-		urls.add("Necro Pictures\\SabHunger.jpg");
-		urls.add("Necro Pictures\\Necro1.jpg");
-		urls.add("Necro Pictures\\necromancer_by_bogdan_mrk-d9biu3b.jpg");	
-		urls.add("Necro Pictures\\6e4afebd45418a11ff00fd3ab3bbdaf0-d9gv7ld.jpg");
-		urls.add("Necro Pictures\\Lord of the Dead II.jpg");
-		urls.add("Necro Pictures\\Necromancy by Ramses Melendez.jpg");
-		urls.add("Necro Pictures\\Necromancer_new_design.jpg");
-		urls.add("Necro Pictures\\4c5f45ef5275bb06398762a600ce1fb0-d9k2yqb.jpg");
-		urls.add("Necro Pictures\\9501b75731ff67b48196c2b555eb9047-d9lstx7.jpg");
+		urls.add("/Necro Pictures/SabHunger.jpg");
+		urls.add("/Necro Pictures/necromancer_by_bogdan_mrk-d9biu3b.jpg");	
+		urls.add("/Necro Pictures/6e4afebd45418a11ff00fd3ab3bbdaf0-d9gv7ld.jpg");
+		urls.add("/Necro Pictures/Lord of the Dead II.jpg");
+		urls.add("/Necro Pictures/Necromancer_new_design.jpg");
+		urls.add("/Necro Pictures/4c5f45ef5275bb06398762a600ce1fb0-d9k2yqb.jpg");
+		urls.add("/Necro Pictures/9501b75731ff67b48196c2b555eb9047-d9lstx7.jpg");
 		
 	}
 

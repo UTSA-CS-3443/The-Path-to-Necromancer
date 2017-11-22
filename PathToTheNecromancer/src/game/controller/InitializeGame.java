@@ -2,7 +2,6 @@ package game.controller;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -121,8 +120,9 @@ public class InitializeGame {
         Class c = Class.forName(this.maps.get(save.getMap()));
        
 		Constructor ct = c.getConstructor(MapManager.class);
-        // Simply load up the first map.
-       // this.screen.getMapManager().setMap(new IntroArea(this.screen.getMapManager()), save.getplayerX(), save.getplayerY());
-		this.screen.getMapManager().setMap((GameMaps)(ct.newInstance(this.screen.getMapManager())), save.getplayerX(), save.getplayerY());
+        // Simply load up the first map. 
+		this.screen.getMapManager().setMap((GameMaps)(ct.newInstance(this.screen.getMapManager())), (save.getplayerX()), (save.getplayerY()+20));
+		
     }
+		
 }

@@ -1,4 +1,5 @@
 package javaFX.controller;
+import java.awt.EventQueue;
 import java.io.IOException;
 
 
@@ -7,6 +8,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import game.model.PathToNecromancer;
 import javaFX.model.Settings;
+import javaFX.model.SplashPage;
 import javaFX.view.DesktopLauncher;
 
 import javafx.event.ActionEvent;
@@ -45,6 +47,14 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	 */
 	private Boolean isPancakes;
 	/**
+	 *  the url for the current background
+	 */
+	private static String background;
+	/**
+	 * the splash screen
+	 */
+	public static SplashPage page;
+	/**
 	 * new game
 	 */
 	@FXML
@@ -69,10 +79,19 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	 */
    @Override public void handle(ActionEvent e) {
 	   		this.settings.setNewGame(true);
-		   LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-	        new LwjglApplication(new PathToNecromancer(settings, null), config);
 	        DesktopLauncher.theStage.close();
+	   		showSplashScreen();
+		    launchGame();
+		    EventQueue.invokeLater(new SplashScreenCloser());
 	    }
+   /**
+    * lanches the game
+    */
+	private void launchGame() {
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+	        new LwjglApplication(new PathToNecromancer(settings, null), config);
+
+	}
 	 /**
 	  * Load the game by going through a directory of txt files
 	  */
@@ -169,8 +188,33 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	public void setBkImg(Background bkImg) {
 		this.bkImg = bkImg;
 	}
-
+	public String getBackground() {
+		return background;
+	}
+	public void setBackground(String background) {
+		DesktopLauncherController.background = background;
+	}
 	
+	 /** 
+	  * Removes the splash screen. 
+	  *
+	  * Invoke this Runnable using 
+	  * EventQueue.invokeLater, in order to remove the splash screen
+	  * in a thread-safe manner.
+	  */
+	  private static final class SplashScreenCloser implements Runnable {
+	    @Override public void run(){
+	      page.dispose();
+	    }
+	  }
+	  /**
+	   * Show a simple graphical splash screen, as a quick preliminary to the main screen.
+	   */
+	   private static void showSplashScreen(){    
+	     page = new SplashPage(background);
+	   	 page.splash();;
+	   }
+	   
 	
 	
 
