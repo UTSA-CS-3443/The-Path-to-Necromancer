@@ -220,7 +220,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 				graph.addNode("Communist jokes are never funny unless everyone gets them!");
 				break;
 			case 5:
-				graph.addNode("I have to admit, the sounds of the necromancer's skeleton army is slightly less offputting thanks to the xylophone sound the skeletons mke as they walk");
+				graph.addNode("I have to admit, the sounds of the necromancer's skeleton army is slightly less offputting thanks to the xylophone sound the skeletons make as they walk");
 				break;
 			case 6:
 				graph.addNode("If there are infinite universes, what if we're in one where there only exists one universe?");
@@ -228,4 +228,106 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 			}
 			return graph;
 		}
+		public DialogueGraph getSetDialogue(Player player) {
+			DialogueGraph graph = new DialogueGraph();
+			graph.addNode("Welcome to out humble village traveler. *cough,cough*");
+			graph.addNode("what happened here?");
+			graph.addNode("I mean a common cold.");
+			graph.addNode("Oh, it's a sad story, the necromancer used the hippie to siphon the life from this land and our people to the other side of the mountain.");
+			graph.addNode("That's terrible!");
+			graph.addNode("Indeed, but we have lived here for years and shall continue to do so, why are you here traveler?");
+			graph.addNode("I have come here to help you!");
+			graph.addNode("I have come to slay the necromancer!");
+			graph.addNode("I came for some of your famous mushroom soup");
+			graph.addNode("Ah, I am sorry traveler the life has been taken from our mushrooms as well and now all that is left is poison inside of them.");
+			graph.addNode("Nooooooo! well I came for...");
+			graph.addNode("Wait how are you even alive, if the mushroom are poisonous?");
+			graph.addNode("Well, you see... We survive on the flesh of mortals, GET HIM LADS!");
+			graph.addNode("Ah how wonderful, if you can slay the necromancer we will finally be free!");
+			graph.addNode("What do you mean, aren’t you free right now?");
+			graph.addNode("Alas traveler, we built a maze to the south to prevent monsters from attacking when our food grew short, and the path west is too dangerous.");
+			graph.addNode("Well I just freed the west side.");
+			graph.addNode("Don’t worry I will free you!");
+			graph.addNode("How wonderful, thank you traveler!");
+			graph.addNode("Ah then you wouldn’t mind if we ask you for some food?");
+			graph.addNode("Sure why not?");
+			graph.addNode("I am all out of food, but how about after I kill the Necromancer I treat you to a meal?");
+			graph.addNode("*drooling* thank you ma boy, GET HIM LADS");
+			graph.addNode("That would make the meal taste even better, sure why not, we can wait a while longer. We have waited this long after all.");
+			graph.addNode("Trust me you don't want to know.");
+			graph.addNode("No, son me and this village have been sick a long time and we need help.");
+			graph.addNode("What do you mean sick?");
+			graph.addNode("Is there a cure?");
+			graph.addNode("That’s a shame.");
+			graph.addNode("There is no cure for us son, the only way to help us is to defeat the necromancer, only then may we be free.");
+			graph.addNode("What do you mean?");
+			graph.addNode("I mean our bodies and the land aren’t the only thing affected by the Necromancer my boy.");
+			graph.addNode("Huh?");
+			graph.addNode("Our minds have been taken over by the curse. It turned us into evil creatures and now we hunger for flesh.");
+			graph.addNode("That’s horrible!");
+			graph.addNode("Are you gonna eat me?");
+			graph.addNode("How can I save you?");
+			graph.addNode("Like I said kill the Necromancer and we will be eternally grateful");
+			graph.addNode("Is that an invitation?");
+			graph.addNode("Yes");
+			graph.addNode("GET HIM LADS");
+			graph.addNode("No");
+			graph.addNode("Well then, get going before we can’t help ourselves.");
+			graph.addNode("Ay, just give the necromancer a good punch for me and let us pass on.");
+			graph.addNode("I will.");
+			
+			graph.addEdge(1,2);
+			graph.addEdge(2,4);
+			graph.addEdge(4,5);
+			graph.addEdge(5,6);
+			graph.addEdge(6,9);
+			graph.addEdge(9,10);
+			graph.addEdge(10,11);
+			graph.addEdge(11,8);
+			graph.addEdge(11,7);
+			graph.addEdge(11,12);
+			graph.addEdge(12,13);
+			graph.addEdge(8,14);
+			graph.addEdge(14,15);
+			graph.addEdge(15,16);
+			graph.addEdge(16,17);
+			graph.addEdge(17,19);
+			graph.addEdge(19,25);
+			graph.addEdge(16,18);
+			graph.addEdge(18,19);
+			graph.addEdge(7,20);
+			graph.addEdge(20,21);
+			graph.addEdge(21,23);
+			graph.addEdge(20,22);
+			graph.addEdge(22,24);
+			graph.addEdge(1,3);
+			graph.addEdge(26,27);
+			graph.addEdge(27,46);
+			graph.addEdge(46,31);
+			graph.addEdge(26,28);
+			graph.addEdge(28,30);
+			graph.addEdge(30,31);
+			graph.addEdge(31,32);
+			graph.addEdge(32,33);
+			graph.addEdge(33,34);
+			graph.addEdge(34,35);
+			graph.addEdge(35,44);
+			graph.addEdge(44,45);
+			graph.addEdge(45,25);
+			graph.addEdge(34,36);
+			graph.addEdge(36,39);
+			graph.addEdge(39,40);
+			graph.addEdge(40,41);
+			graph.addEdge(39,42);
+			graph.addEdge(42,43);
+			graph.addEdge(43,25);
+			graph.addEdge(34,37);
+			graph.addEdge(37,38);
+			graph.addEdge(38,25);
+			graph.addEdge(3,29);
+			graph.addEdge(29,47);
+
+			return graph;
+		}
+		
 }

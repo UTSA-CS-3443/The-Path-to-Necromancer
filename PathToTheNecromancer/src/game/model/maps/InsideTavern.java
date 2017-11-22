@@ -1,11 +1,14 @@
 package game.model.maps;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
+import game.model.sprites.npc.ColorAndGender;
 import game.model.sprites.npc.OogLag;
+import game.model.sprites.npc.Villagers;
 
 /**
  * The inside of oog-lag's tavern
@@ -107,5 +110,35 @@ public class InsideTavern extends GameMaps{
     	OogLag ooglag = new OogLag();
     	ooglag.defineBody(world, 350, 150);
     	super.addSprite(ooglag);
+    	
+    	Villagers villager1 = new Villagers(ColorAndGender.BLACK,ColorAndGender.FEMALE);
+        villager1.isVelocityLooping(false);
+        villager1.addVelocity(new Vector2(0,10), 1);
+        villager1.defineBody(world, 438, 160);
+        this.addSprite(villager1);
+        
+        Villagers villager2 = new Villagers(ColorAndGender.WHITE,ColorAndGender.MALE);
+        villager2.isVelocityLooping(false);
+        villager2.addVelocity(new Vector2(0,-10), 1);
+        villager2.defineBody(world, 243, 135);
+        this.addSprite(villager2);
+        
+        Villagers villager3 = new Villagers(ColorAndGender.RED,ColorAndGender.MALE);
+        villager3.isVelocityLooping(false);
+        villager3.defineBody(world, 246, 72);
+        villager3.addVelocity(new Vector2(0,10), 1);
+        this.addSprite(villager3);
+        
+        Villagers villager4 = new Villagers(ColorAndGender.BROWN,ColorAndGender.FEMALE);
+        villager4.isVelocityLooping(false);
+        villager4.defineBody(world, 599, 70);
+        villager4.addVelocity(new Vector2(0,-10), 1);
+        this.addSprite(villager4);
+        
+        Villagers villager5 = new Villagers(ColorAndGender.BLUE,ColorAndGender.MALE);
+        villager5.isVelocityLooping(false);
+        villager5.addVelocity(new Vector2(-10,0), 1);
+        villager5.defineBody(world, 775, 48);
+        this.addSprite(villager5);
     }
 }
