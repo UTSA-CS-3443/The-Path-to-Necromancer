@@ -12,6 +12,8 @@ public abstract class EnemySprites extends GameSprites
 	private String[] banter; //Banter to be brought up in combat
 	private String[] IntroBanter; //Banter to be brought up on the first attack scene
 	private Texture texture;
+	private int health;
+	private int experience;
 	
 	private int BantCount;
 	private int IntroBanterCount;
@@ -57,6 +59,23 @@ public abstract class EnemySprites extends GameSprites
 	public String getIntroBanter()
 	{
 		return this.IntroBanter[(int)Math.ceil(Math.random() * (this.banter.length -1))]; //returns 0 to ban
+	}
+
+	public void setBaseStats(int att, int defense, int dex, int luck, int hel, int lvl, int exp) {
+		this.Attack = att * lvl;
+		this.Defense  = defense *  lvl;
+		this.Dexterity = dex * lvl;
+		this.luck = luck * lvl;
+		this.health = hel * lvl;
+		this.setExperience(exp);
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
 	}
 }
 

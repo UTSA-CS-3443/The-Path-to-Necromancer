@@ -236,5 +236,21 @@ public abstract class Player extends CharacterSprites {
 		this.stats.setDexterity(dexterity + this.stats.getDexterity());
 		this.stats.setLuck(luck + this.stats.getLuck());
 		this.stats.setMaxHealth(maxHealth + this.stats.getMaxHealth());
+		this.stats.setLevelUp(false);
+		this.stats.setCurrentHealth(maxHealth);
+
+	}
+	
+	public void isLevelUp(int experience ){
+		this.stats.setExperience(experience + this.stats.getExperience());
+		if(this.stats.getExperience() >= 30) {
+			this.stats.setLevelUp(true);
+			this.stats.setExperience(this.stats.getExperience() - 30);
+		}
+	}
+
+	public boolean getLevelUp() {
+		// TODO Auto-generated method stub
+		return this.stats.isLevelUp();
 	}
 }

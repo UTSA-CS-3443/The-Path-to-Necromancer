@@ -280,6 +280,7 @@ public class CombatScreen implements Screen
     {
         // This is where to perform some end combat operation
         // change the screen and the input processor
+    	this.p.isLevelUp(this.Enemy.getExperience());
         this.game.setScreen(this.prevPlayScreen);
         Gdx.input.setInputProcessor(this.playScreen.getInputProcessor());
         this.IntroScreen = true;

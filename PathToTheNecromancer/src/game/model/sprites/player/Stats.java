@@ -41,6 +41,10 @@ public class Stats {
 	 */
 	private int maxHealth;
 	/**
+	 * The player's truth value for if they will level up
+	 */
+	private boolean isLevelUp;
+	/**
 	 * Constructor for the stats object. Set different statistics for the character.
 	 * 
 	 * @param level
@@ -117,6 +121,14 @@ public class Stats {
 
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
+	}
+
+	public boolean isLevelUp() {
+		return isLevelUp;
+	}
+
+	public void setLevelUp(boolean isLevelUp) {
+		this.isLevelUp = isLevelUp;
 	}
 
 }
