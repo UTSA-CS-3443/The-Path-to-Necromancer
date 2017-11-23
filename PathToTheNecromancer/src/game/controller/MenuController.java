@@ -502,10 +502,6 @@ public class MenuController {
 				return true;
 			}
 
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.log("Example", "touch done at (" + x + ", " + y + ")");
-			}
 		});
 
 		// Set the button for quitting the game
@@ -631,11 +627,6 @@ public class MenuController {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
 			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.log("Example", "touch done at (" + x + ", " + y + ")");
-			}
 		});
 
 		// set up the auto fast-forward check button
@@ -658,11 +649,6 @@ public class MenuController {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.log("Example", "touch done at (" + x + ", " + y + ")");
 			}
 		});
 

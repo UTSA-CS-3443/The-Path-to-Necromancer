@@ -92,7 +92,7 @@ public class Interaction {
 	public void setDialogueInput(int input, MapManager manager) {
 		GraphNode node = this.options.get(input);
 		this.dialogueGraph.setCurrent(node.getName());
-		node.act(player, manager);
+		node.act(manager.getPlayer(), manager);
 		this.getNextInteraction();
 	}
 

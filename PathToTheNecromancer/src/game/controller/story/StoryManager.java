@@ -80,14 +80,25 @@ public class StoryManager {
 				private Book book;
 				@Override
 				public void act(float dt) {
+					// set up the initial encounter
 					if (player.getBookEncounters() == 0) {
 						book = new Book();						
 						book.defineBody(manager.getWorld(), 140, 215);
-						//manager.addSprite(book);
+						manager.addSprite(book);
 						DialogueGraph graph = book.getDialogue(player);
 						manager.getMainScreen().startChat();
 						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 						player.setBookEncounters(1);
+					}
+					// begin book special animation 1
+					if(player.getBookEncounters() == 2 && book != null) {
+						book.setOpen(true);
+						player.setBookEncounters(3);
+					}
+					// begin book special animation 2
+					if(player.getBookEncounters() == 4 && book != null) {
+						book.setTurnPage(true);
+						player.setBookEncounters(5);
 					}
 				}
 			}

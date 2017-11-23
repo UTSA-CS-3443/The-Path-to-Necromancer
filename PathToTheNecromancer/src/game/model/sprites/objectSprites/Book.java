@@ -1,5 +1,9 @@
 package game.model.sprites.objectSprites;
 
+import java.util.ArrayList;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -7,11 +11,10 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.MassData;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-
 import game.controller.MapManager;
 import game.controller.story.DialogueActor;
 import game.model.DialogueGraph;
-import game.model.sprites.GameSprites;
+import game.model.sprites.CharacterSprites;
 import game.model.sprites.InteractionSprites;
 import game.model.sprites.player.Mage;
 import game.model.sprites.player.Player;
@@ -24,30 +27,120 @@ import game.model.sprites.player.Warrior;
  * @author enigma-phi
  *
  */
-public class Book extends GameSprites implements InteractionSprites {
+public class Book extends CharacterSprites implements InteractionSprites {
 	/**
 	 * The width of the book in the game
 	 */
-	private static final int BOOK_WIDTH = 9;
+	private static final int BOOK_WIDTH = 30;
 	/**
 	 * The height of the book in the game
 	 */
-	private static final int BOOK_HEIGHT = 6;
+	private static final int BOOK_HEIGHT = 30;
+	/**
+	 * The book's animation
+	 */
+	private ArrayList<TextureRegion> frames;
+	/**
+	 * Whether or not the book was ever opened
+	 */
+	private boolean unOpened;
+	/**
+	 * Whether or not to turn the book
+	 */
+	private boolean setOpen;
+	/**
+	 * Whether or not to turn the page
+	 */
+	private boolean setTurnPage;
+	/**
+	 * The current textureRegion for the animation
+	 */
+	private TextureRegion currentRegion;
+	/**
+	 * The timer for animations
+	 */
+	private float timer;
+
 	/**
 	 * Constructor for the book
 	 */
 	public Book() {
+		setTextureValues();
+		this.currentRegion = this.frames.get(0);
+		setRegion(this.currentRegion);
+		setBounds(0, 0, BOOK_WIDTH, BOOK_HEIGHT);
+	}
 
+	/**
+	 * Set the book's texture regions
+	 */
+	@Override
+	public void setTextureValues() {
+		Texture bookTexture = new Texture("CharacterSprites/SassyBook.png");
+		frames = new ArrayList<TextureRegion>();
+
+		for (int i = 0; i < 5; i++) {
+			frames.add(new TextureRegion(bookTexture, i * 720, 0, 720, 854));
+		}
+	}
+
+	/**
+	 * Get the book's current animation frame
+	 */
+	@Override
+	public TextureRegion getFrame(float dt) {
+		if(this.setOpen || this.setTurnPage)
+			timer += dt;
+		if(this.setOpen) {
+			if (timer < 0.25)
+				this.currentRegion = (this.frames.get(1));
+			else {
+				this.currentRegion = this.frames.get(2);
+				this.setOpen = false;
+			}
+		}
+		if(this.setTurnPage) {
+			if (timer < 0.25)
+				this.currentRegion = this.frames.get(3);
+			else {
+				this.currentRegion = this.frames.get(4);
+				this.setOpen = false;
+			}
+		}
+		return this.currentRegion;
+	}
+
+	/**
+	 * Whether or not to start the opening book animation
+	 * 
+	 * @param b
+	 *            is the boolean to set to
+	 */
+	public void setOpen(boolean b) {
+		this.setOpen = b;
+		this.timer = 0;
+	}
+
+	/**
+	 * Whether or not to start the turning page animation
+	 * 
+	 * @param b
+	 *            is the boolean to set to
+	 */
+	public void setTurnPage(boolean b) {
+		this.setTurnPage = b;
+		this.timer = 0;
 	}
 
 	/**
 	 * Get the book's dialogue.
+	 * 
 	 * @return the book's dialogue
 	 */
 	@Override
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();
-		if(player.getBookEncounters() > 0) {
+		if (player.getBookEncounters() > 0) {
 			graph.addNode("It's a book. It contains strange magical symbols.");
 			return graph;
 		}
@@ -85,9 +178,10 @@ public class Book extends GameSprites implements InteractionSprites {
 		graph.addNode("Dexterity affects you initiative and dodge chance."); // 29
 		graph.addNode("And luck affects your critical hit rate."); // 30
 		graph.addNode("Warriors have a high strength. Mages have a high intelligence. Rogues have a high dexterity."); // 31
-		graph.addNode("Multiple options will be surrounded by quotation marks. Click the dialogue option of your choice.");// 32
+		graph.addNode(
+				"Multiple options will be surrounded by quotation marks. Click the dialogue option of your choice.");// 32
 		graph.addNode("You approach the book and begin reading it."); // 33
-		
+
 		// Add the edges to the graph
 		graph.addEdge(0, 32);
 		graph.addEdge(32, 1);
@@ -132,38 +226,47 @@ public class Book extends GameSprites implements InteractionSprites {
 		graph.addEdge(30, 31);
 
 		// add the actors
+		// Make the player move towards the book
 		graph.getNode(0).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
 				player.addVelocity(new Vector2(0, 10), 1);
 			}
-			
+
 		});
+		
+		// The player walks away from the book
 		graph.getNode(2).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
 				player.addVelocity(new Vector2(0, -5), 1);
 			}
-			
+
 		});
+		
+		// The player walks away from the book
 		graph.getNode(5).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
 				player.addVelocity(new Vector2(0, -5), 1);
 			}
-			
+
 		});
+		
+		// The player walks away from the book
 		graph.getNode(7).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
 				player.addVelocity(new Vector2(0, -5), 1);
 			}
-			
+
 		});
+		
+		// The player walks towards the book
 		graph.getNode(33).addActor(new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
@@ -171,48 +274,63 @@ public class Book extends GameSprites implements InteractionSprites {
 			}
 
 		});
+		
+		// The player decides to become a Warrior
 		graph.getNode(16).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
+				int i = player.getBookEncounters();
 				Warrior warrior = new Warrior();
-				warrior.setBookEncounters(1);
+				warrior.setBookEncounters(i);
 				manager.getMainScreen().setPlayer(warrior);
 			}
-			
+
 		});
+		
+		// The player decides to become a Rogue
 		graph.getNode(17).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
+				int i = player.getBookEncounters();
 				Rogue rogue = new Rogue();
-				rogue.setBookEncounters(1);
+				rogue.setBookEncounters(i);
 				manager.getMainScreen().setPlayer(rogue);
 			}
-			
+
 		});
+		
+		// The player decides to become a Mage
 		graph.getNode(18).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
+				int i = player.getBookEncounters();
 				Mage mage = new Mage();
-				mage.setBookEncounters(1);
+				mage.setBookEncounters(i);
 				manager.getMainScreen().setPlayer(mage);
-			
+
 			}
-			
 		});
-	
+		// The player opens the book
+		graph.getNode(15).addActor(new DialogueActor() {
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.setBookEncounters(2);
+			}
+		});
+		
+		// The player turns a page in the book
+		graph.getNode(19).addActor(new DialogueActor() {
+			@Override
+			public void act(Player player, MapManager manager) {
+				
+				player.setBookEncounters(4);
+			}
+		});
+
 		return graph;
-	}
-
-	/**
-	 * Update the book's animation
-	 */
-	@Override
-	public void update(float dt) {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -225,6 +343,7 @@ public class Book extends GameSprites implements InteractionSprites {
 	 * @param y
 	 *            is the y-coordinate to put the character on
 	 */
+	@Override
 	public void defineBody(World world, int x, int y) {
 
 		// set the body of the character
@@ -237,19 +356,20 @@ public class Book extends GameSprites implements InteractionSprites {
 		MassData mass = new MassData();
 		mass.mass = 1000000f;
 		body.setMassData(mass);
-
+		this.setBody(body);
+		
 		// create the world fixture for collision
 		FixtureDef fdef = new FixtureDef();
 		PolygonShape rect = new PolygonShape();
 
 		// coordinates of the Necromancer's collision box
 		Vector2[] vertice = new Vector2[4];
-		vertice[0] = new Vector2(-(BOOK_HEIGHT) / 2 + 5, BOOK_HEIGHT / 2); // top left
-		vertice[1] = new Vector2((BOOK_WIDTH) / 2 - 5, BOOK_HEIGHT / 2); // top right
-		vertice[2] = new Vector2(-(BOOK_WIDTH) / 2 + 5, -(BOOK_WIDTH) / 2); // bottom
-																											// left
-		vertice[3] = new Vector2((BOOK_WIDTH) / 2 - 5, -(BOOK_HEIGHT) / 2); // bottom
-																											// right
+		vertice[0] = new Vector2(-(BOOK_HEIGHT) / 2, 0 + 5); // top left
+		vertice[1] = new Vector2((BOOK_WIDTH) / 2, 0 + 5); // top right
+		vertice[2] = new Vector2(-(BOOK_WIDTH) / 2, -(BOOK_WIDTH) / 2); // bottom
+																			// left
+		vertice[3] = new Vector2((BOOK_WIDTH) / 2, -(BOOK_HEIGHT) / 2); // bottom
+																			// right
 
 		// set the world
 		rect.set(vertice);
