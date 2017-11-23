@@ -5,7 +5,9 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
 import game.model.DialogueGraph;
+import game.model.sprites.npc.ColorAndGender;
 import game.model.sprites.npc.Necromancer;
+import game.model.sprites.npc.Villagers;
 import game.model.sprites.objectSprites.Book;
 import game.model.sprites.player.Player;
 
@@ -61,7 +63,7 @@ public class StoryManager {
 	 *            the change in time since the last render
 	 */
 	public void act(float dt) {
-		if (storyActor != null) 
+		if (storyActor != null)
 			storyActor.act(dt);
 	}
 
@@ -77,12 +79,19 @@ public class StoryManager {
 		// The introduction area
 		case "Maps/Map01-IntroArea.tmx":
 			class IntroArea implements Actor {
+				/**
+				 * The book for the interactions
+				 */
 				private Book book;
+
+				/**
+				 * Perform different actions based off of the player's interactions
+				 */
 				@Override
 				public void act(float dt) {
 					// set up the initial encounter
 					if (player.getBookEncounters() == 0) {
-						book = new Book();						
+						book = new Book();
 						book.defineBody(manager.getWorld(), 140, 215);
 						manager.addSprite(book);
 						DialogueGraph graph = book.getDialogue(player);
@@ -91,16 +100,24 @@ public class StoryManager {
 						player.setBookEncounters(1);
 					}
 					// begin book special animation 1
-					if(player.getBookEncounters() == 2 && book != null) {
+					if (player.getBookEncounters() == 2 && book != null) {
 						book.setOpen(true);
 						player.setBookEncounters(3);
 					}
 					// begin book special animation 2
-					if(player.getBookEncounters() == 4 && book != null) {
+					if (player.getBookEncounters() == 4 && book != null) {
 						book.setTurnPage(true);
 						player.setBookEncounters(5);
 					}
 				}
+
+				@Override
+				public void setUpActor(World world, Player player) {
+					// TODO Auto-generated method stub
+					
+				}
+
+
 			}
 
 			actor = new IntroArea();
@@ -108,11 +125,18 @@ public class StoryManager {
 			break;
 		// Inside of Oog-Lag's Tavern
 		case "Maps/Map03-Inside Oog-Lag's Tavern.tmx":
-			class Tavern implements Actor{
+			class Tavern implements Actor {
+				/**
+				 * The necromancer for the interactions
+				 */
 				private Necromancer nec;
+
+				/**
+				 * Perform specific actions based off of the player's interactions
+				 */
 				@Override
 				public void act(float dt) {
-					if(player.getNecEncounters() == 1 && player.getY() <  80 && Math.abs(player.getX() - 400) < 50) {
+					if (player.getNecEncounters() == 1 && player.getY() < 80 && Math.abs(player.getX() - 400) < 50) {
 						nec = new Necromancer();
 						nec.defineBody(world, 415, 30);
 						manager.addSprite(nec);
@@ -122,14 +146,48 @@ public class StoryManager {
 						player.setNecEncounters(2);
 						nec.addVelocity(new Vector2(0, 15), 3);
 					}
-					if(player.getNecEncounters() == 3 && nec != null) {
+					if (player.getNecEncounters() == 3 && nec != null) {
 						nec.setVelocity(new Vector2(0, -15));
 						player.setNecEncounters(4);
 					}
 				}
+
+				@Override
+				public void setUpActor(World world, Player player) {
+					// TODO Auto-generated method stub
+					
+				}
+
 			}
-			
+
 			actor = new Tavern();
+			storyActor.actor(actor);
+			break;
+		// The Plains Area
+		case "Maps/Map04-Plains Area.tmx":
+			actor = new PlainsStory(manager, player, world);
+			storyActor.actor(actor);
+			break;
+		case "Maps/Map07-RightMountain.tmx":
+			class RightMount implements Actor {
+				@Override
+				public void act(float dt) {
+				}
+
+				@Override
+				public void setUpActor(World world, Player player) {
+					if(player.getVillagerConversations() == 0) {
+						player.setVillagerConversations(1);
+						Villagers villager = new Villagers(ColorAndGender.BLACK, ColorAndGender.MALE);
+						villager.defineBody(world, 93, 2268);
+						villager.setSpecialDialogue(true);
+						manager.addSprite(villager);
+					}
+				}
+
+			}
+
+			actor = new RightMount();
 			storyActor.actor(actor);
 			break;
 		default:
@@ -143,20 +201,12 @@ public class StoryManager {
 	 * Update the game mode for the story manager
 	 */
 	public void updateWorld() {
+		Actor oldActor = actor;
 		this.setMapName(manager.getMapName());
 		this.world = manager.getWorld();
 		this.player = manager.getPlayer();
-	}
-
-	/**
-	 * Update story variables for the story manager
-	 */
-	public void updateStory() {
-		if (mapName == null)
-			return;
-		if (mapName.equals("Maps/Map01-IntroArea.tmx"))
-			;
-		// anything conditional to a specific area gets messed with
+		if (this.actor != null && this.actor != oldActor)
+			this.actor.setUpActor(world, player);
 	}
 
 	/*

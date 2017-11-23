@@ -166,23 +166,23 @@ public class OogLagExterior extends GameMaps {
         this.addSprite(new ObjectSprites(T8, 223, height - 434));
         
         Villagers villager1 = new Villagers(ColorAndGender.BLUE,ColorAndGender.MALE);
+        villager1.defineBody(world, 583, 806);
         villager1.isVelocityLooping(true);
         villager1.addVelocity(new Vector2(20,0), 4);
         villager1.addVelocity(new Vector2(-20,0), 4);
-        villager1.defineBody(world, 583, 806);
         this.addSprite(villager1);
         
         Villagers villager2 = new Villagers(ColorAndGender.GREEN,ColorAndGender.MALE);
+        villager2.defineBody(world, 320, 676);
         villager2.isVelocityLooping(false);
         villager2.addVelocity(new Vector2(-10,0), 1);
-        villager2.defineBody(world, 320, 676);
         this.addSprite(villager2);
         
         Villagers villager3 = new Villagers(ColorAndGender.WHITE,ColorAndGender.FEMALE);
+        villager3.defineBody(world, 547, 690);
         villager3.isVelocityLooping(true);
         villager3.addVelocity(new Vector2(0,20), 4);
         villager3.addVelocity(new Vector2(0,-20), 4);
-        villager3.defineBody(world, 547, 690);
         this.addSprite(villager3);
         
         BillBoard billboard = new BillBoard();

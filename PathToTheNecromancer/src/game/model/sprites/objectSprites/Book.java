@@ -146,26 +146,26 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		}
 		graph.addNode("Note: Hit SPACEBAR to move text forward and skip text."); // 0
 		graph.addNode("It is a book..."); // 1
-		graph.addNode("Walk away."); // 2
-		graph.addNode("Read book."); // 3
-		graph.addNode("Hey man, where are you going? Don't you want to read me?"); // 4
-		graph.addNode("Continue walking away from the now talking book."); // 5
-		graph.addNode("Wait. Where are you going? You have to read me!"); // 6
-		graph.addNode("Continue to walk away."); // 7
-		graph.addNode("Go back and read weird book."); // 8
-		graph.addNode("Reading is for the weak."); // 9
-		graph.addNode("YOU THINK YOU ARE GOING TO ESCAPE FROM ME?! YOU WILL READ ME!"); // 10
-		graph.addNode("Yeah man, just come read me. Pry me open."); // 11
+		graph.addNode("P: Walk away."); // 2
+		graph.addNode("P: Read book."); // 3
+		graph.addNode("Bk: Hey man, where are you going? Don't you want to read me?"); // 4
+		graph.addNode("P: Continue walking away from the now talking book."); // 5
+		graph.addNode("Bk: Wait. Where are you going? You have to read me!"); // 6
+		graph.addNode("P: Continue to walk away."); // 7
+		graph.addNode("P: Go back and read weird book."); // 8
+		graph.addNode("P: Reading is for the weak."); // 9
+		graph.addNode("Bk: YOU THINK YOU ARE GOING TO ESCAPE FROM ME?! YOU WILL READ ME!"); // 10
+		graph.addNode("Bk: Yeah man, just come read me. Pry me open."); // 11
 		graph.addNode(
-				"OH IT'S GOING TO BE LIKE THAT THEN! LET'S GO YOU LITTLE JERK! YOU'RE LUCKY I AM ONLY ABLE TO USE G-RATED LANGUAGE!"); // 12
-		graph.addNode("Read talking book."); // 13
-		graph.addNode("Phew, good thing I said something. It's dangerous out there."); // 14
-		graph.addNode("What are you?"); // 15
-		graph.addNode("I am a Warrior: my strength is my greatest asset."); // 16
-		graph.addNode("I am a Rogue: speed guides my hand."); // 17
-		graph.addNode("I am a Mage: outwitting my foes is what I do."); // 18
-		graph.addNode("Begin tutorial."); // 19
-		graph.addNode("I have already read this book before. I will move on."); // 20
+				"Bk: OH IT'S GOING TO BE LIKE THAT THEN! LET'S GO YOU LITTLE JERK! YOU'RE LUCKY I AM ONLY ABLE TO USE G-RATED LANGUAGE!"); // 12
+		graph.addNode("P: Read talking book."); // 13
+		graph.addNode("Bk: Phew, good thing I said something. It's dangerous out there."); // 14
+		graph.addNode("Bk: What are you?"); // 15
+		graph.addNode("P: I am a Warrior: my strength is my greatest asset."); // 16
+		graph.addNode("P: I am a Rogue: speed guides my hand."); // 17
+		graph.addNode("P: I am a Mage: outwitting my foes is what I do."); // 18
+		graph.addNode("P: Begin tutorial."); // 19
+		graph.addNode("P: I have already read this book before. I will move on."); // 20
 		graph.addNode("To move: press the WASD or the arrow keys."); // 21
 		graph.addNode("To run: left or right SHIFT keys."); // 22
 		graph.addNode("To interact: ENTER key."); // 23
@@ -178,13 +178,16 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Dexterity affects you initiative and dodge chance."); // 29
 		graph.addNode("And luck affects your critical hit rate."); // 30
 		graph.addNode("Warriors have a high strength. Mages have a high intelligence. Rogues have a high dexterity."); // 31
-		graph.addNode(
-				"Multiple options will be surrounded by quotation marks. Click the dialogue option of your choice.");// 32
-		graph.addNode("You approach the book and begin reading it."); // 33
-
+		graph.addNode("You approach the book and begin reading it."); // 32
+		graph.addNode("When dialogue occurs, it will render on screen."); // 33
+		graph.addNode("If the player is speaking, the dialogue will be prefaced by a 'P:' to indicate player."); // 34
+		graph.addNode("If multiple options occur (multiple instances of 'P:') click the option of your choice."); // 35
+		
 		// Add the edges to the graph
-		graph.addEdge(0, 32);
-		graph.addEdge(32, 1);
+		graph.addEdge(0, 33);
+		graph.addEdge(33, 34);
+		graph.addEdge(34, 35);
+		graph.addEdge(35 , 1);
 		graph.addEdge(1, 2);
 		graph.addEdge(1, 3);
 		graph.addEdge(2, 4);
@@ -198,12 +201,12 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		graph.addEdge(9, 12);
 		graph.addEdge(4, 13);
 		graph.addEdge(13, 14);
-		graph.addEdge(33, 15);
-		graph.addEdge(10, 33);
-		graph.addEdge(11, 33);
-		graph.addEdge(12, 33);
-		graph.addEdge(14, 33);
-		graph.addEdge(3, 33);
+		graph.addEdge(32, 15);
+		graph.addEdge(10, 32);
+		graph.addEdge(11, 32);
+		graph.addEdge(12, 32);
+		graph.addEdge(14, 32);
+		graph.addEdge(3, 32);
 		graph.addEdge(15, 16);
 		graph.addEdge(15, 17);
 		graph.addEdge(15, 18);
@@ -267,7 +270,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		});
 		
 		// The player walks towards the book
-		graph.getNode(33).addActor(new DialogueActor() {
+		graph.getNode(32).addActor(new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
 				player.addVelocity(new Vector2(0, 5), 3);

@@ -11,11 +11,13 @@ import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.ObjectSprites;
+import game.model.sprites.npc.Bandit;
 
 /**
  * The Plains area map
  * Connects with OoglagExterior and MountainLeft
  * @author ToTryHardRay
+ * @author enigma-phi
  *
  */
 public class PlainsArea extends GameMaps{
@@ -172,6 +174,39 @@ public class PlainsArea extends GameMaps{
         this.addSprite(new ObjectSprites(T7, 83, height - 1935));
         this.addSprite(new ObjectSprites(T7, 585, height - 2031));
         this.addSprite(new ObjectSprites(T7, 290, height - 2304));
+        
+        Bandit b1 = new Bandit();
+        //b1.defineBody(world, 370, 1222);
+        b1.defineBody(world, 215, 1305);
+        super.addSprite(b1);
+        
+        Bandit b2 = new Bandit();
+        b2.defineBody(world, 60, 1445);
+        super.addSprite(b2);
+        
+        Bandit b3 = new Bandit();
+        b3.defineBody(world, 90, 1640);
+        super.addSprite(b3);
+        
+        Bandit b4 = new Bandit();
+        b4.defineBody(world, 530, 1740);
+        super.addSprite(b4);
+        
+        Bandit b5 = new Bandit();
+        b5.defineBody(world, 730, 1655);
+        super.addSprite(b5);
+        
+        Bandit b6 = new Bandit();
+        b6.defineBody(world, 90, 2235);
+        super.addSprite(b6);
+        
+        Bandit b7 = new Bandit();
+        b7.defineBody(world, 715, 1490);
+        super.addSprite(b7);
+        
+        Bandit b8 = new Bandit();
+        b8.defineBody(world, 318, 1595);
+        super.addSprite(b8);
     }
 }
     

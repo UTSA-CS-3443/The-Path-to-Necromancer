@@ -135,6 +135,7 @@ public class DialogueBox {
 	 *            is the text to set it to
 	 */
 	public void setText(String text) {
+		font.getData().setScale(.4f);
 		this.buttonsWaiting = false;
 		this.skipText = false;
 
@@ -230,6 +231,7 @@ public class DialogueBox {
 	 */
 	public void addButton(String buttonText) {
 		TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
+		font.getData().setScale(.35f);
 		style.font = this.font;
 
 		// create the button

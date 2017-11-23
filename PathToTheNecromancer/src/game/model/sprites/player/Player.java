@@ -22,6 +22,14 @@ public abstract class Player extends CharacterSprites {
 	 */
 	private int necEncounters = 0;
 	/**
+	 * The player's position for the bandit encounter
+	 */
+	private int banditEncounters = 0;
+	/**
+	 * Keep track of the player's conversations with the villagers
+	 */
+	private int villagerConversations = 0;
+	/**
 	 * is the player a warrior
 	 */
 	private boolean isWarrior;
@@ -197,6 +205,18 @@ public abstract class Player extends CharacterSprites {
 
 	public int getNecEncounters() {
 		return this.necEncounters;
+	}
+	public void setBanditEncounters(int set) {
+		this.banditEncounters = set;
+	}
+	public int getBanditEncounters() {
+		return this.banditEncounters;
+	}
+	public void setVillagerConversations(int set) {
+		this.villagerConversations = set;
+	}
+	public int getVillagerConversations() {
+		return this.villagerConversations;
 	}
 
 	public boolean isWarrior() {
