@@ -289,7 +289,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	}
 
 	/**
-	 * Get a fixed dialoguegraph for a single villager
+	 * Get a fixed dialogue graph for a single villager
 	 * 
 	 * @return the dialogue graph
 	 */
