@@ -58,47 +58,32 @@ public class PlainsStory implements Actor{
 			DialogueGraph graph = b1.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.setBanditEncounters(10);
-		}
-		// The player did NOT take the proper unionization route
-		if (player.getBanditEncounters() == 1) {
-			b1.addVelocity(new Vector2(0, 15), 2);
-			b1.addVelocity(new Vector2(20, 0), 5);
-			player.setBanditEncounters(10);
-		}
-		// The player DID take the proper unionization route
-		if (player.getBanditEncounters() == 2) {
-			b1.addVelocity(new Vector2(0, 15), 2);
-			b1.addVelocity(new Vector2(20, 0), 5);
-			player.setBanditEncounters(12);
+			player.setBanditEncounters(1);
 		}
 		// The player continues along the unionization encounter
-		if(player.getBanditEncounters() == 12 && player.getY() > 1835) {
-			player.setBanditEncounters(2);
+		if(player.getBanditEncounters() == 3 && player.getY() > 1835) {
+			player.setBanditEncounters(4);
 			player.addVelocity(new Vector2(0, 20), 1);
 			DialogueGraph graph = b6.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 			player.setBanditEncounters(3);
 		}
+		// Destroy the leader
+		if(player.getBanditEncounters() == 4) {
+			manager.getSprites().remove(b6);
+			world.destroyBody(b6.getBody());
+		}
 		// The Necromancer appears
-		if (player.getBanditEncounters() == 4) {
-			player.setNecEncounters(5);
+		if (player.getBanditEncounters() == 5) {
 			nec = new Necromancer();
 			nec.defineBody(world, 368, 1897);
+			nec.banditDialogue(true);
 			manager.addSprite(nec);
 			DialogueGraph graph = nec.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.setBanditEncounters(5);
-		}
-		if(player.getBanditEncounters() == 6) {
-			manager.getSprites().remove(nec);
-			world.destroyBody(nec.getBody());
-		}
-		if(player.getBanditEncounters() == 8) {
-			manager.getSprites().remove(b6);
-			world.destroyBody(b6.getBody());
+			player.setBanditEncounters(6);
 		}
 	}
 

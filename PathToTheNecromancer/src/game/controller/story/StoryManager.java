@@ -99,22 +99,13 @@ public class StoryManager {
 						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 						player.setBookEncounters(1);
 					}
-					// begin book special animation 1
-					if (player.getBookEncounters() == 2 && book != null) {
-						book.setOpen(true);
-						player.setBookEncounters(3);
-					}
-					// begin book special animation 2
-					if (player.getBookEncounters() == 4 && book != null) {
-						book.setTurnPage(true);
-						player.setBookEncounters(5);
-					}
 				}
 
+				/**
+				 * Set up the initial book encounter
+				 */
 				@Override
 				public void setUpActor(World world, Player player) {
-					// TODO Auto-generated method stub
-					
 				}
 
 
@@ -146,10 +137,6 @@ public class StoryManager {
 						player.setNecEncounters(2);
 						nec.addVelocity(new Vector2(0, 15), 3);
 					}
-					if (player.getNecEncounters() == 3 && nec != null) {
-						nec.setVelocity(new Vector2(0, -15));
-						player.setNecEncounters(4);
-					}
 				}
 
 				@Override
@@ -174,17 +161,23 @@ public class StoryManager {
 				public void act(float dt) {
 				}
 
+				/**
+				 * Set up the special dialogue villager
+				 * @param world is the world to put the villager
+				 * @param player is used to determine whether the villager has special dialoge
+				 */
 				@Override
 				public void setUpActor(World world, Player player) {
+					
+					Villagers villager = new Villagers(ColorAndGender.BLACK, ColorAndGender.MALE);
+					villager.defineBody(world, 93, 2268);
+					manager.addSprite(villager);
+					
 					if(player.getVillagerConversations() == 0) {
 						player.setVillagerConversations(1);
-						Villagers villager = new Villagers(ColorAndGender.BLACK, ColorAndGender.MALE);
-						villager.defineBody(world, 93, 2268);
 						villager.setSpecialDialogue(true);
-						manager.addSprite(villager);
 					}
 				}
-
 			}
 
 			actor = new RightMount();

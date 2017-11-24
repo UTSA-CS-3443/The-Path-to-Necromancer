@@ -65,6 +65,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 	 * Constructor for the book
 	 */
 	public Book() {
+		this.unOpened = true;
 		setTextureValues();
 		this.currentRegion = this.frames.get(0);
 		setRegion(this.currentRegion);
@@ -105,6 +106,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 			else {
 				this.currentRegion = this.frames.get(4);
 				this.setOpen = false;
+				this.unOpened = false;
 			}
 		}
 		return this.currentRegion;
@@ -320,7 +322,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		graph.getNode(15).addActor(new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBookEncounters(2);
+				setOpen(true);
 			}
 		});
 		
@@ -328,8 +330,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		graph.getNode(19).addActor(new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
-				
-				player.setBookEncounters(4);
+				setTurnPage(true);
 			}
 		});
 

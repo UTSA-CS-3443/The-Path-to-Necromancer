@@ -40,6 +40,10 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
      */
     private Texture necromancerTexture;
     /**
+     * Whether or not the necromancer is engaged in the bandit dialogue
+     */
+    private boolean banditDialogue;
+    /**
      * The scaling factor used to draw the Necromancer.
      */
     private static float SCALINGFACTOR = 0.65f;
@@ -166,6 +170,13 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
     }
 
     /**
+     * Whether or not the Necromancer is engaged in the bandit dialogue
+     * @param b
+     */
+    public void banditDialogue(boolean b) {
+    	this.banditDialogue = b;
+    }
+    /**
      * Get the Necromancer's Dialogue Graph
      * @param the player to base the graph off of
      * @return the dialogue graph 
@@ -174,7 +185,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 	public DialogueGraph getDialogue(Player player) {
 		if(player.getNecEncounters() == 1) 
 			return this.getFirstEncounter();
-		else if(player.getNecEncounters() == 5)
+		else if(this.banditDialogue)
 			return this.getUnionization();
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("The Necromancer you are calling is currently unavailable. Please try again later.");
@@ -203,7 +214,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setNecEncounters(3);
+				setVelocity(new Vector2(0, -15));
 			}
 			
 		});
@@ -211,7 +222,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		return graph;
 	}
 	/**
-	 * Get the dialogue for the unionization encounter with the necromancer
+	 * Get the dialogue for the unionization encounter with the Necromancer
 	 * @return the unionization dialogue
 	 */
 	private DialogueGraph getUnionization() {

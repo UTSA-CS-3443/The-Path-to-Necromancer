@@ -1,5 +1,7 @@
 package game.model.sprites.npc;
 
+import java.util.Random;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -49,7 +51,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	public DialogueGraph getDialogue(Player player) {
 		if(player.getBanditEncounters() == 0)
 			return getInitialBanditDialogue();
-		else if(player.getBanditEncounters() == 2)
+		else if(player.getBanditEncounters() == 3)
 			return getLeaderSnippet();
 		else 
 			return getDefaultDialogue();
@@ -61,7 +63,16 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	 */
 	private DialogueGraph getDefaultDialogue() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("You had better watch your back. It's dangerous out there.");
+		Random rand = new Random();
+		switch(rand.nextInt(2)) {
+		case 0:
+			graph.addNode("You had better watch your back. It's dangerous out there.");
+			break;
+		case 1:
+			graph.addNode("okes about Communism have no Class. But jokes about java have some. I'm still usure about the communist java programmer.");
+			break;
+		}
+		
 		return graph;
 	}
 	/**
@@ -86,7 +97,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBanditEncounters(8);
+				player.setBanditEncounters(5);
 			}
 			
 		});
@@ -95,7 +106,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBanditEncounters(4);
+				player.setBanditEncounters(5);
 			}
 			
 		});
@@ -224,7 +235,9 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		DialogueActor actor = new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBanditEncounters(1);
+				addVelocity(new Vector2(0, 15), 2);
+				addVelocity(new Vector2(20, 0), 5);
+				player.setBanditEncounters(2);
 			}
 			
 		};
@@ -239,7 +252,9 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.getNode(21).addActor(new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBanditEncounters(2);
+				addVelocity(new Vector2(0, 15), 2);
+				addVelocity(new Vector2(20, 0), 5);
+				player.setBanditEncounters(3);
 			}
 			
 		});

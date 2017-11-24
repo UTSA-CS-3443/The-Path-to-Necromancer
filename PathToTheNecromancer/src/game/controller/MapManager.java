@@ -94,7 +94,6 @@ public class MapManager {
 
 		// update the story manager
 		this.storyManager.updateWorld();
-		this.storyManager.updateStory();
 	}
 
 	/**
@@ -234,9 +233,5 @@ public class MapManager {
 	public PlayScreen getMainScreen() {
 		return this.screen;
 	}
-
-
-
-
 
 }
