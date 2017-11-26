@@ -199,9 +199,9 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 	private DialogueGraph getFirstEncounter() {
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("N: Hello there mortals. I am a mighty Necromancer. Here to see the new opponent. And I ..."); // 0
-		graph.addNode("\"You are unable to hear him as the thunder from outside is too loud\""); // 1
-		graph.addNode("N: MUAHAHA and I \"CRASH\" will murder \"BOOM\" puppies, kittens, none shall escape \"KERSHACK\" and I will...\""); // 2
-		graph.addNode("\"Thunder booms again\""); // 3
+		graph.addNode("*You are unable to hear him as the thunder from outside is too loud*"); // 1
+		graph.addNode("N: MUAHAHA and I \"CRASH\" will murder \"BOOM\" puppies, kittens, none shall escape \"KERSHACK\" and I will..."); // 2
+		graph.addNode("*Thunder booms again*"); // 3
 		graph.addNode("N: Farewell you fools! MUAHAHA"); // 4
 		
 		// add edges 
@@ -303,7 +303,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.getStoryStats().setBanditEncounters(7);				
+				player.getStoryStats().setBanditEncounters(9);				
 			}
 		
 		});

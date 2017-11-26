@@ -14,22 +14,6 @@ public abstract class Player extends CharacterSprites {
 	 */
 	private Stats stats;
 	/**
-	 * The player's position in the the book encounter's tree
-	 */
-	private int bookEncounters = 0;
-	/**
-	 * The player's position in the necromancer encounter's tree
-	 */
-	private int necEncounters = 0;
-	/**
-	 * The player's position for the bandit encounter
-	 */
-	private int banditEncounters = 0;
-	/**
-	 * Keep track of the player's conversations with the villagers
-	 */
-	private int villagerConversations = 0;
-	/**
 	 * is the player a warrior
 	 */
 	private boolean isWarrior;

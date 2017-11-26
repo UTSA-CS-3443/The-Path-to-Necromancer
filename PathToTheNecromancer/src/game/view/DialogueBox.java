@@ -100,7 +100,7 @@ public class DialogueBox {
 
 		// create the texture background
 		TextureRegionDrawable draw = new TextureRegionDrawable(
-				new TextureRegion(new Texture("assets/Buttons/TextBackground2.png")));
+				new TextureRegion(new Texture("assets/Buttons/Grunge-Parchment-Paper-Texture.jpg")));
 
 		// set up the table
 		table = new Table();
