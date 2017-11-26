@@ -43,7 +43,7 @@ public class Knight extends CharacterSprites {
 		int rowHeight = 150;
 
 		// Use the Knight animations until we have the player SpriteSheet
-		KnightTexture = new Texture("CharacterSprites/Knight Sprite Sheet-Adjusted.png");
+		KnightTexture = new Texture("CharacterSprites/Knight.png");
 
 		// Array of frames used for the animations
 		Array<TextureRegion> frames = new Array<TextureRegion>();

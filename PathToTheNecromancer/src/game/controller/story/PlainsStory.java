@@ -62,12 +62,11 @@ public class PlainsStory implements Actor{
 		}
 		// The player continues along the unionization encounter
 		if(player.getBanditEncounters() == 3 && player.getY() > 1835) {
-			player.setBanditEncounters(4);
 			player.addVelocity(new Vector2(0, 20), 1);
 			DialogueGraph graph = b6.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.setBanditEncounters(3);
+			player.setBanditEncounters(4);
 		}
 		// Destroy the leader
 		if(player.getBanditEncounters() == 4) {
@@ -84,6 +83,11 @@ public class PlainsStory implements Actor{
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 			player.setBanditEncounters(6);
+		}
+		// The Necromancr disappears
+		if (player.getBanditEncounters() == 7) {
+			manager.getSprites().remove(nec);
+			world.destroyBody(nec.getBody());
 		}
 	}
 

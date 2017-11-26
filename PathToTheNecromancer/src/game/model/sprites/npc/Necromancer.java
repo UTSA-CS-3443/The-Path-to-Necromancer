@@ -296,13 +296,14 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addEdge(23, 13);
 		graph.addEdge(30, 12);
 		graph.addEdge(13, 12);
+		graph.addEdge(25, 12);
 		
 		// Add actors
 		graph.getNode(12).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBanditEncounters(6);				
+				player.setBanditEncounters(7);				
 			}
 		
 		});
