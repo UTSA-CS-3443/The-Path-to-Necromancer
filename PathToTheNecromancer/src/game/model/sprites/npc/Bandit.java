@@ -51,7 +51,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	public DialogueGraph getDialogue(Player player) {
 		if(player.getStoryStats().getBanditEncounters() == 0)
 			return getInitialBanditDialogue();
-		else if(player.getStoryStats().getBanditEncounters() == 3)
+		else if(player.getStoryStats().getBanditEncounters() == 4)
 			return getLeaderSnippet();
 		else 
 			return getDefaultDialogue();
@@ -66,10 +66,10 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		Random rand = new Random();
 		switch(rand.nextInt(2)) {
 		case 0:
-			graph.addNode("You had better watch your back. It's dangerous out there.");
+			graph.addNode("Bandit: You had better watch your back. It's dangerous out there.");
 			break;
 		case 1:
-			graph.addNode("Jokes about Communism have no Class. But jokes about java have some. I'm still usure about the communist java programmer.");
+			graph.addNode("Bandit: Jokes about Communism have no Class. But jokes about java have some. I'm still usure about the communist java programmer.");
 			break;
 		}
 		
@@ -83,8 +83,8 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("..."); // 0
 		graph.addNode("P: As you walk into camp, you see the bandit leader disappear."); // 1
-		graph.addNode("B: So, after we draft the Bill of Fights, we will then move onto providing equal plundering and make a cultural change ..."); // 2
-		graph.addNode("B: from Italian bandits to Mexican bandits as they have better hats..."); // 3
+		graph.addNode("Bandit: So, after we draft the Bill of Fights, we will then move onto providing equal plundering and make a cultural change ..."); // 2
+		graph.addNode("Bandit: from Italian bandits to Mexican bandits as they have better hats..."); // 3
 		graph.addNode("*Thunder*"); // 4
 		
 		// add the edges
@@ -120,59 +120,59 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	 */
 	private DialogueGraph getInitialBanditDialogue() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("B: Be still traveler you are about to walk upon the land of Bloody Foot himself, and his mother was Foot herself!"); // 0
+		graph.addNode("Bandit: Be still traveler you are about to walk upon the land of Bloody Foot himself, and his mother was Foot herself!"); // 0
 		graph.addNode("P: I'm here as a representative for the badit/Don union"); // 1
-		graph.addNode("P: ow dare you speak to me bandit! I am the chosen one!"); // 2
+		graph.addNode("P: How dare you speak to me bandit! I am the chosen one!"); // 2
 		graph.addNode("P: No need to worry, just passing through"); // 3
-		graph.addNode("B: The bandit/Don union?"); // 4
+		graph.addNode("Bandit: The bandit/Don union?"); // 4
 		graph.addNode("P: We strive for equal shares in plunder for bandits everywhere!"); // 5 
 		graph.addNode("P: Indeed, why hasn't your camp joined?"); // 6
 		graph.addNode("P: Yes, would you like to join?"); // 7
-		graph.addNode("B: Well, kinda, we don't even get dental..."); // 8 
-		graph.addNode("B: Oh, well, we never received any message from you."); // 9
-		graph.addNode("B: Never I stay with my Don, I'll never betray him!"); // 10
+		graph.addNode("Bandit: Well, kinda, we don't even get dental..."); // 8 
+		graph.addNode("Bandit: Oh, well, we never received any message from you."); // 9
+		graph.addNode("Bandit: Never I stay with my Don, I'll never betray him!"); // 10
 		graph.addNode("P: You don't even get dental?! How horrible, we have to come in to check this out!"); // 11
 		graph.addNode("P: None? well we did send you multiple messages... maybe someone has been tossing them out?"); // 12
 		graph.addNode("P: Guess it must've been lost in the mail!"); // 13
-		graph.addNode("B: Please go ahead."); // 14
-		graph.addNode("B: Well, now that I think of it, the Don has been throwing out a lot of paper recently..."); // 15
-		graph.addNode("B: Yeah i gue.... wait a minute, we don't have mail out here! You're lying moron!"); // 16
+		graph.addNode("Bandit: Please go ahead."); // 14
+		graph.addNode("Bandit: Well, now that I think of it, the Don has been throwing out a lot of paper recently..."); // 15
+		graph.addNode("Bandit: Yeah i gue.... wait a minute, we don't have mail out here! You're lying moron!"); // 16
 		graph.addNode("P: I see, I see... perhaps he's trying to prevent you from unionizing?"); // 17
-		graph.addNode("B: I guess so... tell me, what does one do in a union?"); // 18
+		graph.addNode("Bandit: I guess so... tell me, what does one do in a union?"); // 18
 		graph.addNode("P: Well, first, have you been feeling disgruntled at all?"); // 19
 		graph.addNode("P: Well, they protest my good sir. Teach the Don what's up. You need to fight!"); // 20
-		graph.addNode("B: Good idea, let's do this! I'm tired of pretending to be Italian!"); // 21 
-		graph.addNode("B: The chosen one?"); // 22
-		graph.addNode("B: haha, you think we allow sissies to pass through our camp?! ie weak one!"); // 23
+		graph.addNode("Bandit: Good idea, let's do this! I'm tired of pretending to be Italian!"); // 21 
+		graph.addNode("Bandit: The chosen one?"); // 22
+		graph.addNode("Bandit: haha, you think we allow sissies to pass through our camp?! ie weak one!"); // 23
 		graph.addNode("P: Yes I am the chosen bandit, the one to lead all bandits to banditdom!"); // 24
-		graph.addNode("B: COOL! Do you have any powers?"); // 25
+		graph.addNode("Bandit: COOL! Do you have any powers?"); // 25
 		graph.addNode("P: Yes, watch me remove my thumb from my hand!"); // 26
  		graph.addNode("P: I can't your eyes would melt from your eye sockets"); // 27
-		graph.addNode("B: The Don can do that too! Except he just chops them off of those who snitch on him!"); // 28
-		graph.addNode("B: You lie, show me now"); // 29
+		graph.addNode("Bandit: The Don can do that too! Except he just chops them off of those who snitch on him!"); // 28
+		graph.addNode("Bandit: You lie, show me now"); // 29
 		graph.addNode("P: Yes, but can he put them back on?! *performs finger trick*"); // 30
 		graph.addNode("P: My power derives from the sun! Stare at it, and you shall feel your eyes burning with my power!"); // 31
 		graph.addNode("P: Alright, I lied, but may I pass through your camp?"); // 32
-		graph.addNode("B: *silence*"); // 33
-		graph.addNode("B: Fine! *bandit begins staring at sun*"); // 34
-		graph.addNode("B: We kill liars here fool, die!"); // 35
+		graph.addNode("Bandit: *silence*"); // 33
+		graph.addNode("Bandit: Fine! *bandit begins staring at sun*"); // 34
+		graph.addNode("Bandit: We kill liars here fool, die!"); // 35
 		graph.addNode("P: *do it again*"); // 36
 		graph.addNode("P: Do you believe me now?!"); // 37
  		graph.addNode("P: *Attempt to sneak by*"); // 38
 		graph.addNode("P: Yes, yes are you feeling my power?!"); // 39
-		graph.addNode("B: *even more silence*"); // 40
-		graph.addNode("B: Please pass through my almighty wizard."); // 41
- 		graph.addNode("B: Wait, where do you think you're going?"); // 42
-		graph.addNode("B: *tears rolling down eyes* I feel it! MAKE IT STOP!!!!"); // 43
+		graph.addNode("Bandit: *even more silence*"); // 40
+		graph.addNode("Bandit: Please pass through my almighty wizard."); // 41
+ 		graph.addNode("Bandit: Wait, where do you think you're going?"); // 42
+		graph.addNode("Bandit: *tears rolling down eyes* I feel it! MAKE IT STOP!!!!"); // 43
 		graph.addNode("P: Just look away weakling."); // 44
 		graph.addNode("P: NEVER! BURN WEAKLING BURN!"); // 45
 		graph.addNode("P: *do it again*"); // 46
 		graph.addNode("P: I have not done it once, but twice! Do you believe me now?!"); // 47
-		graph.addNode("B: *crying* I'm sorry for doubting you sun lord, please pass"); // 48
-		graph.addNode("B: *screams with tears rolling down face*"); // 49
-		graph.addNode("B:PLEASE STOP DISMEMBERING YOURSELF, IT'S UNNATURAL!"); // 50
+		graph.addNode("Bandit: *crying* I'm sorry for doubting you sun lord, please pass"); // 48
+		graph.addNode("Bandit: *screams with tears rolling down face*"); // 49
+		graph.addNode("Bandit:PLEASE STOP DISMEMBERING YOURSELF, IT'S UNNATURAL!"); // 50
 		graph.addNode("P: NEVER! *do it again*"); // 51
-		graph.addNode("B: *begins crying* Why do you keep hurting yourself, just go through the camp."); // 52
+		graph.addNode("Bandit: *begins crying* Why do you keep hurting yourself, just go through the camp."); // 52
 		graph.addNode("P: Have you been feeling disgruntled at all recently?"); // 53
 		
 		graph.addEdge(0,1);

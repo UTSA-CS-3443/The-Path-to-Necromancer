@@ -412,6 +412,16 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 		return graph;
 	}
 	/**
+	 * dialogue for hidden villager that will trigger you bringing bosses
+	 * back to life if you become the necromancer
+	 * @return
+	 */
+	private DialogueGraph getGameChangingDialogue() {
+		DialogueGraph graph = new DialogueGraph();
+		graph.addNode("Hey, so you just come up in here and kill things like it's all for the common good,but what right do you have to decide tey should die?");
+		return graph;
+	}
+	/**
 	 * Whether or not the villager has it's special dialogue
 	 * @param b sets the boolean
 	 */
