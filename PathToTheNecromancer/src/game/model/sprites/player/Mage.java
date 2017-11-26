@@ -46,8 +46,6 @@ public class Mage extends Player{
         // Set the initial animation
         setRegion(super.getStandingRegion());
         super.setBaseStats(1, 1, 5, 2, 3, 10, 0);
-//        if (this.isLevelUp() == true)
-//        	super.LevelUpStats(1, 4, 2, 3, 5, 0);
     }
 
     /**

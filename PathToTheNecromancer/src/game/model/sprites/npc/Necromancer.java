@@ -183,7 +183,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
      */
 	@Override
 	public DialogueGraph getDialogue(Player player) {
-		if(player.getNecEncounters() == 1) 
+		if(player.getStoryStats().getNecEncounters() == 1) 
 			return this.getFirstEncounter();
 		else if(this.banditDialogue)
 			return this.getUnionization();
@@ -303,7 +303,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBanditEncounters(7);				
+				player.getStoryStats().setBanditEncounters(7);				
 			}
 		
 		});

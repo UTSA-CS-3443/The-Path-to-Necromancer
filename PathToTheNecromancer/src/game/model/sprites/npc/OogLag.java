@@ -156,7 +156,7 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 	 */
 	@Override
 	public DialogueGraph getDialogue(Player player) {
-		if (player.getNecEncounters() < 2)
+		if (player.getStoryStats().getNecEncounters() < 2)
 			return getFirstDialogue();
 		else
 			return getDefaultDialogue();
@@ -214,7 +214,7 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 		node.addActor(new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setNecEncounters(1);
+				player.getStoryStats().setNecEncounters(1);
 			}
 		});
 		return dialogueGraph;

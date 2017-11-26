@@ -90,14 +90,14 @@ public class StoryManager {
 				@Override
 				public void act(float dt) {
 					// set up the initial encounter
-					if (player.getBookEncounters() == 0) {
+					if (player.getStoryStats().isBookEncounters()) {
 						book = new Book();
 						book.defineBody(manager.getWorld(), 140, 215);
 						manager.addSprite(book);
 						DialogueGraph graph = book.getDialogue(player);
 						manager.getMainScreen().startChat();
 						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-						player.setBookEncounters(1);
+						player.getStoryStats().setBookEncounters(false);
 					}
 				}
 
@@ -127,14 +127,14 @@ public class StoryManager {
 				 */
 				@Override
 				public void act(float dt) {
-					if (player.getNecEncounters() == 1 && player.getY() < 80 && Math.abs(player.getX() - 400) < 50) {
+					if (player.getStoryStats().getNecEncounters() == 1 && player.getY() < 80 && Math.abs(player.getX() - 400) < 50) {
 						nec = new Necromancer();
 						nec.defineBody(world, 415, 30);
 						manager.addSprite(nec);
 						DialogueGraph graph = nec.getDialogue(player);
 						manager.getMainScreen().startChat();
 						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-						player.setNecEncounters(2);
+						player.getStoryStats().setNecEncounters(2);
 						nec.addVelocity(new Vector2(0, 15), 3);
 					}
 				}
@@ -173,8 +173,8 @@ public class StoryManager {
 					villager.defineBody(world, 93, 2268);
 					manager.addSprite(villager);
 					
-					if(player.getVillagerConversations() == 0) {
-						player.setVillagerConversations(1);
+					if(player.getStoryStats().getVillagerConversations() == 0) {
+						player.getStoryStats().setVillagerConversations(1);
 						villager.setSpecialDialogue(true);
 					}
 				}

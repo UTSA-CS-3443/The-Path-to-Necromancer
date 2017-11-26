@@ -41,7 +41,18 @@ public abstract class Player extends CharacterSprites {
 	 * is the player a mage
 	 */
 	private boolean isMage;
+	/**
+	 * The story stats for the character
+	 */
+	private StoryStats storyStats;
 
+	/**
+	 * Constructor for the player
+	 */
+	public Player() {
+		super();
+		this.storyStats = new StoryStats();
+	}
 	/**
 	 * Get the Character's Class
 	 * 
@@ -193,30 +204,11 @@ public abstract class Player extends CharacterSprites {
 		this.stats.setMaxHealth(health);
 	}
 
-	public int getBookEncounters() {
-		return this.bookEncounters;
+	public StoryStats getStoryStats() {
+		return this.storyStats;
 	}
-	public void setBookEncounters(int set) {
-		this.bookEncounters = set;
-	}
-	public void setNecEncounters(int set) {
-		this.necEncounters = set;
-	}
-
-	public int getNecEncounters() {
-		return this.necEncounters;
-	}
-	public void setBanditEncounters(int set) {
-		this.banditEncounters = set;
-	}
-	public int getBanditEncounters() {
-		return this.banditEncounters;
-	}
-	public void setVillagerConversations(int set) {
-		this.villagerConversations = set;
-	}
-	public int getVillagerConversations() {
-		return this.villagerConversations;
+	public void setStoryStats(StoryStats stats) {
+		this.storyStats = stats;
 	}
 
 	public boolean isWarrior() {

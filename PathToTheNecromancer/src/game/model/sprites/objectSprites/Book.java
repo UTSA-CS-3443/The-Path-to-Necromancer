@@ -19,6 +19,7 @@ import game.model.sprites.InteractionSprites;
 import game.model.sprites.player.Mage;
 import game.model.sprites.player.Player;
 import game.model.sprites.player.Rogue;
+import game.model.sprites.player.StoryStats;
 import game.model.sprites.player.Warrior;
 
 /**
@@ -142,7 +143,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 	@Override
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();
-		if (player.getBookEncounters() > 0) {
+		if (!player.getStoryStats().isBookEncounters()) {
 			graph.addNode("It's a book. It contains strange magical symbols.");
 			return graph;
 		}
@@ -285,9 +286,9 @@ public class Book extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				int i = player.getBookEncounters();
+				StoryStats stats = player.getStoryStats();
 				Warrior warrior = new Warrior();
-				warrior.setBookEncounters(i);
+				warrior.setStoryStats(stats);
 				manager.getMainScreen().setPlayer(warrior);
 			}
 
@@ -298,9 +299,9 @@ public class Book extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				int i = player.getBookEncounters();
+				StoryStats stats = player.getStoryStats();
 				Rogue rogue = new Rogue();
-				rogue.setBookEncounters(i);
+				rogue.setStoryStats(stats);
 				manager.getMainScreen().setPlayer(rogue);
 			}
 
@@ -311,9 +312,9 @@ public class Book extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				int i = player.getBookEncounters();
+				StoryStats stats = player.getStoryStats();
 				Mage mage = new Mage();
-				mage.setBookEncounters(i);
+				mage.setStoryStats(stats);
 				manager.getMainScreen().setPlayer(mage);
 
 			}

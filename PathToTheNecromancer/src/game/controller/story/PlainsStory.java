@@ -54,27 +54,27 @@ public class PlainsStory implements Actor{
 	@Override
 	public void act(float dt) {
 		// Start dialogue for the first time
-		if (player.getBanditEncounters() == 0 && player.getY() > 1160) {
+		if (player.getStoryStats().getBanditEncounters() == 0 && player.getY() > 1160) {
 			DialogueGraph graph = b1.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.setBanditEncounters(1);
+			player.getStoryStats().setBanditEncounters(1);
 		}
 		// The player continues along the unionization encounter
-		if(player.getBanditEncounters() == 3 && player.getY() > 1835) {
+		if(player.getStoryStats().getBanditEncounters() == 3 && player.getY() > 1835) {
 			player.addVelocity(new Vector2(0, 20), 1);
 			DialogueGraph graph = b6.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.setBanditEncounters(4);
+			player.getStoryStats().setBanditEncounters(4);
 		}
 		// Destroy the leader
-		if(player.getBanditEncounters() == 4) {
+		if(player.getStoryStats().getBanditEncounters() == 4) {
 			manager.getSprites().remove(b6);
 			world.destroyBody(b6.getBody());
 		}
 		// The Necromancer appears
-		if (player.getBanditEncounters() == 5) {
+		if (player.getStoryStats().getBanditEncounters() == 5) {
 			nec = new Necromancer();
 			nec.defineBody(world, 368, 1897);
 			nec.banditDialogue(true);
@@ -82,12 +82,13 @@ public class PlainsStory implements Actor{
 			DialogueGraph graph = nec.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.setBanditEncounters(6);
+			player.getStoryStats().setBanditEncounters(6);
 		}
 		// The Necromancr disappears
-		if (player.getBanditEncounters() == 7) {
+		if (player.getStoryStats().getBanditEncounters() == 7) {
 			manager.getSprites().remove(nec);
 			world.destroyBody(nec.getBody());
+			player.getStoryStats().setBanditEncounters(8);
 		}
 	}
 
@@ -106,7 +107,7 @@ public class PlainsStory implements Actor{
 		b4 = new Bandit();
 		b5 = new Bandit();
 		b6 = new Bandit();
-		if (player.getBanditEncounters() == 0)
+		if (player.getStoryStats().getBanditEncounters() == 0)
 			b1.defineBody(world, 368, 1245);
 		else
 			b1.defineBody(world, 473, 1275);

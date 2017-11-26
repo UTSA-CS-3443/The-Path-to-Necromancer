@@ -49,9 +49,9 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	}
 	@Override
 	public DialogueGraph getDialogue(Player player) {
-		if(player.getBanditEncounters() == 0)
+		if(player.getStoryStats().getBanditEncounters() == 0)
 			return getInitialBanditDialogue();
-		else if(player.getBanditEncounters() == 3)
+		else if(player.getStoryStats().getBanditEncounters() == 3)
 			return getLeaderSnippet();
 		else 
 			return getDefaultDialogue();
@@ -69,7 +69,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 			graph.addNode("You had better watch your back. It's dangerous out there.");
 			break;
 		case 1:
-			graph.addNode("okes about Communism have no Class. But jokes about java have some. I'm still usure about the communist java programmer.");
+			graph.addNode("Jokes about Communism have no Class. But jokes about java have some. I'm still usure about the communist java programmer.");
 			break;
 		}
 		
@@ -97,7 +97,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBanditEncounters(5);
+				player.getStoryStats().setBanditEncounters(5);
 			}
 			
 		});
@@ -106,7 +106,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.setBanditEncounters(5);
+				player.getStoryStats().setBanditEncounters(5);
 			}
 			
 		});
@@ -120,13 +120,13 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	 */
 	private DialogueGraph getInitialBanditDialogue() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("B: Be still traveler you are about to walk upon the land of bloody foot himself, and his mother was foot herself!"); // 0
+		graph.addNode("B: Be still traveler you are about to walk upon the land of Bloody Foot himself, and his mother was Foot herself!"); // 0
 		graph.addNode("P: I'm here as a representative for the badit/Don union"); // 1
 		graph.addNode("P: ow dare you speak to me bandit! I am the chosen one!"); // 2
 		graph.addNode("P: No need to worry, just passing through"); // 3
 		graph.addNode("B: The bandit/Don union?"); // 4
 		graph.addNode("P: We strive for equal shares in plunder for bandits everywhere!"); // 5 
-		graph.addNode("P: Indeed, we hasn't your camp joined?"); // 6
+		graph.addNode("P: Indeed, why hasn't your camp joined?"); // 6
 		graph.addNode("P: Yes, would you like to join?"); // 7
 		graph.addNode("B: Well, kinda, we don't even get dental..."); // 8 
 		graph.addNode("B: Oh, well, we never received any message from you."); // 9
@@ -237,7 +237,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 			public void act(Player player, MapManager manager) {
 				addVelocity(new Vector2(0, 15), 2);
 				addVelocity(new Vector2(20, 0), 5);
-				player.setBanditEncounters(2);
+				player.getStoryStats().setBanditEncounters(2);
 			}
 			
 		};
@@ -254,7 +254,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 			public void act(Player player, MapManager manager) {
 				addVelocity(new Vector2(0, 15), 2);
 				addVelocity(new Vector2(20, 0), 5);
-				player.setBanditEncounters(3);
+				player.getStoryStats().setBanditEncounters(3);
 			}
 			
 		});
@@ -294,10 +294,13 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		this.getBody().createFixture(fdef).setUserData(this);
 	}
 
+	
+	/**
+	 * Set the Texture values for the Bandit's animation.
+	 */
 	@Override
 	public void setTextureValues() {
 		
-		// Use the Guard animations until we have the player SpriteSheet
 		banditTexture = new Texture("EnemySprites/Bandit.png");
 		TextureRegion banditTextureRegion = new TextureRegion(banditTexture, 0, 0, banditTexture.getWidth(), banditTexture.getHeight());
 		Array<TextureRegion> banditRegions = new Array<TextureRegion>();
