@@ -7,6 +7,7 @@ import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.npc.ColorAndGender;
+import game.model.sprites.npc.Merchant;
 import game.model.sprites.npc.OogLag;
 import game.model.sprites.npc.Villagers;
 
@@ -140,5 +141,11 @@ public class InsideTavern extends GameMaps{
         villager5.addVelocity(new Vector2(-10,0), 1);
         villager5.defineBody(world, 775, 48);
         this.addSprite(villager5);
+        
+        Merchant merchant = new Merchant();
+        merchant.isVelocityLooping(false);
+        merchant.defineBody(world, 761, 210);
+        merchant.addVelocity(new Vector2(0,-10), 1);
+        this.addSprite(merchant);
     }
 }
