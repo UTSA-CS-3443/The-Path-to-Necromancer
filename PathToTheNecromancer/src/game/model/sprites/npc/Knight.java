@@ -203,38 +203,38 @@ public class Knight extends CharacterSprites {
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();
 		
-		graph.addNode("I AM THE NECROMANCER’S MOST TRUSTED SERVANT!"); // 0
-		graph.addNode("Cool!"); // 1
-		graph.addNode("YES IT IS VERY COOL, I HAVE SERVED HIM FOR MANY YEARS!"); // 2
-		graph.addNode("So that means you really know the guy huh?"); // 3
-		graph.addNode("YES WE ARE GOOD PALS"); // 4
-		graph.addNode("Are you though?"); // 5
-		graph.addNode("WHAT DO YOU MEAN?"); // 6
-		graph.addNode("I mean looking at things right now, he seems to hold all the power and here you are in a dusty suit of armor just sitting around."); // 7
-		graph.addNode("I AM HIS MOST POWERFUL SERVANT!"); // 8
-		graph.addNode("Even more powerful than him?"); // 9
-		graph.addNode("Then why serve him?"); // 10
-		graph.addNode("YES, WAIT, WHY SHOULD I SERVE WHEN I AM THE GREATER BEING!"); // 11
-		graph.addNode("Exactly you should open up your own castle and do your thing elsewhere, you know maybe you could use your immense power for good?"); // 12
-		graph.addNode("WHY WOULD I DO THAT?"); // 13
-		graph.addNode("Because deep down you still have a heart? Even if it is unbeating and cold and lifeless, it still has hopes for humans?"); // 14
-		graph.addNode("Being a hero has no pay, but I hear mercenary work pays well."); // 15
-		graph.addNode("PFFFFT, YEAH RIGHT DIE HERO"); // 16
-		graph.addNode("OOOH MONEY YOU SAY? FINE THANKS FOR THE TALK HERO"); // 17
-		graph.addNode("YOU KNOW NOT WHAT YOU SPEAK OF PREPARE FOR DEATH (trips and falls)"); // 18
-		graph.addNode("Pffft no you aren’t."); // 19
-		graph.addNode("WHAT? IF I AM NOT THEN WHO IS?"); // 20
-		graph.addNode("The don?"); // 21
-		graph.addNode("The hippie?"); // 22
-		graph.addNode("THE DON IS WORTHLESS AND MEASLY HE LEADS A SMALL BANDIT GROUP"); // 23
-		graph.addNode("THE HIPPIE IS WEAK AND ONLY WATCHES A VILLAGE WHILE I WATCH OVER THE ARMIES"); // 24
-		graph.addNode("That bandit group now has benefits though (only if bandit union)"); // 25
-		graph.addNode("The Don is weak I guess …"); // 26
-		graph.addNode("OOO BENEFITS? EVEN I DON’T HAVE THOSE, I GUESS I REALLY AREN’T THE MOST TRUSTED, I FEEL BETRAYED, MAYBE I SHOULD JOIN YOU AND BE A HERO?"); // 27
-		graph.addNode("What armies? I have been fighting only 1 enemy at a time. Poor coordination if you ask me."); // 28
-		graph.addNode("OOF, YOU WOUND ME HERO, MAYBE I SHOULD WHIP THEM INTO SHAPE?"); // 29
-		graph.addNode("Yeah you should do that now!"); // 30
-		graph.addNode("GOOD IDEA, THANK YOU HERO"); // 31
+		graph.addNode("K:I AM THE NECROMANCER’S MOST TRUSTED SERVANT!"); // 0
+		graph.addNode("P: Cool!"); // 1
+		graph.addNode("K: YES IT IS VERY COOL, I HAVE SERVED HIM FOR MANY YEARS!"); // 2
+		graph.addNode("P: So that means you really know the guy huh?"); // 3
+		graph.addNode("K: YES WE ARE GOOD PALS"); // 4
+		graph.addNode("P: Are you though?"); // 5
+		graph.addNode("K: WHAT DO YOU MEAN?"); // 6
+		graph.addNode("P: I mean looking at things right now, he seems to hold all the power and here you are in a dusty suit of armor just sitting around."); // 7
+		graph.addNode("K: I AM HIS MOST POWERFUL SERVANT!"); // 8
+		graph.addNode("P: Even more powerful than him?"); // 9
+		graph.addNode("P: Then why serve him?"); // 10
+		graph.addNode("K: YES, WAIT, WHY SHOULD I SERVE WHEN I AM THE GREATER BEING!"); // 11
+		graph.addNode("P: Exactly you should open up your own castle and do your thing elsewhere, you know maybe you could use your immense power for good?"); // 12
+		graph.addNode("K: WHY WOULD I DO THAT?"); // 13
+		graph.addNode("P: Because deep down you still have a heart? Even if it is unbeating and cold and lifeless, it still has hopes for humans?"); // 14
+		graph.addNode("P: Being a hero has no pay, but I hear mercenary work pays well."); // 15
+		graph.addNode("K: PFFFFT, YEAH RIGHT DIE HERO"); // 16
+		graph.addNode("K: OOOH MONEY YOU SAY? FINE THANKS FOR THE TALK HERO"); // 17
+		graph.addNode("K: YOU KNOW NOT WHAT YOU SPEAK OF PREPARE FOR DEATH *trips and falls*"); // 18
+		graph.addNode("P: Pffft no you aren’t."); // 19
+		graph.addNode("K: WHAT? IF I AM NOT THEN WHO IS?"); // 20
+		graph.addNode("P: The don?"); // 21
+		graph.addNode("P: The hippie?"); // 22
+		graph.addNode("K: THE DON IS WORTHLESS AND MEASLY HE LEADS A SMALL BANDIT GROUP"); // 23
+		graph.addNode("K: THE HIPPIE IS WEAK AND ONLY WATCHES A VILLAGE WHILE I WATCH OVER THE ARMIES"); // 24
+		graph.addNode("P: That bandit group now has benefits though."); // 25
+		graph.addNode("P: The Don is weak I guess …"); // 26
+		graph.addNode("K: OOO BENEFITS? EVEN I DON’T HAVE THOSE, I GUESS I REALLY AREN’T THE MOST TRUSTED, I FEEL BETRAYED, MAYBE I SHOULD JOIN YOU AND BE A HERO?"); // 27
+		graph.addNode("P: What armies? I have been fighting only 1 enemy at a time. Poor coordination if you ask me."); // 28
+		graph.addNode("K: OOF, YOU WOUND ME HERO, MAYBE I SHOULD WHIP THEM INTO SHAPE?"); // 29
+		graph.addNode("P: Yeah you should do that now!"); // 30
+		graph.addNode("K: GOOD IDEA, THANK YOU HERO"); // 31
 		
 		graph.addEdge(0,1);
 		graph.addEdge(1,2);		
@@ -258,11 +258,12 @@ public class Knight extends CharacterSprites {
 		graph.addEdge(19,20);
 		graph.addEdge(20,21);
 		graph.addEdge(21,23);
-		graph.addEdge(23,25);
+		// Dialogue 25 only occurs if the bandit union happened
+		if(player.getStoryStats().getBanditEncounters() > 3)
+			graph.addEdge(23,25);
 		graph.addEdge(25,27);
 		graph.addEdge(27,15);
 		graph.addEdge(23,26);
-		graph.addEdge(26,22);
 		graph.addEdge(22,24);
 		graph.addEdge(24,28);
 		graph.addEdge(28,29);

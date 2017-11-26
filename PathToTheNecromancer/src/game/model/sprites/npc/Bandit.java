@@ -93,7 +93,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.addEdge(2, 3);
 		graph.addEdge(3, 4);
 		
-		graph.getNode(1).addActor(new DialogueActor() {
+		graph.getNode(2).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
@@ -106,7 +106,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.getStoryStats().setBanditEncounters(5);
+				player.getStoryStats().setBanditEncounters(7);
 			}
 			
 		});

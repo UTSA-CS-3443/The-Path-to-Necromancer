@@ -69,12 +69,13 @@ public class PlainsStory implements Actor{
 			player.getStoryStats().setBanditEncounters(4);
 		}
 		// Destroy the leader
-		if(player.getStoryStats().getBanditEncounters() == 4) {
+		if(player.getStoryStats().getBanditEncounters() == 5) {
 			manager.getSprites().remove(b6);
 			world.destroyBody(b6.getBody());
+			player.getStoryStats().setBanditEncounters(6);
 		}
 		// The Necromancer appears
-		if (player.getStoryStats().getBanditEncounters() == 5) {
+		if (player.getStoryStats().getBanditEncounters() == 7) {
 			nec = new Necromancer();
 			nec.defineBody(world, 368, 1897);
 			nec.banditDialogue(true);
@@ -82,13 +83,13 @@ public class PlainsStory implements Actor{
 			DialogueGraph graph = nec.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.getStoryStats().setBanditEncounters(6);
+			player.getStoryStats().setBanditEncounters(8);
 		}
 		// The Necromancr disappears
-		if (player.getStoryStats().getBanditEncounters() == 7) {
+		if (player.getStoryStats().getBanditEncounters() == 9) {
 			manager.getSprites().remove(nec);
 			world.destroyBody(nec.getBody());
-			player.getStoryStats().setBanditEncounters(8);
+			player.getStoryStats().setBanditEncounters(10);
 		}
 	}
 
