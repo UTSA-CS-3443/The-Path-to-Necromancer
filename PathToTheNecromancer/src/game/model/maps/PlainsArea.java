@@ -205,7 +205,7 @@ public class PlainsArea extends GameMaps{
         super.addSprite(b7);
         
         Bandit b8 = new Bandit();
-        b8.defineBody(world, 318, 1595);
+        b8.defineBody(world, 318, 1605);
         super.addSprite(b8);
     }
 }

@@ -41,7 +41,7 @@ public class BillBoard extends GameSprites implements InteractionSprites {
 	@Override
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("Welcoome to Oog-Lag's Tavern! Finest establishment in all of Niarzul."); 
+		graph.addNode("Welcome to Oog-Lag's Tavern! Finest establishment in all of Niarzul."); 
 		return graph;
 	}
 

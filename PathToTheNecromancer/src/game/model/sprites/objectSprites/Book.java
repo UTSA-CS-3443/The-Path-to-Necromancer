@@ -151,19 +151,19 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		graph.addNode("It is a book..."); // 1
 		graph.addNode("P: Walk away."); // 2
 		graph.addNode("P: Read book."); // 3
-		graph.addNode("Bk: Hey man, where are you going? Don't you want to read me?"); // 4
+		graph.addNode("Book: Hey man, where are you going? Don't you want to read me?"); // 4
 		graph.addNode("P: Continue walking away from the now talking book."); // 5
-		graph.addNode("Bk: Wait. Where are you going? You have to read me!"); // 6
+		graph.addNode("Book: Wait. Where are you going? You have to read me!"); // 6
 		graph.addNode("P: Continue to walk away."); // 7
 		graph.addNode("P: Go back and read weird book."); // 8
 		graph.addNode("P: Reading is for the weak."); // 9
-		graph.addNode("Bk: YOU THINK YOU ARE GOING TO ESCAPE FROM ME?! YOU WILL READ ME!"); // 10
-		graph.addNode("Bk: Yeah man, just come read me. Pry me open."); // 11
+		graph.addNode("Book: YOU THINK YOU ARE GOING TO ESCAPE FROM ME?! YOU WILL READ ME!"); // 10
+		graph.addNode("Book: Yeah man, just come read me. Pry me open."); // 11
 		graph.addNode(
-				"Bk: OH IT'S GOING TO BE LIKE THAT THEN! LET'S GO YOU LITTLE JERK! YOU'RE LUCKY I AM ONLY ABLE TO USE G-RATED LANGUAGE!"); // 12
+				"Book: OH IT'S GOING TO BE LIKE THAT THEN! LET'S GO YOU LITTLE JERK! YOU'RE LUCKY I AM ONLY ABLE TO USE G-RATED LANGUAGE!"); // 12
 		graph.addNode("P: Read talking book."); // 13
-		graph.addNode("Bk: Phew, good thing I said something. It's dangerous out there."); // 14
-		graph.addNode("Bk: What are you?"); // 15
+		graph.addNode("Book: Phew, good thing I said something. It's dangerous out there."); // 14
+		graph.addNode("Book: What are you?"); // 15
 		graph.addNode("P: I am a Warrior: my strength is my greatest asset."); // 16
 		graph.addNode("P: I am a Rogue: speed guides my hand."); // 17
 		graph.addNode("P: I am a Mage: outwitting my foes is what I do."); // 18

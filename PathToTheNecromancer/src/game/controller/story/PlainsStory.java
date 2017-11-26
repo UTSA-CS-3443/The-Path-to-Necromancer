@@ -63,10 +63,10 @@ public class PlainsStory implements Actor{
 		// The player continues along the unionization encounter
 		if(player.getStoryStats().getBanditEncounters() == 3 && player.getY() > 1835) {
 			player.addVelocity(new Vector2(0, 20), 1);
+			player.getStoryStats().setBanditEncounters(4);
 			DialogueGraph graph = b6.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.getStoryStats().setBanditEncounters(4);
 		}
 		// Destroy the leader
 		if(player.getStoryStats().getBanditEncounters() == 5) {

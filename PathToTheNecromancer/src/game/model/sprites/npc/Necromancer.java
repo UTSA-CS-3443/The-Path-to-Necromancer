@@ -198,11 +198,11 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 	 */
 	private DialogueGraph getFirstEncounter() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("N: Hello there mortals. I am a mighty Necromancer. Here to see the new opponent. And I ..."); // 0
+		graph.addNode("Necromancer: Hello there mortals. I am a mighty Necromancer. Here to see the new opponent. And I ..."); // 0
 		graph.addNode("*You are unable to hear him as the thunder from outside is too loud*"); // 1
-		graph.addNode("N: MUAHAHA and I \"CRASH\" will murder \"BOOM\" puppies, kittens, none shall escape \"KERSHACK\" and I will..."); // 2
+		graph.addNode("Necromancer: MUAHAHA and I *CRASH* will murder *BOOM* puppies, kittens, none shall escape *KERSHACK* and I will..."); // 2
 		graph.addNode("*Thunder booms again*"); // 3
-		graph.addNode("N: Farewell you fools! MUAHAHA"); // 4
+		graph.addNode("Necromancer: Farewell you fools! MUAHAHA"); // 4
 		
 		// add edges 
 		graph.addEdge(0, 1);
@@ -227,36 +227,36 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 	 */
 	private DialogueGraph getUnionization() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("N: Whoa, whoa, whoa, what's going on here? You should be killing each other right now?!!"); // 0
+		graph.addNode("Necromancer: Whoa, whoa, whoa, what's going on here? You should be killing each other right now?!!"); // 0
 		graph.addNode("P: We have moved past senselless killing ever since Bloody Foot willingly abdicated the throne."); // 1
 		graph.addNode("P: We seizing the means of plundering."); // 2
 		graph.addNode("P: *hide behind slightly larger bandit*"); // 3
-		graph.addNode("N: You killed him?"); // 4
-		graph.addNode("N: My goodness, you made the badits into communists?!"); // 5
-		graph.addNode("N: I still see you. Get out here."); // 6
+		graph.addNode("Necromancer: You killed him?"); // 4
+		graph.addNode("Necromancer: My goodness, you made the badits into communists?!"); // 5
+		graph.addNode("Necromancer: I still see you. Get out here."); // 6
 		graph.addNode("P: No, why would you think that?"); // 7
 		graph.addNode("P: \'Kill\' is such a strong word. What about, \'Passed away forcibly?\'"); // 8
 		graph.addNode("P: Yes"); // 9
-		graph.addNode("N: He's absent and I saw a mysterious grave that wasn't here yesterday."); // 10
+		graph.addNode("Necromancer: He's absent and I saw a mysterious grave that wasn't here yesterday."); // 10
 		graph.addNode("P: Really? How strange I must say!"); // 11
-		graph.addNode("N: *sigh* I don't have time for this. Just to let you all know, I will not be paying you and will leave a negative review on Yelp."); // 12
+		graph.addNode("Necromancer: *sigh* I don't have time for this. Just to let you all know, I will not be paying you and will leave a negative review on Yelp."); // 12
 		graph.addNode("P: You don't have the guts!"); // 13
 		graph.addNode("P: I pushed these bandits towards the future of equal work, employment, and wages!"); // 14
 		graph.addNode("P: I don't make them into Russians, sheesh, we all agreed to be Mexican from now on. We're done being Italian."); // 15
-		graph.addNode("N: Why the heck Mexicans??"); // 16
+		graph.addNode("Necromancer: Why the heck Mexicans??"); // 16
 		graph.addNode("P: They have better hats... and tacos."); // 17
 		graph.addNode("P: Wouldn't you want to know?"); // 18
 		graph.addNode("P: *whisper to bandit* Ha! Look at this greengo!"); // 19
 		graph.addNode("P: Come get me if you dare!");
 		graph.addNode("P: Sounds like someone is jealous."); // 21
-		graph.addNode("N: So, communism?"); // 22
+		graph.addNode("Necromancer: So, communism?"); // 22
 		graph.addNode("P: You do know that I'm able to obliterate all that stand in front of me right?"); // 23
-		graph.addNode("N: Yes I would. I really want to know."); // 24
+		graph.addNode("Necromancer: Yes I would. I really want to know."); // 24
 		graph.addNode("P: Well too bad!"); // 25
-		graph.addNode("N: Esta deletreado \'gringo!\'"); // 26
+		graph.addNode("Necromancer: Esta deletreado \'gringo!\'"); // 26
 		graph.addNode("P: Sorry, we don't speak that language here greengo."); // 27
 		graph.addNode("P: *continue hiding behind bandit*"); // 28
-		graph.addNode("N: I said get out here now!"); // 29
+		graph.addNode("Necromancer: I said get out here now!"); // 29
 		graph.addNode("P: *continue hiding*"); // 30
 		
 		// add the edges

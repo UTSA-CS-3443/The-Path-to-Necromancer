@@ -170,26 +170,26 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 		DialogueGraph dialogueGraph = new DialogueGraph();
 
 		// create the nodes in the graph
-		dialogueGraph.addNode("O: Why hello there sir! How can I help you today?"); // 0
+		dialogueGraph.addNode("Oog-Lag: Why hello there sir! How can I help you today?"); // 0
 		dialogueGraph.addNode("P: Where am I?"); // 1
 		dialogueGraph.addNode("P: Who are you?"); // 2
 		dialogueGraph.addNode("P: Give me your finest beer!"); // 3
 		dialogueGraph.addNode(
-				"O: Well, you, my fine sir, are in the land Niarzul, land of adventure, gold, and very convenient plot devices."); // 4
+				"Oog-Lag: Well, you, my fine sir, are in the land Niarzul, land of adventure, gold, and very convenient plot devices."); // 4
 		dialogueGraph.addNode("P: What is there to do around here?"); // 5
 		dialogueGraph.addNode("P: Know where I can get some weapons?"); // 6
 		dialogueGraph
-				.addNode("O: Well mostly drink, talk, and give out the occasional quest!... Well what do we have here? "); // 7
+				.addNode("Oog-Lag: Well mostly drink, talk, and give out the occasional quest!... Well what do we have here? "); // 7
 		dialogueGraph.addNode(
-				"O: Well normally you could talk to the nearest merchant. Thanks to the monsters, however, merchants don't go through here anymore."); // 8
-		dialogueGraph.addNode("O: Coming right up! That'll be 20 gold and I am going to have to see your license."); // 9
+				"Oog-Lag: Well normally you could talk to the nearest merchant. Thanks to the monsters, however, merchants don't go through here anymore."); // 8
+		dialogueGraph.addNode("Oog-Lag: Coming right up! That'll be 20 gold and I am going to have to see your license."); // 9
 		dialogueGraph.addNode("P: You know what? Nevermind."); // 10
 		dialogueGraph.addNode("P: *Give license*"); // 11
-		dialogueGraph.addNode("O: *Laughs* Alrighty then, have some milk. ON THE HOUSE!"); // 12
-		dialogueGraph.addNode("O: This license is obviously fake. You crudely drew in a signature with a crayon."); // 13
+		dialogueGraph.addNode("Oog-Lag: *Laughs* Alrighty then, have some milk. ON THE HOUSE!"); // 12
+		dialogueGraph.addNode("Oog-Lag: This license is obviously fake. You crudely drew in a signature with a crayon."); // 13
 		dialogueGraph.addNode("P: Hey you can't blame a man for trying!"); // 14
-		dialogueGraph.addNode("O: *Chuckles* guess not"); // 15
-		dialogueGraph.addNode("O: Well I'm Oog-Lag, the keeper of Oog-Lag tavern."); // 16
+		dialogueGraph.addNode("Oog-Lag: *Chuckles* guess not"); // 15
+		dialogueGraph.addNode("Oog-Lag: Well I'm Oog-Lag, the keeper of Oog-Lag tavern."); // 16
 
 		// add the edges to the graph
 		dialogueGraph.addEdge(0, 1);
@@ -227,12 +227,12 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 	 */
 	private DialogueGraph getDefaultDialogue() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("No need to feel scared young adventurer."); // 0
-		graph.addNode("\"What did he say?\""); // 1
+		graph.addNode("Oog-Lag:No need to feel scared young adventurer."); // 0
+		graph.addNode("P: What did he say?"); // 1
 		graph.addNode(
-				"Gah, nothing. Just some stuff about murdering you, hanging you from the rafters. You know, normal Necromancer stuff."); // 2
-		graph.addNode("\"What should I do?\""); // 3
-		graph.addNode("Well, I say go after him. He's probably just lonely."); // 4
+				"Oog-Lag: Gah, nothing. Just some stuff about murdering you, hanging you from the rafters. You know, normal Necromancer stuff."); // 2
+		graph.addNode("P: What should I do?"); // 3
+		graph.addNode("Oog-Lag: Well, I say go after him. He's probably just lonely."); // 4
 
 		// add edges
 		graph.addEdge(0, 1);
