@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
+import game.model.DialogueGraph;
 import game.model.sprites.CharacterSprites;
 
 /**
@@ -183,5 +184,40 @@ public class Merchant extends CharacterSprites {
 		rect.set(vertice);
 		fdef.shape = rect;
 		this.getBody().createFixture(fdef).setUserData(this);
+	}
+	private DialogueGraph getSetDialogue() {
+		DialogueGraph graph = new DialogueGraph();
+	
+		graph.addNode("What do you want weak-looking fool?"); // 0 
+		graph.addNode("Are you always this rude to people you just meet?"); // 1
+		graph.addNode("Of course not, I'm only rude to puny, annoying, and stupid looking people like yourself!"); // 2
+		graph.addNode("Think I can ask you a few questions?"); // 3
+		graph.addNode("I don't have time to answer ye stupid questions, go ask Oog-lag."); // 4
+		graph.addNode("*Look around* Did somebody say something?"); // 5
+		graph.addNode("I'm down here you little smaratleck!"); // 6
+		graph.addNode("Oh shoot, I didn't see you there..."); // 7
+		graph.addNode("*Continue looking around* It's almost as if I hear a small creature attempting to talk to me..."); // 8
+		graph.addNode("You're asking for it now sonny, I'll clobber you into another dimension"); // 9
+		graph.addNode("Oh I'm so scared, what are you going to do? Jump up and kick me in the knee?" ); // 10
+		graph.addNode("No, I'll kick ye in your jewlery case so hard that the children of your children will be feeling you mistake!"); // 11
+		graph.addNode("Nevermind, I'll leave you alone."); // 12
+		graph.addNode("You better be, now leave me alone!"); // 13
+		
+		graph.addEdge(0,1);
+		graph.addEdge(1,2);
+		graph.addEdge(0,3);
+		graph.addEdge(3,4);
+		graph.addEdge(0,5);
+		graph.addEdge(5,6);
+		graph.addEdge(6,7);
+		graph.addEdge(6,8);
+		graph.addEdge(7,9);
+		graph.addEdge(8,9);
+		graph.addEdge(9,10);
+		graph.addEdge(10,11);
+		graph.addEdge(9,12);
+		graph.addEdge(12,13);
+		
+		return graph;
 	}
 }

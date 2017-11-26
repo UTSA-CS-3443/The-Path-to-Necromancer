@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -12,6 +13,8 @@ import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.ObjectSprites;
+import game.model.sprites.npc.ColorAndGender;
+import game.model.sprites.npc.Villagers;
 
 /** 
  * Right side of the mountain map 
@@ -169,6 +172,53 @@ public class MountainRight extends GameMaps {
         this.addSprite(new ObjectSprites(T5, 874, height - 2357));
         this.addSprite(new ObjectSprites(T5, 970, height - 2333));
         this.addSprite(new ObjectSprites(T5, 1070, height - 2313));
+        
+        Villagers villager1 = new Villagers(ColorAndGender.BLUE,ColorAndGender.FEMALE);
+        villager1.isVelocityLooping(false);
+        villager1.addVelocity(new Vector2(0,-10), 1);
+        villager1.defineBody(world, 279, 2269);
+        this.addSprite(villager1);
+        
+        Villagers villager2 = new Villagers(ColorAndGender.RED,ColorAndGender.FEMALE);
+        villager2.isVelocityLooping(false);
+        villager2.addVelocity(new Vector2(0,-10), 1);
+        villager2.defineBody(world, 483, 2308);
+        this.addSprite(villager2);
+        
+        Villagers villager3 = new Villagers(ColorAndGender.BLUE,ColorAndGender.MALE);
+        villager3.isVelocityLooping(true);
+        villager3.addVelocity(new Vector2(0,-25), 9);
+        villager3.addVelocity(new Vector2(0,25), 9);
+        villager3.defineBody(world, 863, 2279);
+        this.addSprite(villager3);
+        
+        Villagers villager4 = new Villagers(ColorAndGender.BROWN,ColorAndGender.FEMALE);
+        villager4.isVelocityLooping(true);
+        villager4.addVelocity(new Vector2(-20,0), 6);
+        villager4.addVelocity(new Vector2(20,0), 6);
+        villager4.defineBody(world, 810, 2046);
+        this.addSprite(villager4);
+        
+        Villagers villager5 = new Villagers(ColorAndGender.GREEN,ColorAndGender.MALE);
+        villager5.isVelocityLooping(false);
+        villager5.addVelocity(new Vector2(0,-10), 1);
+        villager5.defineBody(world, 638, 2030);
+        this.addSprite(villager5);
+        
+        Villagers villager6 = new Villagers(ColorAndGender.BLACK,ColorAndGender.FEMALE);
+        villager6.isVelocityLooping(false);
+        villager6.addVelocity(new Vector2(0,-10), 1);
+        villager6.defineBody(world, 353, 2057);
+        this.addSprite(villager6);
+        
+        Villagers villager7 = new Villagers(ColorAndGender.WHITE,ColorAndGender.MALE);
+        villager7.isVelocityLooping(true);
+        villager7.addVelocity(new Vector2(0,-25), 4);
+        villager7.addVelocity(new Vector2(25,0), 4);
+        villager7.addVelocity(new Vector2(0,25), 4);
+        villager7.addVelocity(new Vector2(-25,0), 4);
+        villager7.defineBody(world, 179, 1958);
+        this.addSprite(villager7);
     }
    
 

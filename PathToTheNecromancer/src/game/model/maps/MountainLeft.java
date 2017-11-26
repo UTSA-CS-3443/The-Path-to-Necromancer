@@ -170,21 +170,25 @@ public class MountainLeft extends GameMaps {
         
         
         Villagers villager1 = new Villagers(ColorAndGender.BLUE,ColorAndGender.MALE);
-        villager1.isVelocityLooping(false);
-        villager1.addVelocity(new Vector2(10,0), 1);
+        villager1.isVelocityLooping(true);
+        villager1.addVelocity(new Vector2(10,0), 4);
+        villager1.addVelocity(new Vector2(-10,0), 4);
         villager1.defineBody(world, 347, 202);
         this.addSprite(villager1);
         
         Villagers villager2 = new Villagers(ColorAndGender.RED,ColorAndGender.FEMALE);
         villager2.isVelocityLooping(false);
         villager2.addVelocity(new Vector2(0,-10), 1);
-        villager2.defineBody(world, 598, 412);
+        villager2.defineBody(world, 779, 533);
         this.addSprite(villager2);
         
         Villagers villager3 = new Villagers(ColorAndGender.GREEN,ColorAndGender.FEMALE);
-        villager3.isVelocityLooping(false);
-        villager3.addVelocity(new Vector2(0,-10), 1);
-        villager3.defineBody(world, 726, 421);
+        villager3.isVelocityLooping(true);
+        villager3.addVelocity(new Vector2(0,-30), 6);
+        villager3.addVelocity(new Vector2(-30,0), 8);
+        villager3.addVelocity(new Vector2(0,30), 6);
+        villager3.addVelocity(new Vector2(30,0), 8);
+        villager3.defineBody(world, 726, 465);
         this.addSprite(villager3);
         
         Villagers villager4 = new Villagers(ColorAndGender.WHITE,ColorAndGender.MALE);
@@ -234,5 +238,28 @@ public class MountainLeft extends GameMaps {
         villager11.addVelocity(new Vector2(0,-10), 1);
         villager11.defineBody(world, 119, 280);
         this.addSprite(villager11);
+        
+        Villagers villager12 = new Villagers(ColorAndGender.BLACK,ColorAndGender.MALE);
+        villager12.isVelocityLooping(true);
+        villager12.addVelocity(new Vector2(0,-25), 6);
+        villager12.addVelocity(new Vector2(0,25), 6);
+        villager12.defineBody(world, 492, 1071);
+        this.addSprite(villager12);
+        
+        Villagers villager13 = new Villagers(ColorAndGender.RED,ColorAndGender.MALE);
+        villager13.isVelocityLooping(true);
+        villager13.addVelocity(new Vector2(20,0), 8);
+        villager13.addVelocity(new Vector2(-20,0), 8);
+        villager13.defineBody(world, 138, 951);
+        this.addSprite(villager13);
+        
+        Villagers villager14 = new Villagers(ColorAndGender.WHITE,ColorAndGender.FEMALE);
+        villager14.isVelocityLooping(true);
+        villager14.addVelocity(new Vector2(0,-35), 4);
+        villager14.addVelocity(new Vector2(0,35), 4);
+        villager14.defineBody(world, 211, 1198);
+        this.addSprite(villager14);
+        
+        
     }
 }
