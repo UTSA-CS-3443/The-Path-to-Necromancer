@@ -245,10 +245,10 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.getNode(16).addActor(actor);
 		graph.getNode(23).addActor(actor);
 		graph.getNode(35).addActor(actor);
-		graph.getNode(40).addActor(actor);
+		graph.getNode(41).addActor(actor);
 		graph.getNode(47).addActor(actor);
 		graph.getNode(48).addActor(actor);
-		graph.getNode(51).addActor(actor);
+		graph.getNode(52).addActor(actor);
 		graph.getNode(21).addActor(new DialogueActor() {
 			@Override
 			public void act(Player player, MapManager manager) {
