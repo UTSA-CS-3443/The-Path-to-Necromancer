@@ -28,7 +28,7 @@ static public void saveGame(Savestate save) throws IOException {
 	    }
 	}
 	try {
-		fos = new FileOutputStream("Saves/save1.txt");
+		fos = new FileOutputStream("Saves/" + save.getSaveLabel());
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

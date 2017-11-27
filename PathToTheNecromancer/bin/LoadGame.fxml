@@ -7,10 +7,13 @@
 
 <AnchorPane fx:id="loadGameButton" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFX.controller.LoadGameController">
    <children>
-      <Button fx:id="loadGame" layoutX="61.0" layoutY="316.0" mnemonicParsing="false" onAction="#handle" text="Load Game" />
+      <Button fx:id="loadGame" layoutX="50.0" layoutY="316.0" mnemonicParsing="false" onAction="#handle" text="Load Game" />
       <Button fx:id="cancelButton" layoutX="277.0" layoutY="316.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
-      <ToggleButton fx:id="save1" layoutX="145.0" layoutY="51.0" mnemonicParsing="false" text="Save1" />
-      <ToggleButton fx:id="save2" layoutX="145.0" layoutY="122.0" mnemonicParsing="false" text="Save2" />
-      <ToggleButton fx:id="save3" layoutX="145.0" layoutY="200.0" mnemonicParsing="false" text="Save3" />
+      <ToggleButton fx:id="save1" layoutX="165.0" layoutY="25.0" mnemonicParsing="false" text="Save not Available" />
+      <ToggleButton fx:id="save2" layoutX="165.0" layoutY="80.0" mnemonicParsing="false" text="Save not Available" />
+      <ToggleButton fx:id="save3" layoutX="165.0" layoutY="124.0" mnemonicParsing="false" text="Save not Available" />
+      <ToggleButton fx:id="save4" layoutX="166.0" layoutY="165.0" mnemonicParsing="false" text="Save not Available" />
+      <ToggleButton fx:id="save5" layoutX="166.0" layoutY="210.0" mnemonicParsing="false" text="Save not Available" />
+      <Button fx:id="deleteButton" layoutX="174.0" layoutY="316.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
    </children>
 </AnchorPane>

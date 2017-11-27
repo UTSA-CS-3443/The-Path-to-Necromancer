@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import game.controller.MenuController;
 import game.controller.ScreenManager;
+import game.model.Savestate;
 import game.model.sprites.player.Player;
 import javaFX.model.Settings;
 
@@ -42,17 +43,19 @@ public class Menu implements Screen {
 
 	/**
 	 * Create the menu screen
+	 * @param save 
 	 * 
 	 * @param screen
 	 *            is the PlayScreen the user is on
 	 * @param game
 	 *            is the main game class
 	 */
-	public Menu(ScreenManager screenManager) {
+	public Menu(ScreenManager screenManager, Savestate save) {
 		this.screenManager = screenManager;
 		this.player = screenManager.getPlayer();
 		this.viewport = screenManager.getViewport();
 		this.controller = new MenuController(this);
+		this.controller.setSave(save);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package javaFX.controller;
 import java.awt.EventQueue;
+import java.io.File;
 import java.io.IOException;
 
 
@@ -19,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
+import javafx.stage.Stage;
 
 /**
  * Controller for the MainMenu
@@ -77,15 +79,38 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	/**
 	 * starts the game
 	 */
-   @Override public void handle(ActionEvent e) {
+   @Override public void handle(ActionEvent event) {
 	   		this.settings.setNewGame(true);
+	   		File theDir = new File("Saves");
+	   		 if(theDir.exists() && theDir.listFiles().length == 5) {
+	   			FXMLLoader loader = new FXMLLoader();
+	   			Stage test = new Stage();
+	   			loader.setLocation(DesktopLauncher.class.getResource("/SaveError.fxml"));
+	   			try {	
+	   				this.settingMenu = loader.load();
+	   				this.settingMenu.setBackground(bkImg);
+	   				
+	   			} catch (IOException e) {
+	   				// TODO Auto-generated catch block
+	   				e.printStackTrace();
+	   			}	
+	   			scene = new Scene(settingMenu,400,400);
+	   			((SaveErrorController)loader.getController()).setSettings(settings);
+	   			((SaveErrorController)loader.getController()).setBkImg(bkImg);
+	   			((SaveErrorController)loader.getController()).isItPancakes(isPancakes);
+	   			test.setScene(scene);
+	   			test.show();
+	   			
+	   		} else {
 	        DesktopLauncher.theStage.close();
 	   		showSplashScreen();
 		    launchGame();
 		    EventQueue.invokeLater(new SplashScreenCloser());
+	   		}
+	   		
 	    }
    /**
-    * lanches the game
+    * launches the game
     */
 	private void launchGame() {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

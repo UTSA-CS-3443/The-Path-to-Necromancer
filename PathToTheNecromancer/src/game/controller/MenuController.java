@@ -491,8 +491,15 @@ public class MenuController {
 		saveButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				if(save == null) {
 				save = new Savestate(player.getX(), player.getY(), menu.getMapName(),
 						menu.getSettings(), player.isWarrior(), player.isRogue(), player.isMage());
+				} else {
+					save.setplayerX(player.getX());
+					save.setplayerY(player.getY());
+					save.setMap(menu.getMapName());
+					save.setSetting(menu.getSettings());
+				}
 				try {
 					SaveGame.saveGame(save);
 				} catch (IOException e) {
@@ -713,6 +720,14 @@ public class MenuController {
 		this.buttonAtlas1.dispose();
 		if (this.buttonAtlas2 != null)
 			this.buttonAtlas2.dispose();
+	}
+
+	public Savestate getSave() {
+		return save;
+	}
+
+	public void setSave(Savestate save) {
+		this.save = save;
 	}
 
 }

@@ -39,7 +39,10 @@ public class ScreenManager {
 	 * The CurrentScreen that the ScreenManager is rendering
 	 */
 	private Screen currentScreen;
-
+	/**
+	 * the current save for the game
+	 */
+	private Savestate save;
 	/**
 	 * Create and initialize important values in the ScreenManager
 	 * 
@@ -52,6 +55,7 @@ public class ScreenManager {
 	public ScreenManager(PathToNecromancer game, Savestate save) {
 		this.game = game;
 		this.mainScreen = new PlayScreen(this, save);
+		this.save = save;
 		this.currentScreen = this.mainScreen;
 		this.mainInputProcessor = mainScreen.getInputProcessor();
 		this.toMainScreen();
@@ -61,7 +65,7 @@ public class ScreenManager {
 	 * Set the menu as the current screen
 	 */
 	public void setMenu() {
-		this.currentScreen = new Menu(this);
+		this.currentScreen = new Menu(this,save);
 		this.setScreen();
 	}
 

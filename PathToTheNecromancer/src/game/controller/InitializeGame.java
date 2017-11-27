@@ -121,7 +121,7 @@ public class InitializeGame {
        
 		Constructor ct = c.getConstructor(MapManager.class);
         // Simply load up the first map. 
-		this.screen.getMapManager().setMap((GameMaps)(ct.newInstance(this.screen.getMapManager())), (save.getplayerX()), (save.getplayerY()+20));
+		this.screen.getMapManager().setMap((GameMaps)(ct.newInstance(this.screen.getMapManager())), (save.getplayerX()), (save.getplayerY()));
 		
     }
 		

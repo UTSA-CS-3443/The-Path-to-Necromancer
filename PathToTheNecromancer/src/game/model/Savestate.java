@@ -1,5 +1,6 @@
 package game.model;
 
+import java.io.File;
 import java.io.Serializable;
 
 import javaFX.model.Settings;
@@ -9,6 +10,10 @@ public class Savestate implements Serializable {
 	 * serial ID
 	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * The id of the save file
+	 */
+	private String saveLabel;
 	/**
 	 * The player's x coordinate
 	 */
@@ -50,6 +55,7 @@ public class Savestate implements Serializable {
 	public Savestate(float playerX, float playerY, String map, Settings setting, boolean isWarrior, boolean isRogue,
 			boolean isMage) {
 		super();
+		generateSaveId(setting);
 		this.playerX = playerX;
 		this.playerY = playerY;
 		this.map = map;
@@ -58,6 +64,33 @@ public class Savestate implements Serializable {
 		this.isRogue = isRogue;
 		this.isMage = isMage;
 	}
+	private void generateSaveId(Settings setting) {
+		File theDir = new File("Saves");
+		if(!theDir.exists()) {   
+			   this.saveLabel = "save1.txt";
+			   return;		
+		}
+			File[] listOfFiles = theDir.listFiles();
+			if(listOfFiles.length == 0) {
+				this.saveLabel = "save1.txt";
+				return;
+			} else if (listOfFiles.length == 5) {
+				this.saveLabel = "save5.txt";
+			}
+			for(int i = 0; i < listOfFiles.length; i++) {
+				if(("save"+ (i + 1) +".txt").equals(listOfFiles[i].getName())) {
+					continue;
+				}
+				this.saveLabel = "save"+ (i + 1) +".txt";
+				break;
+			}
+			if(this.saveLabel == null){
+			   this.saveLabel = "save"+ (listOfFiles.length+ 1) +".txt";
+			}
+			
+		  setting.setNewGame(false);
+		}
+		
 	/*
 	 * Gets the player's X  coordinate 
 	 *  @return the player's x value
@@ -77,6 +110,8 @@ public class Savestate implements Serializable {
 	 * @return the player's x value
 	 */
 	public int getplayerY() {
+		if(playerY < 50)
+			return (int) Math.ceil(playerY);
 		return (int) playerY;
 	}
 	/**
@@ -156,6 +191,19 @@ public class Savestate implements Serializable {
 	 */
 	public void setMage(boolean isMage) {
 		this.isMage = isMage;
+	}
+	/**
+	 * gets the id of the save file
+	 * @return the id of the save file
+	 */
+	public String getSaveLabel() {
+		return saveLabel;
+	}
+	/**
+	 * 
+	 */
+	public void setSaveLabel(String saveLabel) {
+		this.saveLabel = saveLabel;
 	}
 	
 }

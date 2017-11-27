@@ -1,14 +1,14 @@
 package javaFX.controller;
 
-import java.io.Externalizable;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInput;
+
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,11 +37,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 /**
- * Controller for the load class
+ * Controller for the LoadGame.fxml
  * @author HangedDragon96
  *
  */
-public class LoadGameController implements Externalizable, EventHandler<ActionEvent>{
+public class LoadGameController implements EventHandler<ActionEvent>{
 
 @FXML
 /**
@@ -60,21 +60,14 @@ private ToggleButton save2 = new ToggleButton();
 private ToggleButton save3 = new ToggleButton();
 @FXML
 /**
- * Save 1 toggle button
+ * Save 4 toggle button
  */
-private Label save1Date = new Label();
+private ToggleButton save4 = new ToggleButton();
 @FXML
 /**
- * Save 2 Date Labels
+ * Save 5 toggle button
  */
-private Label save2Date = new Label();
-/**
- * Save 3 Date labels
- */
-@FXML
-private Label save3Date = new Label();
-
-
+private ToggleButton save5 = new ToggleButton();
 
 /**
  * the toggle group the the 3 save buttons
@@ -85,6 +78,11 @@ private ToggleGroup saveGroup = new ToggleGroup();
  */
 @FXML
 private Button loadGame = new Button();
+/**
+ * delete Button
+ */
+@FXML
+private Button deleteButton = new Button();
 /**
  * cancel Button
  */
@@ -140,6 +138,16 @@ public void handle(ActionEvent event) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
 	    DesktopLauncher.theStage.close();
+	}else if (this.saveGroup.getSelectedToggle().equals(save4)){
+		save = load("save4.txt");
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+	    DesktopLauncher.theStage.close();
+	}else if (this.saveGroup.getSelectedToggle().equals(save5)){
+		save = load("save5.txt");
+		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+	    DesktopLauncher.theStage.close();
 	}
 
 	
@@ -180,6 +188,51 @@ private Savestate load(String saveName) {
 public void cancel() {
 	DesktopLauncherMenu();	
 }
+/**
+ * deletes a save file based on a toggle button
+ */
+	@FXML
+	public void delete() {
+		File theDir = null;
+		if (this.saveGroup.getSelectedToggle().equals(save1)) {
+			theDir = new File("Saves/save1.txt");
+			if (theDir.delete()) {
+				this.save1.setText("Save not Available");
+
+			}
+
+		} else if (this.saveGroup.getSelectedToggle().equals(save2)) {
+			theDir = new File("Saves/save2.txt");
+			if (theDir.delete()) {
+				this.save2.setText("Save not Available");
+			}
+			
+
+		} else if (this.saveGroup.getSelectedToggle().equals(save3)) {
+			theDir = new File("Saves/save3.txt");
+			if (theDir.delete()) {
+				this.save3.setText("Save not Available");
+			}
+			
+
+		} else if (this.saveGroup.getSelectedToggle().equals(save4)) {
+			theDir = new File("Saves/save4.txt");
+			if (theDir.delete()) {
+				this.save4.setText("Save not Available");
+			}
+			
+
+		} else if (this.saveGroup.getSelectedToggle().equals(save5)) {
+			theDir = new File("Saves/save5.txt");
+			if (theDir.delete()) {
+				this.save5.setText("Save not Available");
+			}
+			
+
+		}
+
+	}
+
 
 /** 
  * goes back to main menu
@@ -218,6 +271,9 @@ public void setSettings(Settings settings) {
 	this.settings = settings;
 	
 }
+/**
+ * sets up the load menu before its displayed
+ */
 @FXML
 	public void initialize() {
 	loadSetup();
@@ -230,38 +286,37 @@ public void setSettings(Settings settings) {
 		this.save1.setToggleGroup(saveGroup);
 	    this.save2.setToggleGroup(saveGroup);
 	    this.save3.setToggleGroup(saveGroup);
+	    this.save4.setToggleGroup(saveGroup);
+	    this.save5.setToggleGroup(saveGroup);
 	   
 	    this.save1.setStyle("-fx-base: #00FFFF;");
 	    this.save2.setStyle("-fx-base: #00FFFF;");
 	    this.save3.setStyle("-fx-base: #00FFFF;");
+	    this.save4.setStyle("-fx-base: #00FFFF;");
+	    this.save5.setStyle("-fx-base: #00FFFF;");
+	   
 	    this.loadGame.setStyle("-fx-base: #00FFFF;");
 	    this.cancelButton.setStyle("-fx-base: #00FFFF;");
+	    this.deleteButton.setStyle("-fx-base: #00FFFF;");
 		// if the directory does not exist, create it
 		if (!theDir.exists()) {    
 		    try{
-		        System.out.println(theDir.mkdirs());
-		        this.save1.setText("No Saves Available");
-		        this.save2.setText("No Saves Available");
-		        this.save3.setText("No Saves Available");
-		        
+		       theDir.mkdirs();	        
 		    } 
 		    catch(SecurityException se){
-		        
+		        System.out.println("Error I am not allowed to touch this");
 		    }        
 		    
 		
-		} else if(theDir.list().length == 0) {
-			this.save1.setText("No Saves Available");
-	        this.save2.setText("No Saves Available");
-	        this.save3.setText("No Saves Available");
-		} else {
-			
+		} else {		
 			File[] listOfFiles = theDir.listFiles();
 			BasicFileAttributes attr;
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			// sets the buttons to display the saves in the order they were made
+		
 			for(int i = 0; i < listOfFiles.length; i++) {
+				Path file = Paths.get(listOfFiles[i].getPath());
 				if(i == 0) {
-				Path file = Paths.get("Saves/save1.txt");
 				try {
 					attr = Files.readAttributes(file, BasicFileAttributes.class);
 					this.save1.setText("Save 1 : " + format.format(new Date(attr.creationTime().toMillis())));
@@ -273,8 +328,7 @@ public void setSettings(Settings settings) {
 				}
 				
 				}
-				else if(i == 1) {
-					Path file = Paths.get("Saves/save2.txt");
+				else if(i == 1) {	
 					try {
 						attr = Files.readAttributes(file, BasicFileAttributes.class);
 						this.save2.setText("Save 2 : " + format.format(new Date(attr.creationTime().toMillis())));
@@ -283,10 +337,27 @@ public void setSettings(Settings settings) {
 						e.printStackTrace();
 					}				}
 				else if(i == 2) {
-					Path file = Paths.get("Saves/save3.txt");
 					try {
 						attr = Files.readAttributes(file, BasicFileAttributes.class);
 						this.save3.setText("Save 3 : " + format.format(new Date(attr.creationTime().toMillis())));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else if(i == 3) {
+					try {
+						attr = Files.readAttributes(file, BasicFileAttributes.class);
+						this.save4.setText("Save 4 : " + format.format(new Date(attr.creationTime().toMillis())));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else if(i == 4) {
+					try {
+						attr = Files.readAttributes(file, BasicFileAttributes.class);
+						this.save5.setText("Save 5 : " + format.format(new Date(attr.creationTime().toMillis())));
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -306,25 +377,24 @@ public void setBkImg(Background bkImg) {
 public Boolean getIsPancakes() {
 	return isPancakes;
 }
+/**
+ * sets the styles if the background is pancakes
+ * @param isPancakes boolean to check if background is pancakes
+ */
 public void isItPancakes(Boolean isPancakes) {
 			if(isPancakes) {
 				this.save1.setStyle("-fx-base: #D2691E;");
 			    this.save2.setStyle("-fx-base: #D2691E;");
 			    this.save3.setStyle("-fx-base: #D2691E;");
+			    this.save4.setStyle("-fx-base: #D2691E;");
+			    this.save5.setStyle("-fx-base: #D2691E;");
+			   
 			    this.cancelButton.setStyle("-fx-base: #D2691E;");
 			    this.loadGame.setStyle("-fx-base: #D2691E;");
+			    this.deleteButton.setStyle("-fx-base: #D2691E;");
 			}
 			this.isPancakes = isPancakes;
 }
-@Override
-public void writeExternal(ObjectOutput out) throws IOException {
-	// TODO Auto-generated method stub
-	
-}
-@Override
-public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-	// TODO Auto-generated method stub
-	
-}
+
 
 }
