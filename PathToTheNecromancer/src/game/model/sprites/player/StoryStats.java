@@ -22,6 +22,12 @@ public class StoryStats {
 	 * Keep track of the player's conversations with villagers 
 	 */
 	private int villagerConversations;
+	/**
+	 * Whether or not the player has talked to the merchant before. 
+	 * If true, the player has not talked to the merchant before. 
+	 * If false, the player has talked to the merchant before.
+	 */
+	private boolean firstMerchantChat;
 	
 	/**
 	 * Constructor for the StoryStats object. Initialize values as if 
@@ -32,6 +38,7 @@ public class StoryStats {
 		this.banditEncounters = 0;
 		this.bookEncounters = true;
 		this.villagerConversations = 0;
+		this.firstMerchantChat = true;
 	}
 	
 	public int getNecEncounters() {
@@ -58,4 +65,14 @@ public class StoryStats {
 	public void setVillagerConversations(int villagerConversations) {
 		this.villagerConversations = villagerConversations;
 	}
+
+	public boolean isFirstMerchantChat() {
+		return firstMerchantChat;
+	}
+
+	public void setFirstMerchantChat(boolean firstMerchantChat) {
+		this.firstMerchantChat = firstMerchantChat;
+	}
+	
 }
+

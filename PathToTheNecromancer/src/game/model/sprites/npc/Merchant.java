@@ -13,8 +13,12 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
+import game.controller.MapManager;
+import game.controller.story.DialogueActor;
 import game.model.DialogueGraph;
 import game.model.sprites.CharacterSprites;
+import game.model.sprites.InteractionSprites;
+import game.model.sprites.player.Player;
 
 /**
  * 
@@ -24,7 +28,7 @@ import game.model.sprites.CharacterSprites;
  * @author enigma-phi
  *
  */
-public class Merchant extends CharacterSprites {
+public class Merchant extends CharacterSprites implements InteractionSprites{
 	/**
 	 * The pixel width of the Merchant sprite
 	 */
@@ -185,23 +189,38 @@ public class Merchant extends CharacterSprites {
 		fdef.shape = rect;
 		this.getBody().createFixture(fdef).setUserData(this);
 	}
+	/**
+	 * Determine the DialogueGraph based off of whether the player has talked to the Merchat before
+	 */
+	public DialogueGraph getDialogue(Player player) {
+		if(player.getStoryStats().isFirstMerchantChat()) {
+			return this.getSetDialogue();
+		}
+		DialogueGraph graph = new DialogueGraph();
+		graph.addNode("The merchantglowers and refuses to speak.");
+		return graph;
+	}
+	/**
+	 * Get the Merchant's fixed dialoguegraph for the first time the player meets the Merchant
+	 * @return the DialogueGraph
+	 */
 	private DialogueGraph getSetDialogue() {
 		DialogueGraph graph = new DialogueGraph();
 	
-		graph.addNode("What do you want weak-looking fool?"); // 0 
-		graph.addNode("Are you always this rude to people you just meet?"); // 1
-		graph.addNode("Of course not, I'm only rude to puny, annoying, and stupid looking people like yourself!"); // 2
-		graph.addNode("Think I can ask you a few questions?"); // 3
-		graph.addNode("I don't have time to answer ye stupid questions, go ask Oog-lag."); // 4
-		graph.addNode("*Look around* Did somebody say something?"); // 5
-		graph.addNode("I'm down here you little smaratleck!"); // 6
-		graph.addNode("Oh shoot, I didn't see you there..."); // 7
-		graph.addNode("*Continue looking around* It's almost as if I hear a small creature attempting to talk to me..."); // 8
-		graph.addNode("You're asking for it now sonny, I'll clobber you into another dimension"); // 9
-		graph.addNode("Oh I'm so scared, what are you going to do? Jump up and kick me in the knee?" ); // 10
-		graph.addNode("No, I'll kick ye in your jewlery case so hard that the children of your children will be feeling you mistake!"); // 11
-		graph.addNode("Nevermind, I'll leave you alone."); // 12
-		graph.addNode("You better be, now leave me alone!"); // 13
+		graph.addNode("Merchant: What do you want weak-looking fool?"); // 0 
+		graph.addNode("P: Are you always this rude to people you just meet?"); // 1
+		graph.addNode("Merchant: Of course not, I'm only rude to puny, annoying, and stupid looking people like yourself!"); // 2
+		graph.addNode("P: Think I can ask you a few questions?"); // 3
+		graph.addNode("Merchant: I don't have time to answer ye stupid questions, go ask Oog-lag."); // 4
+		graph.addNode("P: *Look around* Did somebody say something?"); // 5
+		graph.addNode("Merchant: I'm down here you little smart-aleck!"); // 6
+		graph.addNode("P: Oh shoot, I didn't see you there..."); // 7
+		graph.addNode("Merchant: *Continue looking around* It's almost as if I hear a small creature attempting to talk to me..."); // 8
+		graph.addNode("Merchant: You're asking for it now sonny, I'll clobber you into another dimension"); // 9
+		graph.addNode("Merchant: Oh I'm so scared, what are you going to do? Jump up and kick me in the knee?" ); // 10
+		graph.addNode("Merchnat: No, I'll kick ye in your jewlery case so hard that the children of your children will be feeling you mistake!"); // 11
+		graph.addNode("P: Nevermind, I'll leave you alone."); // 12
+		graph.addNode("Merchant: You better be, now leave me alone!"); // 13
 		
 		graph.addEdge(0,1);
 		graph.addEdge(1,2);
@@ -217,6 +236,15 @@ public class Merchant extends CharacterSprites {
 		graph.addEdge(10,11);
 		graph.addEdge(9,12);
 		graph.addEdge(12,13);
+		
+		graph.getNode(0).addActor(new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.getStoryStats().setFirstMerchantChat(false);
+			}
+			
+		});
 		
 		return graph;
 	}
