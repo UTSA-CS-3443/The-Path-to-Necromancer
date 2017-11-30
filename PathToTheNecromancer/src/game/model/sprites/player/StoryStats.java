@@ -1,11 +1,17 @@
 package game.model.sprites.player;
 
+import java.io.Serializable;
+
 /**
  * The player's stats corresponding to story
  * @author enigma-phi
  *
  */
-public class StoryStats {
+public class StoryStats implements Serializable {
+	/**
+	 * serial ID
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * The Necromancer Encounters
 	 */

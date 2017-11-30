@@ -290,6 +290,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 				Warrior warrior = new Warrior();
 				warrior.setStoryStats(stats);
 				manager.getMainScreen().setPlayer(warrior);
+				manager.getPlayer().setWarrior(true);
 			}
 
 		});
@@ -303,6 +304,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 				Rogue rogue = new Rogue();
 				rogue.setStoryStats(stats);
 				manager.getMainScreen().setPlayer(rogue);
+				manager.getPlayer().setRogue(true);
 			}
 
 		});
@@ -316,6 +318,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 				Mage mage = new Mage();
 				mage.setStoryStats(stats);
 				manager.getMainScreen().setPlayer(mage);
+				manager.getPlayer().setMage(true);
 
 			}
 		});

@@ -3,6 +3,8 @@ package game.model;
 import java.io.File;
 import java.io.Serializable;
 
+import game.model.sprites.player.Stats;
+import game.model.sprites.player.StoryStats;
 import javaFX.model.Settings;
 
 public class Savestate implements Serializable {
@@ -43,6 +45,14 @@ public class Savestate implements Serializable {
 	 */
 	private boolean isMage;
 	/**
+	 * players current stats
+	 */
+	private Stats stat;
+	/**
+	 * the players current story stage
+	 */
+	private StoryStats story;
+	/**
 	 *  Constructor
 	 * @param playerX players x coordinate 
 	 * @param playerY players y coordinate 
@@ -53,7 +63,7 @@ public class Savestate implements Serializable {
 	 * @param isMage    boolean for if the player is a mage
 	 */
 	public Savestate(float playerX, float playerY, String map, Settings setting, boolean isWarrior, boolean isRogue,
-			boolean isMage) {
+			boolean isMage, Stats stat, StoryStats story) {
 		super();
 		generateSaveId(setting);
 		this.playerX = playerX;
@@ -63,6 +73,8 @@ public class Savestate implements Serializable {
 		this.isWarrior = isWarrior;
 		this.isRogue = isRogue;
 		this.isMage = isMage;
+		this.stat = stat;
+		this.story = story;
 	}
 	private void generateSaveId(Settings setting) {
 		File theDir = new File("Saves");
@@ -204,6 +216,18 @@ public class Savestate implements Serializable {
 	 */
 	public void setSaveLabel(String saveLabel) {
 		this.saveLabel = saveLabel;
+	}
+	public StoryStats getStory() {
+		return story;
+	}
+	public void setStory(StoryStats story) {
+		this.story = story;
+	}
+	public Stats getStat() {
+		return stat;
+	}
+	public void setStat(Stats stat) {
+		this.stat = stat;
 	}
 	
 }

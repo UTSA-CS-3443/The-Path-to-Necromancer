@@ -248,4 +248,10 @@ public abstract class Player extends CharacterSprites {
 		// TODO Auto-generated method stub
 		return this.stats.isLevelUp();
 	}
+	public Stats getStats() {
+		return stats;
+	}
+	public void setStats(Stats stats) {
+		this.stats = stats;
+	}
 }

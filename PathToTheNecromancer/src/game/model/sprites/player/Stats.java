@@ -1,12 +1,18 @@
 package game.model.sprites.player;
 
+import java.io.Serializable;
+
 /**
  * Store different stats
  * 
  * @author HangedDragon96
  * @author enigma-phi
  */
-public class Stats {
+public class Stats implements Serializable  {
+	/**
+	 * serial ID
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * The player's current level
 	 */

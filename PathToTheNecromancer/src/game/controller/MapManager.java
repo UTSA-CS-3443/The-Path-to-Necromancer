@@ -95,7 +95,7 @@ public class MapManager {
 		// update the story manager
 		this.storyManager.updateWorld();
 	}
-
+	
 	/**
 	 * Get an enemy from a specific map Note: returns null if the map does not have
 	 * an enemy
@@ -103,7 +103,25 @@ public class MapManager {
 	 * @return an enemy
 	 */
 	public EnemySprites getEnemy() {
-		return this.gameMap.getEnemy(this.screen.getPlayer().getLevel());
+		int difficulty = 0;
+		switch(this.screen.getSettings().getDifficulty()) {
+		case EASY:
+			difficulty = 0;
+			break;
+		case MEDIUM:
+			difficulty = 3;
+			break;
+		case HARD:
+			difficulty = 6;
+			break;
+		case INSANE:
+			difficulty = 9;
+			break;
+		default:
+			difficulty = 0;
+			break;
+		}
+		return this.gameMap.getEnemy(this.screen.getPlayer().getLevel()+difficulty);
 	}
 
 	/**

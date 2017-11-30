@@ -493,12 +493,14 @@ public class MenuController {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if(save == null) {
 				save = new Savestate(player.getX(), player.getY(), menu.getMapName(),
-						menu.getSettings(), player.isWarrior(), player.isRogue(), player.isMage());
+						menu.getSettings(), player.isWarrior(), player.isRogue(), player.isMage(), player.getStats(),player.getStoryStats());
 				} else {
 					save.setplayerX(player.getX());
 					save.setplayerY(player.getY());
 					save.setMap(menu.getMapName());
 					save.setSetting(menu.getSettings());
+					save.setStat(player.getStats());
+					save.setStory(player.getStoryStats());
 				}
 				try {
 					SaveGame.saveGame(save);

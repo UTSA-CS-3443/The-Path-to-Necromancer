@@ -9,6 +9,9 @@ import game.model.Savestate;
 import game.model.maps.GameMaps;
 import game.model.maps.IntroArea;
 import game.model.sprites.player.DefaultCharacter;
+import game.model.sprites.player.Mage;
+import game.model.sprites.player.Rogue;
+import game.model.sprites.player.Warrior;
 import game.view.PlayScreen;
 import javaFX.model.Settings;
 
@@ -116,7 +119,17 @@ public class InitializeGame {
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public void loadGame(Savestate save) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
     	 // create a new player character
-        screen.setPlayer(new DefaultCharacter());
+    	if(save.isMage()) {
+    		screen.setPlayer(new Mage());
+    	} else if(save.isRogue()) {
+    		screen.setPlayer(new Rogue());
+    	} else if(save.isWarrior()) {
+    		screen.setPlayer(new Warrior());
+    	}else {
+    		screen.setPlayer(new DefaultCharacter());
+    	}
+        screen.getPlayer().setStats(save.getStat());
+        screen.getPlayer().setStoryStats(save.getStory());
         Class c = Class.forName(this.maps.get(save.getMap()));
        
 		Constructor ct = c.getConstructor(MapManager.class);
