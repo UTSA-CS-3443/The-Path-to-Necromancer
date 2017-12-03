@@ -3,30 +3,28 @@ package game.model.sprites.enemies;
 import com.badlogic.gdx.graphics.Texture;
 
 import game.model.sprites.EnemySprites;
-
 /**
- * The class for bandits combat values
+ * The setup for the Hippie combat values
  * @author cux144
  *
  */
-public class Bandit extends EnemySprites {
+public class Hippie extends EnemySprites{
 	/**
-	 * sets up the bandit for a texture
+	 * sets up the Hippie for a texture
 	 */
-	private Texture BanditTexture;
+	private Texture HippieTexture;
 	/**
 	 * Give the bandit the stats potential for  future where we multiply the stats by the difficulty
 	 */
-	public  Bandit(int x) {
-		super.setBaseStats(4, 1, 4, 1, 5, x, 5);
+	public  Hippie(int x) {
+		super.setBaseStats(7, 3, 1, 0, 15, x, 40);
 	}
 	@Override
 	public void update(float dt) {
 		// TODO Auto-generated method stub
 		
 	}
-	
 	public Texture getTexture() {
-		return this.BanditTexture =  new Texture("EnemySprites/Bandit.png");
+		return this.HippieTexture =  new Texture("EnemySprites/Hippie.png");
 	}
 }

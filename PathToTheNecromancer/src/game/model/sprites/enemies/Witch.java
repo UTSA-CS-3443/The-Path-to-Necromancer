@@ -25,4 +25,7 @@ public class Witch extends EnemySprites{
 		// TODO Auto-generated method stub
 		
 	}
+	public Texture getTexture() {
+		return this.WitchTexture =  new Texture("EnemySprites/Witch.png");
+	}
 }

@@ -13,7 +13,7 @@ public class Goblin extends EnemySprites{
 	/**
 	 * sets up the goblin for a texture
 	 */
-	private Texture BanditTexture;
+	private Texture GoblinTexture;
 	/**
 	 * Give the goblin the stats potential for  future where we multiply the stats by the difficulty
 	 */
@@ -24,5 +24,8 @@ public class Goblin extends EnemySprites{
 	public void update(float dt) {
 		// TODO Auto-generated method stub
 		
+	}
+	public Texture getTexture() {
+		return this.GoblinTexture =  new Texture("EnemySprites/Goblin.png");
 	}
 }

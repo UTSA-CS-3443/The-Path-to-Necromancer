@@ -25,4 +25,7 @@ public class Skeleton extends EnemySprites{
 		// TODO Auto-generated method stub
 		
 	}
+	public Texture getTexture() {
+		return this.SkeletonTexture =  new Texture("EnemySprites/Skeleton.png");
+	}
 }

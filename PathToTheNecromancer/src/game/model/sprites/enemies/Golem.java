@@ -25,4 +25,7 @@ public class Golem extends EnemySprites  {
 		// TODO Auto-generated method stub
 		
 	}
+	public Texture getTexture() {
+		return this.GolemTexture =  new Texture("EnemySprites/Golem.png");
+	}
 }

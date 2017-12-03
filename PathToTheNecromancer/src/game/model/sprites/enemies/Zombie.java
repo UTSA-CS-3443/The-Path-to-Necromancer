@@ -25,4 +25,7 @@ public class Zombie extends EnemySprites{
 		// TODO Auto-generated method stub
 		
 	}
+	public Texture getTexture() {
+		return this.ZombieTexture =  new Texture("EnemySprites/Zombie.png");
+	}
 }

@@ -25,4 +25,7 @@ public class Kobold extends EnemySprites{
 		// TODO Auto-generated method stub
 		
 	}
+	public Texture getTexture() {
+		return this.KoboldTexture =  new Texture("EnemySprites/Kobold.png");
+	}
 }

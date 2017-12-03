@@ -3,22 +3,21 @@ package game.model.sprites.enemies;
 import com.badlogic.gdx.graphics.Texture;
 
 import game.model.sprites.EnemySprites;
-
 /**
- * The class for bandits combat values
+ * sets up the combat values for the Fighter boss
  * @author cux144
  *
  */
-public class Bandit extends EnemySprites {
+public class Fighter extends EnemySprites{
 	/**
-	 * sets up the bandit for a texture
+	 * sets up the Fighter for a texture
 	 */
-	private Texture BanditTexture;
+	private Texture FighterTexture;
 	/**
 	 * Give the bandit the stats potential for  future where we multiply the stats by the difficulty
 	 */
-	public  Bandit(int x) {
-		super.setBaseStats(4, 1, 4, 1, 5, x, 5);
+	public  Fighter(int x) {
+		super.setBaseStats(6, 0, 2, 0, 10, x, 25);
 	}
 	@Override
 	public void update(float dt) {
@@ -27,6 +26,6 @@ public class Bandit extends EnemySprites {
 	}
 	
 	public Texture getTexture() {
-		return this.BanditTexture =  new Texture("EnemySprites/Bandit.png");
+		return this.FighterTexture =  new Texture("EnemySprites/Fighter.png");
 	}
 }

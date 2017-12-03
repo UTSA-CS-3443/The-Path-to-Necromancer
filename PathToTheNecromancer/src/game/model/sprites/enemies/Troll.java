@@ -25,4 +25,7 @@ public class Troll extends  EnemySprites{
 		// TODO Auto-generated method stub
 		
 	}
+	public Texture getTexture() {
+		return this.TrollTexture =  new Texture("EnemySprites/Troll.png");
+	}
 }

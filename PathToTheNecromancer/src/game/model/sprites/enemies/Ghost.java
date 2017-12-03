@@ -25,4 +25,7 @@ public class Ghost extends EnemySprites  {
 		// TODO Auto-generated method stub
 		
 	}
+	public Texture getTexture() {
+		return this.GhostTexture =  new Texture("EnemySprites/Ghost.png");
+	}
 }
