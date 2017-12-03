@@ -8,7 +8,7 @@ import game.model.sprites.EnemySprites;
  * @author cux144
  *
  */
-public class Necromancer extends EnemySprites{
+public class NecromancerEnemy extends EnemySprites{
 	/**
 	 * sets up the Necromancer for a texture
 	 */
@@ -16,7 +16,7 @@ public class Necromancer extends EnemySprites{
 	/**
 	 * Give the bandit the stats potential for  future where we multiply the stats by the difficulty
 	 */
-	public  Necromancer(int x) {
+	public  NecromancerEnemy(int x) {
 		super.setBaseStats(5, 5, 1, 0, 20, x, 100);
 	}
 	@Override

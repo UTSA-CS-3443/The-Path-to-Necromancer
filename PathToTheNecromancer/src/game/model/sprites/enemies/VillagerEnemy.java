@@ -8,7 +8,7 @@ import game.model.sprites.EnemySprites;
  * @author cux144
  *
  */
-public class Villager extends EnemySprites{
+public class VillagerEnemy extends EnemySprites{
 	/**
 	 * sets up the Villager for a texture
 	 */
@@ -16,7 +16,7 @@ public class Villager extends EnemySprites{
 	/**
 	 * Give the Villager the stats potential for  future where we multiply the stats by the difficulty
 	 */
-	public  Villager(int x) {
+	public  VillagerEnemy(int x) {
 		super.setBaseStats(4, 5, 4, 0, 12, x, 60);
 	}
 	@Override

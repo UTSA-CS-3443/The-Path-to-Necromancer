@@ -9,7 +9,7 @@ import game.model.sprites.EnemySprites;
  * @author cux144
  *
  */
-public class Bandit extends EnemySprites {
+public class BanditEnemy extends EnemySprites {
 	/**
 	 * sets up the bandit for a texture
 	 */
@@ -17,7 +17,7 @@ public class Bandit extends EnemySprites {
 	/**
 	 * Give the bandit the stats potential for  future where we multiply the stats by the difficulty
 	 */
-	public  Bandit(int x) {
+	public  BanditEnemy(int x) {
 		super.setBaseStats(4, 1, 4, 1, 5, x, 5);
 	}
 	@Override

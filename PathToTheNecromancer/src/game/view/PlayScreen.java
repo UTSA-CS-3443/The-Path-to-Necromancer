@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import game.controller.MapManager;
+import game.controller.MusicManager;
 import game.controller.ScreenManager;
 import game.controller.GameController;
 import game.controller.InitializeGame;
@@ -396,5 +397,15 @@ public class PlayScreen implements Screen {
 		this.dialogue = box;
 		if (box == null)
 			this.inChat = false;
+	}
+	/**
+	 * Return the musicmanager for the game
+	 * @return the musicManager
+	 */
+	public MusicManager getMusicManager() {
+		return this.screenManager.getMusicManager();
+	}
+	public void enemyCombat(EnemySprites enemy) {
+		this.screenManager.setCombat(enemy);
 	}
 }

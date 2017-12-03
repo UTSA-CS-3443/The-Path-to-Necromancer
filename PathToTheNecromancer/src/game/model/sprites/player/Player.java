@@ -224,7 +224,7 @@ public abstract class Player extends CharacterSprites {
 		
 	}
 
-	public void LevelUpStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
+	public void levelUpStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
 		this.stats.setLevel(level + this.stats.getLevel());
 		this.stats.setExperience(experience + this.stats.getExperience());
 		this.stats.setStrength(strength + this.stats.getStrength());
@@ -236,7 +236,7 @@ public abstract class Player extends CharacterSprites {
 
 	}
 	
-	public void isLevelUp(int experience ){
+	public void endCombat(int experience ){
 		this.stats.setExperience(experience + this.stats.getExperience());
 		if(this.stats.getExperience() >= 30) {
 			this.stats.setLevelUp(true);

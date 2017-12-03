@@ -8,7 +8,7 @@ import game.model.sprites.EnemySprites;
  * @author cux144
  *
  */
-public class Hippie extends EnemySprites{
+public class HippieEnemy extends EnemySprites{
 	/**
 	 * sets up the Hippie for a texture
 	 */
@@ -16,7 +16,7 @@ public class Hippie extends EnemySprites{
 	/**
 	 * Give the bandit the stats potential for  future where we multiply the stats by the difficulty
 	 */
-	public  Hippie(int x) {
+	public  HippieEnemy(int x) {
 		super.setBaseStats(7, 3, 1, 0, 15, x, 40);
 	}
 	@Override

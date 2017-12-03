@@ -80,10 +80,6 @@ public class MenuController {
 	 */
 	private Slider musicSlider;
 	/**
-	 * The slider for changing sound effects settings
-	 */
-	private Slider soundSlider;
-	/**
 	 * The slider for changing brightness settings
 	 */
 	private Slider brightSlider;
@@ -238,7 +234,6 @@ public class MenuController {
 		// Get all of the labels for your table to render
 		Label settingsMenuLabel = new Label("Settings", redLabel);
 		Label musicLabel = new Label("Music", whiteLabel);
-		Label soundLabel = new Label("Sound Effects", whiteLabel);
 		Label brightLabel = new Label("Brightness", whiteLabel);
 		Label soundOnLabel = new Label("Disable Sound", whiteLabel);
 		Label levelLabel = new Label("Difficulty", whiteLabel);
@@ -254,16 +249,18 @@ public class MenuController {
 		Table table = new Table();
 		table.setFillParent(true);
 		table.top();
-		table.padTop(20);
+		table.padTop(30);
 		table.add(musicLabel).padRight(10);
 		table.add(musicSlider);
 		table.row();
-		table.add(soundLabel).padRight(10);
-		table.add(soundSlider);
+		table.add(brightLabel).padRight(10).padTop(5);
+		table.add(brightSlider).padTop(5);
 		table.row();
-		table.add(brightLabel).padRight(10);
-		table.add(brightSlider);
+		table.add(soundOnLabel).padRight(10).padTop(15);
+		table.add(disableSoundCheck).center().padTop(15);
 		table.row();
+		table.add(levelLabel).padRight(10).padTop(15);
+		table.add(difficultySelect).center().padTop(15);
 		table.add(soundOnLabel).padRight(10).padTop(5);
 		table.add(disableSoundCheck).center();
 		table.row();
@@ -569,10 +566,7 @@ public class MenuController {
 	/**
 	 * Set up the buttons and sliders used in the settings menu <br>
 	 * musicSlider: the volume of the music <br>
-	 * soundSlider: the volume of the general sound <br>
 	 * brightSlider: the screen's brightness <br>
-	 * vSyncCheck: if vSync <br>
-	 * forwardCheck: if autoForward text scenes <br>
 	 * disableSoundCheck: if disable sound <br>
 	 * difficultySelect: select the current difficulty
 	 */
@@ -594,16 +588,6 @@ public class MenuController {
 			}
 		});
 
-		// set up the slider for changing the sound effects volume
-		soundSlider = new Slider(0, 100, 1, false, defaultSkin);
-		soundSlider.setValue(menu.getSettings().getGameSound());
-		soundSlider.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				Slider slider = (Slider) actor;
-				menu.getSettings().setGameSound((int)Math.ceil(slider.getValue()));
-			}
-		});
 
 		// set up the slider for changing the brightness
 		brightSlider = new Slider(0, 100, 1, false, defaultSkin);
@@ -644,7 +628,6 @@ public class MenuController {
 					menu.getSettings().setDifficulty(Difficulty.valueOf(difficultySelect.getSelected()));
 			}
 		});
-
 	}
 	/**
 	 * Set up the stage initially

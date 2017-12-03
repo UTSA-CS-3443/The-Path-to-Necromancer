@@ -97,7 +97,7 @@ public class InitializeGame {
         // create a new player character
         screen.setPlayer(new DefaultCharacter());
         // Simply load up the first map.
-        this.screen.getMapManager().setMap(new IntroArea(this.screen.getMapManager()), 135, 132);
+        this.screen.getMapManager().setMap(new IntroArea(this.screen.getMapManager()), 140, 162);
     }
 
     /**

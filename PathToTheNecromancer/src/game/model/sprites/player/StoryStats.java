@@ -34,7 +34,10 @@ public class StoryStats implements Serializable {
 	 * If false, the player has talked to the merchant before.
 	 */
 	private boolean firstMerchantChat;
-	
+	/**
+	 * Whether or not the player has talked to the knight yet
+	 */
+	private boolean knightEncounter;
 	/**
 	 * Constructor for the StoryStats object. Initialize values as if 
 	 * it were a new game.
@@ -45,6 +48,7 @@ public class StoryStats implements Serializable {
 		this.bookEncounters = true;
 		this.villagerConversations = 0;
 		this.firstMerchantChat = true;
+		this.knightEncounter = true;
 	}
 	
 	public int getNecEncounters() {
@@ -78,6 +82,13 @@ public class StoryStats implements Serializable {
 
 	public void setFirstMerchantChat(boolean firstMerchantChat) {
 		this.firstMerchantChat = firstMerchantChat;
+	}
+
+	public boolean isKnightEncounter() {
+		return this.knightEncounter;
+	}
+	public void setKnightEncounter(boolean b) {
+		this.knightEncounter = b;
 	}
 	
 }

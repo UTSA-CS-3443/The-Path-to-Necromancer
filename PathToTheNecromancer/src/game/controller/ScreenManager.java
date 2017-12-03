@@ -3,6 +3,7 @@ package game.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -11,6 +12,7 @@ import game.model.Savestate;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.player.Player;
 import game.view.CombatScreen;
+import game.view.DeathScreen;
 import game.view.Menu;
 import game.view.PlayScreen;
 import javaFX.model.Settings;
@@ -40,6 +42,18 @@ public class ScreenManager {
 	 */
 	private Screen currentScreen;
 	/**
+	 * The MusicManager for managing the game's music
+	 */
+	private MusicManager musicManager;
+	/**
+	 * The current music playing
+	 */
+	private Music currentMusic;
+	/**
+	 * Whether or not the music needs to be returned to a previous state
+	 */
+	private boolean musicChanged;
+	/**
 	 * the current save for the game
 	 */
 	private Savestate save;
@@ -54,6 +68,7 @@ public class ScreenManager {
 	 */
 	public ScreenManager(PathToNecromancer game, Savestate save) {
 		this.game = game;
+		this.musicManager = new MusicManager();
 		this.mainScreen = new PlayScreen(this, save);
 		this.save = save;
 		this.currentScreen = this.mainScreen;
@@ -73,7 +88,18 @@ public class ScreenManager {
 	 * Set Combat as the current screen. Begin Combat.
 	 */
 	public void setCombat() {
+		this.currentMusic = this.musicManager.getMusic();
+		this.musicChanged = true;
 		this.currentScreen = new CombatScreen(this.mainScreen, this.game);
+		this.setScreen();
+	}
+	/**
+	 * Set Combat as the current screen with a specific enemy. Begin Combat.
+	 */
+	public void setCombat(EnemySprites enemy) {
+		this.currentMusic = this.musicManager.getMusic();
+		this.musicChanged = true;
+		this.currentScreen = new CombatScreen(this.mainScreen, this.game);//, enemy);
 		this.setScreen();
 	}
 
@@ -89,6 +115,10 @@ public class ScreenManager {
 	 * Return whichever screen you are on back to the main PlayScreen
 	 */
 	public void toMainScreen() {
+		if(this.musicChanged) {
+			this.musicChanged = false;
+			this.musicManager.setMusic(this.currentMusic);
+		}
 		Screen tempScreen = this.currentScreen;
 		this.currentScreen = this.mainScreen;
 		Gdx.input.setInputProcessor(this.mainInputProcessor);
@@ -96,7 +126,14 @@ public class ScreenManager {
 		if (tempScreen != this.mainScreen && tempScreen != null)
 			tempScreen.dispose();
 	}
-
+	
+	/**
+	 * End the game as the player has just died
+	 */
+	public void endGame() {
+		this.currentScreen = new DeathScreen(this);
+		this.setScreen();
+	}
 	/**
 	 * Reset the input processor to the main processor
 	 */
@@ -191,4 +228,12 @@ public class ScreenManager {
 	public MapManager getMapManager() {
 		return this.mainScreen.getMapManager();
 	}
+	/**
+	 * Get the musicManager for managing the game's music
+	 * @return the musicManager
+	 */
+	public MusicManager getMusicManager() {
+		return this.musicManager;
+	}
+	
 }

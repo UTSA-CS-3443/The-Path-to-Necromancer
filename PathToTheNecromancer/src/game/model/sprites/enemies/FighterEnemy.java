@@ -8,7 +8,7 @@ import game.model.sprites.EnemySprites;
  * @author cux144
  *
  */
-public class Fighter extends EnemySprites{
+public class FighterEnemy extends EnemySprites{
 	/**
 	 * sets up the Fighter for a texture
 	 */
@@ -16,7 +16,7 @@ public class Fighter extends EnemySprites{
 	/**
 	 * Give the bandit the stats potential for  future where we multiply the stats by the difficulty
 	 */
-	public  Fighter(int x) {
+	public  FighterEnemy(int x) {
 		super.setBaseStats(6, 0, 2, 0, 10, x, 25);
 	}
 	@Override

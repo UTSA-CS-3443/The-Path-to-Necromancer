@@ -95,7 +95,7 @@ public class MapManager {
 		// update the story manager
 		this.storyManager.updateWorld();
 	}
-	
+
 	/**
 	 * Get an enemy from a specific map Note: returns null if the map does not have
 	 * an enemy
@@ -166,6 +166,13 @@ public class MapManager {
 		}
 	}
 
+	/**
+	 * Begin Combat with a specific enemy
+	 * @param enemy is the enemy to begin combat with
+	 */
+	public void enemyCombat(EnemySprites enemy) {
+		this.screen.enemyCombat(enemy);
+	}
 	/**
 	 * Update each sprite animation
 	 * 
@@ -251,5 +258,11 @@ public class MapManager {
 	public PlayScreen getMainScreen() {
 		return this.screen;
 	}
-
+	/**
+	 * Get the music manager for the game
+	 * @return the music manager
+	 */
+	public MusicManager getMusicManager() {
+		return this.screen.getMusicManager();
+	}
 }
