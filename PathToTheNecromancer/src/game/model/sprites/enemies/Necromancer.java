@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import game.model.sprites.EnemySprites;
 /**
- * sets up the Necromancer's combat values
+ * Sets up the Necromancer's combat values
  * @author cux144
  *
  */
