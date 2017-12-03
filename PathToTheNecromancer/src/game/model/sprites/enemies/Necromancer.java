@@ -24,6 +24,7 @@ public class Necromancer extends EnemySprites{
 		// TODO Auto-generated method stub
 		
 	}
+	
 	public Texture getTexture() {
 		return this.NecromancerTexture =  new Texture("EnemySprites/Necromancer2.png");
 	}
