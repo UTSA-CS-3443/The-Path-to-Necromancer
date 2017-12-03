@@ -147,7 +147,7 @@ public class SettingsController implements EventHandler<ActionEvent> {
 			autoForward.setTextFill(Color.WHITE);
 			// choice box
 			difficulty.setItems(FXCollections.observableArrayList(
-					  Difficulty.EASY, Difficulty.MEDIUM,  Difficulty.HARD, Difficulty.INSANE));
+					  Difficulty.Easy, Difficulty.Medium,  Difficulty.Hard, Difficulty.Insane));
 			difficulty.setValue(settings.getDifficulty());
 			difficulty.setStyle("-fx-base: #00FFFF;");
 			difficultyLabel.setStyle("-fx-base: #006400;");
