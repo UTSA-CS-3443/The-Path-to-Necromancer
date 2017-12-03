@@ -102,7 +102,6 @@ public class Menu implements Screen {
 
 		stage.act();
 		stage.draw();
-
 	}
 
 	/**
