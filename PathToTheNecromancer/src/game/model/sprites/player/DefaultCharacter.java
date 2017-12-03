@@ -46,7 +46,7 @@ public class DefaultCharacter extends Player {
 
         // Set the initial animation
         setRegion(super.getStandingRegion());
-        super.setBaseStats(1, 1, 1, 1, 1, 10, 0);
+        super.setBaseStats(1, 0, 1, 1, 1, 1, 10);
     }
 
     /**
