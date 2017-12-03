@@ -105,16 +105,16 @@ public class MapManager {
 	public EnemySprites getEnemy() {
 		int difficulty = 0;
 		switch(this.screen.getSettings().getDifficulty()) {
-		case EASY:
+		case Easy:
 			difficulty = 0;
 			break;
-		case MEDIUM:
+		case Medium:
 			difficulty = 3;
 			break;
-		case HARD:
+		case Hard:
 			difficulty = 6;
 			break;
-		case INSANE:
+		case Insane:
 			difficulty = 9;
 			break;
 		default:

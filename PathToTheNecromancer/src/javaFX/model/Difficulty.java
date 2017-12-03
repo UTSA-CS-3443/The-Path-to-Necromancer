@@ -1,5 +1,5 @@
 package javaFX.model;
 
 public enum Difficulty {
-	EASY, MEDIUM, HARD, INSANE
+	Easy, Medium, Hard, Insane
 }

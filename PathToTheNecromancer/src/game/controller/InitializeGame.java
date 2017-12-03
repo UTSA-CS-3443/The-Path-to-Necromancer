@@ -13,20 +13,16 @@ import game.model.sprites.player.Mage;
 import game.model.sprites.player.Rogue;
 import game.model.sprites.player.Warrior;
 import game.view.PlayScreen;
-import javaFX.model.Settings;
+
 
 /**
  * Initialize the game based off of the settings.
  * 
  * @author enigma-phi
+ * @author HangedDragon96 coded load game
  *
  */
 public class InitializeGame {
-    /**
-     * The settings for the game
-     */
-    private Settings settings;
-
     /**
      * The game screen
      */
@@ -41,7 +37,7 @@ public class InitializeGame {
      * @param the main game screen
      */
     public InitializeGame(PlayScreen screen, Savestate save) {
-        this.settings = screen.getSettings();
+       
         this.screen = screen;
         this.maps = new HashMap<String,String>();
         mapSetup();
@@ -119,19 +115,22 @@ public class InitializeGame {
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public void loadGame(Savestate save) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
     	 // create a new player character
-    	if(save.isMage()) {
+    	if(save.isMage()) 
+    	{
     		screen.setPlayer(new Mage());
-    	} else if(save.isRogue()) {
+    	} else if(save.isRogue()) 
+    	{
     		screen.setPlayer(new Rogue());
-    	} else if(save.isWarrior()) {
+    	} else if(save.isWarrior()) 
+    	{
     		screen.setPlayer(new Warrior());
-    	}else {
+    	}else 
+    	{
     		screen.setPlayer(new DefaultCharacter());
     	}
         screen.getPlayer().setStats(save.getStat());
         screen.getPlayer().setStoryStats(save.getStory());
         Class c = Class.forName(this.maps.get(save.getMap()));
-       
 		Constructor ct = c.getConstructor(MapManager.class);
         // Simply load up the first map. 
 		this.screen.getMapManager().setMap((GameMaps)(ct.newInstance(this.screen.getMapManager())), (save.getplayerX()), (save.getplayerY()));

@@ -29,6 +29,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import game.model.Savestate;
 import game.model.sprites.player.Player;
 import game.view.Menu;
+import javaFX.model.Difficulty;
 
 /**
  * The controller for the menu. It changes the current stage and sets up the
@@ -98,14 +99,7 @@ public class MenuController {
 	 * The label style for white text
 	 */
 	private Label.LabelStyle whiteLabel;
-	/**
-	 * The check box for v-Sync
-	 */
-	private CheckBox vSyncCheck;
-	/**
-	 * The check box for auto-fast forward
-	 */
-	private CheckBox forwardCheck;
+	
 	/**
 	 * The check box for disabling sound
 	 */
@@ -246,9 +240,7 @@ public class MenuController {
 		Label musicLabel = new Label("Music", whiteLabel);
 		Label soundLabel = new Label("Sound Effects", whiteLabel);
 		Label brightLabel = new Label("Brightness", whiteLabel);
-		Label forwardLabel = new Label("Auto Forward", whiteLabel);
 		Label soundOnLabel = new Label("Disable Sound", whiteLabel);
-		Label vSyncLabel = new Label("V-Sync", whiteLabel);
 		Label levelLabel = new Label("Difficulty", whiteLabel);
 
 		// header for the settings menu
@@ -274,12 +266,6 @@ public class MenuController {
 		table.row();
 		table.add(soundOnLabel).padRight(10).padTop(5);
 		table.add(disableSoundCheck).center();
-		table.row();
-		table.add(forwardLabel).padRight(10).padTop(5);
-		table.add(forwardCheck).center();
-		table.row();
-		table.add(vSyncLabel).padRight(10).padTop(5);
-		table.add(vSyncCheck).center();
 		table.row();
 		table.add(levelLabel).padRight(10).padTop(5);
 		table.add(difficultySelect);
@@ -599,58 +585,40 @@ public class MenuController {
 
 		// set up the slider for changing the music volume
 		musicSlider = new Slider(0, 100, 1, false, defaultSkin);
-
+		musicSlider.setValue(menu.getSettings().getMusicSound());
 		musicSlider.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
+				menu.getSettings().setMusicSound((int)Math.ceil(slider.getValue()));
 			}
 		});
 
 		// set up the slider for changing the sound effects volume
 		soundSlider = new Slider(0, 100, 1, false, defaultSkin);
-
+		soundSlider.setValue(menu.getSettings().getGameSound());
 		soundSlider.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
+				menu.getSettings().setGameSound((int)Math.ceil(slider.getValue()));
 			}
 		});
 
 		// set up the slider for changing the brightness
 		brightSlider = new Slider(0, 100, 1, false, defaultSkin);
-
+		brightSlider.setValue(menu.getSettings().getBrightness());
 		brightSlider.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
+				menu.getSettings().setBrightness((int)Math.ceil(slider.getValue()));
 			}
 		});
 
 		CheckBox.CheckBoxStyle checkStyle = new CheckBox.CheckBoxStyle(skin.getDrawable("checkbox"),
 				skin.getDrawable("checkbox-on"), font, Color.WHITE);
-		// set up the v-sync check button
-		vSyncCheck = new CheckBox("", checkStyle);
-		vSyncCheck.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-		});
 
-		// set up the auto fast-forward check button
-		forwardCheck = new CheckBox("", checkStyle);
-		forwardCheck.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				return true;
-			}
-
-			@Override
-			public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-				Gdx.app.log("Example", "touch done at (" + x + ", " + y + ")");
-			}
-		});
 
 		// set up the disable sound check button
 		disableSoundCheck = new CheckBox("", checkStyle);
@@ -669,12 +637,11 @@ public class MenuController {
 		difficultySelect = new SelectBox<String>(style);
 
 		difficultySelect.setItems(difficulties);
-		difficultySelect.setSelected("Easy");
-
+		difficultySelect.setSelected(menu.getSettings().getDifficulty().toString());
 		difficultySelect.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-
+					menu.getSettings().setDifficulty(Difficulty.valueOf(difficultySelect.getSelected()));
 			}
 		});
 
