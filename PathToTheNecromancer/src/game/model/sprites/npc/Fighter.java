@@ -323,7 +323,7 @@ public class Fighter extends CharacterSprites implements InteractionSprites {
 				}
 			}
 			return this.fighting1.get(this.currentFrame);
-		// get second fighting animation
+			// get second fighting animation
 		} else if (isFighting2) {
 			this.timeChange += dt;
 			if (this.timeChange > 0.5) {
@@ -336,7 +336,7 @@ public class Fighter extends CharacterSprites implements InteractionSprites {
 				}
 			}
 			return this.fighting2.get(this.currentFrame);
-		// get third fighting animation
+			// get third fighting animation
 		} else if (isFighting3) {
 			this.timeChange += dt;
 			if (this.timeChange > 0.5) {
@@ -349,7 +349,7 @@ public class Fighter extends CharacterSprites implements InteractionSprites {
 				}
 			}
 			return this.fighting3.get(this.currentFrame);
-		// get crying animation
+			// get crying animation
 		} else if (isCrying) {
 			this.timeChange += dt;
 			if (this.timeChange > 0.5) {
@@ -383,7 +383,7 @@ public class Fighter extends CharacterSprites implements InteractionSprites {
 				public void act(Player player, MapManager manager) {
 					setIsFighting3(true);
 				}
-				
+
 			});
 			return graph;
 		}

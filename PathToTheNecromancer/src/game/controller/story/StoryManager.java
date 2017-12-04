@@ -38,10 +38,6 @@ public class StoryManager {
 	 */
 	private World world;
 	/**
-	 * The story actor whose actions vary based off of the given map
-	 */
-	private StoryActor storyActor;
-	/**
 	 * The actor for the given class
 	 */
 	private Actor actor;
@@ -55,7 +51,6 @@ public class StoryManager {
 	public StoryManager(MapManager manager) {
 		this.manager = manager;
 		this.player = manager.getPlayer();
-		this.storyActor = new StoryActor();
 	}
 
 	/**
@@ -65,8 +60,8 @@ public class StoryManager {
 	 *            the change in time since the last render
 	 */
 	public void act(float dt) {
-		if (storyActor != null)
-			storyActor.act(dt);
+		if (actor != null)
+			actor.act(dt);
 	}
 
 	/**
@@ -113,7 +108,6 @@ public class StoryManager {
 			}
 
 			actor = new IntroArea();
-			storyActor.actor(actor);
 			break;
 		// Inside of Oog-Lag's Tavern
 		case "Maps/Map03-Inside Oog-Lag's Tavern.tmx":
@@ -147,12 +141,10 @@ public class StoryManager {
 			}
 
 			actor = new Tavern();
-			storyActor.actor(actor);
 			break;
 		// The Plains Area
 		case "Maps/Map04-Plains Area.tmx":
 			actor = new PlainsStory(manager, player, world);
-			storyActor.actor(actor);
 			break;
 		case "Maps/Map07-RightMountain.tmx":
 			class RightMount implements Actor {
@@ -183,7 +175,6 @@ public class StoryManager {
 			}
 
 			actor = new RightMount();
-			storyActor.actor(actor);
 			break;
 		case "Maps/Map09-EntrytoNecromancer'sLair.tmx":
 			class NecLair implements Actor {
@@ -212,7 +203,6 @@ public class StoryManager {
 			}
 			;
 			actor = new NecLair();
-			storyActor.actor(actor);
 			break;
 		// The interior of the Necromancer's Lair
 		case "Maps/Map10-Necromancer'sLair.tmx":
@@ -224,7 +214,7 @@ public class StoryManager {
 					this.nec = new Necromancer();
 					nec.defineBody(world, 238, 1062);
 					manager.addSprite(nec);
-					if(player.getStoryStats().getFinaleEncounter() == 3)
+					if (player.getStoryStats().getFinaleEncounter() == 3)
 						player.getStoryStats().setFinaleEncounter(4);
 				}
 
@@ -252,10 +242,9 @@ public class StoryManager {
 
 			}
 			actor = new necInterior();
-			storyActor.actor(actor);
 			break;
 		default:
-			storyActor = new StoryActor();
+			actor = null;
 			break;
 
 		}

@@ -26,172 +26,176 @@ import game.model.sprites.player.Player;
  * @author enigma-phi
  *
  */
-public class Necromancer extends CharacterSprites implements InteractionSprites{
-    /**
-     * The pixel width of the Necromancer sprite
-     */
-    private static final int NEC_WIDTH = 40;
-    /**
-     * The pixel height of the Necromancer sprite
-     */
-    private static final int NEC_HEIGHT = 50;
-    /**
-     * The texture used to draw and render the Necromancer sprite
-     */
-    private Texture necromancerTexture;
-    /**
-     * Whether or not the necromancer is engaged in the bandit dialogue
-     */
-    private boolean banditDialogue;
-    /**
-     * The scaling factor used to draw the Necromancer.
-     */
-    private static float SCALINGFACTOR = 0.65f;
+public class Necromancer extends CharacterSprites implements InteractionSprites {
+	/**
+	 * The pixel width of the Necromancer sprite
+	 */
+	private static final int NEC_WIDTH = 40;
+	/**
+	 * The pixel height of the Necromancer sprite
+	 */
+	private static final int NEC_HEIGHT = 50;
+	/**
+	 * The texture used to draw and render the Necromancer sprite
+	 */
+	private Texture necromancerTexture;
+	/**
+	 * Whether or not the necromancer is engaged in the bandit dialogue
+	 */
+	private boolean banditDialogue;
+	/**
+	 * The scaling factor used to draw the Necromancer.
+	 */
+	private static float SCALINGFACTOR = 0.65f;
 
-    /**
-     * Create the Necromancer object.
-     */
-    public Necromancer() {
-        super();
-        // Initialize the different texture regions associated with the Necromancer
-        setTextureValues();
-        // Set the size of the Necromancer
-        setBounds(0, 0, NEC_WIDTH * SCALINGFACTOR, NEC_HEIGHT * SCALINGFACTOR);
+	/**
+	 * Create the Necromancer object.
+	 */
+	public Necromancer() {
+		super();
+		// Initialize the different texture regions associated with the Necromancer
+		setTextureValues();
+		// Set the size of the Necromancer
+		setBounds(0, 0, NEC_WIDTH * SCALINGFACTOR, NEC_HEIGHT * SCALINGFACTOR);
 
-        // Set the initial animation
-        setRegion(super.getStandingRegion());
-    }
+		// Set the initial animation
+		setRegion(super.getStandingRegion());
+	}
 
-    /**
-     * Set the different TextureRegions associated with the Necromancer for
-     * animation.
-     */
+	/**
+	 * Set the different TextureRegions associated with the Necromancer for
+	 * animation.
+	 */
 
-    @Override
-    public void setTextureValues() {
-        necromancerTexture = new Texture("CharacterSprites/Necromancer.png");
-        int width = 50;
-        int height = 51;
+	@Override
+	public void setTextureValues() {
+		necromancerTexture = new Texture("CharacterSprites/Necromancer.png");
+		int width = 50;
+		int height = 51;
 
-        // Set the default standing region of the Necromancer.
-        super.setStandingRegion(new TextureRegion(necromancerTexture, 0, 0, width, height));
-        // Array of frames used for the animations
-        Array<TextureRegion> frames = new Array<TextureRegion>();
+		// Set the default standing region of the Necromancer.
+		super.setStandingRegion(new TextureRegion(necromancerTexture, 0, 0, width, height));
+		// Array of frames used for the animations
+		Array<TextureRegion> frames = new Array<TextureRegion>();
 
-        // Set the animations for moving Down on the map
-        frames.add(new TextureRegion(necromancerTexture, 0, 0, width, height));
-        frames.add(new TextureRegion(necromancerTexture, 0, height, width, height));
-        super.setMoveDown(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
+		// Set the animations for moving Down on the map
+		frames.add(new TextureRegion(necromancerTexture, 0, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, 0, height, width, height));
+		super.setMoveDown(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
 
-        // Set the animations for moving Up on the map
-        frames.add(new TextureRegion(necromancerTexture, width, 0, width, height));
-        frames.add(new TextureRegion(necromancerTexture, width, height, width, height));
-        super.setMoveUp(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
+		// Set the animations for moving Up on the map
+		frames.add(new TextureRegion(necromancerTexture, width, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width, height, width, height));
+		super.setMoveUp(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
 
-        // Set the animations for moving Left on the map
-        frames.add(new TextureRegion(necromancerTexture, width * 2, 0, width, height));
-        frames.add(new TextureRegion(necromancerTexture, width * 2, height, width, height));
-        super.setMoveLeft(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
+		// Set the animations for moving Left on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 2, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 2, height, width, height));
+		super.setMoveLeft(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
 
-        // Set the animations for moving Right on the map
-        frames.add(new TextureRegion(necromancerTexture, width * 3, 0, width, height));
-        frames.add(new TextureRegion(necromancerTexture, width * 3, height, width, height));
-        super.setMoveRight(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
+		// Set the animations for moving Right on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 3, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 3, height, width, height));
+		super.setMoveRight(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
 
-        // Set the animations for moving Down-Left on the map
-        frames.add(new TextureRegion(necromancerTexture, width * 4, 0, width, height));
-        frames.add(new TextureRegion(necromancerTexture, width * 4, height, width, height));
-        super.setMoveDownLeft(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
+		// Set the animations for moving Down-Left on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 4, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 4, height, width, height));
+		super.setMoveDownLeft(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
 
-        // Set the animations for moving Down-Right on the map
-        frames.add(new TextureRegion(necromancerTexture, width * 5, 0, width, height));
-        frames.add(new TextureRegion(necromancerTexture, width * 5, height, width, height));
-        super.setMoveDownRight(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
+		// Set the animations for moving Down-Right on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 5, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 5, height, width, height));
+		super.setMoveDownRight(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
 
-        // Set the animations for moving Up-Right on the map
-        frames.add(new TextureRegion(necromancerTexture, width * 6, 0, width, height));
-        frames.add(new TextureRegion(necromancerTexture, width * 6, height, width, height));
-        super.setMoveUpRight(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
+		// Set the animations for moving Up-Right on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 6, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 6, height, width, height));
+		super.setMoveUpRight(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
 
-        // Set the animations for moving Up-Left on the map
-        frames.add(new TextureRegion(necromancerTexture, 0, height * 2, width, height));
-        frames.add(new TextureRegion(necromancerTexture, width, height * 2, width, height));
-        super.setMoveUpLeft(new Animation<TextureRegion>(0.1f, frames));
-        frames.clear();
-    }
+		// Set the animations for moving Up-Left on the map
+		frames.add(new TextureRegion(necromancerTexture, 0, height * 2, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width, height * 2, width, height));
+		super.setMoveUpLeft(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+	}
 
-    /**
-     * Create the Necromancer's body for the box2d physics engine
-     * 
-     * @param world
-     *            is the world to put the character into
-     * @param x
-     *            is the x-coordinate to put the character on
-     * @param y
-     *            is the y-coordinate to put the character on
-     */
-    @Override
-    public void defineBody(World world, int x, int y) {
+	/**
+	 * Create the Necromancer's body for the box2d physics engine
+	 * 
+	 * @param world
+	 *            is the world to put the character into
+	 * @param x
+	 *            is the x-coordinate to put the character on
+	 * @param y
+	 *            is the y-coordinate to put the character on
+	 */
+	@Override
+	public void defineBody(World world, int x, int y) {
 
-        // set the body of the character
-        BodyDef bdef = new BodyDef();
-        bdef.position.set(x, y); // position
-        bdef.type = BodyDef.BodyType.DynamicBody; // body type
-        
-        // Create the body and add mass
-        Body body = world.createBody(bdef);
-        MassData mass = new MassData();
-        mass.mass = 1000000f;
-        body.setMassData(mass);
-        this.setBody(body); 
+		// set the body of the character
+		BodyDef bdef = new BodyDef();
+		bdef.position.set(x, y); // position
+		bdef.type = BodyDef.BodyType.DynamicBody; // body type
 
-        // create the world fixture for collision
-        FixtureDef fdef = new FixtureDef();
-        PolygonShape rect = new PolygonShape();
+		// Create the body and add mass
+		Body body = world.createBody(bdef);
+		MassData mass = new MassData();
+		mass.mass = 1000000f;
+		body.setMassData(mass);
+		this.setBody(body);
 
-        // coordinates of the Necromancer's collision box
-        Vector2[] vertice = new Vector2[4];
-        vertice[0] = new Vector2(-(NEC_WIDTH * SCALINGFACTOR) / 2 + 5, 0); // top left
-        vertice[1] = new Vector2((NEC_WIDTH * SCALINGFACTOR) / 2 - 5, 0); // top right
-        vertice[2] = new Vector2(-(NEC_WIDTH * SCALINGFACTOR) / 2 + 5, -(NEC_HEIGHT * SCALINGFACTOR) / 2); // bottom
-                                                                                                           // left
-        vertice[3] = new Vector2((NEC_WIDTH * SCALINGFACTOR) / 2 - 5, -(NEC_HEIGHT * SCALINGFACTOR) / 2); // bottom
-                                                                                                          // right
+		// create the world fixture for collision
+		FixtureDef fdef = new FixtureDef();
+		PolygonShape rect = new PolygonShape();
 
-        // set the world
-        rect.set(vertice);
-        fdef.shape = rect;
-        this.getBody().createFixture(fdef).setUserData(this);
-    }
+		// coordinates of the Necromancer's collision box
+		Vector2[] vertice = new Vector2[4];
+		vertice[0] = new Vector2(-(NEC_WIDTH * SCALINGFACTOR) / 2 + 5, 0); // top left
+		vertice[1] = new Vector2((NEC_WIDTH * SCALINGFACTOR) / 2 - 5, 0); // top right
+		vertice[2] = new Vector2(-(NEC_WIDTH * SCALINGFACTOR) / 2 + 5, -(NEC_HEIGHT * SCALINGFACTOR) / 2); // bottom
+																											// left
+		vertice[3] = new Vector2((NEC_WIDTH * SCALINGFACTOR) / 2 - 5, -(NEC_HEIGHT * SCALINGFACTOR) / 2); // bottom
+																											// right
 
-    /**
-     * Whether or not the Necromancer is engaged in the bandit dialogue
-     * @param b
-     */
-    public void banditDialogue(boolean b) {
-    	this.banditDialogue = b;
-    }
-    /**
-     * Get the Necromancer's Dialogue Graph
-     * @param the player to base the graph off of
-     * @return the dialogue graph 
-     */
+		// set the world
+		rect.set(vertice);
+		fdef.shape = rect;
+		this.getBody().createFixture(fdef).setUserData(this);
+	}
+
+	/**
+	 * Whether or not the Necromancer is engaged in the bandit dialogue
+	 * 
+	 * @param b
+	 */
+	public void banditDialogue(boolean b) {
+		this.banditDialogue = b;
+	}
+
+	/**
+	 * Get the Necromancer's Dialogue Graph
+	 * 
+	 * @param the
+	 *            player to base the graph off of
+	 * @return the dialogue graph
+	 */
 	@Override
 	public DialogueGraph getDialogue(Player player) {
-		if(player.getStoryStats().getNecEncounters() == 1) 
+		if (player.getStoryStats().getNecEncounters() == 1)
 			return this.getFirstEncounter();
-		else if(this.banditDialogue)
+		else if (this.banditDialogue)
 			return this.getUnionization();
-		else if(player.getStoryStats().getFinaleEncounter() == 0)
+		else if (player.getStoryStats().getFinaleEncounter() == 0)
 			return this.getCastleEncounter();
-		else if(player.getStoryStats().getFinaleEncounter() == 5)
+		else if (player.getStoryStats().getFinaleEncounter() == 5)
 			return this.preCombatDialogue();
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("The Necromancer you are calling is currently unavailable. Please try again later.");
@@ -200,6 +204,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 
 	/**
 	 * Get a dialogue after the player is sent to the dungeon
+	 * 
 	 * @return the corresponding dialogue graph
 	 */
 	private DialogueGraph preCombatDialogue() {
@@ -210,6 +215,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 
 	/**
 	 * Get the necromancer's dialogue for the player's first encounter
+	 * 
 	 * @return the dialogue box for the first encounter
 	 */
 	private DialogueGraph getFirstEncounter() {
@@ -219,26 +225,28 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addNode("Necromancer: MUAHAHA and I *CRASH* will murder *BOOM* puppies, kittens, none shall escape *KERSHACK* and I will..."); // 2
 		graph.addNode("*Thunder booms again*"); // 3
 		graph.addNode("Necromancer: Farewell you fools! MUAHAHA"); // 4
-		
-		// add edges 
+
+		// add edges
 		graph.addEdge(0, 1);
 		graph.addEdge(1, 2);
 		graph.addEdge(2, 3);
 		graph.addEdge(3, 4);
-		
+
 		graph.getNode(4).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
 				setVelocity(new Vector2(0, -15));
 			}
-			
+
 		});
-		
+
 		return graph;
 	}
+
 	/**
 	 * Get the dialogue for the unionization encounter with the Necromancer
+	 * 
 	 * @return the unionization dialogue
 	 */
 	private DialogueGraph getUnionization() {
@@ -274,7 +282,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addNode("P: *continue hiding behind bandit*"); // 28
 		graph.addNode("Necromancer: I said get out here now!"); // 29
 		graph.addNode("P: *continue hiding*"); // 30
-		
+
 		// add the edges
 		graph.addEdge(0, 1);
 		graph.addEdge(1, 4);
@@ -312,33 +320,36 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addEdge(30, 12);
 		graph.addEdge(13, 12);
 		graph.addEdge(25, 12);
-		
+
 		// Add actors
 		graph.getNode(12).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.getStoryStats().setBanditEncounters(9);				
+				player.getStoryStats().setBanditEncounters(9);
 			}
-		
+
 		});
-		
+
 		return graph;
 	}
+
 	/**
-	 * Get the Necromancer's dialogue for when the player is in the Castle at the end of the game.
+	 * Get the Necromancer's dialogue for when the player is in the Castle at the
+	 * end of the game.
+	 * 
 	 * @return the dialogue graph
 	 */
 	private DialogueGraph getCastleEncounter() {
 		DialogueGraph graph = new DialogueGraph();
-		
+
 		graph.addNode("Necromancer: Well well well. Look who decided to show up? I set this banquet out and you leave me waiting here for an eternity?"); // 0
 		graph.addNode("P: An eternity?"); // 1
-		graph.addNode("Necromancer: When you live forever, time has no meaning anymore."); //  2
+		graph.addNode("Necromancer: When you live forever, time has no meaning anymore."); // 2
 		graph.addNode("P: You made all this for me?"); // 3
 		graph.addNode("P: That must be lonely."); // 4
 		graph.addNode("P: Where did you get this food from if you don\'t need to eat?"); // 5
-		graph.addNode("Necromancer: Of course I made it for you. Who else would come out here? Door to door salesmen?"); // 6 
+		graph.addNode("Necromancer: Of course I made it for you. Who else would come out here? Door to door salesmen?"); // 6
 		graph.addNode("P: Thank you, I think?"); // 7
 		graph.addNode("P: Those poor salesmen!"); // 8
 		graph.addNode("P: Did you try using some bleach?"); // 9
@@ -354,14 +365,15 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addNode("Necromancer: They are salesmen, merchants no one will miss. Besides they are all cons anyway. Shame I never got my money back though."); // 19
 		graph.addNode("P: I will avenge those salesmen!"); // 20
 		graph.addNode("P: Yeah they are truly the worst of merchants."); // 21
-		graph.addNode("Necromancer: Very true, now get a good meal and then a nap before I destroy you."); // 22		// player can leave and return later
+		graph.addNode("Necromancer: Very true, now get a good meal and then a nap before I destroy you."); // 22 // player can leave and return later
 		graph.addNode("Necromancer: Bleach never works, besides it leaves behind a smell that gives me a killer headache."); // 23
 		graph.addNode("P: Wait. I thought you couldn't smell?"); // 24
-		graph.addNode("Necromancer: HOW WOULD YOU KNOW? Sorry, sorry. It has been a long day and I just wish to destroy you, I was gonna let you eat this fine feast but now … "); // 25
+		graph.addNode(
+				"Necromancer: HOW WOULD YOU KNOW? Sorry, sorry. It has been a long day and I just wish to destroy you, I was gonna let you eat this fine feast but now … "); // 25
 		graph.addNode("Necromancer: What would you know of lonely? I have lived for eons with only myself... can you really call that living?"); // 26
 		graph.addNode("P: C\'mon you are more than just a Necromancer, you are an icon of fear! You inspire heroes to rise up! Don\'t be so down on yourself."); // 27
 		graph.addNode("P: Motions? What motions?"); // 28
-		graph.addNode("Necromancer: You know, flattery won\'t save you and neither will pity."); // 29 
+		graph.addNode("Necromancer: You know, flattery won\'t save you and neither will pity."); // 29
 		graph.addNode("Necromancer: Oh, you know. Kill the sick and raise them as undead to watch over their towns and continue with their jobs."); // 30
 		graph.addNode("P: WAIT WHAT?"); // 31
 		graph.addNode("Necromancer: Hmmm?"); // 32
@@ -370,11 +382,12 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addNode("P: …"); // 35
 		graph.addNode("Necromancer: He was a good man, but he asked me for too much, his greed took over him and I had to leave him."); // 36 "
 		graph.addNode("P: But in doing so haven\'t you-"); // 37
-		graph.addNode("Necromancer: Become the very tyrant I swore to stop? Very astute of you. Why do you think I have been waiting for a hero this whole time?"); 		
+		graph.addNode("Necromancer: Become the very tyrant I swore to stop? Very astute of you. Why do you think I have been waiting for a hero this whole time?");
 		graph.addNode("P: …"); // 39
 		graph.addNode("Necromancer: How about you? Will you be the one to end my suffering?"); // 40
 		graph.addNode("P: Yes"); // 41
-		graph.addNode("P: Yes, but I would like to save you, not end you."); // 42   // only possible if the player organized the bandit camp and took care of the villagers with the mushrooms
+		graph.addNode("P: Yes, but I would like to save you, not end you."); // 42 // only possible if the player organized the bandit camp and took care of
+																				// the villagers with the mushrooms
 		graph.addNode("Necromancer: Thank you, now get good rest in the dungeon. I look forward to our fight."); // 43
 		graph.addNode("Necromancer: What do you mean save me?"); // 44
 		graph.addNode("P: You are a good man, I wish to join your cause, and save you from your loneliness."); // 45
@@ -394,7 +407,8 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addNode("Necromancer: I only have access to what I got from Oog-Lag."); // 59
 		graph.addNode("P: Fine then I\'m not eating, let\'s fight!"); // 60
 		graph.addNode("Necromancer: YOU KNOW WHAT? YOU JUST TICKED ME OFF. DUNGEON TIME."); // 61 // player teleported to dungeon
-		graph.addNode("Necromancer: It is just a chore. And when you don\'t need to eat and you prepare a feast for someone who doesn\'t show up … you get a little upset."); // 62
+		graph.addNode(
+				"Necromancer: It is just a chore. And when you don\'t need to eat and you prepare a feast for someone who doesn\'t show up … you get a little upset."); // 62
 		graph.addNode("Necromancer: I mostly just go through the motions now."); // 63
 		graph.addNode("Necromancer: Hire bandits to keep the normal humans safe from the horrifying mushrooms on the mountains."); // 64
 		graph.addNode("Necromancer: Hire a poor knight who was looking for a master to serve and gave them a roof to sleep under and purpose."); // 65
@@ -406,11 +420,14 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addNode("*You feel a strange sensation as your body changes*"); // 71
 		graph.addNode("*You are now a Necromancer*"); // 72
 		graph.addNode("Necromancer: Very well then. Enjoy a nice night in the Dungeon."); // 73
-		graph.addNode("Necromancer: Now eat your food and go take a nap in my dungeon so I can be rid of you with a clear conscience."); // 74 // player teleported to dungeon combat if player returns
+		graph.addNode("Necromancer: Now eat your food and go take a nap in my dungeon so I can be rid of you with a clear conscience."); // 74 // player teleported to
+																																			// dungeon combat if player
+																																			// returns
 		graph.addNode("Necromancer: No I killed all of them ages ago, darn shamwow never absorbed all the blood."); // 75
-		graph.addNode("Necromancer: I might as well give you a good final meal. Forgive the lack of variety, the only thing that grows in this kingdom anymore is wheat."); // 76
-		graph.addNode("Necromancer: Now I am just going to send you to the dungeon and fight you when I am calmer. Bye."); // 77 // player is teleported to the dungeon 
-		
+		graph.addNode(
+				"Necromancer: I might as well give you a good final meal. Forgive the lack of variety, the only thing that grows in this kingdom anymore is wheat."); // 76
+		graph.addNode("Necromancer: Now I am just going to send you to the dungeon and fight you when I am calmer. Bye."); // 77 // player is teleported to the dungeon
+
 		graph.addEdge(0, 1);
 		graph.addEdge(1, 2);
 		graph.addEdge(2, 62);
@@ -453,7 +470,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addEdge(31, 32);
 		graph.addEdge(32, 33);
 		graph.addEdge(33, 34);
-		
+
 		graph.addEdge(34, 66);
 		graph.addEdge(66, 35);
 		graph.addEdge(35, 36);
@@ -478,20 +495,19 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 		graph.addEdge(49, 70);
 		graph.addEdge(70, 71);
 		graph.addEdge(71, 72);
-		
+
 		graph.addEdge(5, 51);
 		graph.addEdge(51, 52);
 		graph.addEdge(52, 53);
 		graph.addEdge(53, 54);
 		graph.addEdge(54, 55);
 		graph.addEdge(55, 56);
-		graph.addEdge(56,57);
-		graph.addEdge(57,58);
-		graph.addEdge(58,59);
-		graph.addEdge(59,60);
-		graph.addEdge(60,61);
-		
-		
+		graph.addEdge(56, 57);
+		graph.addEdge(57, 58);
+		graph.addEdge(58, 59);
+		graph.addEdge(59, 60);
+		graph.addEdge(60, 61);
+
 		// Add actors
 		DialogueActor transitionActor = new DialogueActor() {
 
@@ -499,7 +515,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 			public void act(Player player, MapManager manager) {
 				player.getStoryStats().setFinaleEncounter(2);
 			}
-			
+
 		};
 		graph.getNode(17).addActor(transitionActor);
 		graph.getNode(18).addActor(transitionActor);
@@ -515,7 +531,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites{
 				player.setNecromancerTextures();
 				player.getStoryStats().setFinaleEncounter(6);
 			}
-			
+
 		});
 		return graph;
 	}
