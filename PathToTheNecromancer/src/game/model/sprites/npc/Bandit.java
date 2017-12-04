@@ -246,6 +246,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.getNode(23).addActor(actor);
 		graph.getNode(35).addActor(actor);
 		graph.getNode(41).addActor(actor);
+		graph.getNode(42).addActor(actor);
 		graph.getNode(47).addActor(actor);
 		graph.getNode(48).addActor(actor);
 		graph.getNode(52).addActor(actor);

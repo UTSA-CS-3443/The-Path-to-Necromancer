@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import game.controller.MapManager;
 import game.model.DialogueGraph;
 import game.model.sprites.npc.Bandit;
+import game.model.sprites.npc.Fighter;
 import game.model.sprites.npc.Necromancer;
 import game.model.sprites.player.Player;
 
@@ -31,11 +32,15 @@ public class PlainsStory implements Actor{
 	/**
 	 * Different bandits to modify
 	 */
-	Bandit b1, b2, b3, b4, b5, b6;
+	private Bandit b1, b2, b3, b4, b5, b6;
 	/**
 	 * The necromancer for the unionization encounter
 	 */
-	Necromancer nec;
+	private Necromancer nec;
+	/**
+	 * The fighter for the encounter with the fighter
+	 */
+	private Fighter fighter;
 	/**
 	 * Constructor. Set up variables
 	 * @param manager is the manager for putting sprites in
@@ -46,6 +51,7 @@ public class PlainsStory implements Actor{
 		this.manager = manager;
 		this.player = player;
 		this.world = world;
+		this.fighter = null;
 	}
 	/**
 	 * Perform some specific actions
@@ -53,6 +59,14 @@ public class PlainsStory implements Actor{
 	 */
 	@Override
 	public void act(float dt) {
+		// set up fighter dialogue
+		if(player.getStoryStats().getFighterEncounter() == 0 && this.fighter != null && player.getY() > 305) {
+			player.addVelocity(new Vector2(0, 40), 3);
+			DialogueGraph graph = this.fighter.getDialogue(player);
+			manager.getMainScreen().startChat();
+			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
+			player.getStoryStats().setFighterEncounter(1);
+		}
 		// Start dialogue for the first time
 		if (player.getStoryStats().getBanditEncounters() == 0 && player.getY() > 1160) {
 			DialogueGraph graph = b1.getDialogue(player);
@@ -112,6 +126,11 @@ public class PlainsStory implements Actor{
 			b1.defineBody(world, 368, 1245);
 		else
 			b1.defineBody(world, 473, 1275);
+		if(player.getStoryStats().getFighterEncounter() == 0) {
+			this.fighter = new Fighter();
+			this.fighter.defineBody(world, 383, 463);
+			manager.addSprite(fighter);
+		}
 		b2.defineBody(world, 307, 1882);
 		b3.defineBody(world, 427, 1875);
 		b4.defineBody(world, 429, 1910);

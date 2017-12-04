@@ -12,6 +12,8 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
+import game.controller.MapManager;
+import game.controller.story.DialogueActor;
 import game.model.DialogueGraph;
 import game.model.sprites.CharacterSprites;
 import game.model.sprites.player.Player;
@@ -203,40 +205,43 @@ public class Knight extends CharacterSprites {
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();
 		
-		graph.addNode("K:I AM THE NECROMANCER’S MOST TRUSTED SERVANT!"); // 0
+		graph.addNode("Knight: HALT"); // 0
 		graph.addNode("P: Cool!"); // 1
-		graph.addNode("K: YES IT IS VERY COOL, I HAVE SERVED HIM FOR MANY YEARS!"); // 2
+		graph.addNode("Knight: YES IT IS VERY COOL, I HAVE SERVED HIM FOR MANY YEARS!"); // 2
 		graph.addNode("P: So that means you really know the guy huh?"); // 3
-		graph.addNode("K: YES WE ARE GOOD PALS"); // 4
+		graph.addNode("Knight: YES WE ARE GOOD PALS"); // 4
 		graph.addNode("P: Are you though?"); // 5
-		graph.addNode("K: WHAT DO YOU MEAN?"); // 6
+		graph.addNode("Knight: WHAT DO YOU MEAN?"); // 6
 		graph.addNode("P: I mean looking at things right now, he seems to hold all the power and here you are in a dusty suit of armor just sitting around."); // 7
-		graph.addNode("K: I AM HIS MOST POWERFUL SERVANT!"); // 8
+		graph.addNode("Knight: I AM HIS MOST POWERFUL SERVANT!"); // 8
 		graph.addNode("P: Even more powerful than him?"); // 9
 		graph.addNode("P: Then why serve him?"); // 10
-		graph.addNode("K: YES, WAIT, WHY SHOULD I SERVE WHEN I AM THE GREATER BEING!"); // 11
+		graph.addNode("Knight: YES, WAIT, WHY SHOULD I SERVE WHEN I AM THE GREATER BEING!"); // 11
 		graph.addNode("P: Exactly you should open up your own castle and do your thing elsewhere, you know maybe you could use your immense power for good?"); // 12
-		graph.addNode("K: WHY WOULD I DO THAT?"); // 13
+		graph.addNode("Knight: WHY WOULD I DO THAT?"); // 13
 		graph.addNode("P: Because deep down you still have a heart? Even if it is unbeating and cold and lifeless, it still has hopes for humans?"); // 14
 		graph.addNode("P: Being a hero has no pay, but I hear mercenary work pays well."); // 15
-		graph.addNode("K: PFFFFT, YEAH RIGHT DIE HERO"); // 16
-		graph.addNode("K: OOOH MONEY YOU SAY? FINE THANKS FOR THE TALK HERO"); // 17
-		graph.addNode("K: YOU KNOW NOT WHAT YOU SPEAK OF PREPARE FOR DEATH *trips and falls*"); // 18
+		graph.addNode("Knight: PFFFFT, YEAH RIGHT DIE HERO"); // 16
+		graph.addNode("Knight: OOOH MONEY YOU SAY? FINE THANKS FOR THE TALK HERO"); // 17
+		graph.addNode("Knight: YOU KNOW NOT WHAT YOU SPEAK OF PREPARE FOR DEATH *trips and falls*"); // 18
 		graph.addNode("P: Pffft no you aren’t."); // 19
-		graph.addNode("K: WHAT? IF I AM NOT THEN WHO IS?"); // 20
+		graph.addNode("Knight: WHAT? IF I AM NOT THEN WHO IS?"); // 20
 		graph.addNode("P: The don?"); // 21
 		graph.addNode("P: The hippie?"); // 22
-		graph.addNode("K: THE DON IS WORTHLESS AND MEASLY HE LEADS A SMALL BANDIT GROUP"); // 23
-		graph.addNode("K: THE HIPPIE IS WEAK AND ONLY WATCHES A VILLAGE WHILE I WATCH OVER THE ARMIES"); // 24
+		graph.addNode("Knight: THE DON IS WORTHLESS AND MEASLY HE LEADS A SMALL BANDIT GROUP"); // 23
+		graph.addNode("Knight: THE HIPPIE IS WEAK AND ONLY WATCHES A VILLAGE WHILE I WATCH OVER THE ARMIES"); // 24
 		graph.addNode("P: That bandit group now has benefits though."); // 25
 		graph.addNode("P: The Don is weak I guess …"); // 26
-		graph.addNode("K: OOO BENEFITS? EVEN I DON’T HAVE THOSE, I GUESS I REALLY AREN’T THE MOST TRUSTED, I FEEL BETRAYED, MAYBE I SHOULD JOIN YOU AND BE A HERO?"); // 27
+		graph.addNode("Knight: OOO BENEFITS? EVEN I DON’T HAVE THOSE, I GUESS I REALLY AREN’T THE MOST TRUSTED, I FEEL BETRAYED, MAYBE I SHOULD JOIN YOU AND BE A HERO?"); // 27
 		graph.addNode("P: What armies? I have been fighting only 1 enemy at a time. Poor coordination if you ask me."); // 28
-		graph.addNode("K: OOF, YOU WOUND ME HERO, MAYBE I SHOULD WHIP THEM INTO SHAPE?"); // 29
+		graph.addNode("Knight: OOF, YOU WOUND ME HERO, MAYBE I SHOULD WHIP THEM INTO SHAPE?"); // 29
 		graph.addNode("P: Yeah you should do that now!"); // 30
-		graph.addNode("K: GOOD IDEA, THANK YOU HERO"); // 31
+		graph.addNode("Knight: GOOD IDEA, THANK YOU HERO"); // 31
+		graph.addNode("Knight:I AM THE NECROMANCER’S MOST TRUSTED SERVANT!"); // 32
+
 		
-		graph.addEdge(0,1);
+		graph.addEdge(0, 32);
+		graph.addEdge(32,1);
 		graph.addEdge(1,2);		
 		graph.addEdge(2,3);
 		graph.addEdge(3,4);
@@ -254,7 +259,7 @@ public class Knight extends CharacterSprites {
 		graph.addEdge(15,17);
 		graph.addEdge(8,10);
 		graph.addEdge(10,18);
-		graph.addEdge(0,19);
+		graph.addEdge(32,19);
 		graph.addEdge(19,20);
 		graph.addEdge(20,21);
 		graph.addEdge(21,23);
@@ -270,6 +275,24 @@ public class Knight extends CharacterSprites {
 		graph.addEdge(29,30);
 		graph.addEdge(30,31);
 		graph.addEdge(20,22);
+		
+		// Add actors
+		DialogueActor actor = new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {	
+				addVelocity(new Vector2(0, 20), 3);
+				addVelocity(new Vector2(30, 0), 1);
+				addVelocity(new Vector2(0, 25), 5);
+			}
+			
+		};
+		graph.getNode(16).addActor(actor);
+		graph.getNode(17).addActor(actor);
+		graph.getNode(18).addActor(actor);
+		graph.getNode(26).addActor(actor);
+		graph.getNode(27).addActor(actor);
+		graph.getNode(31).addActor(actor);
 		
 		return graph;
 	}

@@ -1,5 +1,10 @@
 package game.model.sprites.player;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
+
 import game.model.sprites.CharacterSprites;
 
 /**
@@ -37,6 +42,7 @@ public abstract class Player extends CharacterSprites {
 		super();
 		this.storyStats = new StoryStats();
 	}
+
 	/**
 	 * Get the Character's Class
 	 * 
@@ -165,8 +171,7 @@ public abstract class Player extends CharacterSprites {
 	 * @return the player's velocity
 	 */
 	public double getVelocity() {
-		return Math.sqrt(
-				Math.pow(this.getBody().getLinearVelocity().x, 2) + Math.pow(this.getBody().getLinearVelocity().x, 2));
+		return Math.sqrt(Math.pow(this.getBody().getLinearVelocity().x, 2) + Math.pow(this.getBody().getLinearVelocity().x, 2));
 	}
 
 	/**
@@ -188,11 +193,79 @@ public abstract class Player extends CharacterSprites {
 		this.stats.setMaxHealth(health);
 	}
 
+	/**
+	 * Set the player up with Necromancer Textures
+	 */
+	public void setNecromancerTextures() {
+		Texture necromancerTexture = new Texture("CharacterSprites/Necromancer.png");
+		int width = 50;
+		int height = 51;
+
+		// Set the default standing region of the Necromancer.
+		super.setStandingRegion(new TextureRegion(necromancerTexture, 0, 0, width, height));
+		// Array of frames used for the animations
+		Array<TextureRegion> frames = new Array<TextureRegion>();
+
+		// Set the animations for moving Down on the map
+		frames.add(new TextureRegion(necromancerTexture, 0, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, 0, height, width, height));
+		super.setMoveDown(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+
+		// Set the animations for moving Up on the map
+		frames.add(new TextureRegion(necromancerTexture, width, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width, height, width, height));
+		super.setMoveUp(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+
+		// Set the animations for moving Left on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 2, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 2, height, width, height));
+		super.setMoveLeft(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+
+		// Set the animations for moving Right on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 3, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 3, height, width, height));
+		super.setMoveRight(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+
+		// Set the animations for moving Down-Left on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 4, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 4, height, width, height));
+		super.setMoveDownLeft(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+
+		// Set the animations for moving Down-Right on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 5, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 5, height, width, height));
+		super.setMoveDownRight(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+
+		// Set the animations for moving Up-Right on the map
+		frames.add(new TextureRegion(necromancerTexture, width * 6, 0, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width * 6, height, width, height));
+		super.setMoveUpRight(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+
+		// Set the animations for moving Up-Left on the map
+		frames.add(new TextureRegion(necromancerTexture, 0, height * 2, width, height));
+		frames.add(new TextureRegion(necromancerTexture, width, height * 2, width, height));
+		super.setMoveUpLeft(new Animation<TextureRegion>(0.1f, frames));
+		frames.clear();
+		super.setAnimationSpeed(5);
+		super.setRunningSpeed(4);
+		setBounds(0, 0, 24, 30);
+	}
+
 	public StoryStats getStoryStats() {
 		return this.storyStats;
 	}
+
 	public void setStoryStats(StoryStats stats) {
 		this.storyStats = stats;
+		if (stats.isHasNecroTextures())
+			this.setNecromancerTextures();
 	}
 
 	public boolean isWarrior() {
@@ -220,8 +293,8 @@ public abstract class Player extends CharacterSprites {
 	}
 
 	public void setBaseStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
-		this.stats = new Stats(level,experience,strength,intelligence,dexterity,luck,maxHealth);
-		
+		this.stats = new Stats(level, experience, strength, intelligence, dexterity, luck, maxHealth);
+
 	}
 
 	public void levelUpStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
@@ -235,10 +308,10 @@ public abstract class Player extends CharacterSprites {
 		this.stats.setLevelUp(false);
 
 	}
-	
-	public void endCombat(int experience ){
+
+	public void endCombat(int experience) {
 		this.stats.setExperience(experience + this.stats.getExperience());
-		if(this.stats.getExperience() >= 30) {
+		if (this.stats.getExperience() >= 30) {
 			this.stats.setLevelUp(true);
 			this.stats.setExperience(this.stats.getExperience() - 30);
 		}
@@ -248,9 +321,11 @@ public abstract class Player extends CharacterSprites {
 		// TODO Auto-generated method stub
 		return this.stats.isLevelUp();
 	}
+
 	public Stats getStats() {
 		return stats;
 	}
+
 	public void setStats(Stats stats) {
 		this.stats = stats;
 	}

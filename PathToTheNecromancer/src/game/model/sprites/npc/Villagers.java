@@ -280,7 +280,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 			break;
 		case 5:
 			graph.addNode(
-					"Villager: I have to admit, the sounds of the necromancer's skeleton army is slightly less offputting thanks to the xylophone sound the skeletons make as they walk.");
+					"Villager: I have to admit, the sounds of the necromancer's skeleton army is slightly less offputting thanks to the xylophone sound the skeletons make.");
 			break;
 		case 6:
 			graph.addNode(

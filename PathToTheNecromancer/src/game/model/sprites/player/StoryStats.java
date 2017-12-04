@@ -39,6 +39,18 @@ public class StoryStats implements Serializable {
 	 */
 	private boolean knightEncounter;
 	/**
+	 * Determine actions in the finale
+	 */
+	private int finaleEncounter;
+	/**
+	 * Whether or not the player has the Necromancer's textures.
+	 */
+	private boolean hasNecroTextures;
+	/**
+	 * The player's interaction with the fighter
+	 */
+	private int fighterEncounter;
+	/**
 	 * Constructor for the StoryStats object. Initialize values as if 
 	 * it were a new game.
 	 */
@@ -49,8 +61,19 @@ public class StoryStats implements Serializable {
 		this.villagerConversations = 0;
 		this.firstMerchantChat = true;
 		this.knightEncounter = true;
+		this.finaleEncounter = 0;
+		this.hasNecroTextures = false;
+		this.fighterEncounter = 0;
 	}
 	
+	public boolean isHasNecroTextures() {
+		return hasNecroTextures;
+	}
+
+	public void setHasNecroTextures(boolean hasNecroTextures) {
+		this.hasNecroTextures = hasNecroTextures;
+	}
+
 	public int getNecEncounters() {
 		return necEncounters;
 	}
@@ -75,21 +98,32 @@ public class StoryStats implements Serializable {
 	public void setVillagerConversations(int villagerConversations) {
 		this.villagerConversations = villagerConversations;
 	}
-
 	public boolean isFirstMerchantChat() {
 		return firstMerchantChat;
 	}
-
 	public void setFirstMerchantChat(boolean firstMerchantChat) {
 		this.firstMerchantChat = firstMerchantChat;
+	}
+	
+	public int getFighterEncounter() {
+		return fighterEncounter;
+	}
+
+	public void setFighterEncounter(int fighterEncounter) {
+		this.fighterEncounter = fighterEncounter;
 	}
 
 	public boolean isKnightEncounter() {
 		return this.knightEncounter;
 	}
-	public void setKnightEncounter(boolean b) {
-		this.knightEncounter = b;
+	public void setKnightEncounter(boolean knightEncounter) {
+		this.knightEncounter = knightEncounter;
 	}
-	
+	public int getFinaleEncounter() {
+		return finaleEncounter;
+	}
+	public void setFinaleEncounter(int finaleEncounter) {
+		this.finaleEncounter = finaleEncounter;
+	}
 }
 

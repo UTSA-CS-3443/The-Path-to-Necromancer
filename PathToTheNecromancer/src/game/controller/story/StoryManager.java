@@ -5,7 +5,9 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
 import game.model.DialogueGraph;
+import game.model.maps.Dungeon;
 import game.model.sprites.npc.ColorAndGender;
+import game.model.sprites.npc.Knight;
 import game.model.sprites.npc.Necromancer;
 import game.model.sprites.npc.Villagers;
 import game.model.sprites.objectSprites.Book;
@@ -108,7 +110,6 @@ public class StoryManager {
 				public void setUpActor(World world, Player player) {
 				}
 
-
 			}
 
 			actor = new IntroArea();
@@ -141,8 +142,6 @@ public class StoryManager {
 
 				@Override
 				public void setUpActor(World world, Player player) {
-					// TODO Auto-generated method stub
-					
 				}
 
 			}
@@ -163,17 +162,20 @@ public class StoryManager {
 
 				/**
 				 * Set up the special dialogue villager
-				 * @param world is the world to put the villager
-				 * @param player is used to determine whether the villager has special dialoge
+				 * 
+				 * @param world
+				 *            is the world to put the villager
+				 * @param player
+				 *            is used to determine whether the villager has special dialoge
 				 */
 				@Override
 				public void setUpActor(World world, Player player) {
-					
+
 					Villagers villager = new Villagers(ColorAndGender.BLACK, ColorAndGender.MALE);
 					villager.defineBody(world, 93, 2268);
 					manager.addSprite(villager);
-					
-					if(player.getStoryStats().getVillagerConversations() == 0) {
+
+					if (player.getStoryStats().getVillagerConversations() == 0) {
 						player.getStoryStats().setVillagerConversations(1);
 						villager.setSpecialDialogue(true);
 					}
@@ -181,6 +183,75 @@ public class StoryManager {
 			}
 
 			actor = new RightMount();
+			storyActor.actor(actor);
+			break;
+		case "Maps/Map09-EntrytoNecromancer'sLair.tmx":
+			class NecLair implements Actor {
+				private Knight knight;
+
+				@Override
+				public void setUpActor(World world, Player player) {
+					if (player.getStoryStats().isKnightEncounter()) {
+						this.knight = new Knight();
+						this.knight.defineBody(world, 298, 520);
+						manager.addSprite(knight);
+					}
+				}
+
+				@Override
+				public void act(float dt) {
+					if (player.getY() >= 420 && player.getStoryStats().isKnightEncounter() && this.knight != null) {
+						DialogueGraph graph = this.knight.getDialogue(player);
+						manager.getMainScreen().startChat();
+						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
+						player.getStoryStats().setKnightEncounter(false);
+						knight.addVelocity(new Vector2(0, -25), 2);
+					}
+				}
+
+			}
+			;
+			actor = new NecLair();
+			storyActor.actor(actor);
+			break;
+		// The interior of the Necromancer's Lair
+		case "Maps/Map10-Necromancer'sLair.tmx":
+			class necInterior implements Actor {
+				private Necromancer nec;
+
+				@Override
+				public void setUpActor(World world, Player player) {
+					this.nec = new Necromancer();
+					nec.defineBody(world, 238, 1062);
+					manager.addSprite(nec);
+					if(player.getStoryStats().getFinaleEncounter() == 3)
+						player.getStoryStats().setFinaleEncounter(4);
+				}
+
+				@Override
+				public void act(float dt) {
+					if (player.getY() > 960 && player.getStoryStats().getFinaleEncounter() == 0) {
+						player.addVelocity(new Vector2(0, 10), 4);
+						DialogueGraph graph = this.nec.getDialogue(player);
+						manager.getMainScreen().startChat();
+						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
+						player.getStoryStats().setFinaleEncounter(1);
+					}
+					if (player.getStoryStats().getFinaleEncounter() == 2) {
+						manager.setMap(new Dungeon(manager), 200, 200);
+						player.getStoryStats().setFinaleEncounter(3);
+					}
+					if (player.getStoryStats().getFinaleEncounter() == 4 && player.getY() > 960) {
+						player.getStoryStats().setFinaleEncounter(5);
+						player.addVelocity(new Vector2(0, 10), 4);
+						DialogueGraph graph = this.nec.getDialogue(player);
+						manager.getMainScreen().startChat();
+						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
+					}
+				}
+
+			}
+			actor = new necInterior();
 			storyActor.actor(actor);
 			break;
 		default:
