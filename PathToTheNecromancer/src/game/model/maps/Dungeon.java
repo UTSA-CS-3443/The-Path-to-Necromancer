@@ -22,7 +22,7 @@ public class Dungeon extends GameMaps {
     /**
      * layer 4 = south transition
      */
-    private static final int SOUTHTRANSITION = 4;
+    private static final int NORTHTRANSITION = 4;
     /**
      * layer 5 = map collision layer
      */
@@ -59,7 +59,7 @@ public class Dungeon extends GameMaps {
         // create the static non-moving bodies
         this.creator.createWorld(world, this, COLLISIONLAYERS);
         // create the transition areas
-        this.creator.createTransition(world, this, SOUTHTRANSITION, SOUTH);
+        this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
 
 
     }
@@ -76,8 +76,8 @@ public class Dungeon extends GameMaps {
     public void transitionAreas(short transitionType) {
         switch (transitionType) {    
         // the transition to the south
-        case SOUTH:
-            this.manager.setMap(new NecromancerLair(this.manager), 130, 375);
+        case NORTH:
+            this.manager.setMap(new NecromancerLair(this.manager), 34, 576);
             break;
         // no transition
         default:
@@ -101,6 +101,13 @@ public class Dungeon extends GameMaps {
      *            allows sprites with box2d bodies to be generated in the map
      */
     public void createSprites(World world) {}
+
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+	}
    
 	
 }

@@ -2,15 +2,10 @@ package game.model.maps;
 
 import java.util.Random;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
-import game.model.sprites.ObjectSprites;
 
 /**
  * 
@@ -32,7 +27,7 @@ public class MiddleMountain extends GameMaps {
     /**
      * layer 2 = north transition
      */
-    private static final int NORTHTRANSITION = 2;
+    private static final int EASTTRANSITION = 2;
     /**
      * layer 3 = map collision layer
      */
@@ -69,7 +64,7 @@ public class MiddleMountain extends GameMaps {
         // create the static non-moving bodies
         this.creator.createWorld(world, this, COLLISIONLAYERS);
         // create the transition areas
-        this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
+        this.creator.createTransition(world, this, EASTTRANSITION, EAST);
         this.creator.createTransition(world, this, SOUTHTRANSITION, SOUTH);
        
 
@@ -87,7 +82,7 @@ public class MiddleMountain extends GameMaps {
     public void transitionAreas(short transitionType) {
         switch (transitionType) {
         // the transition to the north
-        case NORTH:
+        case EAST:
         	 this.manager.setMap(new MountainRight(this.manager), 30, 2275);
             break;
         // the transition to the south
@@ -105,7 +100,8 @@ public class MiddleMountain extends GameMaps {
      * 
      * @return an EnemySprite
      */
-    public EnemySprites getEnemy(int level) {
+    @Override
+	public EnemySprites getEnemy(int level) {
     	int enemyCount = 2;
     	Random rand = new Random();
     	int enemyNum = rand.nextInt(enemyCount);
@@ -127,5 +123,15 @@ public class MiddleMountain extends GameMaps {
 		// TODO Auto-generated method stub
 		
 	}
+	
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+		// TODO Auto-generated method stub
+		
+	}
+   
 
 }

@@ -134,6 +134,14 @@ public class NecromancerEntry extends GameMaps {
      *            allows sprites with box2d bodies to be generated in the map
      */
     public void createSprites(World world) {}
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+		// TODO Auto-generated method stub
+		
+	}
    
 
 }

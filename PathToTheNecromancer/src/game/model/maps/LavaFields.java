@@ -3,6 +3,8 @@ package game.model.maps;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.World;
@@ -29,7 +31,7 @@ public class LavaFields extends GameMaps {
     /**
      * layer 3 = south transition
      */
-    private static final int SOUTHTRANSITION = 3;
+    private static final int EASTTRANSITION = 3;
     /**
      * layer 2 = north transition
      */
@@ -57,6 +59,7 @@ public class LavaFields extends GameMaps {
         super(MAPNAME, false);
         this.manager = manager; // manager for loading maps
         this.creator = B2WorldCreator.getInstance(); // for creating the game's physics
+        this.setMusic();
     }
 
     /**
@@ -71,7 +74,7 @@ public class LavaFields extends GameMaps {
         this.creator.createWorld(world, this, COLLISIONLAYERS);
         // create the transition areas
         this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
-        this.creator.createTransition(world, this, SOUTHTRANSITION, SOUTH);
+        this.creator.createTransition(world, this, EASTTRANSITION, EAST);
 
     }
 
@@ -91,7 +94,7 @@ public class LavaFields extends GameMaps {
         	this.manager.setMap(new MountainRight(this.manager), 650, 30);
             break;
         // the transition to the south
-        case SOUTH:
+        case EAST:
             this.manager.setMap(new NecromancerEntry(this.manager), 30, 70);
             break;
         // no transition
@@ -164,6 +167,12 @@ public class LavaFields extends GameMaps {
         this.addSprite(new ObjectSprites(T5, 862, height - 166));
         this.addSprite(new ObjectSprites(T5, 802, height - 282));
     }
-   
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+		//manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/song.mp3")));
+	}  
 
 }

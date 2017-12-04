@@ -220,6 +220,14 @@ public class MountainRight extends GameMaps {
         villager7.defineBody(world, 179, 1958);
         this.addSprite(villager7);
     }
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+		// TODO Auto-generated method stub
+		
+	}
    
 
 }

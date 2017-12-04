@@ -148,4 +148,14 @@ public class InsideTavern extends GameMaps{
         merchant.addVelocity(new Vector2(0,-10), 1);
         this.addSprite(merchant);
     }
+    
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+		// TODO Auto-generated method stub
+		
+	}
+   
 }

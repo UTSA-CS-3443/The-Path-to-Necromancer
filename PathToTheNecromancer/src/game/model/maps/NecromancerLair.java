@@ -1,10 +1,12 @@
 package game.model.maps;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
 import game.model.sprites.EnemySprites;
+import game.model.sprites.npc.Guard;
 
 /**
  * The Necromancer Lair
@@ -100,7 +102,21 @@ public class NecromancerLair extends GameMaps {
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {}
+    public void createSprites(World world) {
+    	Guard guard = new Guard();
+    	guard.defineBody(world, 450, 111);
+    	guard.isVelocityLooping(true);
+    	guard.addVelocity(new Vector2(-31, 0), 10);
+    	guard.addVelocity(new Vector2(31, 0), 10);
+    	manager.addSprite(guard);
+    }
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+		// TODO Auto-generated method stub
+		
+	}
    
-
 }

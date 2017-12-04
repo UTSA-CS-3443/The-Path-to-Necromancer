@@ -244,6 +244,7 @@ public class MountainLeft extends GameMaps {
         villager12.addVelocity(new Vector2(0,-25), 6);
         villager12.addVelocity(new Vector2(0,25), 6);
         villager12.defineBody(world, 492, 1071);
+        villager12.setAnimationSpeed(2.5f);
         this.addSprite(villager12);
         
         Villagers villager13 = new Villagers(ColorAndGender.RED,ColorAndGender.MALE);
@@ -257,9 +258,20 @@ public class MountainLeft extends GameMaps {
         villager14.isVelocityLooping(true);
         villager14.addVelocity(new Vector2(0,-35), 4);
         villager14.addVelocity(new Vector2(0,35), 4);
+        villager14.setAnimationSpeed(2);
         villager14.defineBody(world, 211, 1198);
         this.addSprite(villager14);
         
         
     }
+    
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+		// TODO Auto-generated method stub
+		
+	}
+   
 }

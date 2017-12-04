@@ -188,4 +188,13 @@ public class OogLagExterior extends GameMaps {
         BillBoard billboard = new BillBoard();
         billboard.defineBody(world, 460, 645);
      }
+    /**
+     * Set the music for the map
+     */
+	@Override
+	public void setMusic() {
+		// TODO Auto-generated method stub
+		
+	}
+   
 }

@@ -192,4 +192,8 @@ public abstract class GameMaps {
     public void remove(CharacterSprites character) {
     	this.sprites.remove(character);
     }
+    /**
+     * Set the music for the current map
+     */
+    public abstract void setMusic();
 }
