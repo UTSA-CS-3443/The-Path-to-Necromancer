@@ -174,5 +174,18 @@ public class Menu implements Screen {
 	public Settings getSettings() {
 		return this.screenManager.getSettings();
 	}
+	/**
+	 * stores the current save
+	 * @param save
+	 */
+	public void storeSave(Savestate save) {
+		this.screenManager.setSave(save);
+		
+	}
+
+	public Savestate getSave() {
+		// TODO Auto-generated method stub
+		return this.screenManager.getSave();
+	}
 
 }

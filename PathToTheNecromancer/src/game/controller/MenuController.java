@@ -36,6 +36,7 @@ import javaFX.model.Difficulty;
  * buttons for each stage.
  * 
  * @author enigma-phi
+ * @author HangedDragon96  added settings to the menu controller
  *
  */
 public class MenuController {
@@ -474,7 +475,7 @@ public class MenuController {
 		saveButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if(save == null) {
+				if(menu.getSave() == null) {
 				save = new Savestate(player.getX(), player.getY(), menu.getMapName(),
 						menu.getSettings(), player.isWarrior(), player.isRogue(), player.isMage(), player.getStats(),player.getStoryStats());
 				} else {
@@ -491,6 +492,7 @@ public class MenuController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				menu.storeSave(save);
 				return true;
 			}
 

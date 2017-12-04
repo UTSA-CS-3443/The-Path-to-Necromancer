@@ -22,7 +22,7 @@ import javaFX.model.Settings;
  * PlayScreen as the base screen.
  * 
  * @author enigma-phi
- *
+ *	@author HangedDragon96 added save
  */
 public class ScreenManager {
 	/**
@@ -234,6 +234,23 @@ public class ScreenManager {
 	 */
 	public MusicManager getMusicManager() {
 		return this.musicManager;
+	}
+	/**
+	 * sets the save object for saving the game
+	 * @param save the current save file
+	 */
+	public void setSave(Savestate save) {
+		// TODO Auto-generated method stub
+		this.save = save;
+		
+	}
+	/**
+	 * gets the current save
+	 * @return the current save state of the game
+	 */
+	public Savestate getSave() {
+		// TODO Auto-generated method stub
+		return this.save;
 	}
 	
 }
