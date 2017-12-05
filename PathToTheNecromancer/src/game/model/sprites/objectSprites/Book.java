@@ -44,6 +44,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 	/**
 	 * Whether or not the book was ever opened
 	 */
+	@SuppressWarnings("unused")
 	private boolean unOpened;
 	/**
 	 * Whether or not to turn the book

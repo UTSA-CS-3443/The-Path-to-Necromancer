@@ -3,8 +3,6 @@ package game.model.maps;
 
 import java.util.Random;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.World;
@@ -108,7 +106,8 @@ public class LavaFields extends GameMaps {
      * 
      * @return an EnemySprite
      */
-    public EnemySprites getEnemy(int level) {
+    @Override
+	public EnemySprites getEnemy(int level) {
     	int enemyCount = 4;
     	Random rand = new Random();
     	int enemyNum = rand.nextInt(enemyCount);
@@ -138,7 +137,8 @@ public class LavaFields extends GameMaps {
      * @param world
      *            allows sprites with box2d bodies to be generated in the map
      */
-    public void createSprites(World world) {
+    @Override
+	public void createSprites(World world) {
     	// height of the map
     	int height = 1200;
     	

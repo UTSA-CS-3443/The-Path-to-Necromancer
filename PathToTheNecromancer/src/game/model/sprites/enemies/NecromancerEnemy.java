@@ -12,12 +12,13 @@ public class NecromancerEnemy extends EnemySprites{
 	/**
 	 * sets up the Necromancer for a texture
 	 */
-	private Texture NecromancerTexture;
+	private Texture necromancerTexture;
 	/**
 	 * Give the bandit the stats potential for  future where we multiply the stats by the difficulty
 	 */
 	public  NecromancerEnemy(int x) {
 		super.setBaseStats(5, 5, 1, 0, 20, x, 100);
+		this.necromancerTexture =  new Texture("EnemySprites/Necromancer2.png");
 	}
 	@Override
 	public void update(float dt) {
@@ -26,6 +27,6 @@ public class NecromancerEnemy extends EnemySprites{
 	}
 	
 	public Texture getTexture() {
-		return this.NecromancerTexture =  new Texture("EnemySprites/Necromancer2.png");
+		return 	this.necromancerTexture;
 	}
 }

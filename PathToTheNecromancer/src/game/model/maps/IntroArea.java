@@ -1,7 +1,5 @@
 package game.model.maps;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;

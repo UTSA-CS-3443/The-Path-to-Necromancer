@@ -28,10 +28,6 @@ public class Interaction {
 	 * The options that the user has to chose from
 	 */
 	private ArrayList<GraphNode> options;
-	/**
-	 * The player that the game is currently acting upon
-	 */
-	private Player player;
 
 	/**
 	 * Constructor
@@ -46,7 +42,6 @@ public class Interaction {
 	public Interaction(DialogueGraph graph, DialogueBox box, Player player) {
 		this.dialogueGraph = graph;
 		this.dialogueBox = box;
-		this.player = player;
 		this.options = null;
 	}
 

@@ -1,12 +1,7 @@
 package game.model.sprites;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-/**
- * Sets  up base functions for stats for enemies
- * @author cux144
- *
- */
+
 public abstract class EnemySprites extends GameSprites 
 {
 	private int Attack;

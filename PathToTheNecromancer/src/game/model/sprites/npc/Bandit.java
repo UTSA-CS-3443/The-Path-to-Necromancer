@@ -37,8 +37,14 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	 * The bandit's width
 	 */
 	private static final int BANDIT_WIDTH = 20;
+	/**
+	 * Get the texturea associated with the bandit
+	 */
 	private Texture banditTexture;
 
+	/**
+	 * Constructor
+	 */
 	public Bandit() {
 		setTextureValues();
 		// Set the size of the Bandit
@@ -262,6 +268,12 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		return graph;
 	}
 	
+	/**
+	 * Define the bandit's physics body
+	 * @param world is the world to place the bandit in
+	 * @param x is the bandit's x-coordinate
+	 * @param y is the bandit's y-coordinate
+	 */
 	@Override
 	public void defineBody(World world, int x, int y) {
 		// set the body of the character
@@ -320,5 +332,4 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		super.setMoveDownRight(banditAnimation);
 	}
 	
-
 }

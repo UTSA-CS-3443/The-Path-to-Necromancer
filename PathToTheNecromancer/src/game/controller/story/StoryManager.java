@@ -26,10 +26,6 @@ public class StoryManager {
 	 */
 	private MapManager manager;
 	/**
-	 * The name of the current map
-	 */
-	private String mapName;
-	/**
 	 * The player character
 	 */
 	private Player player;
@@ -71,7 +67,6 @@ public class StoryManager {
 	 *            is the name of the current map
 	 */
 	public void setMapName(String mapName) {
-		this.mapName = mapName;
 		switch (mapName) {
 		// The introduction area
 		case "Maps/Map01-IntroArea.tmx":

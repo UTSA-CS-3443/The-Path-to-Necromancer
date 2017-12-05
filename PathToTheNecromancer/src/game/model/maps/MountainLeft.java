@@ -201,6 +201,7 @@ public class MountainLeft extends GameMaps {
         villager5.isVelocityLooping(false);
         villager5.addVelocity(new Vector2(0,-10), 1);
         villager5.defineBody(world, 782, 1441);
+        villager5.setHiddenVillager(true);
         this.addSprite(villager5);
         
         Villagers villager6 = new Villagers(ColorAndGender.BLUE,ColorAndGender.FEMALE);

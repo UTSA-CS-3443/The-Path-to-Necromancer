@@ -16,19 +16,34 @@ import game.controller.MapManager;
 import game.controller.story.DialogueActor;
 import game.model.DialogueGraph;
 import game.model.sprites.CharacterSprites;
+import game.model.sprites.InteractionSprites;
 import game.model.sprites.player.Player;
 
 /**
  * 
- * @author ToTryHardRay
  * This is the class for animating the knight
+ * @author ToTryHardRay
+ * @author enigma-phi
  *
  */
-public class Knight extends CharacterSprites {
-	private Texture KnightTexture;
+public class Knight extends CharacterSprites implements InteractionSprites{
+	/**
+	 * The Texture associated with the Knight
+	 */
+	private Texture knightTexture;
+	/**
+	 * The Knight's height
+	 */
 	private static final int KNIGHT_HEIGHT = 36;
+	/**
+	 * The knight's width 
+	 */
 	private static final int KNIGHT_WIDTH = 32;
 
+	/**
+	 * Constructor
+	 * Initialize Texture values
+	 */
 	public Knight() {
 		setTextureValues();
 		// Set the size of the Knight
@@ -38,6 +53,9 @@ public class Knight extends CharacterSprites {
 		setRegion(super.getStandingRegion());
 	}
 
+	/**
+	 * Set the knight's texture values
+	 */
 	@Override
 	public void setTextureValues() {
 		int width = 132;
@@ -45,116 +63,116 @@ public class Knight extends CharacterSprites {
 		int rowHeight = 150;
 
 		// Use the Knight animations until we have the player SpriteSheet
-		KnightTexture = new Texture("CharacterSprites/Knight.png");
+		knightTexture = new Texture("CharacterSprites/Knight.png");
 
 		// Array of frames used for the animations
 		Array<TextureRegion> frames = new Array<TextureRegion>();
 
 		// Set the default standing region of the character.
-		super.setStandingRegion(new TextureRegion(KnightTexture, 0, 0, width, height));
+		super.setStandingRegion(new TextureRegion(knightTexture, 0, 0, width, height));
 		
 		// move down
-		frames.add(new TextureRegion(KnightTexture, (1) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (2) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (3) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (2) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (1) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (4) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (5) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (6) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (5) * width, 0 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture, (4) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (1) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (2) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (3) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (2) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (1) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (4) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (5) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (6) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (5) * width, 0 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture, (4) * width, 0 * rowHeight, width, height));
 		super.setMoveDown(new Animation<TextureRegion>(0.1f, frames));
 		frames.clear();
 
 		// move up
-		frames.add(new TextureRegion(KnightTexture,(0) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(3) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(6) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 1 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(0) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(3) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(6) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 1 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 1 * rowHeight, width, height));
 		super.setMoveUp(new Animation<TextureRegion>(0.1f, frames));
 		frames.clear();
 		
 		// move left
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 2 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 2 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(3) * width, 2 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 2 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 2 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 2 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(6) * width, 2 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 2 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 2 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 2 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(3) * width, 2 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 2 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 2 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 2 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(6) * width, 2 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 2 * rowHeight, width, height));
 		super.setMoveLeft(new Animation<TextureRegion>(0.1f, frames));
 		frames.clear();
 		
 		// move right
-		frames.add(new TextureRegion(KnightTexture,(6) * width, 3 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 3 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(3) * width, 3 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 3 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 3 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 3 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 3 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 3 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(6) * width, 3 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 3 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(3) * width, 3 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 3 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 3 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 3 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 3 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 3 * rowHeight, width, height));
 		super.setMoveRight(new Animation<TextureRegion>(0.1f, frames));
 		frames.clear();
 
 		// move down-right
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 4 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 4 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(3) * width, 4 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 4 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 4 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 4 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(6) * width, 4 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 4 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 4 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 4 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(3) * width, 4 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 4 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 4 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 4 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(6) * width, 4 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 4 * rowHeight, width, height));
 		super.setMoveDownRight(new Animation<TextureRegion>(0.1f, frames));
 		frames.clear();
 
 		// move down-left
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 5 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 5 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(3) * width, 5 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 5 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 5 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 5 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(6) * width, 5 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 5 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 5 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 5 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(3) * width, 5 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 5 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 5 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 5 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(6) * width, 5 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 5 * rowHeight, width, height));
 		super.setMoveDownLeft(new Animation<TextureRegion>(0.1f, frames));
 		frames.clear();
 		
 		// move up-left
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(3) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(6) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 6 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(3) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(6) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 6 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 6 * rowHeight, width, height));
 		super.setMoveUpLeft(new Animation<TextureRegion>(0.1f, frames));
 		frames.clear();
 		
 		// move up-right
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(3) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(2) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(1) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(6) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(5) * width, 7 * rowHeight, width, height));
-		frames.add(new TextureRegion(KnightTexture,(4) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(3) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(2) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(1) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(6) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(5) * width, 7 * rowHeight, width, height));
+		frames.add(new TextureRegion(knightTexture,(4) * width, 7 * rowHeight, width, height));
 		super.setMoveUpRight(new Animation<TextureRegion>(0.1f, frames));
 		frames.clear();
 		super.setAnimationSpeed(2);
@@ -162,6 +180,12 @@ public class Knight extends CharacterSprites {
 
 	}
 
+	/**
+	 * Define the knight's physics body
+	 * @param world is the world to place the knight in
+	 * @param x is the knight's x-coord
+	 * @param y is the knight's y-coord
+	 */
 	@Override
 	public void defineBody(World world, int x, int y) {
 		// set the body of the character
@@ -198,9 +222,9 @@ public class Knight extends CharacterSprites {
 	/**
 	 * 
 	 * Takes in a player and this function is the dialogue between
-	 * the player and the knight outside of necromancer lair
+	 * the player and the knight outside of Necromancer lair
 	 * @param player
-	 * @return
+	 * @return the dialogue graph
 	 */
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();

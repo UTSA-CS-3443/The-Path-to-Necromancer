@@ -8,20 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.Color;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-
-import game.controller.GameController;
 import game.model.PathToNecromancer;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.player.Player;
@@ -280,7 +267,7 @@ public class CombatScreen implements Screen
     {
         // This is where to perform some end combat operation
         // change the screen and the input processor
-    	this.p.isLevelUp(this.Enemy.getExperience());
+    	this.p.endCombat(this.Enemy.getExperience());
         this.game.setScreen(this.prevPlayScreen);
         Gdx.input.setInputProcessor(this.playScreen.getInputProcessor());
         this.IntroScreen = true;

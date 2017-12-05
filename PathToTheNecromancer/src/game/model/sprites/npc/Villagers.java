@@ -53,6 +53,10 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	 * The villager's width
 	 */
 	private static final int VILLAGER_WIDTH = 15;
+	/**
+	 * Whether or not the character is a hidden villager
+	 */
+	private boolean hiddenVillager;
 
 	/**
 	 * Constructor for the villagers
@@ -62,6 +66,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	public Villagers(ColorAndGender color, ColorAndGender gender) {
 		this.color = color;
 		this.gender = gender;
+		this.hiddenVillager = false;
 		this.setSpecialDialogue = false;
 		setTextureValues();
 		// Set the size of the Villager
@@ -242,7 +247,9 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	 */
 	@Override
 	public DialogueGraph getDialogue(Player player) {
-		if(this.setSpecialDialogue)
+		if(this.hiddenVillager)
+			return this.getHiddenDialogue();
+		else if(this.setSpecialDialogue)
 			return getSetDialogue();
 		return getRandomDialogue();
 	}
@@ -412,13 +419,12 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 		return graph;
 	}
 	/**
-	 * dialogue for hidden villager that will trigger you bringing bosses
-	 * back to life if you become the necromancer
-	 * @return
+	 * Special Hidden Dialogue
+	 * @return the dialogue graph
 	 */
-	private DialogueGraph getGameChangingDialogue() {
+	private DialogueGraph getHiddenDialogue() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("Hey, so you just come up in here and kill things like it's all for the common good,but what right do you have to decide tey should die?");
+		graph.addNode("Villager: You come up in here and kill things like it's all for the common good, but what right do you have to decide they should die?");
 		return graph;
 	}
 	/**
@@ -427,5 +433,12 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	 */
 	public void setSpecialDialogue(boolean b) {
 		this.setSpecialDialogue = b;
+	}
+	/**
+	 * Whether or not the villager has the hidden dialogue
+	 * @param b sets the boolean
+	 */
+	public void setHiddenVillager(boolean b) {
+		this.hiddenVillager = b;
 	}
 }
