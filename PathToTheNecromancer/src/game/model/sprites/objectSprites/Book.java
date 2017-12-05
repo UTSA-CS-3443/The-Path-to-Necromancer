@@ -42,11 +42,6 @@ public class Book extends CharacterSprites implements InteractionSprites {
 	 */
 	private ArrayList<TextureRegion> frames;
 	/**
-	 * Whether or not the book was ever opened
-	 */
-	@SuppressWarnings("unused")
-	private boolean unOpened;
-	/**
 	 * Whether or not to turn the book
 	 */
 	private boolean setOpen;
@@ -67,7 +62,6 @@ public class Book extends CharacterSprites implements InteractionSprites {
 	 * Constructor for the book
 	 */
 	public Book() {
-		this.unOpened = true;
 		setTextureValues();
 		this.currentRegion = this.frames.get(0);
 		setRegion(this.currentRegion);
@@ -89,6 +83,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 
 	/**
 	 * Get the book's current animation frame
+	 * @param dt is the change in time since the last render
 	 */
 	@Override
 	public TextureRegion getFrame(float dt) {
@@ -108,7 +103,6 @@ public class Book extends CharacterSprites implements InteractionSprites {
 			else {
 				this.currentRegion = this.frames.get(4);
 				this.setOpen = false;
-				this.unOpened = false;
 			}
 		}
 		return this.currentRegion;
@@ -139,6 +133,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 	/**
 	 * Get the book's dialogue.
 	 * 
+	 * @param player is the player to base the dialogue off of
 	 * @return the book's dialogue
 	 */
 	@Override
@@ -385,5 +380,4 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		fdef.shape = rect;
 		body.createFixture(fdef).setUserData(this);
 	}
-
 }

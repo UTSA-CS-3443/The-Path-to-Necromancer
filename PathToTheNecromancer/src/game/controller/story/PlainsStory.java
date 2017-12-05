@@ -12,10 +12,11 @@ import game.model.sprites.player.Player;
 
 /**
  * The story actor for the Plains Area
+ * 
  * @author enigma-phi
  *
  */
-public class PlainsStory implements Actor{
+public class PlainsStory implements Actor {
 
 	/**
 	 * The mapmanager to put sprites in
@@ -30,7 +31,7 @@ public class PlainsStory implements Actor{
 	 */
 	private World world;
 	/**
-	 * Different bandits to modify
+	 * Different bandits for the unionization encounter
 	 */
 	private Bandit b1, b2, b3, b4, b5, b6;
 	/**
@@ -41,11 +42,16 @@ public class PlainsStory implements Actor{
 	 * The fighter for the encounter with the fighter
 	 */
 	private Fighter fighter;
+
 	/**
 	 * Constructor. Set up variables
-	 * @param manager is the manager for putting sprites in
-	 * @param player is the player to base story off of 
-	 * @param world is the world to put sprite's bodies in
+	 * 
+	 * @param manager
+	 *            is the manager for putting sprites in
+	 * @param player
+	 *            is the player to base story off of
+	 * @param world
+	 *            is the world to put sprite's bodies in
 	 */
 	public PlainsStory(MapManager manager, Player player, World world) {
 		this.manager = manager;
@@ -53,14 +59,17 @@ public class PlainsStory implements Actor{
 		this.world = world;
 		this.fighter = null;
 	}
+
 	/**
 	 * Perform some specific actions
-	 * @param dt is the change in time since the last render
+	 * 
+	 * @param dt
+	 *            is the change in time since the last render
 	 */
 	@Override
 	public void act(float dt) {
 		// set up fighter dialogue
-		if(player.getStoryStats().getFighterEncounter() == 0 && this.fighter != null && player.getY() > 305) {
+		if (player.getStoryStats().getFighterEncounter() == 0 && this.fighter != null && player.getY() > 305) {
 			player.addVelocity(new Vector2(0, 40), 3);
 			DialogueGraph graph = this.fighter.getDialogue(player);
 			manager.getMainScreen().startChat();
@@ -75,7 +84,7 @@ public class PlainsStory implements Actor{
 			player.getStoryStats().setBanditEncounters(1);
 		}
 		// The player continues along the unionization encounter
-		if(player.getStoryStats().getBanditEncounters() == 3 && player.getY() > 1835) {
+		if (player.getStoryStats().getBanditEncounters() == 3 && player.getY() > 1835) {
 			player.addVelocity(new Vector2(0, 20), 1);
 			player.getStoryStats().setBanditEncounters(4);
 			DialogueGraph graph = b6.getDialogue(player);
@@ -83,7 +92,7 @@ public class PlainsStory implements Actor{
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 		}
 		// Destroy the leader
-		if(player.getStoryStats().getBanditEncounters() == 5) {
+		if (player.getStoryStats().getBanditEncounters() == 5) {
 			manager.getSprites().remove(b6);
 			world.destroyBody(b6.getBody());
 			player.getStoryStats().setBanditEncounters(6);
@@ -99,7 +108,7 @@ public class PlainsStory implements Actor{
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 			player.getStoryStats().setBanditEncounters(8);
 		}
-		// The Necromancr disappears
+		// The Necromancer disappears
 		if (player.getStoryStats().getBanditEncounters() == 9) {
 			manager.getSprites().remove(nec);
 			world.destroyBody(nec.getBody());
@@ -109,8 +118,11 @@ public class PlainsStory implements Actor{
 
 	/**
 	 * Set up the actor initially
-	 * @param world is the new world to put sprites in
-	 * @param player is the new player to set up sprites based off of
+	 * 
+	 * @param world
+	 *            is the new world to put sprites in
+	 * @param player
+	 *            is the new player to set up sprites based off of
 	 */
 	@Override
 	public void setUpActor(World world, Player player) {
@@ -126,7 +138,7 @@ public class PlainsStory implements Actor{
 			b1.defineBody(world, 368, 1245);
 		else
 			b1.defineBody(world, 473, 1275);
-		if(player.getStoryStats().getFighterEncounter() == 0) {
+		if (player.getStoryStats().getFighterEncounter() == 0) {
 			this.fighter = new Fighter();
 			this.fighter.defineBody(world, 383, 463);
 			manager.addSprite(fighter);

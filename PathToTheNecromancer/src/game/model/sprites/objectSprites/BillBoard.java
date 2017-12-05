@@ -28,7 +28,7 @@ public class BillBoard extends GameSprites implements InteractionSprites {
 	 */
 	private static final int BILLBOARD_HEIGHT = 30;
 	/**
-	 * Constructor for the book
+	 * Constructor for the billboard
 	 */
 	public BillBoard() {
 
@@ -36,6 +36,7 @@ public class BillBoard extends GameSprites implements InteractionSprites {
 
 	/**
 	 * Get the book's dialogue.
+	 * @param player is the player to base the dialogue off of
 	 * @return the book's dialogue
 	 */
 	@Override
@@ -91,5 +92,4 @@ public class BillBoard extends GameSprites implements InteractionSprites {
 		fdef.isSensor = true;
 		body.createFixture(fdef).setUserData(this);
 	}
-
 }

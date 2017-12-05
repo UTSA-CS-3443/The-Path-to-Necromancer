@@ -78,6 +78,7 @@ public class StoryManager {
 
 				/**
 				 * Perform different actions based off of the player's interactions
+				 * @param dt is the change in time since the last render
 				 */
 				@Override
 				public void act(float dt) {
@@ -90,6 +91,9 @@ public class StoryManager {
 						manager.getMainScreen().startChat();
 						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 						player.getStoryStats().setBookEncounters(false);
+					}
+					if(player.getY() > 200) {
+						manager.endGame();
 					}
 				}
 
@@ -114,6 +118,7 @@ public class StoryManager {
 
 				/**
 				 * Perform specific actions based off of the player's interactions
+				 * @param dt the change in time since the last render
 				 */
 				@Override
 				public void act(float dt) {
@@ -129,6 +134,10 @@ public class StoryManager {
 					}
 				}
 
+				/**
+				 * Perform some action
+				 * @param dt is the change in time since the last render.
+				 */
 				@Override
 				public void setUpActor(World world, Player player) {
 				}
@@ -143,6 +152,10 @@ public class StoryManager {
 			break;
 		case "Maps/Map07-RightMountain.tmx":
 			class RightMount implements Actor {
+				/**
+				 * Perform some action
+				 * @param dt is the change in time since the last render.
+				 */
 				@Override
 				public void act(float dt) {
 				}
@@ -173,8 +186,15 @@ public class StoryManager {
 			break;
 		case "Maps/Map09-EntrytoNecromancer'sLair.tmx":
 			class NecLair implements Actor {
+				/**
+				 * The knight for the entry lair
+				 */
 				private Knight knight;
-
+				/**
+				 * Set up the Actor
+				 * @param world is the world to put characters in
+				 * @param player is the player to base set up off of
+				 */
 				@Override
 				public void setUpActor(World world, Player player) {
 					if (player.getStoryStats().isKnightEncounter()) {
@@ -184,6 +204,10 @@ public class StoryManager {
 					}
 				}
 
+				/**
+				 * Perform some action
+				 * @param dt is the change in time since the last render.
+				 */
 				@Override
 				public void act(float dt) {
 					if (player.getY() >= 420 && player.getStoryStats().isKnightEncounter() && this.knight != null) {
@@ -202,8 +226,15 @@ public class StoryManager {
 		// The interior of the Necromancer's Lair
 		case "Maps/Map10-Necromancer'sLair.tmx":
 			class necInterior implements Actor {
+				/**
+				 * The necromancer for inside the lair
+				 */
 				private Necromancer nec;
-
+				/**
+				 * Set up the Actor
+				 * @param world is the world to put characters in
+				 * @param player is the player to base set up off of
+				 */
 				@Override
 				public void setUpActor(World world, Player player) {
 					this.nec = new Necromancer();
@@ -213,6 +244,10 @@ public class StoryManager {
 						player.getStoryStats().setFinaleEncounter(4);
 				}
 
+				/**
+				 * Perform some action
+				 * @param dt is the change in time since the last render.
+				 */
 				@Override
 				public void act(float dt) {
 					if (player.getY() > 960 && player.getStoryStats().getFinaleEncounter() == 0) {
@@ -257,7 +292,7 @@ public class StoryManager {
 			this.actor.setUpActor(world, player);
 	}
 
-	/*
+	/**
 	 * Set the current player
 	 * 
 	 * @param player is the new player

@@ -45,8 +45,6 @@ public class Menu implements Screen {
 	 * Create the menu screen
 	 * @param save 
 	 * 
-	 * @param screen
-	 *            is the PlayScreen the user is on
 	 * @param game
 	 *            is the main game class
 	 */

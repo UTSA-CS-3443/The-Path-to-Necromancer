@@ -57,7 +57,7 @@ public class Savestate implements Serializable {
 	 */
 	private StoryStats story;
 	/**
-	 *  Constructor
+	 * Constructor
 	 * @param playerX players x coordinate 
 	 * @param playerY players y coordinate 
 	 * @param map	the name of the current map

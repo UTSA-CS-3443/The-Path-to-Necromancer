@@ -21,7 +21,7 @@ import game.model.sprites.player.Player;
 
 /**
  * 
- * This is the class for animating the Hippie 
+ * The Hippie is the Necromancer's second general
  * @author ToTryHardRay
  * @author enigma-phi
  *
@@ -65,6 +65,9 @@ public class Hippie extends CharacterSprites implements InteractionSprites{
 	 */
 	private static final int HIPPIE_WIDTH = 15;
 
+	/**
+	 * Constructor. Initialize Texture Values
+	 */
 	public Hippie() {
 		setTextureValues();
 		// Set the size of the Hippie
@@ -316,7 +319,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites{
 	 * Takes in a player and this function is the dialogue between
 	 * the player and the hippie outside of middle mountain
 	 * @param player
-	 * @return
+	 * @return the dialogue graph
 	 */
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();

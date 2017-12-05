@@ -95,6 +95,7 @@ public class InsideTavern extends GameMaps{
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level
      * @return an EnemySprite
      */
     public EnemySprites getEnemy(int level) {

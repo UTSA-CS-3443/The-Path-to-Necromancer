@@ -13,12 +13,13 @@ public class Skeleton extends EnemySprites{
 	/**
 	 * sets up the skeleton for a texture
 	 */
-	private Texture SkeletonTexture;
+	private Texture skeletonTexture;
 	/**
 	 * Give the skeleton the stats potential for  future where we multiply the stats by the difficulty
 	 */
 	public  Skeleton(int x) {
 		super.setBaseStats(3, 5, 1, 1, 4, x,  15);
+		this.skeletonTexture =  new Texture("EnemySprites/Skeleton.png");
 	}
 	@Override
 	public void update(float dt) {
@@ -26,6 +27,6 @@ public class Skeleton extends EnemySprites{
 		
 	}
 	public Texture getTexture() {
-		return this.SkeletonTexture =  new Texture("EnemySprites/Skeleton.png");
+		return this.skeletonTexture;
 	}
 }

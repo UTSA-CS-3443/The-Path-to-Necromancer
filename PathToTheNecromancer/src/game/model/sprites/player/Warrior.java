@@ -52,7 +52,6 @@ public class Warrior extends Player {
      * Set the different TextureRegions associated with the Default Character for
      * animation.
      */
-
     @Override
     public void setTextureValues() {
     	int rowHeight = 71;

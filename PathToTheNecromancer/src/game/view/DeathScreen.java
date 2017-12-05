@@ -112,18 +112,25 @@ public class DeathScreen implements Screen{
 		this.font.dispose();
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void render(float dt) {
 		// clear the screen
@@ -142,15 +149,20 @@ public class DeathScreen implements Screen{
 		this.viewport.update(width, height);
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 }

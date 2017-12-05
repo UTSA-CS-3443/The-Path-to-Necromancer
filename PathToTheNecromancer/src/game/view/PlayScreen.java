@@ -67,7 +67,7 @@ public class PlayScreen implements Screen {
 	 * The sprite batch used throughout the game to draw the characters
 	 */
 	private SpriteBatch batch;
-	
+
 	/**
 	 * The manager for the screen transitions
 	 */
@@ -83,15 +83,14 @@ public class PlayScreen implements Screen {
 
 	/**
 	 * This constructor sets up the game and initializes game objects.
-	 * @param save 
 	 * 
+	 * @param save
 	 * @param game
 	 */
 	public PlayScreen(ScreenManager screenManager, Savestate save) {
 		// Grab some parameters passed
 		this.screenManager = screenManager;
 		this.batch = screenManager.getBatch();
-		
 
 		// Set up the camera
 		this.gameCam = new OrthographicCamera(300, 200); // set the camera size
@@ -103,12 +102,15 @@ public class PlayScreen implements Screen {
 		this.mapManager = new MapManager(this); // initialize the mapManager
 		this.b2dr = new Box2DDebugRenderer(); // set up for debugging
 		new InitializeGame(this, save); // initialize the game for loading and new
-									// game purposes
+		// game purposes
 
 		this.gameController = new GameController(this); // controller for the game
 		Gdx.input.setInputProcessor(gameController); // handle user input
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
@@ -154,7 +156,7 @@ public class PlayScreen implements Screen {
 		this.renderer.render();
 
 		// render the physics
-		//b2dr.render(world, gameCam.combined);
+		// b2dr.render(world, gameCam.combined);
 
 		// draw characters
 		this.batch.setProjectionMatrix(this.gameCam.combined);
@@ -180,18 +182,27 @@ public class PlayScreen implements Screen {
 		gamePort.update(width, height);
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
@@ -269,8 +280,8 @@ public class PlayScreen implements Screen {
 	}
 
 	/**
-	 * Set the player character. If the player has already been set, we 
-	 * need to replace the player in other classes.
+	 * Set the player character. If the player has already been set, we need to
+	 * replace the player in other classes.
 	 * 
 	 * @param player
 	 *            is the player character
@@ -278,23 +289,22 @@ public class PlayScreen implements Screen {
 	public void setPlayer(Player player) {
 		float x = 100;
 		float y = 100;
-		if(this.player != null) {
-			x = this.player.getX() + this.player.getWidth()/2;
-			y = this.player.getY() + this.player.getHeight()/2;
-			if(world != null)
+		if (this.player != null) {
+			x = this.player.getX() + this.player.getWidth() / 2;
+			y = this.player.getY() + this.player.getHeight() / 2;
+			if (world != null)
 				this.world.destroyBody(this.player.getBody());
-			if(this.mapManager.getSprites().contains(this.player)) {
+			if (this.mapManager.getSprites().contains(this.player)) {
 				this.mapManager.getSprites().remove(this.player);
 				this.mapManager.getSprites().add(player);
 			}
 			this.gameController.setPlayer(player);
 			this.mapManager.setPlayer(player);
-		}  
-		
+		}
+
 		this.player = player;
-		if(this.world != null)
+		if (this.world != null)
 			this.player.defineBody(this.world, (int) x, (int) y);
-		
 	}
 
 	/**
@@ -395,14 +405,30 @@ public class PlayScreen implements Screen {
 		if (box == null)
 			this.inChat = false;
 	}
+
 	/**
-	 * Return the musicmanager for the game
+	 * Return the MusicManager for the game
+	 * 
 	 * @return the musicManager
 	 */
 	public MusicManager getMusicManager() {
 		return this.screenManager.getMusicManager();
 	}
+
+	/**
+	 * Begin combat with a fixed enemy
+	 * 
+	 * @param enemy
+	 *            the enemy to begin combat with
+	 */
 	public void enemyCombat(EnemySprites enemy) {
 		this.screenManager.setCombat(enemy);
+	}
+
+	/**
+	 * End the game
+	 */
+	public void endGame() {
+		this.screenManager.endGame();
 	}
 }

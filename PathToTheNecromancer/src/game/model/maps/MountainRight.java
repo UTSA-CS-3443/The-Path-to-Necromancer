@@ -82,7 +82,9 @@ public class MountainRight extends GameMaps {
     /**
      * Transition between areas
      * 
-     * North: PlainsArea South: IntroArea Door: OogLagInterior
+     * North: PlainsArea 
+     * South: IntroArea 
+     * Door: OogLagInterior
      * 
      * @param the
      *            type of transition for the map
@@ -107,6 +109,7 @@ public class MountainRight extends GameMaps {
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     public EnemySprites getEnemy(int level) {

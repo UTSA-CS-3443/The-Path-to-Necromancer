@@ -258,48 +258,99 @@ public abstract class Player extends CharacterSprites {
 		setBounds(0, 0, 24, 30);
 	}
 
+	/**
+	 * Get the player's story stats
+	 * @return the story stats
+	 */
 	public StoryStats getStoryStats() {
 		return this.storyStats;
 	}
 
+	/**
+	 * Set the player's story stats
+	 * @param stats is the player's new story stats
+	 */
 	public void setStoryStats(StoryStats stats) {
 		this.storyStats = stats;
 		if (stats.isHasNecroTextures())
 			this.setNecromancerTextures();
 	}
-
+	
+	/**
+	 * Get whether or not the player is a Warrior
+	 * @return whether or not a player is a Warrior
+	 */
 	public boolean isWarrior() {
 		return isWarrior;
 	}
 
+	/**
+	 * Set whether or not the player is a Warrior
+	 * @param isWarrior whether or not the player is a Warrior
+	 */
 	public void setWarrior(boolean isWarrior) {
 		this.isWarrior = isWarrior;
 	}
 
+	/**
+	 * Get whether or not the player is a Rogue
+	 * @return whether or not a player is a Rogue
+	 */
 	public boolean isRogue() {
 		return isRogue;
 	}
-
+	/**
+	 * Set whether or not the player is a Rogue
+	 * @param isRogue whether or not the player is a Rogue
+	 */
 	public void setRogue(boolean isRogue) {
 		this.isRogue = isRogue;
 	}
 
+	/**
+	 * Get whether or not the player is a Mage
+	 * @return whether or not a player is a Mage
+	 */
 	public boolean isMage() {
 		return isMage;
 	}
 
+	/**
+	 * Set whether or not the player is a Mage
+	 * @param isMage whether or not the player is a Mage
+	 */
 	public void setMage(boolean isMage) {
 		this.isMage = isMage;
 	}
 
+	/**
+	 * Set the player's base stats
+	 * @param level is the base level
+	 * @param experience is the base experience
+	 * @param strength is the base strength
+	 * @param intelligence is the base intelligence
+	 * @param dexterity is the base dexterity
+	 * @param luck is the base luck
+	 * @param maxHealth is the base maxHealth
+	 */
 	public void setBaseStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
 		this.stats = new Stats(level, experience, strength, intelligence, dexterity, luck, maxHealth);
 
 	}
 
+	/**
+	 * The stats for leveling up
+	 * @param level is the increase in level
+	 * @param experience is the increase in experience
+	 * @param strength is the increase in strength
+	 * @param intelligence is the increase in intelligence
+	 * @param dexterity is the increase in dexterity
+	 * @param luck is the increase in luck
+	 * @param maxHealth is the increase in maxHeath
+	 */
 	public void levelUpStats(int level, int experience, int strength, int intelligence, int dexterity, int luck, int maxHealth) {
 		this.stats.setLevel(level + this.stats.getLevel());
-		this.stats.setExperience(experience + this.stats.getExperience());
+		this.stats.setExperience(0);
 		this.stats.setStrength(strength + this.stats.getStrength());
 		this.stats.setIntelligence(intelligence + this.stats.getIntelligence());
 		this.stats.setDexterity(dexterity + this.stats.getDexterity());
@@ -309,6 +360,10 @@ public abstract class Player extends CharacterSprites {
 
 	}
 
+	/**
+	 * The method called when combat ends
+	 * @param experience is the player's experience gain
+	 */
 	public void endCombat(int experience) {
 		this.stats.setExperience(experience + this.stats.getExperience());
 		if (this.stats.getExperience() >= 30) {
@@ -317,15 +372,26 @@ public abstract class Player extends CharacterSprites {
 		}
 	}
 
+	/**
+	 * Get whether or not the player levels up
+	 * @return whether or not the player levels up
+	 */
 	public boolean getLevelUp() {
-		// TODO Auto-generated method stub
 		return this.stats.isLevelUp();
 	}
 
+	/**
+	 * Get the player's stats
+	 * @return the player's stats
+	 */
 	public Stats getStats() {
 		return stats;
 	}
 
+	/**
+	 * Set the player's stats
+	 * @param stats is the player's stats
+	 */
 	public void setStats(Stats stats) {
 		this.stats = stats;
 	}

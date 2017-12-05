@@ -243,6 +243,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	/**
 	 * Get the Villager's Dialogue Sequence
 	 * 
+	 * @param player is the player to base the dialogue off of
 	 * @return the dialogueGraph
 	 */
 	@Override

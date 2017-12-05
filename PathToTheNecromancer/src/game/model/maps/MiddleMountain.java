@@ -9,8 +9,8 @@ import game.model.sprites.EnemySprites;
 
 /**
  * 
- * @author ToTryHardRay
  * This is the class for the middle mountain map
+ * @author ToTryHardRay
  *
  */
 public class MiddleMountain extends GameMaps {
@@ -98,6 +98,7 @@ public class MiddleMountain extends GameMaps {
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     @Override
@@ -118,6 +119,10 @@ public class MiddleMountain extends GameMaps {
     	return null;
     }
 
+    /**
+     * Create the sprites for the map
+     * @param world is the world to place the sprites in
+     */
 	@Override
 	public void createSprites(World world) {
 		// TODO Auto-generated method stub

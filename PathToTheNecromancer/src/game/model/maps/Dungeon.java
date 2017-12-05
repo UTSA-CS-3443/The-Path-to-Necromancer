@@ -88,6 +88,7 @@ public class Dungeon extends GameMaps {
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     public EnemySprites getEnemy(int level) {

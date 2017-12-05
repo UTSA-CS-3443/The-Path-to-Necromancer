@@ -66,7 +66,6 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	 * Set the different TextureRegions associated with the Necromancer for
 	 * animation.
 	 */
-
 	@Override
 	public void setTextureValues() {
 		necromancerTexture = new Texture("CharacterSprites/Necromancer.png");
