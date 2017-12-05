@@ -319,15 +319,16 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addEdge(18, 24);
 		graph.addEdge(24, 25);
 		graph.addEdge(16, 19);
-		graph.addEdge(16, 27);
 		graph.addEdge(6, 28);
 		graph.addEdge(28, 29);
 		graph.addEdge(29, 30);
+		graph.addEdge(19, 26);
 		graph.addEdge(6, 20);
 		graph.addEdge(20, 23);
 		graph.addEdge(23, 13);
 		graph.addEdge(30, 12);
 		graph.addEdge(13, 12);
+		graph.addEdge(26, 14);
 		graph.addEdge(25, 12);
 
 		// Add actors
