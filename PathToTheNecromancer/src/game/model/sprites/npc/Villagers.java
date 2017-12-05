@@ -414,7 +414,8 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				setSpecialDialogue = false;				
+				setSpecialDialogue = false;			
+				player.getStoryStats().setVillagerConversations(1);
 			}
 			
 		});

@@ -365,7 +365,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("*You are hit over the head with a rock*"); // 11 summon death screen
 		graph.addNode("P: Yes, but how do we know that you aren't lying as well?"); // 12
 		graph.addNode("Hippie: Wait, what?"); // 13 go to logic route
-		graph.addNode("P: *start taking off clothes*"); // 14
+		graph.addNode(""); // 14
 		graph.addNode("*Crowd goes silent*"); // 15
 		graph.addNode("Hippie: What do you think you're doing?!"); // 16
 		graph.addNode("P: I'm showing you the real environment, *begin taking off pants*"); // 17
@@ -419,7 +419,8 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Hippie: I'm surprised you have not heard of me. I am the speaker of trees, speaker of the earth and healer of the sick."); // 65
 		graph.addNode("Hippie: I am the Necromancer's general #2."); // 66
 		graph.addNode("P: What the heck are you talking about?"); // 67 alternate path dialogue
-
+		graph.addNode("Hippie: Nevermind. Just go."); // 68
+		
 		graph.addEdge(0, 1);
 		graph.addEdge(1, 2);
 		graph.addEdge(2, 3);
@@ -499,6 +500,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addEdge(61, 63);
 		graph.addEdge(28, 62);
 		graph.addEdge(29, 62);
+		graph.addEdge(13, 68);
 
 		// add the actors
 		DialogueActor deathActor = new DialogueActor() {
@@ -523,8 +525,9 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 			public void act(Player player, MapManager manager) {
 				player.getStoryStats().setHippieEncounter(4);
 			}
-
+			
 		};
+
 		graph.getNode(0).addActor(new DialogueActor() {
 
 			@Override
@@ -552,7 +555,6 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 			}
 
 		});
-
 		return graph;
 	}
 

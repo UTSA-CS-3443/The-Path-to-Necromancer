@@ -209,6 +209,16 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	private DialogueGraph preCombatDialogue() {
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("Necromancer: You have amused me greatly young padawan. I do not wish to cut your life short and will allow you to live... this time.");
+		graph.addNode("Necromancer: Enjoy the rest of your travels.");
+		
+		graph.getNode(0).addActor(new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.getStoryStats().setFinaleEncounter(6);
+			}
+			
+		});
 		return graph;
 	}
 

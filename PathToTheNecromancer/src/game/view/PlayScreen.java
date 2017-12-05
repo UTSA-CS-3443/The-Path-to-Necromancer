@@ -151,7 +151,7 @@ public class PlayScreen implements Screen {
 		// clear the screen
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+		
 		// render the map
 		this.renderer.render();
 
@@ -161,7 +161,6 @@ public class PlayScreen implements Screen {
 		// draw characters
 		this.batch.setProjectionMatrix(this.gameCam.combined);
 		this.batch.begin();
-
 		for (GameSprites sprite : this.mapManager.getSprites()) {
 			sprite.draw(batch);
 		}

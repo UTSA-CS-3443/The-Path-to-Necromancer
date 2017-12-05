@@ -246,24 +246,19 @@ public class MenuController {
 		// main table for the settings
 		Table table = new Table();
 		table.setFillParent(true);
-		table.top();
-		table.padTop(30);
-		table.add(musicLabel).padRight(10);
+		table.top().center();
+		table.padTop(20);
+		table.add(musicLabel).padRight(10).center().top();
 		table.add(musicSlider);
 		table.row();
-		table.add(brightLabel).padRight(10).padTop(5);
+		table.add(brightLabel).padRight(10).padTop(5).center();
 		table.add(brightSlider).padTop(5);
 		table.row();
-		table.add(soundOnLabel).padRight(10).padTop(15);
-		table.add(disableSoundCheck).center().padTop(15);
+		table.add(soundOnLabel).padRight(10).padTop(5).center().padBottom(10);
+		table.add(disableSoundCheck).center().padBottom(10);
 		table.row();
-		table.add(levelLabel).padRight(10).padTop(15);
-		table.add(difficultySelect).center().padTop(15);
-		table.add(soundOnLabel).padRight(10).padTop(5);
-		table.add(disableSoundCheck).center();
-		table.row();
-		table.add(levelLabel).padRight(10).padTop(5);
-		table.add(difficultySelect);
+		table.add(levelLabel).padRight(10).padTop(5).center().padBottom(40);
+		table.add(difficultySelect).padBottom(40);
 		stage.addActor(table);
 
 		this.addMenuTransitionButtons(stage);

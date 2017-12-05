@@ -147,7 +147,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: Yes, would you like to join?"); // 7
 		graph.addNode("Bandit: Well, kinda, we don't even get dental..."); // 8
 		graph.addNode("Bandit: Oh, well, we never received any message from you."); // 9
-		graph.addNode("Bandit: Never I stay with my Don, I'll never betray him!"); // 10
+		graph.addNode("Bandit: Never I stay with my Don, I'll never betray him! Get out of here before I have your head!"); // 10
 		graph.addNode("P: You don't even get dental?! How horrible, we have to come in to check this out!"); // 11
 		graph.addNode("P: None? well we did send you multiple messages... maybe someone has been tossing them out?"); // 12
 		graph.addNode("P: Guess it must've been lost in the mail!"); // 13
@@ -160,7 +160,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: Well, they protest my good sir. Teach the Don what's up. You need to fight!"); // 20
 		graph.addNode("Bandit: Good idea, let's do this! I'm tired of pretending to be Italian!"); // 21
 		graph.addNode("Bandit: The chosen one?"); // 22
-		graph.addNode("Bandit: haha, you think we allow sissies to pass through our camp?! ie weak one!"); // 23
+		graph.addNode("Bandit: haha, sissy. You had better watch your back in camp!"); // 23
 		graph.addNode("P: Yes I am the chosen bandit, the one to lead all bandits to banditdom!"); // 24
 		graph.addNode("Bandit: COOL! Do you have any powers?"); // 25
 		graph.addNode("P: Yes, watch me remove my thumb from my hand!"); // 26
@@ -172,14 +172,14 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: Alright, I lied, but may I pass through your camp?"); // 32
 		graph.addNode("Bandit: *silence*"); // 33
 		graph.addNode("Bandit: Fine! *bandit begins staring at sun*"); // 34
-		graph.addNode("Bandit: We kill liars here fool, die!"); // 35
+		graph.addNode("Bandit: We kill liars here fool, you had better watch your tongue passing through here!"); // 35
 		graph.addNode("P: *do it again*"); // 36
 		graph.addNode("P: Do you believe me now?!"); // 37
 		graph.addNode("P: *Attempt to sneak by*"); // 38
 		graph.addNode("P: Yes, yes are you feeling my power?!"); // 39
 		graph.addNode("Bandit: *even more silence*"); // 40
 		graph.addNode("Bandit: Please pass through my almighty wizard."); // 41
-		graph.addNode("Bandit: Wait, where do you think you're going?"); // 42
+		graph.addNode("Bandit: Wait, where did you go?"); // 42
 		graph.addNode("Bandit: *tears rolling down eyes* I feel it! MAKE IT STOP!!!!"); // 43
 		graph.addNode("P: Just look away weakling."); // 44
 		graph.addNode("P: NEVER! BURN WEAKLING BURN!"); // 45

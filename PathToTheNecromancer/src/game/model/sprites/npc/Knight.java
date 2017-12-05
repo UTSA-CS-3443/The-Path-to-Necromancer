@@ -251,7 +251,7 @@ public class Knight extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Knight: WHY WOULD I DO THAT?"); // 13
 		graph.addNode("P: Because deep down you still have a heart? Even if it is unbeating and cold and lifeless, it still has hopes for humans?"); // 14
 		graph.addNode("P: Being a hero has no pay, but I hear mercenary work pays well."); // 15
-		graph.addNode("Knight: PFFFFT, YEAH RIGHT DIE HERO"); // 16
+		graph.addNode("Knight: PFFFFT, I WOULD KILL YOU BUT YOU ARE BENEATH ME."); // 16
 		graph.addNode("Knight: OOOH MONEY YOU SAY? FINE THANKS FOR THE TALK HERO"); // 17
 		graph.addNode("Knight: YOU KNOW NOT WHAT YOU SPEAK OF PREPARE FOR DEATH *trips and falls*"); // 18
 		graph.addNode("P: Pffft no you aren’t."); // 19
@@ -310,7 +310,7 @@ public class Knight extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				addVelocity(new Vector2(0, 20), 3);
+				addVelocity(new Vector2(0, 25), 3);
 				addVelocity(new Vector2(30, 0), 1);
 				addVelocity(new Vector2(0, 25), 5);
 			}

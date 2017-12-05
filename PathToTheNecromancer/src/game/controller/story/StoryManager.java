@@ -1,6 +1,5 @@
 package game.controller.story;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -174,7 +173,6 @@ public class StoryManager {
 					manager.addSprite(villager);
 
 					if (player.getStoryStats().getVillagerConversations() == 0) {
-						player.getStoryStats().setVillagerConversations(1);
 						villager.setSpecialDialogue(true);
 					}
 				}
