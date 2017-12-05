@@ -64,7 +64,7 @@ public class ScreenManager {
 	 *            is the main screen for the entire game
 	 * @param game
 	 *            is the main game that the screens are running off of
-	 * @param save 
+	 * @param save the current save
 	 */
 	public ScreenManager(PathToNecromancer game, Savestate save) {
 		this.game = game;

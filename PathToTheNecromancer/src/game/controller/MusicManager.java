@@ -5,7 +5,7 @@ import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 /**
  * Manage the game's music
  * @author enigma-phi
- *
+ * @author HangedDragon96 added the old volume from settings
  */
 public class MusicManager {
 	/**
@@ -16,6 +16,13 @@ public class MusicManager {
 	 * The current volume
 	 */
 	private Music music;
+	/**
+	 * the volume set before mute was hit 
+	 */
+	private int previousVolume;
+	/**
+	 * 
+	 */
 	/**
 	 * Constructor
 	 */
@@ -59,4 +66,18 @@ public class MusicManager {
 	public Music getMusic() {
 		return this.music;
 	}
+	public int getPreviousVolume() {
+		return previousVolume;
+	}
+	public void setPreviousVolume(int previousVolume) {
+		this.previousVolume = previousVolume;
+	}
+	/**
+	 * gets the current volume
+	 * @return the current volume
+	 */
+	public float getVolume() {
+		return volume;
+	}
+	
 }

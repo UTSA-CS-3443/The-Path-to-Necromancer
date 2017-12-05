@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import game.controller.ScreenManager;
-import game.view.PlayScreen;
+
 import javaFX.model.Settings;
 
 /**
@@ -19,10 +19,7 @@ public class PathToNecromancer extends Game {
      * SpriteBatch for rendering sprites
      */
     private SpriteBatch batch;
-    /**
-     * The game's screen
-     */
-    private PlayScreen playscreen;
+
     /**
      * The game's settings
      */

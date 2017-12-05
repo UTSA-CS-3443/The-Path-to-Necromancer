@@ -170,11 +170,16 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 		DesktopLauncher.theStage.setScene(scene);
 		
 	}
+	/**
+	 * initial setup for mainmenu.fxml
+	 */
 	@FXML
 	public void initialize() {
 	setup();
 	}
-	
+	/**
+	 * sets up the desktop launchers
+	 */
 	private void setup() {
 		this.newGame.setStyle("-fx-base: #00FFFF;");
 	    this.loadGame.setStyle("-fx-base: #00FFFF;");
@@ -182,7 +187,11 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	    this.quit.setStyle("-fx-base: #00FFFF;");
 	}
 	
-	
+	/**
+	 * checks if the current background is pancakes
+	 * @param isPancakes is the background is pancakes
+	 * 
+	 */
 	public void isItPancakes(Boolean isPancakes) {
 		if(isPancakes) {
 		

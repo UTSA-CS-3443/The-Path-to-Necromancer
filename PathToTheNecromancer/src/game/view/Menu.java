@@ -55,7 +55,7 @@ public class Menu implements Screen {
 		this.player = screenManager.getPlayer();
 		this.viewport = screenManager.getViewport();
 		this.controller = new MenuController(this);
-		this.controller.setSave(save);
+	
 	}
 
 	/**
@@ -176,16 +176,30 @@ public class Menu implements Screen {
 	}
 	/**
 	 * stores the current save
-	 * @param save
+	 * @param save the current save to store
 	 */
 	public void storeSave(Savestate save) {
 		this.screenManager.setSave(save);
 		
 	}
-
+	/**
+	 * gets the current save
+	 * @return the current save
+	 */
 	public Savestate getSave() {
 		// TODO Auto-generated method stub
 		return this.screenManager.getSave();
 	}
+	/**
+	 * gets the current screen manager
+	 * @return the current screen manager
+	 */
+	public ScreenManager getScreenManager() {
+		return this.screenManager;
+	}
+
+	
+	
+	
 
 }

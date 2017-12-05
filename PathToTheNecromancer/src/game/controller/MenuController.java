@@ -125,10 +125,7 @@ public class MenuController {
 	 * Texture atlas for the settings men
 	 */
 	private TextureAtlas buttonAtlas2;
-	/**
-	 * Save state for the game
-	 */
-	private Savestate save;
+	
 	/**
 	 * Create the MenuController
 	 * 
@@ -475,7 +472,8 @@ public class MenuController {
 		saveButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if(menu.getSave() == null) {
+				Savestate save = menu.getSave();
+				if(save == null) {
 				save = new Savestate(player.getX(), player.getY(), menu.getMapName(),
 						menu.getSettings(), player.isWarrior(), player.isRogue(), player.isMage(), player.getStats(),player.getStoryStats());
 				} else {
@@ -587,6 +585,7 @@ public class MenuController {
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
 				menu.getSettings().setMusicSound((int)Math.ceil(slider.getValue()));
+				
 			}
 		});
 
@@ -611,6 +610,13 @@ public class MenuController {
 		disableSoundCheck.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				if(menu.getScreenManager().getMusicManager().getVolume() > 0) {
+				menu.getScreenManager().getMusicManager().setPreviousVolume(menu.getSettings().getMusicSound());
+				menu.getScreenManager().getMusicManager().setVolume(0);
+				} else {
+					menu.getScreenManager().getMusicManager().setVolume(menu.getSettings().getMusicSound());
+				}
+				
 				return true;
 			}
 		});
@@ -675,13 +681,6 @@ public class MenuController {
 		if (this.buttonAtlas2 != null)
 			this.buttonAtlas2.dispose();
 	}
-
-	public Savestate getSave() {
-		return save;
-	}
-
-	public void setSave(Savestate save) {
-		this.save = save;
-	}
+	
 
 }

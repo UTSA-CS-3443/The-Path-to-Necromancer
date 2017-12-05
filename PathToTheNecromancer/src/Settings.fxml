@@ -7,15 +7,12 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFX.controller.SettingsController">
    <children>
-      <Slider id="Sound" fx:id="inGameSlider" layoutX="138.0" layoutY="92.0" />
-      <Slider id="Brightness" fx:id="brightnessSlider" layoutX="138.0" layoutY="124.0" />
+      <Slider id="Brightness" fx:id="brightnessSlider" layoutX="138.0" layoutY="92.0" />
       <Slider id="Music" fx:id="musicSlider" layoutX="138.0" layoutY="63.0" />
-      <Label fx:id="soundLabel" layoutX="26.0" layoutY="91.0" text="Sound Effects" />
-      <CheckBox id="mute" fx:id="mute" layoutX="139.0" layoutY="166.0" mnemonicParsing="false" text="Disable Sound" />
-      <CheckBox id="autoForward" fx:id="autoForward" layoutX="139.0" layoutY="192.0" mnemonicParsing="false" text="Auto Forward" />
+      <CheckBox id="mute" fx:id="mute" layoutX="140.0" layoutY="160.0" mnemonicParsing="false" text="Disable Sound" />
       <Button fx:id="applyButton" layoutX="54.0" layoutY="341.0" mnemonicParsing="false" onAction="#handle" text="Apply" />
       <Button fx:id="cancelButton" layoutX="286.0" layoutY="341.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
-      <Label fx:id="brightnessLabel" layoutX="26.0" layoutY="123.0" text="Brightness" />
+      <Label fx:id="brightnessLabel" layoutX="26.0" layoutY="91.0" text="Brightness" />
       <Label fx:id="musicLabel" layoutX="26.0" layoutY="61.0" text="Music" />
       <ChoiceBox id="Difficulty" fx:id="difficulty" layoutX="114.0" layoutY="245.0" prefWidth="150.0" />
       <Label fx:id="difficultyLabel" layoutX="165.0" layoutY="217.0" text="Difficulty" />

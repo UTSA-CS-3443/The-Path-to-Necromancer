@@ -368,15 +368,29 @@ public void setSettings(Settings settings) {
 		}
 		
 	}
-public Background getBkImg() {
-	return bkImg;
-}
-public void setBkImg(Background bkImg) {
-	this.bkImg = bkImg;
-}
-public Boolean getIsPancakes() {
-	return isPancakes;
-}
+	
+	/**
+	 * gets the current background image
+	 * @return the current background
+	 */
+	public Background getBkImg() {
+		return bkImg;
+	}
+	/**
+	 * sets the current background
+	 * @param bkImg
+	 */
+	public void setBkImg(Background bkImg) {
+		this.bkImg = bkImg;
+	}
+	/**
+	 * returns if its pancakes or not
+	 * @return if the background is pancakes or not
+	 */
+	public Boolean getIsPancakes() {
+		return isPancakes;
+	}
+
 /**
  * sets the styles if the background is pancakes
  * @param isPancakes boolean to check if background is pancakes

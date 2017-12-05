@@ -67,10 +67,7 @@ public class PlayScreen implements Screen {
 	 * The sprite batch used throughout the game to draw the characters
 	 */
 	private SpriteBatch batch;
-	/**
-	 * The settings for the game
-	 */
-	private Settings settings;
+	
 	/**
 	 * The manager for the screen transitions
 	 */
@@ -94,7 +91,7 @@ public class PlayScreen implements Screen {
 		// Grab some parameters passed
 		this.screenManager = screenManager;
 		this.batch = screenManager.getBatch();
-		this.settings = screenManager.getSettings();
+		
 
 		// Set up the camera
 		this.gameCam = new OrthographicCamera(300, 200); // set the camera size
@@ -249,7 +246,7 @@ public class PlayScreen implements Screen {
 	 * @return the settings object
 	 */
 	public Settings getSettings() {
-		return this.settings;
+		return this.screenManager.getSettings();
 	}
 
 	/**

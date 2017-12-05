@@ -6,7 +6,11 @@ import java.io.Serializable;
 import game.model.sprites.player.Stats;
 import game.model.sprites.player.StoryStats;
 import javaFX.model.Settings;
-
+/**
+ * save state for the game
+ * @author HangedDragon96
+ *
+ */
 public class Savestate implements Serializable {
 	/**
 	 * serial ID
@@ -65,19 +69,24 @@ public class Savestate implements Serializable {
 	public Savestate(float playerX, float playerY, String map, Settings setting, boolean isWarrior, boolean isRogue,
 			boolean isMage, Stats stat, StoryStats story) {
 		super();
+		this.setting = setting;
 		generateSaveId(setting);
 		this.playerX = playerX;
 		this.playerY = playerY;
 		this.map = map;
-		this.setting = setting;
 		this.isWarrior = isWarrior;
 		this.isRogue = isRogue;
 		this.isMage = isMage;
 		this.stat = stat;
 		this.story = story;
 	}
+	/**
+	 * generates a save label
+	 * @param setting the current settings to set new game to false
+	 */
 	private void generateSaveId(Settings setting) {
 		File theDir = new File("Saves");
+		this.setting.setNewGame(false);
 		if(!theDir.exists()) {   
 			   this.saveLabel = "save1.txt";
 			   return;		
@@ -100,7 +109,7 @@ public class Savestate implements Serializable {
 			   this.saveLabel = "save"+ (listOfFiles.length+ 1) +".txt";
 			}
 			
-		  setting.setNewGame(false);
+		 
 		}
 		
 	/*
@@ -212,20 +221,30 @@ public class Savestate implements Serializable {
 		return saveLabel;
 	}
 	/**
-	 * 
+	 * gets the current story
+	 * @return the current story
 	 */
-	public void setSaveLabel(String saveLabel) {
-		this.saveLabel = saveLabel;
-	}
 	public StoryStats getStory() {
 		return story;
 	}
+	/**
+	 * sets the current story
+	 * @param story the current story
+	 */
 	public void setStory(StoryStats story) {
 		this.story = story;
 	}
+	/**
+	 * gets the player's current stats
+	 * @return current player stats
+	 */
 	public Stats getStat() {
 		return stat;
 	}
+	/**
+	 * sets the player's current stat
+	 * @param stat the player's current stat
+	 */
 	public void setStat(Stats stat) {
 		this.stat = stat;
 	}

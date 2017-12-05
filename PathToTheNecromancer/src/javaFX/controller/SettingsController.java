@@ -29,18 +29,11 @@ public class SettingsController implements EventHandler<ActionEvent> {
 	@FXML
 	private Slider musicSlider = new Slider();
 	/**
-	 * slider for inGame Effect sounds
-	 */
-	@FXML
-	private Slider inGameSlider = new Slider();
-	/**
 	 * slider for brightness
 	 */
 	@FXML
 	private Slider brightnessSlider = new Slider();
-	/**
-	 * ChoiceBox for difficulties
-	 */
+	
 	@FXML
 	/**
 	 * music slider Label
@@ -62,6 +55,9 @@ public class SettingsController implements EventHandler<ActionEvent> {
 	 */
 	@FXML
 	private Label difficultyLabel = new Label();
+	/**
+	 * ChoiceBox for difficulties
+	 */
 	@FXML
 	private ChoiceBox<Difficulty> difficulty = new ChoiceBox<Difficulty>();
 	
@@ -69,7 +65,7 @@ public class SettingsController implements EventHandler<ActionEvent> {
 	 * check boxes for mute, auto forward
 	 */	
 	@FXML
-	private CheckBox mute, autoForward;
+	private CheckBox mute;
 	/**
 	 * apply button
 	 */
@@ -108,10 +104,9 @@ public class SettingsController implements EventHandler<ActionEvent> {
 	    	// storing everything in settings
 	       settings.setDifficulty(difficulty.getValue());
 	       settings.setBrightness((int) brightnessSlider.getValue());
-	       settings.setGameSound((int) inGameSlider.getValue());
 	       settings.setMusicSound((int) musicSlider.getValue()) ;
 	       settings.setMute(mute.isSelected());
-	       settings.setAutoSkip(autoForward.isSelected());
+	     
 	       DesktopLauncherMenu();
 	       
 	    }
@@ -131,8 +126,7 @@ public class SettingsController implements EventHandler<ActionEvent> {
 			musicSlider.setStyle("-fx-base: #00FFFF;");
 			musicLabel.setStyle("-fx-base: #006400;");
 			// setting up the in game sound slider
-			inGameSlider.setValue(settings.getGameSound());
-			inGameSlider.setStyle("-fx-base: #00FFFF;");
+			
 			soundLabel.setStyle("-fx-base: #006400;");
 			// setting up brightness slider
 			brightnessSlider.setValue(settings.getBrightness());
@@ -142,9 +136,7 @@ public class SettingsController implements EventHandler<ActionEvent> {
 			mute.setSelected(settings.isMute());
 			mute.setStyle("-fx-base: #00FFFF;");
 			mute.setTextFill(Color.WHITE);
-			autoForward.setSelected(settings.isAutoSkip());
-			autoForward.setStyle("-fx-base: #00FFFF;");
-			autoForward.setTextFill(Color.WHITE);
+		
 			// choice box
 			difficulty.setItems(FXCollections.observableArrayList(
 					  Difficulty.Easy, Difficulty.Medium,  Difficulty.Hard, Difficulty.Insane));
@@ -176,42 +168,56 @@ public class SettingsController implements EventHandler<ActionEvent> {
 		}
 	   
 	   /**
-		 * gets the settings object
-		 * @return the settings
+		 * gets current settings
+		 * @return the current setting
 		 */
-	   public Settings getSettings() {
+		public Settings getSettings() {
 			return settings;
 		}
-	   
-	   /**
-		 * sets the settings
-		 * @param settings The settings object
+		/**
+		 * sets the current settings
+		 * @param settings the current settings
 		 */
 		public void setSettings(Settings settings) {
 			this.settings = settings;
-			
 		}
-	public Background getBkImg() {
-		return bkImg;
-	}
-	public void setBkImg(Background bkImg) {
-		this.bkImg = bkImg;
-	}
-	public Boolean getIsPancakes() {
-		return isPancakes;
-	}
+		/**
+		 * gets the current background image
+		 * @return the current background
+		 */
+		public Background getBkImg() {
+			return bkImg;
+		}
+		/**
+		 * sets the current background
+		 * @param bkImg
+		 */
+		public void setBkImg(Background bkImg) {
+			this.bkImg = bkImg;
+		}
+		/**
+		 * returns if its pancakes or not
+		 * @return if the background is pancakes or not
+		 */
+		public Boolean getIsPancakes() {
+			return isPancakes;
+		}
+	/**
+	 * checks if the current background is pancakes the sets it
+	 * @param isPancakes boolean if the background is pancakes or not
+	 */
 	public void isItPancakes(Boolean isPancakes) {
 		if(isPancakes) {
 			
 			this.musicSlider.setStyle("-fx-base: #D2691E;");
 						
-			this.inGameSlider.setStyle("-fx-base: #D2691E;");
+			
 						
 			this.brightnessSlider.setStyle("-fx-base: #D2691E;");
 						
 			this.mute.setStyle("-fx-base: #D2691E;");
 						
-			this.autoForward.setStyle("-fx-base: #D2691E;");	
+			
 			this.difficulty.setStyle("-fx-base: #D2691E;");    
 		    this.applyButton.setStyle("-fx-base: #D2691E;");
 		    this.cancelButton.setStyle("-fx-base: #D2691E;");

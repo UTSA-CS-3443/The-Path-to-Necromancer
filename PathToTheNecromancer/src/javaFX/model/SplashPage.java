@@ -4,7 +4,11 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.net.URL;
 
-
+/**
+ * creates a splash page for when the game launchers
+ * @author HangedDragon96
+ *
+ */
 public class SplashPage extends Frame {
 
 	/**
@@ -29,11 +33,6 @@ public class SplashPage extends Frame {
 	}
 	/**
 	  * Show the splash screen to the end user.
-	  *
-	  * <P>Once this method returns, the splash screen is realized, which means 
-	  * that almost all work on the splash screen should proceed through the event 
-	  * dispatch thread. In particular, any call to <tt>dispose</tt> for the 
-	  * splash screen must be performed in the event dispatch thread.
 	  */
 	  public void splash(){
 	    initImageAndTracker();
@@ -57,11 +56,6 @@ public class SplashPage extends Frame {
 
 	  /**
 	  * Centers the frame on the screen.
-	  *
-	  *<P>This centering service is more or less in {@link hirondelle.stocks.util.ui.UiUtil}; 
-	  * this duplication is justified only because the use of  
-	  * {@link hirondelle.stocks.util.ui.UiUtil} would entail more class loading, which is 
-	  * not desirable for a splash screen.
 	  */
 	  private void center(){
 	    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

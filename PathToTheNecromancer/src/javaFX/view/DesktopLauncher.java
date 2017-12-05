@@ -51,7 +51,9 @@ public class DesktopLauncher extends Application {
 	 * Array list for pictures
 	 */
 	private ArrayList <String> urls;
-	
+	/**
+	 * draws the main menu to the screen
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		urlSetup();	
@@ -66,7 +68,7 @@ public class DesktopLauncher extends Application {
 		    new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
 		Background bkImg = new Background(bgImg);
 		theStage = primaryStage;
-		settings = new Settings(100, false, false, 100, 100, false, Difficulty.Easy);
+		settings = new Settings(false, 100, 100,  Difficulty.Easy);
 		primaryStage.setTitle("Path to the Necromancer");
 		 try {
 				FXMLLoader loader = new FXMLLoader();
@@ -88,7 +90,9 @@ public class DesktopLauncher extends Application {
 			}
 	}
 
-	
+	/**
+	 * sets up url arraylist with different pictures for background
+	 */
 	private void urlSetup() {
 		urls = new ArrayList <String>();
 		urls.add("/Necro Pictures/SabHunger.jpg");

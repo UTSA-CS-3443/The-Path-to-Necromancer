@@ -1,4 +1,4 @@
-package game.controller;
+	package game.controller;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -32,7 +32,7 @@ public class InitializeGame {
    
     /**
      * Create the game
-     * @param save 
+     * @param save the current save state
      * 
      * @param the main game screen
      */
@@ -43,7 +43,7 @@ public class InitializeGame {
         mapSetup();
         // Determine if the user wanted to start a new game or load an old
         // game
-        if (save == null)
+        if (save == null || save.getSetting().isNewGame() == true)
             this.newGame();
 		else
 			try {
@@ -73,7 +73,9 @@ public class InitializeGame {
     }
 
    
-
+/**
+ * sets up the map array
+ */
 	private void mapSetup() {
 		this.maps.put("Maps/Map01-IntroArea.tmx", "game.model.maps.IntroArea");
 		this.maps.put("Maps/Map02-Oog-lag Tavern.tmx", "game.model.maps.OogLagExterior");
@@ -118,13 +120,16 @@ public class InitializeGame {
     	if(save.isMage()) 
     	{
     		screen.setPlayer(new Mage());
-    	} else if(save.isRogue()) 
+    	} 
+    	else if(save.isRogue()) 
     	{
     		screen.setPlayer(new Rogue());
-    	} else if(save.isWarrior()) 
+    	} 
+    	else if(save.isWarrior()) 
     	{
     		screen.setPlayer(new Warrior());
-    	}else 
+    	}
+    	else 
     	{
     		screen.setPlayer(new DefaultCharacter());
     	}

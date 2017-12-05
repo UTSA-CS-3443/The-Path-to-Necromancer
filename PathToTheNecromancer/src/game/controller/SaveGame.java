@@ -8,12 +8,16 @@ import java.io.ObjectOutputStream;
 
 import game.model.Savestate;
 
-
+/**
+ * saves the current game to a .txt file
+ * @author HangedDragon96
+ *
+ */
 public class SaveGame {
 
 /**
  * Saves the current game state to a .txt file depending on what the user picks
- * @param save
+ * @param save the current save
  * @throws IOException
  */
 static public void saveGame(Savestate save) throws IOException {
