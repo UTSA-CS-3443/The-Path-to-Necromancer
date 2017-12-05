@@ -242,7 +242,7 @@ public void cancel() {
 public void DesktopLauncherMenu() {
 	try {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(DesktopLauncher.class.getResource("/MainMenu.fxml"));
+		loader.setLocation(DesktopLauncher.class.getResource("MainMenu.fxml"));
 		this.mainMenu = loader.load();
 		this.mainMenu.setBackground(bkImg);
 		scene = new Scene(mainMenu,400,400);

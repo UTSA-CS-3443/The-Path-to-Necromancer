@@ -85,7 +85,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	   		 if(theDir.exists() && theDir.listFiles().length == 5) {
 	   			FXMLLoader loader = new FXMLLoader();
 	   			Stage test = new Stage();
-	   			loader.setLocation(DesktopLauncher.class.getResource("/SaveError.fxml"));
+	   			loader.setLocation(DesktopLauncher.class.getResource("SaveError.fxml"));
 	   			try {	
 	   				this.settingMenu = loader.load();
 	   				this.settingMenu.setBackground(bkImg);
@@ -122,7 +122,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	@FXML
 	private void loadGame() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(DesktopLauncher.class.getResource("/LoadGame.fxml"));
+		loader.setLocation(DesktopLauncher.class.getResource("LoadGame.fxml"));
 		
 		try {	
 			this.settingMenu = loader.load();
@@ -152,7 +152,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	@FXML
 	private void settingSetup() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(DesktopLauncher.class.getResource("/Settings.fxml"));
+		loader.setLocation(DesktopLauncher.class.getResource("Settings.fxml"));
 		try {
 			this.settingMenu = loader.load();
 			this.settingMenu.setBackground(bkImg);
