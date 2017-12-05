@@ -51,7 +51,11 @@ public class StoryStats implements Serializable {
 	 * The player's interaction with the fighter
 	 */
 	private int fighterEncounter;
-
+	/**
+	 * The player's hippie encounter
+	 */
+	private int hippieEncounter;
+	
 	/**
 	 * Constructor for the StoryStats object. Initialize values as if it were a new
 	 * game.
@@ -66,6 +70,7 @@ public class StoryStats implements Serializable {
 		this.finaleEncounter = 0;
 		this.hasNecroTextures = false;
 		this.fighterEncounter = 0;
+		this.hippieEncounter = 0;
 	}
 
 	/**
@@ -208,5 +213,20 @@ public class StoryStats implements Serializable {
 	 */
 	public void setFinaleEncounter(int finaleEncounter) {
 		this.finaleEncounter = finaleEncounter;
+	}
+	/**
+	 * Get the player's progress in the Hippie encounter
+	 * @return the player's progress
+	 */
+	public int getHippieEncounter() {
+		return hippieEncounter;
+	}
+
+	/**
+	 * Set the player's progress in the Hippie encounter
+	 * @param hippieEncounter is the player's progress
+	 */
+	public void setHippieEncounter(int hippieEncounter) {
+		this.hippieEncounter = hippieEncounter;
 	}
 }

@@ -1,5 +1,6 @@
 package game.controller.story;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -92,9 +93,6 @@ public class StoryManager {
 						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 						player.getStoryStats().setBookEncounters(false);
 					}
-					if(player.getY() > 200) {
-						manager.endGame();
-					}
 				}
 
 				/**
@@ -184,6 +182,11 @@ public class StoryManager {
 
 			actor = new RightMount();
 			break;
+			// the middle mountain
+		case "Maps/Map06-MiddleMountain.tmx":
+			actor = new HippieStory(manager, player, world);
+			break;
+			// entry to the necromancer's lair
 		case "Maps/Map09-EntrytoNecromancer'sLair.tmx":
 			class NecLair implements Actor {
 				/**
@@ -288,8 +291,9 @@ public class StoryManager {
 		this.setMapName(manager.getMapName());
 		this.world = manager.getWorld();
 		this.player = manager.getPlayer();
-		if (this.actor != null && this.actor != oldActor)
+		if (this.actor != null && this.actor != oldActor) {
 			this.actor.setUpActor(world, player);
+		}
 	}
 
 	/**
