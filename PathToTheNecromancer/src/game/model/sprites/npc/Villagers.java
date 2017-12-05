@@ -1,3 +1,4 @@
+
 package game.model.sprites.npc;
 
 import java.util.Random;

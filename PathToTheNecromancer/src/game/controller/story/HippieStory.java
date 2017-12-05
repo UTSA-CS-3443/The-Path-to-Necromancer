@@ -1,12 +1,10 @@
 package game.controller.story;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
 import game.model.DialogueGraph;
-import game.model.maps.MountainLeft;
 import game.model.maps.MountainRight;
 import game.model.sprites.npc.ColorAndGender;
 import game.model.sprites.npc.Hippie;
@@ -120,8 +118,12 @@ public class HippieStory implements Actor{
 			DialogueGraph graph = hippie.getDialogue(player);
 			manager.getMainScreen().startChat();
 			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-			player.addVelocity(new Vector2(10, 0), 3);
 			player.getStoryStats().setHippieEncounter(3);
+		} else if(player.getStoryStats().getHippieEncounter() == 4) {
+			DialogueGraph graph = hippie.getDialogue(player);
+			manager.getMainScreen().startChat();
+			manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
+			player.getStoryStats().setHippieEncounter(5);
 		} else if(player.getStoryStats().getHippieEncounter() == 10) {
 			manager.endGame();
 		} else if(player.getStoryStats().getHippieEncounter() == 11) {
