@@ -57,7 +57,7 @@ public class Savestate implements Serializable {
 	 */
 	private StoryStats story;
 	/**
-	 *  Constructor
+	 * Constructor
 	 * @param playerX players x coordinate 
 	 * @param playerY players y coordinate 
 	 * @param map	the name of the current map
@@ -86,7 +86,11 @@ public class Savestate implements Serializable {
 	 */
 	private void generateSaveId(Settings setting) {
 		File theDir = new File("Saves");
+		if(setting == null) {
+			setting = new Settings(false, 100, 100,  Difficulty.Easy);
+		}
 		this.setting.setNewGame(false);
+		
 		if(!theDir.exists()) {   
 			   this.saveLabel = "save1.txt";
 			   return;		

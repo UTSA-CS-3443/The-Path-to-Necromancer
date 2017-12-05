@@ -36,7 +36,7 @@ import javaFX.model.Difficulty;
  * buttons for each stage.
  * 
  * @author enigma-phi
- * @author HangedDragon96  added settings to the menu controller
+ * @author HangedDragon96 added settings to the menu controller
  *
  */
 public class MenuController {
@@ -96,7 +96,7 @@ public class MenuController {
 	 * The label style for white text
 	 */
 	private Label.LabelStyle whiteLabel;
-	
+
 	/**
 	 * The check box for disabling sound
 	 */
@@ -125,7 +125,7 @@ public class MenuController {
 	 * Texture atlas for the settings men
 	 */
 	private TextureAtlas buttonAtlas2;
-	
+
 	/**
 	 * Create the MenuController
 	 * 
@@ -246,26 +246,21 @@ public class MenuController {
 		// main table for the settings
 		Table table = new Table();
 		table.setFillParent(true);
-		table.top();
-		table.padTop(30);
-		table.add(musicLabel).padRight(10);
+		table.top().center();
+		table.padTop(20);
+		table.add(musicLabel).padRight(10).center().top();
 		table.add(musicSlider);
 		table.row();
-		table.add(brightLabel).padRight(10).padTop(5);
+		table.add(brightLabel).padRight(10).padTop(5).center();
 		table.add(brightSlider).padTop(5);
 		table.row();
-		table.add(soundOnLabel).padRight(10).padTop(15);
-		table.add(disableSoundCheck).center().padTop(15);
+		table.add(soundOnLabel).padRight(10).padTop(5).center().padBottom(10);
+		table.add(disableSoundCheck).center().padBottom(10);
 		table.row();
-		table.add(levelLabel).padRight(10).padTop(15);
-		table.add(difficultySelect).center().padTop(15);
-		table.add(soundOnLabel).padRight(10).padTop(5);
-		table.add(disableSoundCheck).center();
-		table.row();
-		table.add(levelLabel).padRight(10).padTop(5);
-		table.add(difficultySelect);
+		table.add(levelLabel).padRight(10).padTop(5).center().padBottom(40);
+		table.add(difficultySelect).padBottom(40);
 		stage.addActor(table);
-
+		
 		this.addMenuTransitionButtons(stage);
 		menu.setStage(stage);
 	}
@@ -346,7 +341,7 @@ public class MenuController {
 		table.add(textMove).left().padLeft(20);
 		table.add(textMoveKey).right().padRight(20);
 		table.row();
-		
+
 		table.add(combat).left().padLeft(20);
 		table.add();
 
@@ -473,9 +468,10 @@ public class MenuController {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				Savestate save = menu.getSave();
-				if(save == null) {
-				save = new Savestate(player.getX(), player.getY(), menu.getMapName(),
-						menu.getSettings(), player.isWarrior(), player.isRogue(), player.isMage(), player.getStats(),player.getStoryStats());
+				if (save == null) {
+					save = new Savestate(player.getX(), player.getY(), menu.getMapName(), menu.getSettings(),
+							player.isWarrior(), player.isRogue(), player.isMage(), player.getStats(),
+							player.getStoryStats());
 				} else {
 					save.setplayerX(player.getX());
 					save.setplayerY(player.getY());
@@ -584,39 +580,37 @@ public class MenuController {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
-				menu.getSettings().setMusicSound((int)Math.ceil(slider.getValue()));
-				
+				menu.getSettings().setMusicSound((int) Math.ceil(slider.getValue()));
+
 			}
 		});
 
-
 		// set up the slider for changing the brightness
-		brightSlider = new Slider(0, 100, 1, false, defaultSkin);
+		brightSlider = new Slider(0, 1, 0.1F, false, defaultSkin);
 		brightSlider.setValue(menu.getSettings().getBrightness());
 		brightSlider.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
-				menu.getSettings().setBrightness((int)Math.ceil(slider.getValue()));
+				menu.getSettings().setBrightness(slider.getValue());
 			}
 		});
 
 		CheckBox.CheckBoxStyle checkStyle = new CheckBox.CheckBoxStyle(skin.getDrawable("checkbox"),
 				skin.getDrawable("checkbox-on"), font, Color.WHITE);
 
-
 		// set up the disable sound check button
 		disableSoundCheck = new CheckBox("", checkStyle);
 		disableSoundCheck.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if(menu.getScreenManager().getMusicManager().getVolume() > 0) {
-				menu.getScreenManager().getMusicManager().setPreviousVolume(menu.getSettings().getMusicSound());
-				menu.getScreenManager().getMusicManager().setVolume(0);
+				if (menu.getScreenManager().getMusicManager().getVolume() > 0) {
+					menu.getScreenManager().getMusicManager().setPreviousVolume(menu.getSettings().getMusicSound());
+					menu.getScreenManager().getMusicManager().setVolume(0);
 				} else {
 					menu.getScreenManager().getMusicManager().setVolume(menu.getSettings().getMusicSound());
 				}
-				
+
 				return true;
 			}
 		});
@@ -633,20 +627,20 @@ public class MenuController {
 		difficultySelect.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-					menu.getSettings().setDifficulty(Difficulty.valueOf(difficultySelect.getSelected()));
+				menu.getSettings().setDifficulty(Difficulty.valueOf(difficultySelect.getSelected()));
 			}
 		});
 	}
+
 	/**
 	 * Set up the stage initially
 	 */
-	private void setUpStage(Stage stage)
-	{
+	private void setUpStage(Stage stage) {
 		stage.addListener(new InputListener() {
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
-				
-				if(keycode == Keys.ESCAPE)
+
+				if (keycode == Keys.ESCAPE)
 					menu.returnToGame();
 				return true;
 			}
@@ -680,7 +674,7 @@ public class MenuController {
 		this.buttonAtlas1.dispose();
 		if (this.buttonAtlas2 != null)
 			this.buttonAtlas2.dispose();
-	}
 	
+	}
 
 }

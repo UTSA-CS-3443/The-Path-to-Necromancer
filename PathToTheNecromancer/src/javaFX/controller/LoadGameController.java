@@ -120,39 +120,40 @@ private Boolean isPancakes;
 /**
  * Load the game from the state that is read
  */
-@Override
-public void handle(ActionEvent event) {
-	// checking which save is called
-	if(this.saveGroup.getSelectedToggle().equals(save1)) {
-		save = load("save1.txt");
-		 LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-	     new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
-	    DesktopLauncher.theStage.close();
-	} else if(this.saveGroup.getSelectedToggle().equals(save2)) {
-		save = load("save2.txt");
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
-	    DesktopLauncher.theStage.close();
-	} else if (this.saveGroup.getSelectedToggle().equals(save3)){
-		save = load("save3.txt");
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
-	    DesktopLauncher.theStage.close();
-	}else if (this.saveGroup.getSelectedToggle().equals(save4)){
-		save = load("save4.txt");
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
-	    DesktopLauncher.theStage.close();
-	}else if (this.saveGroup.getSelectedToggle().equals(save5)){
-		save = load("save5.txt");
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-	    new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
-	    DesktopLauncher.theStage.close();
-	}
+	@Override
+	public void handle(ActionEvent event) {
+		// checking which save is called
+		File theDir = new File("Saves");
+		if (theDir.exists() && theDir.listFiles().length > 0 ) {
+			if (this.saveGroup.getSelectedToggle().equals(save1)) {
+				save = load("save1.txt");
+				LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+				new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+				DesktopLauncher.theStage.close();
+			} else if (this.saveGroup.getSelectedToggle().equals(save2)) {
+				save = load("save2.txt");
+				LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+				new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+				DesktopLauncher.theStage.close();
+			} else if (this.saveGroup.getSelectedToggle().equals(save3)) {
+				save = load("save3.txt");
+				LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+				new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+				DesktopLauncher.theStage.close();
+			} else if (this.saveGroup.getSelectedToggle().equals(save4)) {
+				save = load("save4.txt");
+				LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+				new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+				DesktopLauncher.theStage.close();
+			} else if (this.saveGroup.getSelectedToggle().equals(save5)) {
+				save = load("save5.txt");
+				LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+				new LwjglApplication(new PathToNecromancer(save.getSetting(), save), config);
+				DesktopLauncher.theStage.close();
+			}
+		}
 
-	
-	
-}
+	}
 /**
  * loads the game from a file
  * @param string

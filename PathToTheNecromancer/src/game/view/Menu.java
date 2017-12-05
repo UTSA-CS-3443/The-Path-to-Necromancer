@@ -2,6 +2,7 @@ package game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -45,8 +46,6 @@ public class Menu implements Screen {
 	 * Create the menu screen
 	 * @param save 
 	 * 
-	 * @param screen
-	 *            is the PlayScreen the user is on
 	 * @param game
 	 *            is the main game class
 	 */
@@ -101,6 +100,8 @@ public class Menu implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		stage.act();
+		stage.getBatch().setColor((new Color(screenManager.getSettings().getBrightness(), screenManager.getSettings().getBrightness()
+				,screenManager.getSettings().getBrightness(), 1f)));
 		stage.draw();
 	}
 

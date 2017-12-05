@@ -265,4 +265,11 @@ public class MapManager {
 	public MusicManager getMusicManager() {
 		return this.screen.getMusicManager();
 	}
+	
+	/**
+	 * End the game
+	 */
+	public void endGame() {
+		this.screen.endGame();
+	}
 }

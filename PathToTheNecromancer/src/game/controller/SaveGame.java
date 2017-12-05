@@ -23,6 +23,9 @@ public class SaveGame {
 static public void saveGame(Savestate save) throws IOException {
 	FileOutputStream fos = null;
 	File theDir = new File("Saves");
+	if(save ==  null) {
+		return;
+	}
 	if (!theDir.exists()) {    
 	    try{
 	        theDir.mkdirs();    

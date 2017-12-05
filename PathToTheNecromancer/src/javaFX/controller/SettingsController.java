@@ -103,7 +103,7 @@ public class SettingsController implements EventHandler<ActionEvent> {
 	   @Override public void handle(ActionEvent e) {
 	    	// storing everything in settings
 	       settings.setDifficulty(difficulty.getValue());
-	       settings.setBrightness((int) brightnessSlider.getValue());
+	       settings.setBrightness((float) brightnessSlider.getValue());
 	       settings.setMusicSound((int) musicSlider.getValue()) ;
 	       settings.setMute(mute.isSelected());
 	     

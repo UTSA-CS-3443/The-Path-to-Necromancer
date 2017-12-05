@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class Settings implements Serializable{
 	/**
-	 * 
+	 * serial ID
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -25,7 +25,7 @@ public class Settings implements Serializable{
 	/**
 	 * brightness
 	 */
-	private int brightness;
+	private float brightness;
 	/**
 	 * in game music sound
 	 */
@@ -49,7 +49,7 @@ public class Settings implements Serializable{
 	 * @param musicSound The volume of the must
 	 * @param difficulty The difficulty 
 	 */
-	public Settings( boolean mute,  int brightness, int musicSound, Difficulty difficulty) {
+	public Settings( boolean mute,  float brightness, int musicSound, Difficulty difficulty) {
 		
 		this.mute = mute;
 		this.brightness = brightness;
@@ -76,14 +76,14 @@ public class Settings implements Serializable{
 	 * gets brightness
 	 * @return the brightness level for the game
 	 */
-	public int getBrightness() {
+	public float getBrightness() {
 		return brightness;
 	}
 	/**
 	 * sets brightness
 	 * @param brightness the level of brightness
 	 */
-	public void setBrightness(int brightness) {
+	public void setBrightness(float brightness) {
 		this.brightness = brightness;
 	}
 	/**

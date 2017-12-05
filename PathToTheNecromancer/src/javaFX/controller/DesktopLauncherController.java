@@ -215,15 +215,25 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	public void setSettings(Settings settings) {
 		this.settings = settings;
 	}
+	/**
+	 * gets the current background image
+	 * @return the current background
+	 */
 	public Background getBkImg() {
 		return bkImg;
 	}
+	/**
+	 * sets the current background
+	 * @param bkImg
+	 */
 	public void setBkImg(Background bkImg) {
 		this.bkImg = bkImg;
 	}
-	public String getBackground() {
-		return background;
-	}
+	
+	/**
+	 * sets the current background image
+	 * @param background the current background image
+	 */
 	public void setBackground(String background) {
 		DesktopLauncherController.background = background;
 	}
@@ -231,9 +241,6 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	 /** 
 	  * Removes the splash screen. 
 	  *
-	  * Invoke this Runnable using 
-	  * EventQueue.invokeLater, in order to remove the splash screen
-	  * in a thread-safe manner.
 	  */
 	  private static final class SplashScreenCloser implements Runnable {
 	    @Override public void run(){
@@ -245,7 +252,7 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	   */
 	   private static void showSplashScreen(){    
 	     page = new SplashPage(background);
-	   	 page.splash();;
+	   	 page.splash();
 	   }
 	   
 	
