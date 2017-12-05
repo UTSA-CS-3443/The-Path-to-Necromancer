@@ -533,6 +533,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.getNode(61).addActor(transitionActor);
 		graph.getNode(73).addActor(transitionActor);
 		graph.getNode(74).addActor(transitionActor);
+		graph.getNode(77).addActor(transitionActor);
 		graph.getNode(72).addActor(new DialogueActor() {
 
 			@Override
