@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import game.model.sprites.player.Stats;
 import game.model.sprites.player.StoryStats;
+import javaFX.model.Difficulty;
 import javaFX.model.Settings;
 /**
  * save state for the game

@@ -253,12 +253,16 @@ public class MenuController {
 		table.row();
 		table.add(brightLabel).padRight(10).padTop(5).center();
 		table.add(brightSlider).padTop(5);
+
 		table.row();
+
 		table.add(soundOnLabel).padRight(10).padTop(5).center().padBottom(10);
 		table.add(disableSoundCheck).center().padBottom(10);
 		table.row();
 		table.add(levelLabel).padRight(10).padTop(5).center().padBottom(40);
+
 		table.add(difficultySelect).padBottom(40);
+
 		stage.addActor(table);
 		
 		this.addMenuTransitionButtons(stage);
@@ -674,6 +678,7 @@ public class MenuController {
 		this.buttonAtlas1.dispose();
 		if (this.buttonAtlas2 != null)
 			this.buttonAtlas2.dispose();
+
 	
 	}
 
