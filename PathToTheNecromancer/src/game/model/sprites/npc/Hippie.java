@@ -332,6 +332,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 	 * @param player
 	 * @return the dialogue graph
 	 */
+	@Override
 	public DialogueGraph getDialogue(Player player) {
 		if (player.getStoryStats().getHippieEncounter() == 0)
 			return this.getFirstDialogue();
@@ -717,6 +718,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addEdge(50, 54);
 		graph.addEdge(53, 55);
 		graph.addEdge(5, 7);
+		
 		graph.addEdge(58, 59);
 		graph.addEdge(55, 58);
 		graph.addEdge(55, 57);
@@ -899,6 +901,27 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Hippie: You have a lot of anger inside of you don't you?"); // Node# 64
 		graph.addNode("Hippie: Well, you can always blame your parents"); // Node# 65
 		graph.addNode("Hippie: and by this nature, has it benefited you?"); // Node# 66
+		graph.addNode("P: It doesn't, it's just simply my nature");   //Node# 67
+		graph.addNode("P: I didn't ask to be brought here");   //Node# 68
+		graph.addNode("Hippie: We as humans are always subject to change, and for some reason we hate it.");   //Node# 69
+		graph.addNode("P: I don't get where you're going with this");   //Node# 70
+		graph.addNode("P: What's your point");   //Node# 71
+		graph.addNode("P: What's the alternative, they are the ones that raised me");   //Node# 72
+		graph.addNode("P: Yes I can");   //Node# 73
+		graph.addNode("Hippie: When all the people you can blame are gone, who is left but yourself");   //Node# 74
+		graph.addNode("Hippie: Think, right after your parents, who's next? Your friends? Family? The Governmetn");   //Node# 75
+		graph.addNode("Hippie: Yet at one point, your parents aren't going to be there");   //Node# 76
+		graph.addNode("P: Why don't you just screw off with this deep stuff, I know myself");   //Node# 77
+		graph.addNode("P: So you're telling me that I should love change?");   //Node# 78
+		graph.addNode("Hippie: You may pass, you have learned a lesson from Mother Gaia, I hope you take it to heart");   //Node# 79
+		graph.addNode("Hippie: My point is that the only one that keeping you from being the best person you can be is yourself, no one else");   //Node# 80
+		graph.addNode("Hippie: We are never perfect, and it would be foolish to assume one of us are");   //Node# 81
+		graph.addNode("Hippie: Not love, my appreciate it, the biggest changest in our life tend to be the happiest, yet saddest moments of our lives");   //Node# 82
+		graph.addNode("P: We hate it as some of us are done changing for others, we're perfect the way we are");   //Node# 83
+		graph.addNode("P: good point");   //Node# 84
+		graph.addNode("P: Ridiculous, how can something be sad, but happy?");   //Node# 85
+		graph.addNode("Hippie: Perhaps seeing your child off as they go to college");   //Node# 86
+		graph.addNode("Hippie: You may pass, you have learned a lesson from Mother Gaia, I hope you take it to heart");   //Node# 87
 
 		// add edges
 		graph.addEdge(0, 60);

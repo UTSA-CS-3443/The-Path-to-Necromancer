@@ -99,7 +99,7 @@ public class PlainsStory implements Actor {
 		}
 		// The Necromancer appears
 		if (player.getStoryStats().getBanditEncounters() == 7) {
-			player.getStoryStats().setVillagerConversations(1);
+			player.getStoryStats().setBanditEncounters(8);
 			nec = new Necromancer();
 			nec.defineBody(world, 368, 1897);
 			nec.banditDialogue(true);
