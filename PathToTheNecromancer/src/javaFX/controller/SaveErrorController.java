@@ -1,6 +1,6 @@
 package javaFX.controller;
 
-import javaFX.model.Settings;
+
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,10 +28,7 @@ public class SaveErrorController implements EventHandler<ActionEvent> {
 	@FXML
 	private Button okButton = new Button();
 
-	/**
-	 * the settings object
-	 */
-	private Settings settings;
+	
 	/**
 	 * Background image for the game
 	 */
@@ -66,20 +63,7 @@ public class SaveErrorController implements EventHandler<ActionEvent> {
 		this.okButton.setStyle("-fx-base: #00FFFF;");
 		this.messageLabel.setTextFill(Color.WHITE);
 	} 
-	/**
-	 * gets current settings
-	 * @return the current setting
-	 */
-	public Settings getSettings() {
-		return settings;
-	}
-	/**
-	 * sets the current settings
-	 * @param settings the current settings
-	 */
-	public void setSettings(Settings settings) {
-		this.settings = settings;
-	}
+	
 	/**
 	 * gets the current background image
 	 * @return the current background

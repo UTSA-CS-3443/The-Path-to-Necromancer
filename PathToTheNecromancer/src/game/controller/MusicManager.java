@@ -66,9 +66,17 @@ public class MusicManager {
 	public Music getMusic() {
 		return this.music;
 	}
+	/** 
+	 * gets the previous volume before mute
+	 * @return the previous volume
+	 */
 	public int getPreviousVolume() {
 		return previousVolume;
 	}
+	/**
+	 * sets the previous volume
+	 * @param previousVolume the previous volume in settings
+	 */
 	public void setPreviousVolume(int previousVolume) {
 		this.previousVolume = previousVolume;
 	}

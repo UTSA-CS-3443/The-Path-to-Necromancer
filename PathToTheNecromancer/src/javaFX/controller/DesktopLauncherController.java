@@ -95,7 +95,6 @@ public class DesktopLauncherController implements EventHandler<ActionEvent> {
 	   				e.printStackTrace();
 	   			}	
 	   			scene = new Scene(settingMenu,400,400);
-	   			((SaveErrorController)loader.getController()).setSettings(settings);
 	   			((SaveErrorController)loader.getController()).setBkImg(bkImg);
 	   			((SaveErrorController)loader.getController()).isItPancakes(isPancakes);
 	   			test.setScene(scene);
