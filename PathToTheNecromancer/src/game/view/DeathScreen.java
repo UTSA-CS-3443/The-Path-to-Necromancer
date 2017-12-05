@@ -2,7 +2,6 @@ package game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -54,7 +53,7 @@ public class DeathScreen implements Screen{
 		this.font = new BitmapFont(Gdx.files.internal("MagicCardFont.fnt"), false);
 		this.font.getData().setScale(1.2f);
 		this.setStage();
-		this.screenManager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/ACT. 8. Unity (Chris Tilton) Assassin's Creed Unity.mp3")));
+		//this.screenManager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/ACT. 8. Unity (Chris Tilton) Assassin's Creed Unity.mp3")));
 	}
 	
 	/**
@@ -95,7 +94,7 @@ public class DeathScreen implements Screen{
 		Table table = new Table();
 		table.setFillParent(true);
 		table.setBackground(new TextureRegionDrawable(
-						new TextureRegion(new Texture("assets/LightningBackground.jpg"))));
+						new TextureRegion(new Texture("assets/Necro Pictures/Lightning.png"))));
 		table.center();
 		table.add(diedLabel).padBottom(30);
 		table.row();

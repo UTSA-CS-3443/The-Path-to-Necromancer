@@ -70,12 +70,13 @@ public class InitializeGame {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+        
     }
 
    
-/**
- * sets up the map array
- */
+	/**
+	 * sets up the map array
+	 */
 	private void mapSetup() {
 		this.maps.put("Maps/Map01-IntroArea.tmx", "game.model.maps.IntroArea");
 		this.maps.put("Maps/Map02-Oog-lag Tavern.tmx", "game.model.maps.OogLagExterior");

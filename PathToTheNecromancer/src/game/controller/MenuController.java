@@ -681,6 +681,4 @@ public class MenuController {
 		if (this.buttonAtlas2 != null)
 			this.buttonAtlas2.dispose();
 	}
-	
-
 }

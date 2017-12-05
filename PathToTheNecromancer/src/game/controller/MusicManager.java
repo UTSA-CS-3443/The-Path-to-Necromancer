@@ -21,9 +21,6 @@ public class MusicManager {
 	 */
 	private int previousVolume;
 	/**
-	 * 
-	 */
-	/**
 	 * Constructor
 	 */
 	public MusicManager() {

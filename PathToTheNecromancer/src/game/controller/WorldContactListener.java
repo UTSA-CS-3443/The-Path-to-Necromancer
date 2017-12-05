@@ -64,22 +64,28 @@ public class WorldContactListener implements ContactListener {
 
     }
 
+    /**
+     * Unimplemented
+     */
     @Override
     public void endContact(Contact arg0) {
         // TODO Auto-generated method stub
-
     }
 
+    /**
+     * Unimplemented
+     */
     @Override
     public void postSolve(Contact arg0, ContactImpulse arg1) {
         // TODO Auto-generated method stub
-
     }
 
+    /**
+     * Unimplemented
+     */
     @Override
     public void preSolve(Contact arg0, Manifold arg1) {
         // TODO Auto-generated method stub
-
     }
 
 }

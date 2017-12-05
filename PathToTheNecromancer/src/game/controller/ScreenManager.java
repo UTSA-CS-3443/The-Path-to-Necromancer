@@ -22,7 +22,7 @@ import javaFX.model.Settings;
  * PlayScreen as the base screen.
  * 
  * @author enigma-phi
- *	@author HangedDragon96 added save
+ * @author HangedDragon96 added save
  */
 public class ScreenManager {
 	/**
@@ -57,14 +57,14 @@ public class ScreenManager {
 	 * the current save for the game
 	 */
 	private Savestate save;
+
 	/**
 	 * Create and initialize important values in the ScreenManager
 	 * 
-	 * @param screen
-	 *            is the main screen for the entire game
 	 * @param game
 	 *            is the main game that the screens are running off of
-	 * @param save the current save
+	 * @param save
+	 *            the current save
 	 */
 	public ScreenManager(PathToNecromancer game, Savestate save) {
 		this.game = game;
@@ -80,7 +80,7 @@ public class ScreenManager {
 	 * Set the menu as the current screen
 	 */
 	public void setMenu() {
-		this.currentScreen = new Menu(this,save);
+		this.currentScreen = new Menu(this, save);
 		this.setScreen();
 	}
 
@@ -93,13 +93,17 @@ public class ScreenManager {
 		this.currentScreen = new CombatScreen(this.mainScreen, this.game);
 		this.setScreen();
 	}
+
 	/**
 	 * Set Combat as the current screen with a specific enemy. Begin Combat.
+	 * 
+	 * @param enemy
+	 *            is the enemy for combat
 	 */
 	public void setCombat(EnemySprites enemy) {
 		this.currentMusic = this.musicManager.getMusic();
 		this.musicChanged = true;
-		this.currentScreen = new CombatScreen(this.mainScreen, this.game);//, enemy);
+		this.currentScreen = new CombatScreen(this.mainScreen, this.game);// , enemy);
 		this.setScreen();
 	}
 
@@ -115,7 +119,7 @@ public class ScreenManager {
 	 * Return whichever screen you are on back to the main PlayScreen
 	 */
 	public void toMainScreen() {
-		if(this.musicChanged) {
+		if (this.musicChanged) {
 			this.musicChanged = false;
 			this.musicManager.setMusic(this.currentMusic);
 		}
@@ -126,7 +130,7 @@ public class ScreenManager {
 		if (tempScreen != this.mainScreen && tempScreen != null)
 			tempScreen.dispose();
 	}
-	
+
 	/**
 	 * End the game as the player has just died
 	 */
@@ -134,6 +138,7 @@ public class ScreenManager {
 		this.currentScreen = new DeathScreen(this);
 		this.setScreen();
 	}
+
 	/**
 	 * Reset the input processor to the main processor
 	 */
@@ -228,29 +233,36 @@ public class ScreenManager {
 	public MapManager getMapManager() {
 		return this.mainScreen.getMapManager();
 	}
+
 	/**
 	 * Get the musicManager for managing the game's music
+	 * 
 	 * @return the musicManager
 	 */
 	public MusicManager getMusicManager() {
 		return this.musicManager;
 	}
+
 	/**
 	 * sets the save object for saving the game
-	 * @param save the current save file
+	 * 
+	 * @param save
+	 *            the current save file
 	 */
 	public void setSave(Savestate save) {
 		// TODO Auto-generated method stub
 		this.save = save;
-		
+
 	}
+
 	/**
 	 * gets the current save
+	 * 
 	 * @return the current save state of the game
 	 */
 	public Savestate getSave() {
 		// TODO Auto-generated method stub
 		return this.save;
 	}
-	
+
 }
