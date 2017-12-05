@@ -34,10 +34,6 @@ public class HippieStory implements Actor{
 	 * The player to base actions off of
 	 */
 	private Player player;
-	/**
-	 * The world to put sprites in
-	 */
-	private World world;
 	
 	/**
 	 * Constructor. Set up variables
@@ -52,7 +48,6 @@ public class HippieStory implements Actor{
 	public HippieStory(MapManager manager, Player player, World world) {
 		this.manager = manager;
 		this.player = player;
-		this.world = world;
 	}
 	
 	/**

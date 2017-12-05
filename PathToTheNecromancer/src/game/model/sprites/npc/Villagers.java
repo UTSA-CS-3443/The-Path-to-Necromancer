@@ -353,7 +353,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Villager: Kill the Necromancer and we will be eternally grateful"); // 37
 		graph.addNode("Villager: Is that an invitation?"); // 38
 		graph.addNode("P: Yes"); // 39
-		graph.addNode("Villager: GET HIM LADS"); // 40
+		graph.addNode("Villager: Get out of here before it is too late."); // 40
 		graph.addNode("P: No"); // 41
 		graph.addNode("Villager: Well then, get going before we can’t help ourselves."); // 42
 		graph.addNode("Villager: Aye, just give the Necromancer a good punch for me."); // 43

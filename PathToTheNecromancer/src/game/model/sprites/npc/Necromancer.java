@@ -193,7 +193,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		else if (this.banditDialogue)
 			return this.getUnionization();
 		else if (player.getStoryStats().getFinaleEncounter() == 0)
-			return this.getCastleEncounter();
+			return this.getCastleEncounter(player);
 		else if (player.getStoryStats().getFinaleEncounter() == 5)
 			return this.preCombatDialogue();
 		DialogueGraph graph = new DialogueGraph();
@@ -348,9 +348,10 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	 * Get the Necromancer's dialogue for when the player is in the Castle at the
 	 * end of the game.
 	 * 
+	 * @param player is the player to base the graph off of
 	 * @return the dialogue graph
 	 */
-	private DialogueGraph getCastleEncounter() {
+	private DialogueGraph getCastleEncounter(Player player) {
 		DialogueGraph graph = new DialogueGraph();
 
 		graph.addNode("Necromancer: Well well well. Look who decided to show up? I set this banquet out and you leave me waiting here for an eternity?"); // 0
@@ -493,7 +494,8 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addEdge(39, 40);
 		graph.addEdge(40, 41);
 		graph.addEdge(41, 43);
-		graph.addEdge(40, 42);
+		if(player.getStoryStats().getVillagerConversations() == 1 || player.getStoryStats().getBanditEncounters() == 10)
+			graph.addEdge(40, 42);
 		graph.addEdge(42, 44);
 		graph.addEdge(44, 45);
 		graph.addEdge(45, 46);
