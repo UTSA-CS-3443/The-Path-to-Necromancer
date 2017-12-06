@@ -81,7 +81,8 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 	}
 
 	/**
-	 * Define the animations associated with the Hippie
+	 * Set the different TextureRegions associated with the Hippie for
+	 * animation.
 	 */
 	@Override
 	public void setTextureValues() {
@@ -263,7 +264,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 	}
 
 	/**
-	 * Update the fighter's animation
+	 * Update the hippie's animation
 	 * 
 	 * @param dt
 	 *            is the change in time since the last render
