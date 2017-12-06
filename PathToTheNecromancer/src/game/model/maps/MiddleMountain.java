@@ -137,6 +137,6 @@ public class MiddleMountain extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Left-side of Mountain Town.mp3")));
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("Music/Left-side of Mountain Town.mp3")));
 	}
 }

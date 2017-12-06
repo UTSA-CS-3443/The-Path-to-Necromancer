@@ -158,7 +158,7 @@ public class InsideTavern extends GameMaps{
      */
 	@Override
 	public void setMusic() {
-		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Oog-Lags tavern.mp3")));
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("Music/Oog-Lags tavern.mp3")));
 	}
    
 }

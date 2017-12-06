@@ -111,6 +111,6 @@ public class Dungeon extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Allegri_Miserere.mp3")));
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("Music/Allegri_Miserere.mp3")));
 	} 
 }

@@ -217,7 +217,7 @@ public class PlainsArea extends GameMaps{
      */
 	@Override
 	public void setMusic() {
-		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Bandit Camp.mp3")));
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("Music/Bandit Camp.mp3")));
 	}   
 }
     
