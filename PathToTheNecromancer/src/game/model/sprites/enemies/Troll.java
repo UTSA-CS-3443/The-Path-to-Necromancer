@@ -13,12 +13,13 @@ public class Troll extends  EnemySprites{
 	/**
 	 * sets up the troll for a texture
 	 */
-	private Texture TrollTexture;
+	private Texture trollTexture;
 	/**
 	 * Give the troll the stats potential for  future where we multiply the stats by the difficulty
 	 */
 	public  Troll(int x) {
 		super.setBaseStats(3, 0, 2, 0, 13, x, 15);
+		this.trollTexture =  new Texture("EnemySprites/Troll.png");
 	}
 	@Override
 	public void update(float dt) {
@@ -26,6 +27,6 @@ public class Troll extends  EnemySprites{
 		
 	}
 	public Texture getTexture() {
-		return this.TrollTexture =  new Texture("EnemySprites/Troll.png");
+		return this.trollTexture;
 	}
 }

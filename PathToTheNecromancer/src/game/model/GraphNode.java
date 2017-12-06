@@ -64,6 +64,7 @@ public class GraphNode {
 	 * 
 	 * @param text
 	 *            is the text held by the graph node
+	 * @param name is the integer name of the node
 	 */
 	public GraphNode(String text, int name) {
 		this.adjNodes = new ArrayList<Integer>();

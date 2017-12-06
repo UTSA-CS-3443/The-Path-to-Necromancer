@@ -123,5 +123,4 @@ public class B2WorldCreator {
             body.createFixture(fdef).setUserData(gameMap);
         }
     }
-
 }

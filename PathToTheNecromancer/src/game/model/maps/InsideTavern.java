@@ -1,5 +1,7 @@
 package game.model.maps;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -95,6 +97,7 @@ public class InsideTavern extends GameMaps{
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level
      * @return an EnemySprite
      */
     public EnemySprites getEnemy(int level) {
@@ -154,8 +157,7 @@ public class InsideTavern extends GameMaps{
      */
 	@Override
 	public void setMusic() {
-		// TODO Auto-generated method stub
-		
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Oog-Lags tavern.mp3")));
 	}
    
 }

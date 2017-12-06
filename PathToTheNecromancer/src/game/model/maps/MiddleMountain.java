@@ -2,6 +2,8 @@ package game.model.maps;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.physics.box2d.World;
 import game.controller.MapManager;
 import game.model.B2WorldCreator;
@@ -9,8 +11,8 @@ import game.model.sprites.EnemySprites;
 
 /**
  * 
- * @author ToTryHardRay
  * This is the class for the middle mountain map
+ * @author ToTryHardRay
  *
  */
 public class MiddleMountain extends GameMaps {
@@ -98,6 +100,7 @@ public class MiddleMountain extends GameMaps {
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     @Override
@@ -118,6 +121,10 @@ public class MiddleMountain extends GameMaps {
     	return null;
     }
 
+    /**
+     * Create the sprites for the map
+     * @param world is the world to place the sprites in
+     */
 	@Override
 	public void createSprites(World world) {
 		// TODO Auto-generated method stub
@@ -129,9 +136,6 @@ public class MiddleMountain extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		// TODO Auto-generated method stub
-		
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Left-side of Mountain Town.mp3")));
 	}
-   
-
 }

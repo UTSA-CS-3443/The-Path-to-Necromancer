@@ -60,7 +60,6 @@ public class Merchant extends CharacterSprites implements InteractionSprites{
 	/**
 	 * Set the different TextureRegions associated with the Merchant for animation.
 	 */
-
 	@Override
 	public void setTextureValues() {
 		int rowHeight = 74;
@@ -191,7 +190,8 @@ public class Merchant extends CharacterSprites implements InteractionSprites{
 		this.getBody().createFixture(fdef).setUserData(this);
 	}
 	/**
-	 * Determine the DialogueGraph based off of whether the player has talked to the Merchat before
+	 * Determine the DialogueGraph based off of whether the player has talked to
+	 * the Merchant before
 	 */
 	public DialogueGraph getDialogue(Player player) {
 		if(player.getStoryStats().isFirstMerchantChat()) {
@@ -202,7 +202,8 @@ public class Merchant extends CharacterSprites implements InteractionSprites{
 		return graph;
 	}
 	/**
-	 * Get the Merchant's fixed dialoguegraph for the first time the player meets the Merchant
+	 * Get the Merchant's fixed dialoguegraph for the first time the player meets 
+	 * the Merchant
 	 * @return the DialogueGraph
 	 */
 	private DialogueGraph getSetDialogue() {
@@ -246,7 +247,6 @@ public class Merchant extends CharacterSprites implements InteractionSprites{
 			}
 			
 		});
-		
 		return graph;
 	}
 }

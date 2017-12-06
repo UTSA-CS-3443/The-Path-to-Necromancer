@@ -130,7 +130,13 @@ public abstract class CharacterSprites extends GameSprites {
 		this.loopVelocities = new ArrayList<Vector2>();
 		this.currentVelocity = -1;
 	}
-
+	
+	/**
+	 * Define the character's physics body in the world
+	 * @param world is the world to place the character
+	 * @param x is the character's x-coordinate
+	 * @param y is the character's y-coordinate
+	 */
 	public abstract void defineBody(World world, int x, int y);
 
 	/**
@@ -255,9 +261,10 @@ public abstract class CharacterSprites extends GameSprites {
 		this.loopVelocities.clear();
 		this.currentVelocity = -1;
 	}
-	
+
 	/**
 	 * Set the current velocity of the character
+	 * @param vector is the character's current vector of direction (angle and magnitude)
 	 */
 	public void setVelocity(Vector2 vector) {
 		this.body.setLinearVelocity(vector);

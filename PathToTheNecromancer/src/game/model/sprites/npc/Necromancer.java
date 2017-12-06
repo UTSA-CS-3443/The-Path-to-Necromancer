@@ -66,7 +66,6 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	 * Set the different TextureRegions associated with the Necromancer for
 	 * animation.
 	 */
-
 	@Override
 	public void setTextureValues() {
 		necromancerTexture = new Texture("CharacterSprites/Necromancer.png");
@@ -194,7 +193,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		else if (this.banditDialogue)
 			return this.getUnionization();
 		else if (player.getStoryStats().getFinaleEncounter() == 0)
-			return this.getCastleEncounter();
+			return this.getCastleEncounter(player);
 		else if (player.getStoryStats().getFinaleEncounter() == 5)
 			return this.preCombatDialogue();
 		DialogueGraph graph = new DialogueGraph();
@@ -210,6 +209,16 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	private DialogueGraph preCombatDialogue() {
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("Necromancer: You have amused me greatly young padawan. I do not wish to cut your life short and will allow you to live... this time.");
+		graph.addNode("Necromancer: Enjoy the rest of your travels.");
+		
+		graph.getNode(0).addActor(new DialogueActor() {
+
+			@Override
+			public void act(Player player, MapManager manager) {
+				player.getStoryStats().setFinaleEncounter(6);
+			}
+			
+		});
 		return graph;
 	}
 
@@ -310,15 +319,16 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addEdge(18, 24);
 		graph.addEdge(24, 25);
 		graph.addEdge(16, 19);
-		graph.addEdge(61, 27);
 		graph.addEdge(6, 28);
 		graph.addEdge(28, 29);
 		graph.addEdge(29, 30);
+		graph.addEdge(19, 26);
 		graph.addEdge(6, 20);
 		graph.addEdge(20, 23);
 		graph.addEdge(23, 13);
 		graph.addEdge(30, 12);
 		graph.addEdge(13, 12);
+		graph.addEdge(26, 14);
 		graph.addEdge(25, 12);
 
 		// Add actors
@@ -338,9 +348,10 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	 * Get the Necromancer's dialogue for when the player is in the Castle at the
 	 * end of the game.
 	 * 
+	 * @param player is the player to base the graph off of
 	 * @return the dialogue graph
 	 */
-	private DialogueGraph getCastleEncounter() {
+	private DialogueGraph getCastleEncounter(Player player) {
 		DialogueGraph graph = new DialogueGraph();
 
 		graph.addNode("Necromancer: Well well well. Look who decided to show up? I set this banquet out and you leave me waiting here for an eternity?"); // 0
@@ -483,7 +494,8 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addEdge(39, 40);
 		graph.addEdge(40, 41);
 		graph.addEdge(41, 43);
-		graph.addEdge(40, 42);
+		if(player.getStoryStats().getVillagerConversations() == 1 || player.getStoryStats().getBanditEncounters() == 10)
+			graph.addEdge(40, 42);
 		graph.addEdge(42, 44);
 		graph.addEdge(44, 45);
 		graph.addEdge(45, 46);
@@ -524,6 +536,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.getNode(61).addActor(transitionActor);
 		graph.getNode(73).addActor(transitionActor);
 		graph.getNode(74).addActor(transitionActor);
+		graph.getNode(77).addActor(transitionActor);
 		graph.getNode(72).addActor(new DialogueActor() {
 
 			@Override

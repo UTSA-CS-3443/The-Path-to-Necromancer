@@ -1,3 +1,4 @@
+
 package game.model.sprites.npc;
 
 import java.util.Random;
@@ -243,6 +244,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	/**
 	 * Get the Villager's Dialogue Sequence
 	 * 
+	 * @param player is the player to base the dialogue off of
 	 * @return the dialogueGraph
 	 */
 	@Override
@@ -308,19 +310,19 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: What happened here?"); // 1
 		graph.addNode("Villager: Worry not. It is a mere common cold."); // 2
 		graph.addNode(
-				"Villager: Oh, it's a sad story, the Necromancer has cursed this land and now we are forever hungry."); // 3
+				"Villager: Oh, it's a sad story, but we are cursed and we are forever hungry."); // 3
 		graph.addNode("P: That's terrible!"); // 4
 		graph.addNode(
 				"Villager: Indeed, but we have lived as such for years and shall continue to do so. Why are you here traveler?"); // 5
 		graph.addNode("P: I have come here to help you!"); // 6
-		graph.addNode("P: I have come to slay the necromancer!"); // 7
+		graph.addNode("P: I have come to slay the Necromancer!"); // 7
 		graph.addNode("P: I came for some of your famous mushroom soup"); // 8
 		graph.addNode(
 				"Villager: Ah, I am sorry traveler the life has been taken from our mushrooms as well and they are poisoned."); // 9
 		graph.addNode("P: Nooooooo! well I came for..."); // 10
 		graph.addNode("P: Wait how are you even alive, if the mushroom are poisonous?"); // 11
-		graph.addNode("Villager: You see... only one thing sates our eternal hunger... human flesh... GET HIM LADS!"); // 12
-		graph.addNode("Villager: Ah how wonderful, if you can slay the necromancer we will finally be free!"); // 13
+		graph.addNode("Villager: You see... only one thing sates our eternal hunger... human flesh..."); // 12
+		graph.addNode("Villager: Ah how wonderful, if you can slay the Necromancer we will finally be free!"); // 13
 		graph.addNode("P: Free from what?"); // 14
 		graph.addNode(
 				"Villager: Alas traveler, not only has the Necromancer cursed us, but we are also trapped here."); 
@@ -332,16 +334,16 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Villager: I am all out of food, but how about after I kill the Necromancer I treat you to a meal?"); // 21
 		graph.addNode("Villager: *drooling* thank you ma boy. You see, only one food satisfies our hunger..."); // 22
 		graph.addNode(
-				"Villager: That would make the meal taste even better. Why not? Ee can wait a while longer. We have waited this long after all."); // 23
-		graph.addNode("Villager: It is a more of a curse to which there is no cure. None but to defeat the Necromancer."); // 24
+				"Villager: That would make the meal taste even better. Why not? We can wait a while longer. We have waited this long after all."); // 23
+		graph.addNode("Villager: It is a more of a curse to which there is no cure."); // 24
 		graph.addNode("Villager: No, son me and this village have been sick a long time and we need help."); // 25
 		graph.addNode("P: What do you mean sick?"); // 26
 		graph.addNode("P: Is there a cure?"); // 27
 		graph.addNode("P: That’s a shame."); // 28
 		graph.addNode(
-				"Villager: There is no cure for us son, the only way to help us is to defeat the Necromancer, only then may we be free."); // 29
+				"Villager: There is no cure for us son, but, we would be very grateful to you if you defeated the Necromancer."); // 29
 		graph.addNode("P: What do you mean?"); // 30
-		graph.addNode("Villager: I mean the Necromancer has cursed our lands, our minds, and our bodies."); // 31
+		graph.addNode("Villager:Our lands, our minds, and our bodies are cursed."); // 31
 		graph.addNode("P: Huh?"); // 32
 		graph.addNode(
 				"Villager: We are struck by an evil hunger. We have become evil creatures who crave human flesh."); // 33
@@ -351,14 +353,14 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Villager: Kill the Necromancer and we will be eternally grateful"); // 37
 		graph.addNode("Villager: Is that an invitation?"); // 38
 		graph.addNode("P: Yes"); // 39
-		graph.addNode("Villager: GET HIM LADS"); // 40
+		graph.addNode("Villager: Get out of here before it is too late."); // 40
 		graph.addNode("P: No"); // 41
 		graph.addNode("Villager: Well then, get going before we can’t help ourselves."); // 42
-		graph.addNode("Villager: Ay, just give the necromancer a good punch for me."); // 43
+		graph.addNode("Villager: Aye, just give the Necromancer a good punch for me."); // 43
 		graph.addNode("P: I will."); // 44
 		graph.addNode("P: Are you alright?"); // 45
 		graph.addNode("Villager: Treacherous mountains lie to the west. Only a maze stands between us and the Necromancer's monsters to the South."); // 46
-		graph.addNode("Villager: Human flesh... GET HIM LADS!"); // 47
+		graph.addNode("Villager: Human flesh... You should go."); // 47
 		
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 45);
@@ -412,7 +414,8 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				setSpecialDialogue = false;				
+				setSpecialDialogue = false;			
+				player.getStoryStats().setVillagerConversations(1);
 			}
 			
 		});

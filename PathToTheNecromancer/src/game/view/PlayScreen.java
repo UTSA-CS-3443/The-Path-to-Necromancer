@@ -1,13 +1,12 @@
 package game.view;
 
-
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -94,6 +93,7 @@ public class PlayScreen implements Screen {
 		this.screenManager = screenManager;
 		this.batch = screenManager.getBatch();
 
+		// Set up the camera
 		this.gameCam = new OrthographicCamera(300, 200); // set the camera size
 		this.gamePort = new FitViewport(300, 200); // set the viewport size
 		this.gameCam.position.set(gamePort.getWorldWidth() / 2, // camera position
@@ -155,7 +155,6 @@ public class PlayScreen implements Screen {
 
 		Gdx.gl.glEnable(GL20.GL_BLEND);
 	    Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-
 
 		this.renderer.render();
 		this.renderer.getBatch().setColor((new Color(screenManager.getSettings().getBrightness(), screenManager.getSettings().getBrightness()

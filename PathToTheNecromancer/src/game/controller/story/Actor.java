@@ -14,10 +14,14 @@ import game.model.sprites.player.Player;
 public interface Actor {
 	/**
 	 * Set up the actor
-	 * @param world is the world to set up the actor in
-	 * @param player is the player to base set up upon
+	 * 
+	 * @param world
+	 *            is the world to set up the actor in
+	 * @param player
+	 *            is the player to base set up upon
 	 */
 	public void setUpActor(World world, Player player);
+
 	/**
 	 * Perform some action
 	 * 

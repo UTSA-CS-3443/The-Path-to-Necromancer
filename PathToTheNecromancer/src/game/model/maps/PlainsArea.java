@@ -2,6 +2,8 @@ package game.model.maps;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.World;
@@ -105,6 +107,7 @@ public class PlainsArea extends GameMaps{
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     @Override
@@ -214,7 +217,7 @@ public class PlainsArea extends GameMaps{
      */
 	@Override
 	public void setMusic() {
-		//manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/song.mp3")));
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Bandit Camp.mp3")));
 	}   
 }
     

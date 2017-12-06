@@ -1,5 +1,7 @@
 package game.model.maps;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -114,6 +116,7 @@ public class OogLagExterior extends GameMaps {
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     @Override
@@ -193,8 +196,7 @@ public class OogLagExterior extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		// TODO Auto-generated method stub
-		
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Outside Oog-Lags tavern.mp3")));
 	}
    
 }

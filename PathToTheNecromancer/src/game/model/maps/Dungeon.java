@@ -1,5 +1,7 @@
 package game.model.maps;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
@@ -88,6 +90,7 @@ public class Dungeon extends GameMaps {
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     public EnemySprites getEnemy(int level) {
@@ -107,7 +110,6 @@ public class Dungeon extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-	}
-   
-	
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Allegri_Miserere.mp3")));
+	} 
 }

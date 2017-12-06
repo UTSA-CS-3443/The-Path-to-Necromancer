@@ -23,7 +23,7 @@ import game.model.sprites.player.Player;
 
 /**
  * 
- * This is the class containing the animation for the fighter
+ * The Fighter is the Necromancer's first general
  * 
  * @author ToTryHardRay
  * @author enigma-phi
@@ -127,10 +127,9 @@ public class Fighter extends CharacterSprites implements InteractionSprites {
 		fighting3.add(new TextureRegion(fighterTexture, 7 * specialWidth, 8 * rowHeight, specialWidth, height));
 		fighting3.add(new TextureRegion(fighterTexture, 8 * specialWidth, 8 * rowHeight, specialWidth, height));
 
-		Texture fighterCryingTexture = new Texture("CharacterSprites/FighterCrying.png");
 		crying = new ArrayList<TextureRegion>();
-		crying.add(new TextureRegion(fighterCryingTexture, 0, 0, 29, 49));
-		crying.add(new TextureRegion(fighterCryingTexture, 31, 0, 29, 49));
+		crying.add(new TextureRegion(fighterTexture, 0, 9 * rowHeight, 32, 49));
+		crying.add(new TextureRegion(fighterTexture, 32, 9 * rowHeight, 32, 49));
 
 		// Array of frames used for the animations
 		Array<TextureRegion> frames = new Array<TextureRegion>();

@@ -3,6 +3,8 @@ package game.model.maps;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.physics.box2d.World;
 
 import game.controller.MapManager;
@@ -101,6 +103,7 @@ public class NecromancerEntry extends GameMaps {
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     public EnemySprites getEnemy(int level) {
@@ -139,9 +142,6 @@ public class NecromancerEntry extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		// TODO Auto-generated method stub
-		
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Necro-Castle.mp3")));
 	}
-   
-
 }

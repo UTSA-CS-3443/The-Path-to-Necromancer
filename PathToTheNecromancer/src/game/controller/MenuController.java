@@ -96,7 +96,7 @@ public class MenuController {
 	 * The label style for white text
 	 */
 	private Label.LabelStyle whiteLabel;
-
+	
 	/**
 	 * The check box for disabling sound
 	 */
@@ -125,7 +125,7 @@ public class MenuController {
 	 * Texture atlas for the settings men
 	 */
 	private TextureAtlas buttonAtlas2;
-
+	
 	/**
 	 * Create the MenuController
 	 * 
@@ -253,18 +253,14 @@ public class MenuController {
 		table.row();
 		table.add(brightLabel).padRight(10).padTop(5).center();
 		table.add(brightSlider).padTop(5);
-
 		table.row();
-
 		table.add(soundOnLabel).padRight(10).padTop(5).center().padBottom(10);
 		table.add(disableSoundCheck).center().padBottom(10);
 		table.row();
 		table.add(levelLabel).padRight(10).padTop(5).center().padBottom(40);
-
 		table.add(difficultySelect).padBottom(40);
-
 		stage.addActor(table);
-		
+
 		this.addMenuTransitionButtons(stage);
 		menu.setStage(stage);
 	}
@@ -345,7 +341,7 @@ public class MenuController {
 		table.add(textMove).left().padLeft(20);
 		table.add(textMoveKey).right().padRight(20);
 		table.row();
-
+		
 		table.add(combat).left().padLeft(20);
 		table.add();
 
@@ -678,8 +674,5 @@ public class MenuController {
 		this.buttonAtlas1.dispose();
 		if (this.buttonAtlas2 != null)
 			this.buttonAtlas2.dispose();
-
-	
 	}
-
 }

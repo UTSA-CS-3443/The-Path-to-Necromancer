@@ -54,7 +54,7 @@ public class DeathScreen implements Screen{
 		this.font = new BitmapFont(Gdx.files.internal("MagicCardFont.fnt"), false);
 		this.font.getData().setScale(1.2f);
 		this.setStage();
-		this.screenManager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/ACT. 8. Unity (Chris Tilton) Assassin's Creed Unity.mp3")));
+		this.screenManager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Allegri_Miserere.mp3")));
 	}
 	
 	/**
@@ -95,7 +95,7 @@ public class DeathScreen implements Screen{
 		Table table = new Table();
 		table.setFillParent(true);
 		table.setBackground(new TextureRegionDrawable(
-						new TextureRegion(new Texture("assets/LightningBackground.jpg"))));
+						new TextureRegion(new Texture("assets/Necro Pictures/Lightning.png"))));
 		table.center();
 		table.add(diedLabel).padBottom(30);
 		table.row();
@@ -113,18 +113,25 @@ public class DeathScreen implements Screen{
 		this.font.dispose();
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void render(float dt) {
 		// clear the screen
@@ -143,15 +150,20 @@ public class DeathScreen implements Screen{
 		this.viewport.update(width, height);
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Unimplemented
+	 */
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 }

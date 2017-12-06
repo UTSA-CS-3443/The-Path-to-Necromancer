@@ -3,6 +3,8 @@ package game.model.maps;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -82,7 +84,9 @@ public class MountainRight extends GameMaps {
     /**
      * Transition between areas
      * 
-     * North: PlainsArea South: IntroArea Door: OogLagInterior
+     * North: PlainsArea 
+     * South: IntroArea 
+     * Door: OogLagInterior
      * 
      * @param the
      *            type of transition for the map
@@ -107,6 +111,7 @@ public class MountainRight extends GameMaps {
     /**
      * Return an enemy from the specific gameMap
      * 
+     * @param level is the player's level for scaling
      * @return an EnemySprite
      */
     public EnemySprites getEnemy(int level) {
@@ -225,9 +230,6 @@ public class MountainRight extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		// TODO Auto-generated method stub
-		
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Right-Side of Mountain Town.mp3")));
 	}
-   
-
 }
