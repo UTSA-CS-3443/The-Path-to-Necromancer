@@ -341,7 +341,9 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 			return this.getSecondDialogue(player);
 		if (player.getStoryStats().getHippieEncounter() == 4)
 			return this.getLogicDialogue();
-		return null;
+		DialogueGraph graph = new DialogueGraph();
+		graph.addNode("Hippie: I am done teaching you. Now be gone.");
+		return graph;
 	}
 
 	/**
