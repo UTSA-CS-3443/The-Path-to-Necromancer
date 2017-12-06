@@ -580,7 +580,7 @@ public class MenuController {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
-				menu.getSettings().setMusicSound((int) Math.ceil(slider.getValue()));
+				menu.getScreenManager().getMusicManager().setVolume((int) slider.getValue());
 
 			}
 		});
