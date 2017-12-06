@@ -119,7 +119,7 @@ public class NecromancerLair extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Necro-Castle.mp3")));
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("Music/Necro-Castle.mp3")));
 	}
    
 }

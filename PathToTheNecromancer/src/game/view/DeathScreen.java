@@ -54,7 +54,7 @@ public class DeathScreen implements Screen{
 		this.font = new BitmapFont(Gdx.files.internal("MagicCardFont.fnt"), false);
 		this.font.getData().setScale(1.2f);
 		this.setStage();
-		this.screenManager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Allegri_Miserere.mp3")));
+		this.screenManager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("Music/Allegri_Miserere.mp3")));
 	}
 	
 	/**

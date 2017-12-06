@@ -87,7 +87,7 @@ public class Fighter extends CharacterSprites implements InteractionSprites {
 	private static final int FIGHTER_WIDTH = 15;
 
 	/**
-	 * Constructor
+	 * Constructor for fighter
 	 */
 	public Fighter() {
 		setTextureValues();

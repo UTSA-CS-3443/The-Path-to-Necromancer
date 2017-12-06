@@ -231,6 +231,6 @@ public class MountainRight extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Right-Side of Mountain Town.mp3")));
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("Music/Right-Side of Mountain Town.mp3")));
 	}
 }

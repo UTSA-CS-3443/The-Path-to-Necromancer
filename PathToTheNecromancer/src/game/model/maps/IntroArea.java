@@ -105,6 +105,6 @@ public class IntroArea extends GameMaps {
      */
 	@Override
 	public void setMusic() {
-		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("assets/Music/Plains Area.mp3")));
+		manager.getMusicManager().setMusic((Music) Gdx.audio.newMusic(Gdx.files.internal("Music/Plains Area.mp3")));
 	}
 }
