@@ -56,6 +56,7 @@ public class NecromancerEntry extends GameMaps {
         super(MAPNAME, false);
         this.manager = manager; // manager for loading maps
         this.creator = B2WorldCreator.getInstance(); // for creating the game's physics
+        this.setMusic();
     }
 
     /**
@@ -71,8 +72,6 @@ public class NecromancerEntry extends GameMaps {
         // create the transition areas
         this.creator.createTransition(world, this, NORTHTRANSITION, NORTH);
         this.creator.createTransition(world, this, SOUTHTRANSITION, SOUTH);
-        
-
     }
 
     /**

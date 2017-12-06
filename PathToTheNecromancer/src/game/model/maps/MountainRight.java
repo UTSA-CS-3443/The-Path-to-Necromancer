@@ -62,6 +62,7 @@ public class MountainRight extends GameMaps {
         super(MAPNAME, false);
         this.manager = manager; // manager for loading maps
         this.creator = B2WorldCreator.getInstance(); // for creating the game's physics
+        this.setMusic();
     }
 
     /**
