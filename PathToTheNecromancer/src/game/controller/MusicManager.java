@@ -22,9 +22,10 @@ public class MusicManager {
 	private int previousVolume;
 	/**
 	 * Constructor
+	 * @param volume the current volume
 	 */
-	public MusicManager() {
-		this.volume = 1;
+	public MusicManager(int volume) {
+		this.volume = volume;
 	}
 	/**
 	 * Set the volume level for the music. The volume should be
@@ -38,7 +39,7 @@ public class MusicManager {
 		else if(this.volume < 0)
 			this.volume = 0;
 		if(this.music != null) {
-			this.music.setVolume(volume);
+			this.music.setVolume(this.volume);
 		}
 	}
 	/**

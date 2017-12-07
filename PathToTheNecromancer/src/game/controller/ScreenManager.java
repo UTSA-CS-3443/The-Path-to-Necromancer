@@ -68,7 +68,7 @@ public class ScreenManager {
 	 */
 	public ScreenManager(PathToNecromancer game, Savestate save) {
 		this.game = game;
-		this.musicManager = new MusicManager();
+		this.musicManager = new MusicManager(game.getSettings().getMusicSound());
 		this.mainScreen = new PlayScreen(this, save);
 		this.save = save;
 		this.currentScreen = this.mainScreen;
