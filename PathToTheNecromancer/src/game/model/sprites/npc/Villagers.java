@@ -289,7 +289,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 			break;
 		case 5:
 			graph.addNode(
-					"Villager: I have to admit, the sounds of the necromancer's skeleton army are slightly less offputting thanks to the xylophone sounds the skeletons make.");
+					"Villager: I have to admit, the sounds of the necromancer's skeleton army are slightly less off-putting thanks to the xylophone sounds the skeletons make.");
 			break;
 		case 6:
 			graph.addNode(
@@ -306,11 +306,11 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	 */
 	private DialogueGraph getSetDialogue() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("Villager: Welcome to out humble village traveler. *cough,cough*"); // 0
+		graph.addNode("Villager: Welcome to our humble village traveler. *cough,cough*"); // 0
 		graph.addNode("P: What happened here?"); // 1
 		graph.addNode("Villager: Worry not. It is a mere common cold."); // 2
 		graph.addNode(
-				"Villager: Oh, it's a sad story, but we are cursed and we are forever hungry."); // 3
+				"Villager: Oh, it's a sad story, but we are cursed, and we are forever hungry."); // 3
 		graph.addNode("P: That's terrible!"); // 4
 		graph.addNode(
 				"Villager: Indeed, but we have lived as such for years and shall continue to do so. Why are you here traveler?"); // 5
@@ -320,7 +320,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 		graph.addNode(
 				"Villager: Ah, I am sorry traveler the life has been taken from our mushrooms as well and they are poisoned."); // 9
 		graph.addNode("P: Nooooooo! well I came for..."); // 10
-		graph.addNode("P: Wait how are you even alive, if the mushroom are poisonous?"); // 11
+		graph.addNode("P: Wait how are you even alive, if the mushrooms are poisonous?"); // 11
 		graph.addNode("Villager: You see... only one thing sates our eternal hunger... human flesh..."); // 12
 		graph.addNode("Villager: Ah how wonderful, if you can slay the Necromancer we will finally be free!"); // 13
 		graph.addNode("P: Free from what?"); // 14
@@ -330,20 +330,20 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: Don’t worry I will free you!"); // 17
 		graph.addNode("Villager: How wonderful, thank you traveler!"); // 18
  		graph.addNode("Villager: Ah then you wouldn’t mind if we ask you for some food?"); // 19
-		graph.addNode("P: Sure why not?"); // 20
+		graph.addNode("P: Sure, why not?"); // 20
 		graph.addNode("Villager: I am all out of food, but how about after I kill the Necromancer I treat you to a meal?"); // 21
 		graph.addNode("Villager: *drooling* thank you ma boy. You see, only one food satisfies our hunger..."); // 22
 		graph.addNode(
 				"Villager: That would make the meal taste even better. Why not? We can wait a while longer. We have waited this long after all."); // 23
 		graph.addNode("Villager: It is a more of a curse to which there is no cure."); // 24
-		graph.addNode("Villager: No, son me and this village have been sick a long time and we need help."); // 25
+		graph.addNode("Villager: No, son, me and this village have been sick a long time and we need help."); // 25
 		graph.addNode("P: What do you mean sick?"); // 26
 		graph.addNode("P: Is there a cure?"); // 27
 		graph.addNode("P: That’s a shame."); // 28
 		graph.addNode(
 				"Villager: There is no cure for us son, but, we would be very grateful to you if you defeated the Necromancer."); // 29
 		graph.addNode("P: What do you mean?"); // 30
-		graph.addNode("Villager:Our lands, our minds, and our bodies are cursed."); // 31
+		graph.addNode("Villager: Our lands, our minds, and our bodies are cursed."); // 31
 		graph.addNode("P: Huh?"); // 32
 		graph.addNode(
 				"Villager: We are struck by an evil hunger. We have become evil creatures who crave human flesh."); // 33

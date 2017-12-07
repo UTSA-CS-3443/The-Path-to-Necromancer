@@ -156,7 +156,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Book: YOU THINK YOU ARE GOING TO ESCAPE FROM ME?! YOU WILL READ ME!"); // 10
 		graph.addNode("Book: Yeah man, just come read me. Pry me open."); // 11
 		graph.addNode(
-				"Book: OH IT'S GOING TO BE LIKE THAT THEN! LET'S GO YOU LITTLE JERK! YOU'RE LUCKY I AM ONLY ABLE TO USE G-RATED LANGUAGE!"); // 12
+				"Book: OH, IT'S GOING TO BE LIKE THAT THEN! LET'S GO YOU LITTLE JERK! YOU'RE LUCKY I AM ONLY ABLE TO USE G-RATED LANGUAGE!"); // 12
 		graph.addNode("P: Read talking book."); // 13
 		graph.addNode("Book: Phew, good thing I said something. It's dangerous out there."); // 14
 		graph.addNode("Book: What are you?"); // 15

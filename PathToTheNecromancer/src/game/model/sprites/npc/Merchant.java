@@ -198,7 +198,7 @@ public class Merchant extends CharacterSprites implements InteractionSprites{
 			return this.getSetDialogue();
 		}
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("The merchantglowers and refuses to speak.");
+		graph.addNode("The merchant glowers and refuses to speak.");
 		return graph;
 	}
 	/**
@@ -219,9 +219,9 @@ public class Merchant extends CharacterSprites implements InteractionSprites{
 		graph.addNode("P: Oh shoot, I didn't see you there..."); // 7
 		graph.addNode("P: *Continue looking around* It's almost as if I hear a small creature attempting to talk to me..."); // 8
 		graph.addNode("Merchant: You're asking for it now sonny, I'll clobber you into another dimension"); // 9
-		graph.addNode("P: Oh I'm so scared, what are you going to do? Jump up and kick me in the knee?" ); // 10
-		graph.addNode("Merchnat: No, I'll kick ye in your jewlery case so hard that the children of your children will be feeling you mistake!"); // 11
-		graph.addNode("P: Nevermind, I'll leave you alone."); // 12
+		graph.addNode("P: Oh, I'm so scared, what are you going to do? Jump up and kick me in the knee?" ); // 10
+		graph.addNode("Merchant: No, I'll kick ye in your jewelry case so hard that the children of your children will be feeling you mistake!"); // 11
+		graph.addNode("P: Never mind, I'll leave you alone."); // 12
 		graph.addNode("Merchant: You better be, now leave me alone!"); // 13
 		
 		graph.addEdge(0,1);

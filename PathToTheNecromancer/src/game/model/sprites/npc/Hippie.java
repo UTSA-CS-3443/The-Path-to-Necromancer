@@ -362,7 +362,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: I'm the real voice of Mother Gaia you fool, how dare you speak for her!"); // 4
 		graph.addNode("*Crowd begins to boo* Angry Mob Occupant #1: \"She's the voice of mother Gaia you jerk!\""); // 5
 		graph.addNode("Hippie: See even the crowd agrees with me, you are a liar!"); // 6
-		graph.addNode("P: You will all burn for your insolence, Mother Gaia won't allow you to silence me!"); // 7
+		graph.addNode("P: You will all burn for your insolence; Mother Gaia won't allow you to silence me!"); // 7
 		graph.addNode("*Crowd boos louder* Angrier Mob Occupant #4: \"This man is a fool! tell him what's up about Mother Gaia\""); // 8
 		graph.addNode("Hippie: Some just need to be reborn, and how does one be reborn in this world!"); // 9
 		graph.addNode("Angry crowd: By Gorignak!"); // 10
@@ -385,7 +385,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("*The area goes silent*"); // 27 teleport to next map
 		graph.addNode("P: Begin making poses"); // 28 teleport to next map
 		graph.addNode("P: Stand heroically that you just stripped in front of multiple people."); // 29
-		graph.addNode("P: As if, *eat dirt* I'm the one with mother Gaia are you?!"); // 30
+		graph.addNode("P: As if, *eat dirt* I'm the one with mother Gaia, are you?!"); // 30
 		graph.addNode("Crowd occupant #2: Did he just eat dirt?"); // 31
 		graph.addNode("Hippie: Why did you just eat dirt?"); // 32
 		graph.addNode("P: You want some?"); // 33
@@ -395,7 +395,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: And how do we know you're not lying?"); // 37 connect to 13
 		graph.addNode("P: Don't knock it till you try it!"); // 38
 		graph.addNode("Crowd: To be fair, we haven't eaten dirt yet, so we don't know how it tastes..."); // 39
-		graph.addNode("Hippie: Don't eat dirt! he's tryng to trick all of you!"); // 40
+		graph.addNode("Hippie: Don't eat dirt! he's trying to trick all of you!"); // 40
 		graph.addNode("P: Trick you into loving the Earth more? I'm going to eat more because I love The Earth"); // 41 connect to 51
 		graph.addNode("P: Don't listen to her, she wants to prevent you all from enjoying yourselves!"); // 42
 		graph.addNode("Crowd: Enjoy ourselves by eating dirt?"); // 43
@@ -404,7 +404,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("*A barrage of rocks hits you*"); // 46 death screen
 		graph.addNode("P: We are what we eat, I am the Earth you see!"); // 47 connect to 52
 		graph.addNode("*Crowd boos*: He's using science! Hang him!"); // 48
-		graph.addNode("Hippie: Be calm my children we don not hang the science-goers, we throw rocks at them!"); // 49 connect to 46
+		graph.addNode("Hippie: Be calm my children we do not hang the science-goers, we throw rocks at them!"); // 49 connect to 46
 		graph.addNode("P: *continue shoveling dirt in your mouth* Because I love the Earth!"); // 50
 		graph.addNode("Crowd: To be fair, if he does love the earth, he would eat it."); // 51
 		graph.addNode("Hippie: Eating dirt has nothing to do with being closer to Mother Gaia!"); // 52
@@ -423,7 +423,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Hippie: I'm surprised you have not heard of me. I am the speaker of trees, speaker of the earth and healer of the sick."); // 65
 		graph.addNode("Hippie: I am the Necromancer's general #2."); // 66
 		graph.addNode("P: What the heck are you talking about?"); // 67 alternate path dialogue
-		graph.addNode("Hippie: Nevermind. Just go."); // 68
+		graph.addNode("Hippie: Never mind. Just go."); // 68
 		
 		graph.addEdge(0, 1);
 		graph.addEdge(1, 2);
@@ -577,13 +577,13 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Crowd: Tell him Gaia's representative!"); // Node# 0
 		graph.addNode("Hippie: This is the location where mother Gaia was born! Where she first came into this world!"); // Node# 1
 		graph.addNode("P: *kick her aside* YES! I KNOW THIS! WE MUST DEFEND MOTHER GAIA!"); // Node# 2
-		graph.addNode("Crowd: shocked with a whisper: What he say?"); // Node# 3
+		graph.addNode("Crowd: shocked with a whisper: What did he say?"); // Node# 3
 		graph.addNode("P: *knock out the general*"); // Node# 4
 		graph.addNode("P: I said we must do everything in our power to defend mother Gaia"); // Node# 5
 		graph.addNode("Crowd: Hey he just knocked out Gaia's representative out!"); // Node# 6
 		graph.addNode("Crowd: but why'd you kick her aside?"); // Node# 7
 		graph.addNode("P: Because I'm overcome with joy of defending mother Gaia!"); // Node# 8
-		graph.addNode("P: I did not knock her out, I simple re-sheduled her bedtime!"); // Node# 9
+		graph.addNode("P: I did not knock her out, I simple re-scheduled her bedtime!"); // Node# 9
 		graph.addNode("P: Can you prove that I did?"); // Node# 10
 		graph.addNode("Hippie: Yes, because I am the real representative of Gaia!"); // Node# 11
 		graph.addNode("Crowd: We just saw you do it!"); // Node# 12
@@ -591,17 +591,17 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: Now that I think of it, I may have done that, though it's a bit foggy."); // Node# 14
 		graph.addNode("Crowd: WE JUST SAW YOU"); // Node# 15
 		graph.addNode("P: Nope, you guys are just crazy!"); // Node# 16
-		graph.addNode("*A rock flies at you knocking you unconcious*"); // Node# 17
-		graph.addNode("Crowd: is silent"); // Node# 18
-		graph.addNode("P: Sooo, I'm just gonna leave, but I hope you can guys can figure out who knocked your leader out."); // Node# 19
-		graph.addNode("*A rock flies at you knocking you unconcious*"); // Node# 20
+		graph.addNode("*A rock flies at you knocking you unconscious*"); // Node# 17
+		graph.addNode("Crowd: *is silent*"); // Node# 18
+		graph.addNode("P: Sooo, I'm just going to leave, but I hope you can guys can figure out who knocked your leader out."); // Node# 19
+		graph.addNode("*A rock flies at you knocking you unconscious*"); // Node# 20
 		graph.addNode("Crowd: *boos are heard* you are lying! What can you do that she can't?"); // Node# 21
 		graph.addNode("P: Watch me mortals as I commit feats of magic never seen before!"); // Node# 22
 		graph.addNode("P: I can remain conscious after being hit once!"); // Node# 23
 		graph.addNode("Crowd: Like?"); // Node# 24
 		graph.addNode("P: For example, anyone have a deck of cards?"); // Node# 25
 		graph.addNode("P: Well, I can cast a very nice sleep spell"); // Node# 26
-		graph.addNode("*A rock flies at you knocking you unconcious*"); // Node# 27
+		graph.addNode("*A rock flies at you knocking you unconscious*"); // Node# 27
 		graph.addNode("P: *Do card trick* Pick a card any card!"); // Node# 28
 		graph.addNode("Crowd: I do!"); // Node# 29
 		graph.addNode("Crowd: He's not even doing anything, he's just yodeling!!!"); // Node# 30
@@ -609,11 +609,11 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("*Cards go flying in the air*"); // Node# 32
 		graph.addNode("P: *begin yodeling*"); // Node# 33
 		graph.addNode("P: *Run away* "); // Node# 34
-		graph.addNode("*A rock flies at you knocking you unconcious*"); // Node# 35
+		graph.addNode("*A rock flies at you knocking you unconscious*"); // Node# 35
 		graph.addNode("P: Fools, this is my anger spell, behold you are all filled with rage! My magic works!"); // Node# 36
 		graph.addNode("P: *do card trick as the crowd watches you*"); // Node# 37
-		graph.addNode("P: Now, is THIS you card?"); // Node# 38
-		graph.addNode("Crowd: NO IT'S NOT, YOU'RE A FRAUD!"); // Node# 39
+		graph.addNode("P: Now, is THIS your card?"); // Node# 38
+		graph.addNode("Crowd: NO, IT'S NOT, YOU'RE A FRAUD!"); // Node# 39
 		graph.addNode("P: Ahh yes, but did I say this is the card you chose?"); // Node# 40
 		graph.addNode("Crowd: All in favor of killing him raise your hand?"); // Node# 41
 		graph.addNode("*entire audience raises their hands*"); // Node# 42
@@ -631,10 +631,10 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: I really am your biggest fan, you wouldn't believe it"); // Node# 54
 		graph.addNode("Crowd: *Begins crying* Please stop we beseech thee!"); // Node# 55
 		graph.addNode("Crowd: Just go north of here, just leave please!"); // Node# 56
-		graph.addNode("P: *stop kicking* I gotta get out of here, which way is out?"); // Node# 57
+		graph.addNode("P: *stop kicking* I have got to get out of here, which way is out?"); // Node# 57
 		graph.addNode("P: I just can't, TOO EXCITED FOR WORDS!"); // Node# 58
 		graph.addNode("Crowd: screams and cries, the heavens weep as you continue kicking her"); // Node# 59
-		graph.addNode("*A rock flies at you knocking you unconcious*"); // Node# 60
+		graph.addNode("*A rock flies at you knocking you unconscious*"); // Node# 60
 		graph.addNode("*Congratulation, you have joined the cult of Gaia, the next 40 years you spend spreading her great word, and hugging trees*"); // Node# 61
 		graph.addNode("P: Please, tell me more"); // Node# 62
 		graph.addNode("*You soon die after attempting to meld with a tree.*"); // Node# 63
@@ -642,17 +642,17 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: *run away*"); // Node# 65
 		graph.addNode("P: Well, if you're not going to sacrifice anyone, I'll be on my way"); // Node# 66
 		graph.addNode("P: We all know we do weird things when we get excited am I right people?"); // Node# 67
-		graph.addNode("Crowd: No we won't, guys lets get him before he tries to love us!"); // Node# 68
+		graph.addNode("Crowd: No, we won't, guys let's get him before he tries to love us!"); // Node# 68
 		graph.addNode("Crowd: well yeah, but none of us hurt each other"); // Node# 69
 		graph.addNode("P: Then you guys have never been truly excited!"); // Node# 70
 		graph.addNode("P: You guy have never heard of tough love?"); // Node# 71
 		graph.addNode("Crowd: Yeah, but I don't think that's tough love..."); // Node# 72
-		graph.addNode("P: *Run at crowd with fists aswinging: LET ME LOVE YOU!*"); // Node# 73
+		graph.addNode("P: *Run at crowd with fists swinging: LET ME LOVE YOU!*"); // Node# 73
 		graph.addNode("Crowd Please no"); // Node# 74
 		graph.addNode("P: Scream: YOU WILL LOVE ME!"); // Node# 75
 		graph.addNode("P: Here let me love you"); // Node# 76
 		graph.addNode("Note: Take your love somewhere else!"); // Node# 77
-		graph.addNode("*A rock flies at you knocking you unconcious*"); // Node# 78
+		graph.addNode("*A rock flies at you knocking you unconscious*"); // Node# 78
 		graph.addNode("Crowd: we were plenty excited when Gaia healed the sick"); // Node# 79
 		graph.addNode("P: Healing the sick impresses you that much, watch this! *pull a coin out of your ear*"); // Node# 80
 		graph.addNode("P: Yes, I am really the cash god, if you like me, much cash will come to you in the future."); // Node# 81
@@ -661,7 +661,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: Yes, don't tell anyone, but I'm the representative of the cash god, BiggusBuckes."); // Node# 84
 		graph.addNode("Crowd: collective gasp, moving closer to you"); // Node# 85
 		graph.addNode("Crowd: BiggusBuckes?"); // Node# 86
-		graph.addNode("Crowd: So can you summon gold?"); // Node# 87
+		graph.addNode("Crowd: So, can you summon gold?"); // Node# 87
 		graph.addNode("Crowd: Gasps again, then make a run at you"); // Node# 88
 		graph.addNode("P: Watch as I do it again!"); // Node# 89
 		graph.addNode("P: Yes, let me pass,"); // Node# 90
@@ -669,7 +669,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Crowd: Alright sir, please bless us before we go"); // Node# 92
 		graph.addNode("P: Blessings are for those that are free of sin"); // Node# 93
 		graph.addNode("P: *throw coins at them* behold the blessing of the god of BiggusBuckus!"); // Node# 94
-		graph.addNode("*The crowd tears you apart, desperatly trying to steal the change inside of you*"); // Node# 95
+		graph.addNode("*The crowd tears you apart, desperately trying to steal the change inside of you*"); // Node# 95
 		graph.addNode("P: Why yes I can! Just look behind you"); // Node# 96
 		graph.addNode("P: I require a sacrifice to truly sacrifice for you!"); // Node# 97
 		graph.addNode("*The crowd shifts uncomfortably*"); // Node# 98
@@ -840,19 +840,19 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Hippie: I'm surprised you have not heard of me, I am the speaker for mother Gaia"); // Node# 0
 		graph.addNode("P: Interesting, so you're telling me you can speak for Gaia herself?"); // Node# 1
 		graph.addNode("P: Well, if this Gaia exists, and we are her children, how do you explain the cruelty that's in this world?"); // Node# 2
-		graph.addNode("Crowd: *murmers* is he an idiot or something?"); // Node# 3
+		graph.addNode("Crowd: *murmurs* is he an idiot or something?"); // Node# 3
 		graph.addNode("Hippie: Why yes I do, what question would you like answered?"); // Node# 4
 		graph.addNode("P: What is at the end of my life?"); // Node# 5
 		graph.addNode("P: To live in pain and suffering"); // Node# 6
 		graph.addNode("*The crowd laughs*"); // Node# 7
-		graph.addNode("Hippie: Chuckling you would be surprise how often that question is thrown at me"); // Node# 8
+		graph.addNode("Hippie: *chuckling* You would be surprised how often that question is thrown at me"); // Node# 8
 		graph.addNode("Hippie: What's the meaning of life to you if I may ask?"); // Node# 9
 		graph.addNode("P: To enjoy life to its fullest"); // Node# 10
 		graph.addNode("P: To reproduce of course"); // Node# 11
 		graph.addNode("Hippie: We as a people are not born into this world filled with hope, we're born with pain"); // Node# 12
 		graph.addNode("Hippie: Well, I disagree, I believe we seek hope more than anything else"); // Node# 13
 		graph.addNode("P: Why love?"); // Node# 14
-		graph.addNode("Hippie: Haha, well that's close, we seek love above all else"); // Node# 15
+		graph.addNode("Hippie: Ha-ha, well that's close, we seek love above all else"); // Node# 15
 		graph.addNode("P: Pfft, love is a useless emotion"); // Node# 16
 		graph.addNode("Crowd: Boos"); // Node# 17
 		graph.addNode("*A rock is thrown at you*"); // Node# 18
@@ -861,33 +861,33 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: You're an utter moron!"); // Node# 21
 		graph.addNode("Crowd: Boos"); // Node# 22
 		graph.addNode("*A rock is thrown at you*"); // Node# 23
-		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully mother gaia will"); // Node# 24
+		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully Mother Gaia will"); // Node# 24
 		graph.addNode("Hippie: Love is what we all seek is it not? The feeling of being wanted, wanting to finally not be alone?"); // Node# 25
-		graph.addNode("Hippie: We are at a constant fight with ourselves if you can believe it.."); // Node# 26
+		graph.addNode("Hippie: We are in a constant fight with ourselves if you can believe it..."); // Node# 26
 		graph.addNode("P: Where are you going with this?"); // Node# 27
 		graph.addNode("P: I believe it"); // Node# 28
 		graph.addNode("P: Wait what?"); // Node# 29
 		graph.addNode("Hippie: That depends, do you fear death?"); // Node# 30
-		graph.addNode("Hippie: They're not your biggest discourages, you are"); // Node# 31
-		graph.addNode("Hippie: Do you though? I want you to think of your three discourages in your life"); // Node# 32
+		graph.addNode("Hippie: They're not your biggest discouragements, you are"); // Node# 31
+		graph.addNode("Hippie: Do you though? I want you to think of three discouragements in your life"); // Node# 32
 		graph.addNode("Hippie: I want you to think of your three discourages in your life"); // Node# 33
 		graph.addNode("Hippie: You may pass through, but remember my words"); // Node# 34
 		graph.addNode("Hippie: In the end, we are only holding ourselves back"); // Node# 35
-		graph.addNode("P: No I haven't"); // Node# 36
+		graph.addNode("P: No, I haven't"); // Node# 36
 		graph.addNode("Hippie: Know when this was, when you were born"); // Node# 37
 		graph.addNode("Hippie: Why?"); // Node# 38
 		graph.addNode("P: Pfft, death is beneath me"); // Node# 39
-		graph.addNode("P: Yes I do"); // Node# 40
+		graph.addNode("P: Yes, I do"); // Node# 40
 		graph.addNode("Hippie: Here I'll tell you, imagine waking from a sleep you never slept to"); // Node# 41
 		graph.addNode("I don't know what'll happen"); // Node# 42
 		graph.addNode("P: Because the void awaits me"); // Node# 43
 		graph.addNode("Hippie: Why be afraid, you've experienced the void before"); // Node# 44
-		graph.addNode("P: This better not be some sort of ooh I have depression jole"); // Node# 45
+		graph.addNode("P: This better not be some sort of ooh I have depression joke"); // Node# 45
 		graph.addNode("Crowd: *laughter is heard*"); // Node# 46
 		graph.addNode("Hippie: I assure you I'm not"); // Node# 47
 		graph.addNode("Hippie: Do you remember what happened before you were born?"); // Node# 48
 		graph.addNode("Crowd: boos are heard"); // Node# 49
-		graph.addNode("Hippie: The idea that we experiance life after death is foolish, after-death is like before life."); // Node# 50
+		graph.addNode("Hippie: The idea that we experience life after death is foolish, after-death is like before life."); // Node# 50
 		graph.addNode("Hippie: There isn't wandering in the darkness, no hell, no heaven, just, nothing"); // Node# 51
 		graph.addNode("Hippie: Then how can you tell me that you're scared of death?"); // Node# 52
 		graph.addNode("P: No, not really?"); // Node# 53
@@ -896,12 +896,12 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: That's, weird can I leave now?"); // Node# 56
 		graph.addNode("Hippie: In the end, just enjoy life, as while this is all we have, it's more than others get"); // Node# 57
 		graph.addNode("*A rock is thrown at you*"); // Node# 58
-		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully mother gaia will"); // Node# 59
+		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully Mother Gaia will"); // Node# 59
 		graph.addNode("P: Your lies are so transparent"); // Node# 60
 		graph.addNode("Crowd: *Boos are heard*"); // Node# 61
 		graph.addNode("Hippie: Why do you allow the past to influence you to such a degree?"); // Node# 62
 		graph.addNode("P: It's not my fault, I was born this way"); // Node# 63
-		graph.addNode("Hippie: You have a lot of anger inside of you don't you?"); // Node# 64
+		graph.addNode("Hippie: You have a lot of anger inside of you, don't you?"); // Node# 64
 		graph.addNode("Hippie: Well, you can always blame your parents"); // Node# 65
 		graph.addNode("Hippie: and by this nature, has it benefited you?"); // Node# 66
 		graph.addNode("P: It doesn't, it's just simply my nature");   //Node# 67
@@ -910,16 +910,16 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: I don't get where you're going with this");   //Node# 70
 		graph.addNode("P: What's your point");   //Node# 71
 		graph.addNode("P: What's the alternative, they are the ones that raised me");   //Node# 72
-		graph.addNode("P: Yes I can");   //Node# 73
+		graph.addNode("P: Yes, I can");   //Node# 73
 		graph.addNode("Hippie: When all the people you can blame are gone, who is left but yourself");   //Node# 74
-		graph.addNode("Hippie: Think, right after your parents, who's next? Your friends? Family? The Governmetn");   //Node# 75
+		graph.addNode("Hippie: Think, right after your parents, who's next? Your friends? Family? The Governmemt");   //Node# 75
 		graph.addNode("Hippie: Yet at one point, your parents aren't going to be there");   //Node# 76
 		graph.addNode("P: Why don't you just screw off with this deep stuff, I know myself");   //Node# 77
-		graph.addNode("P: So you're telling me that I should love change?");   //Node# 78
+		graph.addNode("P: So, you're telling me that I should love change?");   //Node# 78
 		graph.addNode("Hippie: You may pass, you have learned a lesson from Mother Gaia, I hope you take it to heart");   //Node# 79
 		graph.addNode("Hippie: My point is that the only one that keeping you from being the best person you can be is yourself, no one else");   //Node# 80
 		graph.addNode("Hippie: We are never perfect, and it would be foolish to assume one of us are");   //Node# 81
-		graph.addNode("Hippie: Not love, my appreciate it, the biggest changest in our life tend to be the happiest, yet saddest moments of our lives");   //Node# 82
+		graph.addNode("Hippie: Not love, but appreciate it, for the biggest changes in our lives tend to be both the happiest and saddest moments of our lives");   //Node# 82
 		graph.addNode("P: We hate it as some of us are done changing for others, we're perfect the way we are");   //Node# 83
 		graph.addNode("P: good point");   //Node# 84
 		graph.addNode("P: Ridiculous, how can something be sad, but happy?");   //Node# 85

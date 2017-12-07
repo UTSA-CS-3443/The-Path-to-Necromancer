@@ -208,7 +208,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	 */
 	private DialogueGraph preCombatDialogue() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("Necromancer: You have amused me greatly young padawan. I do not wish to cut your life short and will allow you to live... this time.");
+		graph.addNode("Necromancer: You have amused me greatly young Padawan. I do not wish to cut your life short and will allow you to live... this time.");
 		graph.addNode("Necromancer: Enjoy the rest of your travels.");
 		
 		graph.getNode(0).addActor(new DialogueActor() {
@@ -261,11 +261,11 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	private DialogueGraph getUnionization() {
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("Necromancer: Whoa, whoa, whoa, what's going on here? You should be killing each other right now?!!"); // 0
-		graph.addNode("P: We have moved past senselless killing ever since Bloody Foot willingly abdicated the throne."); // 1
-		graph.addNode("P: We seizing the means of plundering."); // 2
+		graph.addNode("P: We have moved past senseless killing ever since Bloody Foot willingly abdicated the throne."); // 1
+		graph.addNode("P: We are seizing the means of plundering."); // 2
 		graph.addNode("P: *hide behind slightly larger bandit*"); // 3
 		graph.addNode("Necromancer: You killed him?"); // 4
-		graph.addNode("Necromancer: My goodness, you made the badits into communists?!"); // 5
+		graph.addNode("Necromancer: My goodness, you made the bandits into communists?!"); // 5
 		graph.addNode("Necromancer: I still see you. Get out here."); // 6
 		graph.addNode("P: No, why would you think that?"); // 7
 		graph.addNode("P: \'Kill\' is such a strong word. What about, \'Passed away forcibly?\'"); // 8
@@ -283,8 +283,8 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addNode("P: Come get me if you dare!");
 		graph.addNode("P: Sounds like someone is jealous."); // 21
 		graph.addNode("Necromancer: So, communism?"); // 22
-		graph.addNode("P: You do know that I'm able to obliterate all that stand in front of me right?"); // 23
-		graph.addNode("Necromancer: Yes I would. I really want to know."); // 24
+		graph.addNode("P: You do know that I'm able to obliterate all that stand in front of me, right?"); // 23
+		graph.addNode("Necromancer: Yes, I would. I really want to know."); // 24
 		graph.addNode("P: Well too bad!"); // 25
 		graph.addNode("Necromancer: Esta deletreado \'gringo!\'"); // 26
 		graph.addNode("P: Sorry, we don't speak that language here greengo."); // 27
@@ -354,13 +354,13 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 	private DialogueGraph getCastleEncounter(Player player) {
 		DialogueGraph graph = new DialogueGraph();
 
-		graph.addNode("Necromancer: Well well well. Look who decided to show up? I set this banquet out and you leave me waiting here for an eternity?"); // 0
+		graph.addNode("Necromancer: Well, well, well. Look who decided to show up? I set this banquet out and you leave me waiting here for an eternity?"); // 0
 		graph.addNode("P: An eternity?"); // 1
 		graph.addNode("Necromancer: When you live forever, time has no meaning anymore."); // 2
 		graph.addNode("P: You made all this for me?"); // 3
 		graph.addNode("P: That must be lonely."); // 4
 		graph.addNode("P: Where did you get this food from if you don\'t need to eat?"); // 5
-		graph.addNode("Necromancer: Of course I made it for you. Who else would come out here? Door to door salesmen?"); // 6
+		graph.addNode("Necromancer: Of course, I made it for you. Who else would come out here? Door to door salesmen?"); // 6
 		graph.addNode("P: Thank you, I think?"); // 7
 		graph.addNode("P: Those poor salesmen!"); // 8
 		graph.addNode("P: Did you try using some bleach?"); // 9
@@ -368,8 +368,8 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addNode("P: But why?"); // 11
 		graph.addNode("Necromancer: Look when I see you young heroes come in here I get hopeful that maybe you will be the one to end my eternity, but you always die."); // 12
 		graph.addNode("P: I will defeat you!"); // 13
-		graph.addNode("Necromancer: Many have tried and all have failed, no hero. "); // 14
-		graph.addNode("Necromancer: While you\' here, be sure to sit down please and eat, don\\'t let your last moments be spent in hungering agony as well."); // 15
+		graph.addNode("Necromancer: Many have tried, and all have failed, no hero. "); // 14
+		graph.addNode("Necromancer: While you\'re here, be sure to sit down please and eat, don\\'t let your last moments be spent in hungering agony as well."); // 15
 		graph.addNode("*Attempt to fight*"); // 16
 		graph.addNode("Necromancer: Now get some good rest in my dungeon."); // 17 // teleport player to dungeon
 		graph.addNode("Necromancer: YOU KNOW WHAT? FINE, YOU GET YOUR BATTLE ON AN EMPTY STOMACH, BUT FIRST … TO THE DUNGEON!"); // 18
@@ -377,10 +377,10 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addNode("P: I will avenge those salesmen!"); // 20
 		graph.addNode("P: Yeah they are truly the worst of merchants."); // 21
 		graph.addNode("Necromancer: Very true, now get a good meal and then a nap before I destroy you."); // 22 // player can leave and return later
-		graph.addNode("Necromancer: Bleach never works, besides it leaves behind a smell that gives me a killer headache."); // 23
+		graph.addNode("Necromancer: Bleach never works; besides it leaves behind a smell that gives me a killer headache."); // 23
 		graph.addNode("P: Wait. I thought you couldn't smell?"); // 24
 		graph.addNode(
-				"Necromancer: HOW WOULD YOU KNOW? Sorry, sorry. It has been a long day and I just wish to destroy you, I was gonna let you eat this fine feast but now … "); // 25
+				"Necromancer: HOW WOULD YOU KNOW? Sorry, sorry. It has been a long day and I just wish to destroy you."); // 25
 		graph.addNode("Necromancer: What would you know of lonely? I have lived for eons with only myself... can you really call that living?"); // 26
 		graph.addNode("P: C\'mon you are more than just a Necromancer, you are an icon of fear! You inspire heroes to rise up! Don\'t be so down on yourself."); // 27
 		graph.addNode("P: Motions? What motions?"); // 28
@@ -388,7 +388,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addNode("Necromancer: Oh, you know. Kill the sick and raise them as undead to watch over their towns and continue with their jobs."); // 30
 		graph.addNode("P: WAIT WHAT?"); // 31
 		graph.addNode("Necromancer: Hmmm?"); // 32
-		graph.addNode("P: YOUR THE GOOD GUY?! YOU CANT BE! YOU'RE A NECROMANCER."); // 33
+		graph.addNode("P: YOUR THE GOOD GUY?! YOU CAN\'T BE! YOU'RE A NECROMANCER."); // 33
 		graph.addNode("Necromancer: Why not? Because I am \'evil\'? Because my magic isn\'t holy? Well I never asked to have these gifts."); // 34
 		graph.addNode("P: …"); // 35
 		graph.addNode("Necromancer: He was a good man, but he asked me for too much, his greed took over him and I had to leave him."); // 36 "
@@ -425,7 +425,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addNode("Necromancer: Hire a poor knight who was looking for a master to serve and gave them a roof to sleep under and purpose."); // 65
 		graph.addNode("Necromancer: I was once praised as the savior of this very Kingdom you know? This castle was the king\'s in fact."); // 66
 		graph.addNode("Necromancer: He grew mad and so I became \'evil\' and stopped him."); // 67
-		graph.addNode("Necromancer: He destroyed everything I had and so I had nothing else to do but to stay here making sure no tyrant grows again to immense power."); // 68
+		graph.addNode("Necromancer: He destroyed everything I had, and so I had nothing else to do but to stay here making sure no tyrant grows again to immense power."); // 68
 		graph.addNode("Necromancer: It was not to stop you but to find peace. You see I have been cursed to eternal life until I am slain by a true hero."); // 69
 		graph.addNode("Necromancer: Very well then."); // 70
 		graph.addNode("*You feel a strange sensation as your body changes*"); // 71
@@ -434,9 +434,8 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addNode("Necromancer: Now eat your food and go take a nap in my dungeon so I can be rid of you with a clear conscience."); // 74 // player teleported to
 																																			// dungeon combat if player
 																																			// returns
-		graph.addNode("Necromancer: No I killed all of them ages ago, darn shamwow never absorbed all the blood."); // 75
-		graph.addNode(
-				"Necromancer: I might as well give you a good final meal. Forgive the lack of variety, the only thing that grows in this kingdom anymore is wheat."); // 76
+		graph.addNode("Necromancer: No, I killed all of them ages ago, darn ShamWow never absorbed all the blood."); // 75
+		graph.addNode("Necromancer: I might as well give you a good final meal. Forgive the lack of variety, nothing grows here."); // 76
 		graph.addNode("Necromancer: Now I am just going to send you to the dungeon and fight you when I am calmer. Bye."); // 77 // player is teleported to the dungeon
 
 		graph.addEdge(0, 1);
