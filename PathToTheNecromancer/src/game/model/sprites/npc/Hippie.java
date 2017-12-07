@@ -363,18 +363,18 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("*Crowd begins to boo* Angry Mob Occupant #1: \"She's the voice of mother Gaia you jerk!\""); // 5
 		graph.addNode("Hippie: See even the crowd agrees with me, you are a liar!"); // 6
 		graph.addNode("P: You will all burn for your insolence, Mother Gaia won't allow you to silence me!"); // 7
-		graph.addNode("*Crowd boos louder* Angrier Mob Occupant #4: \"This man is a fool! tell him what's up about Motha Gaia\""); // 8
+		graph.addNode("*Crowd boos louder* Angrier Mob Occupant #4: \"This man is a fool! tell him what's up about Mother Gaia\""); // 8
 		graph.addNode("Hippie: Some just need to be reborn, and how does one be reborn in this world!"); // 9
 		graph.addNode("Angry crowd: By Gorignak!"); // 10
 		graph.addNode("*You are hit over the head with a rock*"); // 11 summon death screen
 		graph.addNode("P: Yes, but how do we know that you aren't lying as well?"); // 12
 		graph.addNode("Hippie: Wait, what?"); // 13 go to logic route
 		graph.addNode(""); // 14
-		graph.addNode("*Crowd goes silent*"); // 15
-		graph.addNode("Hippie: What do you think you're doing?!"); // 16
-		graph.addNode("P: I'm showing you the real environment, *begin taking off pants*"); // 17
-		graph.addNode("Female Crowd Occupant #42: Oh wow!"); // 18
-		graph.addNode("*The male population begins to stone you as you take off your undergarments*"); // 19 summon death screen
+		graph.addNode(""); // 15
+		graph.addNode(""); // 16
+		graph.addNode(""); // 17
+		graph.addNode(""); // 18
+		graph.addNode(""); // 19 summon death screen
 		graph.addNode("P: Getting closer to the Earth, or are you telling me that you don't do this?"); // 20
 		graph.addNode("Crowd whispers amongst themselves: \"if stripping to undergarments is what one must really do...\""); // 21
 		graph.addNode("Hippie: Be still followers of Gaia, this man is only acting like this because he has nothing else to lose."); // 22 connect to 37
