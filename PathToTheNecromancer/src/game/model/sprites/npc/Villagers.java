@@ -266,7 +266,7 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 	private DialogueGraph getRandomDialogue() {
 		DialogueGraph graph = new DialogueGraph();
 		Random rand = new Random();
-		int x = rand.nextInt(7);
+		int x = rand.nextInt(6);
 		switch (x) {
 		default:
 			break;
@@ -284,16 +284,12 @@ public class Villagers extends CharacterSprites implements InteractionSprites {
 			break;
 		case 3:
 			graph.addNode(
-					"Villager: While I do like the fact the necromancer's general is coming in everyday to cure us, I hate the fact he(or she?) is so...weird...");
+					"Villager: While I do like the fact the Necromancer's general is coming in everyday to cure us, I hate the fact he(or she?) is so...weird...");
 			break;
 		case 4:
 			graph.addNode("Villager: Communist jokes are never funny unless everyone gets them!");
 			break;
 		case 5:
-			graph.addNode(
-					"Villager: I have to admit, the sounds of the necromancer's skeleton army are slightly less off-putting thanks to the xylophone sounds the skeletons make.");
-			break;
-		case 6:
 			graph.addNode(
 					"Villager: If there are infinite universes, what if we're in one where there only exists one universe?");
 			break;

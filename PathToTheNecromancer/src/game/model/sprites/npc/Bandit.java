@@ -24,6 +24,7 @@ import game.model.sprites.player.Player;
 /**
  * 
  * The class for the bandit sprite with the dialogue
+ * Creates anonymous classes that implement DialogueActor
  * 
  * @author ToTryHardRay
  * @author enigma-phi
