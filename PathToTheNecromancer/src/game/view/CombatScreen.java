@@ -4,27 +4,51 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.backends.lwjgl.audio.Mp3.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.Color;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+
+import game.controller.CombatController;
+import game.controller.GameController;
 import game.model.PathToNecromancer;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.player.Player;
 
 //libgdx already has the for loop
 //
+/**
+ * This class handles all combat inside the game, while calling on CombatScreenAnimations to animate
+ * @author BenMW
+ * 
+ */
 public class CombatScreen implements Screen
 {
+	
     private PlayScreen playScreen;  //Set the play screen
     private EnemySprites enemy;  //to tell it what to draw, you need to use setframe (for each enemy, you need to set every texture)
     private PathToNecromancer game;
     private PlayScreen prevPlayScreen;
     private int movement;
     private FitViewport port;
+    private CombatController input;
     private SpriteBatch batch = new SpriteBatch();
     private BitmapFont font =  new BitmapFont();//(Gdx.files.internal("type_writer.ttf"));
+    
+    
     
     //Batches used to draw the pictures required
     private Texture background = new Texture(Gdx.files.internal("assets/NewPaper.jpg"));
@@ -54,12 +78,19 @@ public class CombatScreen implements Screen
     //Misc Variables
     private int time;
     private boolean Intro1End = false;
+    private boolean musicRun = true;
    
     private Player p;
    // private CombatController controller;
     
     private int NextAction;
     private boolean resetTime;
+   
+    /**
+     * This sets up the combat screen to be used later
+     * @param playscreen
+     * @param game
+     */
     public CombatScreen(PlayScreen playscreen, PathToNecromancer game) 
     {
     	this.p = playscreen.getPlayer();
@@ -67,31 +98,14 @@ public class CombatScreen implements Screen
     	this.prevPlayScreen = playscreen;
     	this.playScreen = playscreen;
     	this.IntroScreen = true;
-    	this.Animate = new CombatScreenAnimations(game, this.batch, playscreen);
     	this.Enemy = playscreen.getMapManager().getEnemy(); //gets a random enemy
     	this.enemyNPC = Enemy.getTexture();
     	this.time = 0;
     	this.NextAction = 1;
-    	this.battle = this.Animate.getWhoGoFirst(this.p, this.Enemy);  //Will tell us who will be going first
-    	//this.controller = new CombatController();
+    	//this.battle = this.Animate.getWhoGoFirst(this.p, this.Enemy);  //Will tell us who will be going first
+    	this.input = new CombatController(this);
+    	this.Animate = new CombatScreenAnimations(game, this.batch, playscreen, this.Enemy, this.p);
     	this.battle = 1;
-    	
-    	
-        // You use the playscreen to set the screen and gain information, 
-        // like the player and mapManage, both of which you may need
-        // this.playscreen = playscreen;
-        // The only reason for the game is to set the screen
-        // this.game = game;
-        // You need an enemy right? I need to know which enemies go on
-        // which maps
-        // this.enemy = this.playscreen.getMapManager().getEnemy();
-        // You can set an input processor (like E = escape) or whatever
-        // You have to set some sort of input processor to override the 
-        // current one.
-        // Gdx.input.setInputProcessor(new CombatInputProcessor());
-        
-        // You may need to use a camera or a 
-        // fitscreen, look at playscreen mostly for that
     }
     //Calls the garbage collector |
     @Override
@@ -137,6 +151,11 @@ public class CombatScreen implements Screen
     //Width is 640 and height is 480
     public void render(float delta) 
     {
+    
+    	System.out.println("YOUR BATTLE IS " +this.battle);
+    	music.setVolume(0);
+    	//System.out.println("YOUR DELTA IS: " + delta);
+
     	batch.begin();
 
     	Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -165,7 +184,7 @@ public class CombatScreen implements Screen
     			batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     			this.Animate.DrawObjectSprites(640, 330, 490, 330, time, this.enemyNPC, 120, 120); //Draws the player
     			this.Animate.DrawObjectSprites(0, 180, 60, 180, time, this.player, 120 ,120); //Draws the enemy
-    			this.Animate.drawBack();
+    			this.Animate.drawDefaultCombatBackground();
     			this.time+=5;
     		}
     		else
@@ -183,14 +202,17 @@ public class CombatScreen implements Screen
     	 */
     	else if(!this.IntroScreen)
     	{	
-    		if(this.resetTime)
+    		System.out.println("Your time is " +this.time);
+    		if((this.battle > 0 && resetTime) || this.time >= 100)
     		{
+    			System.out.println("TIME IS RESET");
     			this.time = 0;
     			this.resetTime = false;
     		}
     		//Awaiting user input, so just draw the background with the player and enemy
     		if (this.battle == 0)
     		{
+    			this.time = 0;
     			this.Animate.drawDefaultCombatBackground();
     			// In order to render the buttons
     			//this.controller.act(this);
@@ -200,21 +222,22 @@ public class CombatScreen implements Screen
     		if(this.battle > 0) 
     		{
     			
-        		//Attack = 1, Inventory = 2, Interact = 3, Run = 4
-    			this.battle = this.Animate.StartBattleSequence(this.battle, this.Enemy, this.time);
-    			this.time++;
+    			System.out.println("ENTERING BATTLE and your time is " +this.time);
     			//Resets time to always, and I mean always, run with 100s for every animation
     			if(this.time == 100)
     			{
     				this.time = 0;
     			}
+    			//Attack = 1, Inventory = 2, Interact = 3, Run = 4
+    			this.battle = this.Animate.StartBattleSequence(this.battle, this.Enemy, this.time);
+    			this.time++;
+    			
     			//Be done with the sequence, reset time, then re-enter the waiting period for user controls
     			if(this.battle == -5)
     			{
     				this.time = 0;
     				this.battle = 0;
     			}
-    			
     			//Player has died
     			else if(this.battle == -1 || this.battle == -2) 
     			{
@@ -256,7 +279,8 @@ public class CombatScreen implements Screen
     		
     	}*/
     	this.update(delta);
-    	
+    	if(this.time == 200)
+    		music.dispose();
     	//batch.end();
     }
     
@@ -267,7 +291,6 @@ public class CombatScreen implements Screen
     {
         // This is where to perform some end combat operation
         // change the screen and the input processor
-    	this.p.endCombat(this.Enemy.getExperience());
         this.game.setScreen(this.prevPlayScreen);
         Gdx.input.setInputProcessor(this.playScreen.getInputProcessor());
         this.IntroScreen = true;
@@ -307,5 +330,10 @@ public class CombatScreen implements Screen
 
 	public void setMovement(int movement) {
 		this.movement += movement;
+	}
+	public Viewport getViewport() 
+	{
+		// TODO Auto-generated method stub
+		return this.playScreen.getViewPort();
 	}
 }
