@@ -221,13 +221,6 @@ public class ScreenManager {
 	}
 
 	/**
-	 * Dispose of the screen manager
-	 */
-	public void dispose() {
-		this.mainScreen.dispose();
-	}
-
-	/**
 	 * Get the map manager for the classes
 	 */
 	public MapManager getMapManager() {
@@ -264,5 +257,11 @@ public class ScreenManager {
 		// TODO Auto-generated method stub
 		return this.save;
 	}
-
+	/**
+	 * Dispose of resources
+	 */
+	public void dispose() {
+		this.mainScreen.dispose();
+		this.musicManager.dispose();
+	}
 }

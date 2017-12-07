@@ -28,6 +28,9 @@ public class InitializeGame {
      */
     private PlayScreen screen;
     
+    /**
+     * Map of all of the map names
+     */
     private Map<String,String> maps;
    
     /**

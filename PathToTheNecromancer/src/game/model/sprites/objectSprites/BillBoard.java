@@ -47,7 +47,7 @@ public class BillBoard extends GameSprites implements InteractionSprites {
 	}
 
 	/**
-	 * Update the book's animation
+	 * Unimplemented
 	 */
 	@Override
 	public void update(float dt) {

@@ -84,5 +84,12 @@ public class MusicManager {
 	public float getVolume() {
 		return volume;
 	}
+	/**
+	 * Dispose of garbage
+	 */
+	public void dispose() {
+		if(this.music != null)
+			this.music.dispose();
+	}
 	
 }

@@ -180,7 +180,6 @@ public class PlainsArea extends GameMaps{
         this.addSprite(new ObjectSprites(T7, 290, height - 2304));
         
         Bandit b1 = new Bandit();
-        //b1.defineBody(world, 370, 1222);
         b1.defineBody(world, 215, 1305);
         super.addSprite(b1);
         

@@ -19,7 +19,7 @@ public class DialogueGraph {
 	 * The current node. This is used for iterating through the graph
 	 */
 	private int currentNode;
-	/**
+	/*
 	 * The previous node held
 	 */
 	private int previousNode;

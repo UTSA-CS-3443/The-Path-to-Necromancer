@@ -72,14 +72,25 @@ public class MapManager {
 		World world = new World(new Vector2(0, 0), true);
 		world.setContactListener(new WorldContactListener());
 		this.screen.setWorld(world);
-
-		// Set and load the map.
+		
+		GameMaps oldMap = this.gameMap;
+		OrthogonalTiledMapRenderer oldRenderer = this.screen.getRenderer();
+		
 		this.gameMap = gameMap;
 		this.gameMap.loadMap(mapLoader);
+		
+		// dispose the old map
+		if(oldMap != null) 
+			oldMap.dispose();
+		
 
+		// Set and load the map.
 		// Change the map renderer
 		this.screen.setRenderer(new OrthogonalTiledMapRenderer(gameMap.getMap()));
 
+		if(oldRenderer != null)
+			oldRenderer.dispose();
+		
 		// generate the physics for the world
 		this.gameMap.generateWorld(world);
 

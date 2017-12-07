@@ -11,6 +11,8 @@ import game.view.DialogueBox;
 /**
  * Contains an interaction graph for dialogue. Goes down the graph based off of
  * the user's choices.
+ * You must call getFirstInteraction() the to get the first bit of dialogue and 
+ * getNextInteraction for each subsequent portion of the interaction.
  * 
  * @author enigma-phi.
  *

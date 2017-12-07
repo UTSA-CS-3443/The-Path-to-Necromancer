@@ -125,6 +125,10 @@ public class MenuController {
 	 * Texture atlas for the settings men
 	 */
 	private TextureAtlas buttonAtlas2;
+	/**
+	 * The current stage
+	 */
+	private Stage stage;
 	
 	/**
 	 * Create the MenuController
@@ -155,8 +159,7 @@ public class MenuController {
 	 * Set up the main menu stage for the menu screen
 	 */
 	private void mainMenu() {
-		Stage stage = new Stage(menu.getViewPort());
-		this.setUpStage(stage);
+		this.setUpStage();
 		Gdx.input.setInputProcessor(stage);
 		stage.addActor(twinDragonTable);
 		this.font.getData().setScale(0.5f);
@@ -218,8 +221,7 @@ public class MenuController {
 	 * Set up the stage for the settings screen.
 	 */
 	private void settingsMenu() {
-		Stage stage = new Stage(viewport);
-		this.setUpStage(stage);
+		this.setUpStage();
 		Gdx.input.setInputProcessor(stage);
 		stage.addActor(twinDragonTable);
 		this.font.getData().setScale(0.4f);
@@ -270,8 +272,7 @@ public class MenuController {
 	 * quit button
 	 */
 	private void saveMenu() {
-		Stage stage = new Stage(viewport);
-		this.setUpStage(stage);
+		this.setUpStage();
 		stage.addActor(twinDragonTable);
 		Gdx.input.setInputProcessor(stage);
 		this.font.getData().setScale(0.6f);
@@ -297,8 +298,7 @@ public class MenuController {
 	 * The stage that displays all of the controls for the game.
 	 */
 	private void controlMenu() {
-		Stage stage = new Stage(viewport);
-		this.setUpStage(stage);
+		this.setUpStage();
 		Gdx.input.setInputProcessor(stage);
 		stage.addActor(twinDragonTable);
 		this.font.getData().setScale(0.4f);
@@ -306,7 +306,6 @@ public class MenuController {
 		// Get all of the labels for your table to render
 		Label title = new Label("Controls", redLabel);
 		Label world = new Label("World", redLabel);
-		//Label combat = new Label("Combat", redLabel);
 		Label movement = new Label("Movement", whiteLabel);
 		Label movementControls = new Label("WASD or Arrow Keys", whiteLabel);
 		Label run = new Label("Run", whiteLabel);
@@ -341,9 +340,6 @@ public class MenuController {
 		table.add(textMove).left().padLeft(20);
 		table.add(textMoveKey).right().padRight(20);
 		table.row();
-		
-		//table.add(combat).left().padLeft(20);
-		//table.add();
 
 		table.row().height(100);
 		stage.addActor(table);
@@ -635,7 +631,10 @@ public class MenuController {
 	/**
 	 * Set up the stage initially
 	 */
-	private void setUpStage(Stage stage) {
+	private void setUpStage() {
+		if(this.stage != null)
+			this.stage.dispose();
+		this.stage = new Stage(menu.getViewPort());
 		stage.addListener(new InputListener() {
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
@@ -674,5 +673,7 @@ public class MenuController {
 		this.buttonAtlas1.dispose();
 		if (this.buttonAtlas2 != null)
 			this.buttonAtlas2.dispose();
+		if(this.stage != null)
+			this.stage.dispose();
 	}
 }

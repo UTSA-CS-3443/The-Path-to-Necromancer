@@ -289,4 +289,13 @@ public class DialogueBox {
 	public void setInput() {
 		Gdx.input.setInputProcessor(this.dialogueStage);
 	}
+	/**
+	 * Dispose of garbage
+	 */
+	public void dispose() {
+		if(this.font != null)
+			this.font.dispose();
+		if(this.dialogueStage != null)
+			this.dialogueStage.dispose();
+	}
 }
