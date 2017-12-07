@@ -243,6 +243,8 @@ public class StoryManager {
 					manager.addSprite(nec);
 					if (player.getStoryStats().getFinaleEncounter() == 3)
 						player.getStoryStats().setFinaleEncounter(4);
+					if(player.getStoryStats().getFinaleEncounter() == 0)
+						player.getStoryStats().setFinaleEncounter(1);
 				}
 
 				/**

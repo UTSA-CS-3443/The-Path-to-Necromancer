@@ -193,7 +193,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 			return this.getFirstEncounter();
 		else if (this.banditDialogue)
 			return this.getUnionization();
-		else if (player.getStoryStats().getFinaleEncounter() == 0)
+		else if (player.getStoryStats().getFinaleEncounter() == 1)
 			return this.getCastleEncounter(player);
 		else if (player.getStoryStats().getFinaleEncounter() == 5)
 			return this.preCombatDialogue();
