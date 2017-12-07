@@ -223,12 +223,9 @@ public class PlayScreen implements Screen {
 	public void dispose() {
 		mapManager.dispose();
 		world.dispose();
-		renderer.dispose();
 		b2dr.dispose();
 		if(this.dialogue != null)
 			this.dialogue.dispose();
-		if(this.world != null)
-			this.world.dispose();
 		if(this.renderer != null)
 			this.renderer.dispose();
 	}
