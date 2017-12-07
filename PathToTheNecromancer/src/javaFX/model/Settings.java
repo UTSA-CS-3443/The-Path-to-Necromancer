@@ -36,12 +36,7 @@ public class Settings implements Serializable{
 	 * the difficulty
 	 */
 	private Difficulty difficulty;
-	/**
-	 * constructor
-	 */
-	public Settings() {
-		
-	}
+	
 	/**
 	 * constructor
 	 * @param mute If the game is mute
