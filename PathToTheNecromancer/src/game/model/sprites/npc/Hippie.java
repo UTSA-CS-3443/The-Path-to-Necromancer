@@ -28,6 +28,7 @@ import game.model.sprites.player.Player;
  * 
  * @author ToTryHardRay
  * @author enigma-phi
+ * @author hidingrighthere
  *
  */
 public class Hippie extends CharacterSprites implements InteractionSprites {
@@ -580,7 +581,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: *kick her aside* YES! I KNOW THIS! WE MUST DEFEND MOTHER GAIA!"); // Node# 2
 		graph.addNode("Crowd: shocked with a whisper: What did he say?"); // Node# 3
 		graph.addNode("P: *knock out the general*"); // Node# 4
-		graph.addNode("P: I said we must do everything in our power to defend mother Gaia"); // Node# 5
+		graph.addNode("P: I said we must do everything in our power to defend mother Gaia."); // Node# 5
 		graph.addNode("Crowd: Hey he just knocked out Gaia's representative out!"); // Node# 6
 		graph.addNode("Crowd: but why'd you kick her aside?"); // Node# 7
 		graph.addNode("P: Because I'm overcome with joy of defending mother Gaia!"); // Node# 8
@@ -601,7 +602,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: I can remain conscious after being hit once!"); // Node# 23
 		graph.addNode("Crowd: Like?"); // Node# 24
 		graph.addNode("P: For example, anyone have a deck of cards?"); // Node# 25
-		graph.addNode("P: Well, I can cast a very nice sleep spell"); // Node# 26
+		graph.addNode("P: Well, I can cast a very nice sleep spell."); // Node# 26
 		graph.addNode("*A rock flies at you knocking you unconscious*"); // Node# 27
 		graph.addNode("P: *Do card trick* Pick a card any card!"); // Node# 28
 		graph.addNode("Crowd: I do!"); // Node# 29
@@ -844,17 +845,17 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Crowd: *murmurs* is he an idiot or something?"); // Node# 3
 		graph.addNode("Hippie: Why yes I do, what question would you like answered?"); // Node# 4
 		graph.addNode("P: What is at the end of my life?"); // Node# 5
-		graph.addNode("P: To live in pain and suffering"); // Node# 6
+		graph.addNode("P: To live in pain and suffering."); // Node# 6
 		graph.addNode("*The crowd laughs*"); // Node# 7
-		graph.addNode("Hippie: *chuckling* You would be surprised how often that question is thrown at me"); // Node# 8
+		graph.addNode("Hippie: *chuckling* You would be surprised how often that question is thrown at me."); // Node# 8
 		graph.addNode("Hippie: What's the meaning of life to you if I may ask?"); // Node# 9
-		graph.addNode("P: To enjoy life to its fullest"); // Node# 10
-		graph.addNode("P: To reproduce of course"); // Node# 11
-		graph.addNode("Hippie: We as a people are not born into this world filled with hope, we're born with pain"); // Node# 12
-		graph.addNode("Hippie: Well, I disagree, I believe we seek hope more than anything else"); // Node# 13
+		graph.addNode("P: To enjoy life to its fullest."); // Node# 10
+		graph.addNode("P: To reproduce of course."); // Node# 11
+		graph.addNode("Hippie: We as a people are not born into this world filled with hope, we're born with pain."); // Node# 12
+		graph.addNode("Hippie: Well, I disagree, I believe we seek hope more than anything else."); // Node# 13
 		graph.addNode("P: Why love?"); // Node# 14
-		graph.addNode("Hippie: Ha-ha, well that's close, we seek love above all else"); // Node# 15
-		graph.addNode("P: Pfft, love is a useless emotion"); // Node# 16
+		graph.addNode("Hippie: Ha-ha, well that's close, we seek love above all else."); // Node# 15
+		graph.addNode("P: Pfft, love is a useless emotion."); // Node# 16
 		graph.addNode("Crowd: Boos"); // Node# 17
 		graph.addNode("*A rock is thrown at you*"); // Node# 18
 		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully mother Gaia will."); // Node# 19
@@ -862,70 +863,70 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: You're an utter moron!"); // Node# 21
 		graph.addNode("Crowd: Boos"); // Node# 22
 		graph.addNode("*A rock is thrown at you*"); // Node# 23
-		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully Mother Gaia will"); // Node# 24
+		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully Mother Gaia will."); // Node# 24
 		graph.addNode("Hippie: Love is what we all seek is it not? The feeling of being wanted, wanting to finally not be alone?"); // Node# 25
 		graph.addNode("Hippie: We are in a constant fight with ourselves if you can believe it..."); // Node# 26
 		graph.addNode("P: Where are you going with this?"); // Node# 27
 		graph.addNode("P: I believe it"); // Node# 28
 		graph.addNode("P: Wait what?"); // Node# 29
 		graph.addNode("Hippie: That depends, do you fear death?"); // Node# 30
-		graph.addNode("Hippie: They're not your biggest discouragements, you are"); // Node# 31
-		graph.addNode("Hippie: Do you though? I want you to think of three discouragements in your life"); // Node# 32
-		graph.addNode("Hippie: I want you to think of your three discourages in your life"); // Node# 33
-		graph.addNode("Hippie: You may pass through, but remember my words"); // Node# 34
-		graph.addNode("Hippie: In the end, we are only holding ourselves back"); // Node# 35
-		graph.addNode("P: No, I haven't"); // Node# 36
-		graph.addNode("Hippie: Know when this was, when you were born"); // Node# 37
+		graph.addNode("Hippie: They're not your biggest discouragements, you are."); // Node# 31
+		graph.addNode("Hippie: Do you though? I want you to think of three discouragements in your life."); // Node# 32
+		graph.addNode("Hippie: I want you to think of your three discourages in your life."); // Node# 33
+		graph.addNode("Hippie: You may pass through, but remember my words."); // Node# 34
+		graph.addNode("Hippie: In the end, we are only holding ourselves back."); // Node# 35
+		graph.addNode("P: No, I haven't."); // Node# 36
+		graph.addNode("Hippie: Know when this was, when you were born."); // Node# 37
 		graph.addNode("Hippie: Why?"); // Node# 38
-		graph.addNode("P: Pfft, death is beneath me"); // Node# 39
-		graph.addNode("P: Yes, I do"); // Node# 40
-		graph.addNode("Hippie: Here I'll tell you, imagine waking from a sleep you never slept to"); // Node# 41
-		graph.addNode("I don't know what'll happen"); // Node# 42
-		graph.addNode("P: Because the void awaits me"); // Node# 43
-		graph.addNode("Hippie: Why be afraid, you've experienced the void before"); // Node# 44
-		graph.addNode("P: This better not be some sort of ooh I have depression joke"); // Node# 45
+		graph.addNode("P: Pfft, death is beneath me."); // Node# 39
+		graph.addNode("P: Yes, I do."); // Node# 40
+		graph.addNode("Hippie: Here I'll tell you, imagine waking from a sleep you never slept to."); // Node# 41
+		graph.addNode("I don't know what'll happen."); // Node# 42
+		graph.addNode("P: Because the void awaits me."); // Node# 43
+		graph.addNode("Hippie: Why be afraid, you've experienced the void before."); // Node# 44
+		graph.addNode("P: This better not be some sort of ooh I have depression joke."); // Node# 45
 		graph.addNode("Crowd: *laughter is heard*"); // Node# 46
-		graph.addNode("Hippie: I assure you I'm not"); // Node# 47
+		graph.addNode("Hippie: I assure you I'm not."); // Node# 47
 		graph.addNode("Hippie: Do you remember what happened before you were born?"); // Node# 48
-		graph.addNode("Crowd: boos are heard"); // Node# 49
+		graph.addNode("Crowd: boos are heard."); // Node# 49
 		graph.addNode("Hippie: The idea that we experience life after death is foolish, after-death is like before life."); // Node# 50
-		graph.addNode("Hippie: There isn't wandering in the darkness, no hell, no heaven, just, nothing"); // Node# 51
+		graph.addNode("Hippie: There isn't wandering in the darkness, no hell, no heaven, just, nothing."); // Node# 51
 		graph.addNode("Hippie: Then how can you tell me that you're scared of death?"); // Node# 52
 		graph.addNode("P: No, not really?"); // Node# 53
-		graph.addNode("P: Can I leave? This is getting me bummed out"); // Node# 54
-		graph.addNode("P: Please tell me more"); // Node# 55
+		graph.addNode("P: Can I leave? This is getting me bummed out."); // Node# 54
+		graph.addNode("P: Please tell me more."); // Node# 55
 		graph.addNode("P: That's, weird can I leave now?"); // Node# 56
-		graph.addNode("Hippie: In the end, just enjoy life, as while this is all we have, it's more than others get"); // Node# 57
+		graph.addNode("Hippie: In the end, just enjoy life, as while this is all we have, it's more than others get."); // Node# 57
 		graph.addNode("*A rock is thrown at you*"); // Node# 58
-		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully Mother Gaia will"); // Node# 59
-		graph.addNode("P: Your lies are so transparent"); // Node# 60
+		graph.addNode("Hippie: Well, I doubt that my words will reach you, but hopefully Mother Gaia will."); // Node# 59
+		graph.addNode("P: Your lies are so transparent."); // Node# 60
 		graph.addNode("Crowd: *Boos are heard*"); // Node# 61
 		graph.addNode("Hippie: Why do you allow the past to influence you to such a degree?"); // Node# 62
-		graph.addNode("P: It's not my fault, I was born this way"); // Node# 63
+		graph.addNode("P: It's not my fault, I was born this way."); // Node# 63
 		graph.addNode("Hippie: You have a lot of anger inside of you, don't you?"); // Node# 64
 		graph.addNode("Hippie: Well, you can always blame your parents"); // Node# 65
 		graph.addNode("Hippie: and by this nature, has it benefited you?"); // Node# 66
-		graph.addNode("P: It doesn't, it's just simply my nature");   //Node# 67
-		graph.addNode("P: I didn't ask to be brought here");   //Node# 68
+		graph.addNode("P: It doesn't, it's just simply my nature.");   //Node# 67
+		graph.addNode("P: I didn't ask to be brought here.");   //Node# 68
 		graph.addNode("Hippie: We as humans are always subject to change, and for some reason we hate it.");   //Node# 69
-		graph.addNode("P: I don't get where you're going with this");   //Node# 70
-		graph.addNode("P: What's your point");   //Node# 71
-		graph.addNode("P: What's the alternative, they are the ones that raised me");   //Node# 72
-		graph.addNode("P: Yes, I can");   //Node# 73
-		graph.addNode("Hippie: When all the people you can blame are gone, who is left but yourself");   //Node# 74
+		graph.addNode("P: I don't get where you're going with this..");   //Node# 70
+		graph.addNode("P: What's your point.");   //Node# 71
+		graph.addNode("P: What's the alternative, they are the ones that raised me.");   //Node# 72
+		graph.addNode("P: Yes, I can.");   //Node# 73
+		graph.addNode("Hippie: When all the people you can blame are gone, who is left but yourself.");   //Node# 74
 		graph.addNode("Hippie: Think, right after your parents, who's next? Your friends? Family? The Governmemt");   //Node# 75
-		graph.addNode("Hippie: Yet at one point, your parents aren't going to be there");   //Node# 76
-		graph.addNode("P: Why don't you just screw off with this deep stuff, I know myself");   //Node# 77
+		graph.addNode("Hippie: Yet at one point, your parents aren't going to be there.");   //Node# 76
+		graph.addNode("P: Why don't you just screw off with this deep stuff, I know myself.");   //Node# 77
 		graph.addNode("P: So, you're telling me that I should love change?");   //Node# 78
-		graph.addNode("Hippie: You may pass, you have learned a lesson from Mother Gaia, I hope you take it to heart");   //Node# 79
-		graph.addNode("Hippie: My point is that the only one that keeping you from being the best person you can be is yourself, no one else");   //Node# 80
-		graph.addNode("Hippie: We are never perfect, and it would be foolish to assume one of us are");   //Node# 81
-		graph.addNode("Hippie: Not love, but appreciate it, for the biggest changes in our lives tend to be both the happiest and saddest moments of our lives");   //Node# 82
-		graph.addNode("P: We hate it as some of us are done changing for others, we're perfect the way we are");   //Node# 83
-		graph.addNode("P: good point");   //Node# 84
+		graph.addNode("Hippie: You may pass, you have learned a lesson from Mother Gaia, I hope you take it to heart.");   //Node# 79
+		graph.addNode("Hippie: My point is that the only one that keeping you from being the best person you can be is yourself, no one else.");   //Node# 80
+		graph.addNode("Hippie: We are never perfect, and it would be foolish to assume one of us are.");   //Node# 81
+		graph.addNode("Hippie: Not love, but appreciate it, for the biggest changes in our lives tend to be both the happiest and saddest moments of our lives.");   //Node# 82
+		graph.addNode("P: We hate it as some of us are done changing for others, we're perfect the way we are.");   //Node# 83
+		graph.addNode("P: good point.");   //Node# 84
 		graph.addNode("P: Ridiculous, how can something be sad, but happy?");   //Node# 85
-		graph.addNode("Hippie: Perhaps seeing your child off as they go to college");   //Node# 86
-		graph.addNode("Hippie: You may pass, you have learned a lesson from Mother Gaia, I hope you take it to heart");   //Node# 87
+		graph.addNode("Hippie: Perhaps seeing your child off as they go to college.");   //Node# 86
+		graph.addNode("Hippie: You may pass, you have learned a lesson from Mother Gaia, I hope you take it to heart.");   //Node# 87
 
 		// add edges
 		graph.addEdge(0, 60);

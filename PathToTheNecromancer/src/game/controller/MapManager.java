@@ -78,18 +78,10 @@ public class MapManager {
 		
 		this.gameMap = gameMap;
 		this.gameMap.loadMap(mapLoader);
-		
-		// dispose the old map
-		if(oldMap != null) 
-			oldMap.dispose();
-		
 
 		// Set and load the map.
 		// Change the map renderer
 		this.screen.setRenderer(new OrthogonalTiledMapRenderer(gameMap.getMap()));
-
-		if(oldRenderer != null)
-			oldRenderer.dispose();
 		
 		// generate the physics for the world
 		this.gameMap.generateWorld(world);

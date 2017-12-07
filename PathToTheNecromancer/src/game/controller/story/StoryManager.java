@@ -253,7 +253,7 @@ public class StoryManager {
 				 */
 				@Override
 				public void act(float dt) {
-					if (player.getY() > 960 && player.getStoryStats().getFinaleEncounter() == 0) {
+					if (player.getY() > 960 && player.getStoryStats().getFinaleEncounter() == 1) {
 						player.addVelocity(new Vector2(0, 10), 4);
 						DialogueGraph graph = this.nec.getDialogue(player);
 						manager.getMainScreen().startChat();
