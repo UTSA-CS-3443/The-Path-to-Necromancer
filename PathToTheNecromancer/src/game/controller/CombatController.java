@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import game.view.CombatScreen;
 
@@ -99,6 +98,6 @@ public class CombatController {
 	}
 	public void act(){
 		this.stage.act();
-		this.stage.render();
+		this.stage.draw();
 	}
 }

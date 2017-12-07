@@ -24,6 +24,7 @@ import game.model.sprites.player.Player;
  * 
  * The Merchant is a dwarf. Despite his name, he does not actually sell the player
  * anything
+ * Creates anonymous classes that implement DialogueActor
  * 
  * @author enigma-phi
  * @author ToTryHardRay

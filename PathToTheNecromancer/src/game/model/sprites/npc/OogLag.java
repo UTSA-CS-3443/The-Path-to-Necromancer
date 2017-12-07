@@ -20,6 +20,7 @@ import game.model.sprites.player.Player;
 
 /**
  * Oog-Lag is the tavern keeper
+ * Creates anonymous classes that implement DialogueActor
  * 
  * @author enigma-phi
  *

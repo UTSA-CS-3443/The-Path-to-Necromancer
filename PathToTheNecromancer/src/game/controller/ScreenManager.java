@@ -90,7 +90,7 @@ public class ScreenManager {
 	public void setCombat() {
 		this.currentMusic = this.musicManager.getMusic();
 		this.musicChanged = true;
-		this.currentScreen = new CombatScreen(this.mainScreen, this.game);
+		this.currentScreen = new CombatScreen(this);
 		this.setScreen();
 	}
 
@@ -103,7 +103,7 @@ public class ScreenManager {
 	public void setCombat(EnemySprites enemy) {
 		this.currentMusic = this.musicManager.getMusic();
 		this.musicChanged = true;
-		this.currentScreen = new CombatScreen(this.mainScreen, this.game);// , enemy);
+		this.currentScreen = new CombatScreen(this, enemy);// , enemy);
 		this.setScreen();
 	}
 

@@ -24,8 +24,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox.SelectBoxStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.viewport.Viewport;
-
 import game.model.Savestate;
 import game.model.sprites.player.Player;
 import game.view.Menu;
@@ -114,10 +112,6 @@ public class MenuController {
 	 */
 	private Menu menu;
 	/**
-	 * The Viewport for the stage
-	 */
-	private Viewport viewport;
-	/**
 	 * Texture atlas for the transition stages buttons
 	 */
 	private TextureAtlas buttonAtlas1;
@@ -138,7 +132,6 @@ public class MenuController {
 	 */
 	public MenuController(Menu menu) {
 		this.menu = menu;
-		this.viewport = menu.getViewPort();
 		// set up the font
 		this.font = new BitmapFont(Gdx.files.internal("MagicCardFont.fnt"), false);
 

@@ -17,6 +17,7 @@ import game.model.sprites.CharacterSprites;
 /**
  * 
  * This is the class for the animation of the guard
+ * 
  * @author ToTryHardRay
  *
  */

@@ -2,17 +2,11 @@ package game.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.Color;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
-import game.controller.GameController;
 import game.model.PathToNecromancer;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.player.Player;
@@ -24,7 +18,6 @@ import game.model.sprites.player.Player;
  */
 public class CombatScreenAnimations implements Screen
 {
-	    private PathToNecromancer game;
 	    private SpriteBatch batch;
 	    private BitmapFont font =  new BitmapFont();
 	    
@@ -71,7 +64,7 @@ public class CombatScreenAnimations implements Screen
 	     * @param player
 	     */
 	    
-	    public CombatScreenAnimations(PathToNecromancer game, SpriteBatch batch, PlayScreen playScreen, EnemySprites enemy, Player player) 
+	    public CombatScreenAnimations(SpriteBatch batch, EnemySprites enemy, Player player) 
 	    {
 	    	this.amIDone = 1;
 	    	this.batch = batch;
@@ -80,11 +73,11 @@ public class CombatScreenAnimations implements Screen
 	    	this.Y = 0;
 	    	this.bText = 0;
 	    	this.Fade = 0;
-	    	this.p = playScreen.getPlayer();
 	    	this.time = 0;
 	    	this.e = enemy;
 	    	this.p = player;
 	    }
+	    
 	    
 	    /**
 	     * Returns who get's to go first
@@ -105,45 +98,45 @@ public class CombatScreenAnimations implements Screen
 	     * @return - Return will return a positive number if combat is still going, a negative if it ends
 	     * 			 Only beginAttack() or beginEnemyAttack will return negatives
 	     */
-	    public int StartBattleSequence(int Action, EnemySprites e, int time)
+	    public int StartBattleSequence(int action, EnemySprites e, int time)
 	    { 		
 	    	this.e = e;
 	    	this.time = time;
 	    	int returnVar;
 	    	
-	    	if(Action == 0)
+	    	if(action == 0)
 	    	{
 	    		drawDefaultCombatBackground();
 	    	}
 	    	
-	    	if(Action == 1)  //Attack
+	    	if(action == 1)  //Attack
 	    	{
 	    		returnVar = beginPlayerAttack();	
 	    		return returnVar;
 	    	}
 	    	
-	    	if(Action == 2) //Inventory
+	    	if(action == 2) //Inventory
 	    	{
 	    		drawDefaultCombatBackground();
 	    		returnVar = beginInventory();
 	    		return returnVar;
 	    	}
 	    	
-	    	if(Action == 3) //Interact
+	    	if(action == 3) //Interact
 	    	{
 	    		drawDefaultCombatBackground();
 	    		returnVar = beginInteract();
 	    		return returnVar;
 	    	}
 	    	
-	    	if(Action == 4) //Run
+	    	if(action == 4) //Run
 	    	{
 	    		drawDefaultCombatBackground();
 	    		returnVar = beginRun();
 	    		return returnVar;
 	    	}
 	    	
-	    	if(Action == 5)
+	    	if(action == 5)
 	    	{
 	    		drawDefaultCombatBackground();
 	    		returnVar = beginEnemyAttack();
@@ -236,7 +229,7 @@ public class CombatScreenAnimations implements Screen
 	    		//Go forward animation
 	    		if(this.time <= 50)
 	    		{
-	    			DrawObjectSprites(originalX, originalY, 90, 180, this.time, this.p.getTexture(), 120, 120);
+	    			drawObjectSprites(originalX, originalY, 90, 180, this.time, this.p.getTexture(), 120, 120);
 	    			this.time+=4;	    			
 	    			return 1;	
 	    		}
@@ -244,7 +237,7 @@ public class CombatScreenAnimations implements Screen
 	    		else if(this.time > 50)
 	    		{
 	    			//iTime - 50 allows it to still decrement by 1 rather than 50
-	    			DrawObjectSpritesBackwards(90, 180, originalX, originalY, this.time-50, this.p.getTexture(), 120, 120);
+	    			drawObjectSpritesBackwards(90, 180, originalX, originalY, this.time-50, this.p.getTexture(), 120, 120);
 	    			
 	    			if(this.time >= 100)
 	    			{
@@ -268,7 +261,7 @@ public class CombatScreenAnimations implements Screen
 	    		//Go forward animation
 	    		if(this.time <= 150)
 	    		{
-	    			DrawObjectSpritesBackwards(originalX, originalY, 460, 330, this.time, e.getTexture(), 120, 120);
+	    			drawObjectSpritesBackwards(originalX, originalY, 460, 330, this.time, e.getTexture(), 120, 120);
 	    			this.time+=2;
 	    			return 2;
 	    		}
@@ -276,7 +269,7 @@ public class CombatScreenAnimations implements Screen
 	    		//Go backward animation
 	    		else if(this.time <= 200)
 	    		{
-	    			DrawObjectSprites(460, 330, originalX, originalY, this.time, e.getTexture(), 120, 120);	
+	    			drawObjectSprites(460, 330, originalX, originalY, this.time, e.getTexture(), 120, 120);	
 	    			
 	    			if(this.time == 200)
 	    				return 0;
@@ -445,7 +438,7 @@ public class CombatScreenAnimations implements Screen
 	     * @param Width
 	     * @param Height
 	     */
-	    public void DrawObjectSprites(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
+	    public void drawObjectSprites(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
 	    {
 	    	if(iTime+xFrom < xTo)
 	    	{
@@ -481,7 +474,7 @@ public class CombatScreenAnimations implements Screen
 	     * @param Width
 	     * @param Height
 	     */
-	    public void DrawObjectSpritesBackwards(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
+	    public void drawObjectSpritesBackwards(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
 	    {
 	    	if(xFrom - iTime > xTo)
 	    	{

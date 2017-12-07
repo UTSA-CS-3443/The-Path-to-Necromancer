@@ -25,6 +25,8 @@ import game.model.sprites.player.Player;
 /**
  * 
  * This is the class for the animation of the villagers
+ * Creates anonymous classes that implement DialogueActor
+ * 
  * @author ToTryHardRay
  * @author enigma-phi
  *

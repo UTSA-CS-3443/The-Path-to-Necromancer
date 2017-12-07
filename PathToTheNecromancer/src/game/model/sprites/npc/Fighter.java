@@ -24,6 +24,7 @@ import game.model.sprites.player.Player;
 /**
  * 
  * The Fighter is the Necromancer's first general
+ * Creates anonymous classes that implement DialogueActor
  * 
  * @author ToTryHardRay
  * @author enigma-phi
@@ -119,17 +120,17 @@ public class Fighter extends CharacterSprites implements InteractionSprites {
 		fighting1.add(new TextureRegion(fighterTexture, 1 * specialWidth, 8 * rowHeight, specialWidth, height));
 		fighting1.add(new TextureRegion(fighterTexture, 2 * specialWidth, 8 * rowHeight, specialWidth, height));
 
-		fighting2.add(new TextureRegion(fighterTexture, 3 * specialWidth, 8 * rowHeight, specialWidth, height));
-		fighting2.add(new TextureRegion(fighterTexture, 4 * specialWidth, 8 * rowHeight, specialWidth, height));
-		fighting2.add(new TextureRegion(fighterTexture, 5 * specialWidth, 8 * rowHeight, specialWidth, height));
+		fighting2.add(new TextureRegion(fighterTexture, 1+3 * specialWidth, 8 * rowHeight, specialWidth, height));
+		fighting2.add(new TextureRegion(fighterTexture, 1+4 * specialWidth, 8 * rowHeight, specialWidth, height));
+		fighting2.add(new TextureRegion(fighterTexture, 1+5 * specialWidth, 8 * rowHeight, specialWidth, height));
 
-		fighting3.add(new TextureRegion(fighterTexture, 6 * specialWidth, 8 * rowHeight, specialWidth, height));
-		fighting3.add(new TextureRegion(fighterTexture, 7 * specialWidth, 8 * rowHeight, specialWidth, height));
-		fighting3.add(new TextureRegion(fighterTexture, 8 * specialWidth, 8 * rowHeight, specialWidth, height));
+		fighting3.add(new TextureRegion(fighterTexture, 1+6 * specialWidth, 8 * rowHeight, specialWidth, height));
+		fighting3.add(new TextureRegion(fighterTexture, 1+7 * specialWidth, 8 * rowHeight, specialWidth, height));
+		fighting3.add(new TextureRegion(fighterTexture, 1+8 * specialWidth, 8 * rowHeight, specialWidth, height));
 
 		crying = new ArrayList<TextureRegion>();
-		crying.add(new TextureRegion(fighterTexture, 0, 9 * rowHeight, 32, 49));
-		crying.add(new TextureRegion(fighterTexture, 32, 9 * rowHeight, 32, 49));
+		crying.add(new TextureRegion(fighterTexture, 1, 9 * rowHeight, 32, 50));
+		crying.add(new TextureRegion(fighterTexture, 33, 9 * rowHeight, 32, 50));
 
 		// Array of frames used for the animations
 		Array<TextureRegion> frames = new Array<TextureRegion>();

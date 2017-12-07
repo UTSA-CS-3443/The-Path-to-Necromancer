@@ -22,6 +22,7 @@ import game.model.sprites.player.Player;
 /**
  * 
  * The Knight is the Necromancer's third general
+ * Creates anonymous classes that implement DialogueActor
  * 
  * @author ToTryHardRay
  * @author enigma-phi

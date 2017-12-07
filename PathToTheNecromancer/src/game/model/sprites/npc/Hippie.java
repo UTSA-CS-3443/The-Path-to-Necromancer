@@ -24,6 +24,7 @@ import game.model.sprites.player.Player;
 /**
  * 
  * The Hippie is the Necromancer's second general
+ * Creates anonymous classes that implement DialogueActor
  * 
  * @author ToTryHardRay
  * @author enigma-phi

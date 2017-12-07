@@ -22,6 +22,7 @@ import game.model.sprites.player.Player;
 /**
  * 
  * The Necromancer is the main villain of the game.
+ * Creates anonymous classes that implement DialogueActor
  * 
  * @author enigma-phi
  *

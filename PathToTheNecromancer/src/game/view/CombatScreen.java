@@ -9,22 +9,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.Color;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-
 import game.controller.CombatController;
-import game.controller.GameController;
-import game.model.PathToNecromancer;
+import game.controller.ScreenManager;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.player.Player;
 
@@ -38,10 +25,7 @@ import game.model.sprites.player.Player;
 public class CombatScreen implements Screen
 {
 	
-    private PlayScreen playScreen;  //Set the play screen
     private EnemySprites enemy;  //to tell it what to draw, you need to use setframe (for each enemy, you need to set every texture)
-    private PathToNecromancer game;
-    private PlayScreen prevPlayScreen;
     private int movement;
     private FitViewport port;
     private CombatController input;
@@ -85,26 +69,46 @@ public class CombatScreen implements Screen
     
     private int NextAction;
     private boolean resetTime;
-   
+    
+    /**
+     * The screenManager
+     */
+    private ScreenManager screenManager;
     /**
      * This sets up the combat screen to be used later
-     * @param playscreen
-     * @param game
+     * @param manager manages the screens
      */
-    public CombatScreen(PlayScreen playscreen, PathToNecromancer game) 
+    public CombatScreen(ScreenManager manager) 
     {
-    	this.p = playscreen.getPlayer();
+    	this.screenManager = manager;
         this.font.setColor(Color.BLACK);
-    	this.prevPlayScreen = playscreen;
-    	this.playScreen = playscreen;
     	this.IntroScreen = true;
-    	this.Enemy = playscreen.getMapManager().getEnemy(); //gets a random enemy
+    	this.Enemy = screenManager.getEnemy(); //gets a random enemy
     	this.enemyNPC = Enemy.getTexture();
     	this.time = 0;
     	this.NextAction = 1;
     	//this.battle = this.Animate.getWhoGoFirst(this.p, this.Enemy);  //Will tell us who will be going first
     	this.input = new CombatController(this);
-    	this.Animate = new CombatScreenAnimations(game, this.batch, playscreen, this.Enemy, this.p);
+    	this.Animate = new CombatScreenAnimations(this.batch, this.Enemy, this.p);
+    	this.battle = 1;
+    }
+    /**
+     * This sets up the combat screen to be used later
+     * @param manager manages the screens
+     * @param enemy is the enemy for the combat
+     */
+    public CombatScreen(ScreenManager manager, EnemySprites enemy) 
+    {
+    	this.screenManager = manager;
+        this.font.setColor(Color.BLACK);
+    	this.IntroScreen = true;
+    	this.Enemy = enemy; 
+    	this.enemyNPC = Enemy.getTexture();
+    	this.time = 0;
+    	this.NextAction = 1;
+    	//this.battle = this.Animate.getWhoGoFirst(this.p, this.Enemy);  //Will tell us who will be going first
+    	this.input = new CombatController(this);
+    	this.Animate = new CombatScreenAnimations(this.batch, this.Enemy, this.p);
     	this.battle = 1;
     }
     //Calls the garbage collector |
@@ -182,8 +186,8 @@ public class CombatScreen implements Screen
         			this.time = 0;
     			}
     			batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    			this.Animate.DrawObjectSprites(640, 330, 490, 330, time, this.enemyNPC, 120, 120); //Draws the player
-    			this.Animate.DrawObjectSprites(0, 180, 60, 180, time, this.player, 120 ,120); //Draws the enemy
+    			this.Animate.drawObjectSprites(640, 330, 490, 330, time, this.enemyNPC, 120, 120); //Draws the player
+    			this.Animate.drawObjectSprites(0, 180, 60, 180, time, this.player, 120 ,120); //Draws the enemy
     			this.Animate.drawDefaultCombatBackground();
     			this.time+=5;
     		}
@@ -291,10 +295,9 @@ public class CombatScreen implements Screen
     {
         // This is where to perform some end combat operation
         // change the screen and the input processor
-        this.game.setScreen(this.prevPlayScreen);
-        Gdx.input.setInputProcessor(this.playScreen.getInputProcessor());
         this.IntroScreen = true;
         this.Intro1End = false;
+        this.screenManager.toMainScreen();
     }
     
 
@@ -304,7 +307,7 @@ public class CombatScreen implements Screen
     @Override
     public void resize(int width, int height) 
     {
-        this.playScreen.resize(width, height);
+        this.screenManager.getViewport().update(width, height);
     }
 
     @Override
@@ -334,6 +337,6 @@ public class CombatScreen implements Screen
 	public Viewport getViewport() 
 	{
 		// TODO Auto-generated method stub
-		return this.playScreen.getViewPort();
+		return this.screenManager.getViewport();
 	}
 }

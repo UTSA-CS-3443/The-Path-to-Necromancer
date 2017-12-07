@@ -24,6 +24,7 @@ import game.model.sprites.player.Warrior;
 
 /**
  * The book that gives the player the tutorial at the start of the game
+ * Creates anonymous classes that implement DialogueActor
  * 
  * @author enigma-phi
  *
