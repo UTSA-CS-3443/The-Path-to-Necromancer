@@ -306,7 +306,7 @@ public class MenuController {
 		// Get all of the labels for your table to render
 		Label title = new Label("Controls", redLabel);
 		Label world = new Label("World", redLabel);
-		Label combat = new Label("Combat", redLabel);
+		//Label combat = new Label("Combat", redLabel);
 		Label movement = new Label("Movement", whiteLabel);
 		Label movementControls = new Label("WASD or Arrow Keys", whiteLabel);
 		Label run = new Label("Run", whiteLabel);
@@ -342,8 +342,8 @@ public class MenuController {
 		table.add(textMoveKey).right().padRight(20);
 		table.row();
 		
-		table.add(combat).left().padLeft(20);
-		table.add();
+		//table.add(combat).left().padLeft(20);
+		//table.add();
 
 		table.row().height(100);
 		stage.addActor(table);

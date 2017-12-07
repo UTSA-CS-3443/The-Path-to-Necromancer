@@ -174,9 +174,9 @@ public class Book extends CharacterSprites implements InteractionSprites {
 				"You level up by defeating enemies and gaining experience. When you level up, your stats increase."); // 26
 		graph.addNode("Your stats affect how you do in combat. Health means how much damage you can take."); // 27
 		graph.addNode("Strength affects your attack. Intelligence affects your magic attack."); // 28
-		graph.addNode("Dexterity affects you initiative and dodge chance."); // 29
+		graph.addNode("Dexterity affects your initiative and dodge chance."); // 29
 		graph.addNode("And luck affects your critical hit rate."); // 30
-		graph.addNode("Warriors have a high strength. Mages have a high intelligence. Rogues have a high dexterity."); // 31
+		graph.addNode("Warriors have high strength. Mages have high intelligence. Rogues have high dexterity."); // 31
 		graph.addNode("You approach the book and begin reading it."); // 32
 		graph.addNode("When dialogue occurs, it will render on screen."); // 33
 		graph.addNode("If the player is speaking, the dialogue will be prefaced by a 'P:' to indicate player."); // 34
@@ -219,7 +219,7 @@ public class Book extends CharacterSprites implements InteractionSprites {
 		graph.addEdge(21, 22);
 		graph.addEdge(22, 23);
 		graph.addEdge(23, 24);
-		graph.addEdge(24, 25);
+		//graph.addEdge(24, 25);              trigger combat tutorial
 		graph.addEdge(25, 26);
 		graph.addEdge(26, 27);
 		graph.addEdge(27, 28);
