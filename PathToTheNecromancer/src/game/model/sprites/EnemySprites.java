@@ -1,7 +1,11 @@
 package game.model.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
-
+/**
+ * 
+ * @author hidingrighthere
+ *
+ */
 public abstract class EnemySprites extends GameSprites 
 {
 	private int Attack;
