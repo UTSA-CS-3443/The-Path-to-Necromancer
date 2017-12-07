@@ -83,7 +83,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 			graph.addNode("Bandit: You had better watch your back. It's dangerous out there.");
 			break;
 		case 1:
-			graph.addNode("Bandit: Jokes about Communism have no Class. But jokes about java have some. I'm still usure about the communist java programmer.");
+			graph.addNode("Bandit: Jokes about Communism have no Class. But jokes about Java have some. I'm still unsure about the communist Java programmer.");
 			break;
 		}
 
@@ -138,14 +138,14 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 	private DialogueGraph getInitialBanditDialogue() {
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("Bandit: Be still traveler you are about to walk upon the land of Bloody Foot himself, and his mother was Foot herself!"); // 0
-		graph.addNode("P: I'm here as a representative for the badit/Don union"); // 1
+		graph.addNode("P: I'm here as a representative for the bandit/Don union"); // 1
 		graph.addNode("P: How dare you speak to me bandit! I am the chosen one!"); // 2
 		graph.addNode("P: No need to worry, just passing through"); // 3
-		graph.addNode("Bandit: The bandit/Don union?"); // 4
+		graph.addNode("Bandit: The Bandit/Don union?"); // 4
 		graph.addNode("P: We strive for equal shares in plunder for bandits everywhere!"); // 5
 		graph.addNode("P: Indeed, why hasn't your camp joined?"); // 6
 		graph.addNode("P: Yes, would you like to join?"); // 7
-		graph.addNode("Bandit: Well, kinda, we don't even get dental..."); // 8
+		graph.addNode("Bandit: Well, kind of, we don't even get dental..."); // 8
 		graph.addNode("Bandit: Oh, well, we never received any message from you."); // 9
 		graph.addNode("Bandit: Never I stay with my Don, I'll never betray him! Get out of here before I have your head!"); // 10
 		graph.addNode("P: You don't even get dental?! How horrible, we have to come in to check this out!"); // 11
@@ -153,15 +153,15 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: Guess it must've been lost in the mail!"); // 13
 		graph.addNode("Bandit: Please go ahead."); // 14
 		graph.addNode("Bandit: Well, now that I think of it, the Don has been throwing out a lot of paper recently..."); // 15
-		graph.addNode("Bandit: Yeah i gue.... wait a minute, we don't have mail out here! You're lying moron!"); // 16
+		graph.addNode("Bandit: Yeah I gue.... wait a minute, we don't have mail out here! You're lying moron!"); // 16
 		graph.addNode("P: I see, I see... perhaps he's trying to prevent you from unionizing?"); // 17
 		graph.addNode("Bandit: I guess so... tell me, what does one do in a union?"); // 18
 		graph.addNode("P: Well, first, have you been feeling disgruntled at all?"); // 19
 		graph.addNode("P: Well, they protest my good sir. Teach the Don what's up. You need to fight!"); // 20
 		graph.addNode("Bandit: Good idea, let's do this! I'm tired of pretending to be Italian!"); // 21
 		graph.addNode("Bandit: The chosen one?"); // 22
-		graph.addNode("Bandit: haha, sissy. You had better watch your back in camp!"); // 23
-		graph.addNode("P: Yes I am the chosen bandit, the one to lead all bandits to banditdom!"); // 24
+		graph.addNode("Bandit: ha-ha, sissy. You had better watch your back in camp!"); // 23
+		graph.addNode("P: Yes. I am the chosen bandit, the one to lead all bandits to Banditdom!"); // 24
 		graph.addNode("Bandit: COOL! Do you have any powers?"); // 25
 		graph.addNode("P: Yes, watch me remove my thumb from my hand!"); // 26
 		graph.addNode("P: I can't your eyes would melt from your eye sockets"); // 27
@@ -187,7 +187,7 @@ public class Bandit extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: I have not done it once, but twice! Do you believe me now?!"); // 47
 		graph.addNode("Bandit: *crying* I'm sorry for doubting you sun lord, please pass"); // 48
 		graph.addNode("Bandit: *screams with tears rolling down face*"); // 49
-		graph.addNode("Bandit:PLEASE STOP DISMEMBERING YOURSELF, IT'S UNNATURAL!"); // 50
+		graph.addNode("Bandit: PLEASE STOP DISMEMBERING YOURSELF, IT'S UNNATURAL!"); // 50
 		graph.addNode("P: NEVER! *do it again*"); // 51
 		graph.addNode("Bandit: *begins crying* Why do you keep hurting yourself, just go through the camp."); // 52
 		graph.addNode("P: Have you been feeling disgruntled at all recently?"); // 53

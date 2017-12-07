@@ -184,7 +184,7 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 		dialogueGraph.addNode(
 				"Oog-Lag: Well normally you could talk to the nearest merchant. Thanks to the monsters, however, merchants don't go through here anymore."); // 8
 		dialogueGraph.addNode("Oog-Lag: Coming right up! That'll be 20 gold and I am going to have to see your license."); // 9
-		dialogueGraph.addNode("P: You know what? Nevermind."); // 10
+		dialogueGraph.addNode("P: You know what? Never mind."); // 10
 		dialogueGraph.addNode("P: *Give license*"); // 11
 		dialogueGraph.addNode("Oog-Lag: *Laughs* Alrighty then, have some milk. ON THE HOUSE!"); // 12
 		dialogueGraph.addNode("Oog-Lag: This license is obviously fake. You crudely drew in a signature with a crayon."); // 13
@@ -228,7 +228,7 @@ public class OogLag extends CharacterSprites implements InteractionSprites {
 	 */
 	private DialogueGraph getDefaultDialogue() {
 		DialogueGraph graph = new DialogueGraph();
-		graph.addNode("Oog-Lag:No need to feel scared young adventurer."); // 0
+		graph.addNode("Oog-Lag: No need to feel scared young adventurer."); // 0
 		graph.addNode("P: What did he say?"); // 1
 		graph.addNode(
 				"Oog-Lag: Gah, nothing. Just some stuff about murdering you, hanging you from the rafters. You know, normal Necromancer stuff."); // 2

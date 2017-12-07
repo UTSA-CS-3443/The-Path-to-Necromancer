@@ -234,12 +234,16 @@ public class Knight extends CharacterSprites implements InteractionSprites {
 	 */
 	public DialogueGraph getDialogue(Player player) {
 		DialogueGraph graph = new DialogueGraph();
+		if(!player.getStoryStats().isKnightEncounter()) {
+			graph.addNode("Knight: MOVE ASIDE YOUNG ONE.");
+			return graph;
+		}
 
 		graph.addNode("Knight: HALT"); // 0
 		graph.addNode("P: Cool!"); // 1
-		graph.addNode("Knight: YES IT IS VERY COOL, I HAVE SERVED HIM FOR MANY YEARS!"); // 2
+		graph.addNode("Knight: YES, IT IS VERY COOL, I HAVE SERVED HIM FOR MANY YEARS!"); // 2
 		graph.addNode("P: So that means you really know the guy huh?"); // 3
-		graph.addNode("Knight: YES WE ARE GOOD PALS"); // 4
+		graph.addNode("Knight: YES, WE ARE GOOD PALS"); // 4
 		graph.addNode("P: Are you though?"); // 5
 		graph.addNode("Knight: WHAT DO YOU MEAN?"); // 6
 		graph.addNode("P: I mean looking at things right now, he seems to hold all the power and here you are in a dusty suit of armor just sitting around."); // 7
@@ -249,9 +253,9 @@ public class Knight extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Knight: YES, WAIT, WHY SHOULD I SERVE WHEN I AM THE GREATER BEING!"); // 11
 		graph.addNode("P: Exactly you should open up your own castle and do your thing elsewhere, you know maybe you could use your immense power for good?"); // 12
 		graph.addNode("Knight: WHY WOULD I DO THAT?"); // 13
-		graph.addNode("P: Because deep down you still have a heart? Even if it is unbeating and cold and lifeless, it still has hopes for humans?"); // 14
+		graph.addNode("P: Because deep down you still have a heart? Even if it is cold and lifeless, it still has hope for humans?"); // 14
 		graph.addNode("P: Being a hero has no pay, but I hear mercenary work pays well."); // 15
-		graph.addNode("Knight: PFFFFT, I WOULD KILL YOU BUT YOU ARE BENEATH ME."); // 16
+		graph.addNode("Knight: PFFFFT, I WOULD KILL YOU, BUT YOU ARE BENEATH ME."); // 16
 		graph.addNode("Knight: OOOH MONEY YOU SAY? FINE THANKS FOR THE TALK HERO"); // 17
 		graph.addNode("Knight: YOU KNOW NOT WHAT YOU SPEAK OF PREPARE FOR DEATH *trips and falls*"); // 18
 		graph.addNode("P: Pffft no you aren’t."); // 19
@@ -262,12 +266,13 @@ public class Knight extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Knight: THE HIPPIE IS WEAK AND ONLY WATCHES A VILLAGE WHILE I WATCH OVER THE ARMIES"); // 24
 		graph.addNode("P: That bandit group now has benefits though."); // 25
 		graph.addNode("P: The Don is weak I guess …"); // 26
-		graph.addNode("Knight: OOO BENEFITS? EVEN I DON’T HAVE THOSE, I GUESS I REALLY AREN’T THE MOST TRUSTED, I FEEL BETRAYED, MAYBE I SHOULD JOIN YOU AND BE A HERO?"); // 27
+		graph.addNode("Knight: OOO BENEFITS? EVEN I DON’T HAVE THOSE." ); // 27
 		graph.addNode("P: What armies? I have been fighting only 1 enemy at a time. Poor coordination if you ask me."); // 28
 		graph.addNode("Knight: OOF, YOU WOUND ME HERO, MAYBE I SHOULD WHIP THEM INTO SHAPE?"); // 29
 		graph.addNode("P: Yeah you should do that now!"); // 30
 		graph.addNode("Knight: GOOD IDEA, THANK YOU HERO"); // 31
-		graph.addNode("Knight:I AM THE NECROMANCER’S MOST TRUSTED SERVANT!"); // 32
+		graph.addNode("Knight: I AM THE NECROMANCER’S MOST TRUSTED SERVANT!"); // 32
+		graph.addNode("I GUESS I REALLY AREN’T THE MOST TRUSTED, I FEEL BETRAYED, MAYBE I SHOULD JOIN YOU AND BE A HERO?"); // 33
 
 		graph.addEdge(0, 32);
 		graph.addEdge(32, 1);
@@ -296,7 +301,8 @@ public class Knight extends CharacterSprites implements InteractionSprites {
 		if (player.getStoryStats().getBanditEncounters() > 3)
 			graph.addEdge(23, 25);
 		graph.addEdge(25, 27);
-		graph.addEdge(27, 15);
+		graph.addEdge(27, 33);
+		graph.addEdge(33, 15);
 		graph.addEdge(23, 26);
 		graph.addEdge(22, 24);
 		graph.addEdge(24, 28);

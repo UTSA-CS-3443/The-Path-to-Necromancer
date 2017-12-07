@@ -402,7 +402,7 @@ public class Fighter extends CharacterSprites implements InteractionSprites {
 		graph.addNode("Fighter: OW OW OW. That hurt!"); // 13
 		graph.addNode("Fighter: *unphased from strong kick*  Mwahaha! You are no match for my physical prowess!"); // 14
 		graph.addNode("P: I barely touched you..."); // 15
-		graph.addNode("Fighter: Get away from me you big meanie."); // 16
+		graph.addNode("Fighter: Get away from me, you big meanie."); // 16
 
 		// add edges
 		graph.addEdge(0, 1);
