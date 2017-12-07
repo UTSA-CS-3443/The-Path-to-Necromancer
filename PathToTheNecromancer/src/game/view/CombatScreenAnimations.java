@@ -17,7 +17,11 @@ import game.model.PathToNecromancer;
 import game.model.sprites.EnemySprites;
 import game.model.sprites.player.Player;
 
-
+/**
+ * Draws the entire combat, including the animations
+ * @author BenMW
+ *
+ */
 public class CombatScreenAnimations implements Screen
 {
 	    private PathToNecromancer game;
@@ -27,7 +31,6 @@ public class CombatScreenAnimations implements Screen
 	    private Texture background = new Texture(Gdx.files.internal("assets/NewPaper.jpg"));
 	    private Texture box = new Texture(Gdx.files.internal("assets/Box.jpg"));
 	    private Texture black = new Texture(Gdx.files.internal("assets/BlackBack.jpg"));
-	    private Texture enemy = new Texture(Gdx.files.internal("assets/Box.jpg"));
 	    private Texture player;
 	    private Texture frame = new Texture(Gdx.files.internal("Sprite Image.jpg"));
 	   // Gdx.input.setInputProcessor(new combatController());
@@ -56,7 +59,19 @@ public class CombatScreenAnimations implements Screen
 	    
 	    private int rest;
 	    private int amIDone;
-	    public CombatScreenAnimations(PathToNecromancer game, SpriteBatch batch, PlayScreen playScreen) 
+	    
+	    
+	    
+	    /**
+	     * Sets up the entire combat screen to be used in prior methods
+	     * @param game
+	     * @param batch
+	     * @param playScreen
+	     * @param enemy
+	     * @param player
+	     */
+	    
+	    public CombatScreenAnimations(PathToNecromancer game, SpriteBatch batch, PlayScreen playScreen, EnemySprites enemy, Player player) 
 	    {
 	    	this.amIDone = 1;
 	    	this.batch = batch;
@@ -67,6 +82,8 @@ public class CombatScreenAnimations implements Screen
 	    	this.Fade = 0;
 	    	this.p = playScreen.getPlayer();
 	    	this.time = 0;
+	    	this.e = enemy;
+	    	this.p = player;
 	    }
 	    
 	    /**
@@ -92,30 +109,45 @@ public class CombatScreenAnimations implements Screen
 	    { 		
 	    	this.e = e;
 	    	this.time = time;
+	    	int returnVar;
+	    	
+	    	if(Action == 0)
+	    	{
+	    		drawDefaultCombatBackground();
+	    	}
 	    	
 	    	if(Action == 1)  //Attack
 	    	{
-	    		return beginPlayerAttack(); 
+	    		returnVar = beginPlayerAttack();	
+	    		return returnVar;
 	    	}
 	    	
 	    	if(Action == 2) //Inventory
 	    	{
-	    		return beginInventory();
+	    		drawDefaultCombatBackground();
+	    		returnVar = beginInventory();
+	    		return returnVar;
 	    	}
 	    	
 	    	if(Action == 3) //Interact
 	    	{
-	    		return beginInteract();
+	    		drawDefaultCombatBackground();
+	    		returnVar = beginInteract();
+	    		return returnVar;
 	    	}
 	    	
 	    	if(Action == 4) //Run
 	    	{
-	    		return beginRun();
+	    		drawDefaultCombatBackground();
+	    		returnVar = beginRun();
+	    		return returnVar;
 	    	}
 	    	
 	    	if(Action == 5)
 	    	{
-	    		return beginEnemyAttack();
+	    		drawDefaultCombatBackground();
+	    		returnVar = beginEnemyAttack();
+	    		return returnVar;
 	    	}
 	    	
 	    	//Whatever animation I'm currently using is done
@@ -130,7 +162,10 @@ public class CombatScreenAnimations implements Screen
 	    
 	    
 	    
-	    
+	    /**
+	     * Begins animations an enemy attack sequence, returning 2 until it is done
+	     * @return
+	     */
 	    public int beginEnemyAttack()
 	    {
 	    	int amIdone = attackAnimation(1, 490, 330); 
@@ -161,40 +196,22 @@ public class CombatScreenAnimations implements Screen
 	     */
 	    public int beginPlayerAttack()
 	    {
-	    	System.out.println("HELLO player attack animation " + this.amIDone + " and your time is " + this.time);
-	    	
+	    	//System.out.println("HELLO player attack animation " + this.amIDone + " and your time is " + this.time);
+	    	if(this.time <= 100)
+	    	{
+	    		this.amIDone = 1;
+	    	}
 	    	//Customize time to fit the following method (this works with the speed of player attack
 	    	this.time = this.time * 4;  //Higher the x in this.time * x, the faster the animation
-	    	
-	    	
 	    	//Will draw the attack 
 	    	this.amIDone = attackAnimation(this.amIDone, 60, 180);
+	    	
 	    	if(this.amIDone == 0 && this.time != 101)
 	    	{
 	    			wasAttackedAnimation(490, 330, e.getTexture());
 	    	}
 	    	
-	    		
-	    	/*
-	    	if(this.EnemyHealth - this.p.getAttack() <= 0 && amIdone == 0) //You have killed the enemy
-	    	{
-	    		wasAttackedAnimation(490,300,p.getTexture());
-	    		return -1;
-	    	}
-	    	
-	    	//Begin the "taken damage" animation for the enemy
-	    	else if(this.EnemyHealth - this.p.getAttack() > 0  && amIdone == 0) //Just dealing damage to the enemy
-	    	{
-	    		wasAttackedAnimation(490, 330, p.getTexture());
-	    		if(this.time == 100)
-	    		{
-	    		this.EnemyHealth-= this.p.getAttack();
-	    		}
-	    	}*/
-	    	if(this.amIDone == 0)
-	    		return 1;
-	    	
-	    	return 1;
+	    	return amIDone;
 	    }
 	    
 	    
@@ -211,10 +228,10 @@ public class CombatScreenAnimations implements Screen
 	     */
 	    public int attackAnimation(int whoAmI, int originalX, int originalY)
 	    {
-	    	drawDefaultCombatBackground();
 	    	//Player animation
 	    	if(whoAmI == 1)
 	    	{
+	    		drawBack(1);
 	    		batch.draw(this.e.getTexture(), 490, 330,  120, 120); //Draw enemy NPC
 	    		//Go forward animation
 	    		if(this.time <= 50)
@@ -231,7 +248,6 @@ public class CombatScreenAnimations implements Screen
 	    			
 	    			if(this.time >= 100)
 	    			{
-	    				System.out.println("--------------RESET TIME----------");
 	    				this.time = 0;	
 	    				return 0;
 	    			}
@@ -248,6 +264,7 @@ public class CombatScreenAnimations implements Screen
 	    	//Enemy animation
 	    	else if(whoAmI == 2)
 	    	{
+	    		drawBack(2);
 	    		//Go forward animation
 	    		if(this.time <= 150)
 	    		{
@@ -281,7 +298,7 @@ public class CombatScreenAnimations implements Screen
 	     */
 	    public void wasAttackedAnimation(int x, int y, Texture t)
 	    {
-	    	System.out.println("You are in attacked Animation with a time of " + this.time);
+	    	//System.out.println("You are in attacked Animation with a time of " + this.time);
 	    	//every 20th frame, don't draw for 5 frames
 	    	if(this.time%25 == 0  && this.rest != 5)
 	    	{
@@ -296,50 +313,35 @@ public class CombatScreenAnimations implements Screen
 	    }
 	    
 	    /**
-	     * 
+	     * Not used
 	     */
 	    public int beginInventory()
 	    {
-	    	return 1;
+	    	return 0;
 	    }
+	    
+	    /**
+	     * Not used
+	     */
 	    public int beginInteract()
 	    {
-	    	return 1;
+	    	return 0;
 	    }
+	    
+	    /**
+	     * Not used
+	     */
 	    public int beginRun()
 	    {
-	    	return 1;
+	    	return 0;
 	    }
 	    
+	    /**
+	     * Not used
+	     */
 	    public int beginEnemyAnimation()
 	    {
-	    	return 1;
-	    }
-	    
-	    public void drawDefaultCombatBackground() //Draws everything, including the sprites
-	    {
-	    	batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    		batch.draw(black, 0, 0, 802, 165);
-    		//Draw every box
-    		
-    		batch.draw(box, 440, 0, 200, 80); //
-    		batch.draw(box, 235, 85, 200, 80);
-    		batch.draw(box, 440, 85, 200, 80);
-    		batch.draw(box, 235, 0, 200, 80);
-    		
-    		//batch.draw(e.getTexture(), 490, 330,120,120);
-    		batch.draw(this.p.getTexture(), 60, 180,100,100);
-    		
-    		batch.draw(frame, 0,0, 110, 165);
-        
-        
-    		//Draw the following commands
-    		font.getData().setScale(100);
-    		font.draw(batch, "Run", 525,50);
-    		font.draw(batch, "Inventory", 505,130);
-    		font.draw(batch, "Attack", 315,130);
-    		font.draw(batch, "Interact", 310,50);
-    		
+	    	return 0;
 	    }
 	    
 	    /**
@@ -349,6 +351,168 @@ public class CombatScreenAnimations implements Screen
 	    {
 	    	
 	    }
+	   /**
+	    * Draws the intro animation
+	    * @param iTime
+	    */
+	    public void getIntroAnimation(int iTime)
+	    {	    	
+	    	batch.setColor(1.0f, 1.0f, 1.0f, this.Fade);		
+	    	batch.draw(this.background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()); 
+	    	batch.draw(black, 0, 0, 802, 165);
+	    	
+	    	drawBox(iTime, 440, 0);
+	    	drawBox(iTime, 440, 85);
+	    	drawBox(iTime, 235, 85);
+	    	drawBox(iTime, 235, 0); 	
+
+    		batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+	    	this.Fade += 0.01; // 1(Maximum)/400(max frames) * 10(each 1 frame is 10 frames)
+	    	
+	    }
+	    
+	    
+	    
+	    
+	    /**
+	     * ALL PROGRAMS BELOW DEAL PRIMARILY WITH DRAWING SPECFIC OBJECTS
+	     * the programs below are:
+	     * drawBack(int PlayOrEnemy) 						- used only when an action is taken by the enemy or player
+	     * drawFadeInText(String s, int x, int y, int time) - draws string s at the x,y, fading in until time is met
+	     */
+	    
+	    
+	    
+	    /**
+	     * Draws the basic background 
+	     * Is used primarily when the enemy or the player commits an action
+	     */
+	    public void drawBack(int PlayOrEnemy)
+	    {
+
+    		batch.draw(black, 0, 0, 802, 165);
+    		
+    		//Draw every box
+    		batch.draw(box, 440, 0, 200, 80); 
+    		batch.draw(box, 235, 85, 200, 80);
+    		batch.draw(box, 440, 85, 200, 80);
+    		batch.draw(box, 235, 0, 200, 80);
+        
+        
+    		batch.draw(this.frame, 0,0, 110, 165);
+    		
+    		//Draw the enemy as the player is moving
+    		if(PlayOrEnemy == 1)
+        		batch.draw(this.player, 60, 180,100,100);
+    			
+    		//Draw the player as the enemy is moving
+    		if(PlayOrEnemy == 2)
+    			batch.draw(e.getTexture(), 490, 330,120,120);
+        
+    		//Draw the following commands  		
+    		font.draw(batch, "Run", 525,50);
+    		font.draw(batch, "Inventory", 505,130);
+    		font.draw(batch, "Attack", 315,130);
+    		font.draw(batch, "Interact", 310,50);
+    		
+    		font.setColor(1,0,0,1);
+    		font.draw(batch, "Health", 170, 130);
+    		font.setColor(0,0,0,0);
+	    }
+	  
+	    /**
+	     * Fades in the text
+	     * @param s
+	     * @param x
+	     * @param y
+	     * @param time
+	     */
+	    public void drawFadeInText(String s, int x, int y, int time)
+	    {
+	    	font.setColor(1.0f, 1.0f, 1.0f, this.Fade);
+	    	font.draw(batch, s, x,y);
+	    	font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+	    	this.Fade +=0.025;
+	    }
+	    /**
+	     * Draw a specific sprite from one location to another
+	     * @param xFrom
+	     * @param yFrom
+	     * @param xTo
+	     * @param yTo
+	     * @param iTime
+	     * @param t
+	     * @param Width
+	     * @param Height
+	     */
+	    public void DrawObjectSprites(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
+	    {
+	    	if(iTime+xFrom < xTo)
+	    	{
+	    		this.X = iTime+xFrom;
+	    	}
+	    	
+	    	else if(iTime + xFrom > xTo)
+	    	{
+	    		this.X = xTo; 
+	    	}
+	    	
+	    	
+	    	if(iTime + yFrom < yTo)
+	    	{
+	    		this.Y = iTime + yFrom;
+	    	}
+	    	
+	    	else if(iTime + yFrom > yTo)
+	    	{
+	    		this.Y = yTo;
+	    	}
+
+	    	batch.draw(t, this.X, this.Y,  Width, Height);        
+	    }
+	    /**
+	     * Draws the object sprite backwards from one location to another
+	     * @param xFrom
+	     * @param yFrom
+	     * @param xTo
+	     * @param yTo
+	     * @param iTime
+	     * @param t
+	     * @param Width
+	     * @param Height
+	     */
+	    public void DrawObjectSpritesBackwards(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
+	    {
+	    	if(xFrom - iTime > xTo)
+	    	{
+	    		this.X = xFrom - iTime;
+	    	}
+	    	
+	    	else if(xFrom - iTime <= xTo)
+	    	{
+	    		this.X = xTo; 
+	    	}
+	    	
+	    	
+	    	if(yFrom - iTime > yTo)
+	    	{
+	    		this.Y = yFrom - iTime;
+	    	}
+	    	
+	    	else if(yFrom - iTime <= yTo)
+	    	{
+	    		this.Y = yTo;
+	    	}
+
+	    	batch.draw(t, this.X, this.Y,  Width, Height);        
+	    }
+
+	    /**
+	     * Draws the boxes for the beginanimationsequence
+	     * @param iTime
+	     * @param MaxX
+	     * @param MaxY
+	     */
 	    public void drawBox(int iTime, int MaxX, int MaxY)
 	    {	
 
@@ -381,161 +545,94 @@ public class CombatScreenAnimations implements Screen
 
 	    }
 	    
-	    public void drawBackground()
+	    /**
+	     * Draws everything, including the player and enemy sprites
+	     */
+	    public void drawDefaultCombatBackground() //Draws everything, including the sprites
 	    {
-	    	batch.draw(this.background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());    
-	    }
-	    
-	    public void getIntroAnimation(int iTime)
-	    {	    	
-	    	batch.setColor(1.0f, 1.0f, 1.0f, this.Fade);		
-	    	drawBackground();
-	    	batch.draw(black, 0, 0, 802, 165);
-	    	drawBox(iTime, 440, 0);
-	    	drawBox(iTime, 440, 85);
-	    	drawBox(iTime, 235, 85);
-	    	drawBox(iTime, 235, 0); 	
-
-    		batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-	    	this.Fade += 0.01; // 1(Maximum)/400(max frames) * 10(each 1 frame is 10 frames)
 	    	
-	    }
-	    
-	    
-	    public void drawFadeInText(String s, int x, int y, int time)
-	    {
-	    	font.setColor(1.0f, 1.0f, 1.0f, this.Fade);
-	    	font.draw(batch, s, x,y);
-	    	font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-	    	this.Fade +=0.025;
-	    }
-	    
-	    public void DrawObjectSprites(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
-	    {
-	    	if(iTime+xFrom < xTo)
-	    	{
-	    		this.X = iTime+xFrom;
-	    	}
-	    	
-	    	else if(iTime + xFrom > xTo)
-	    	{
-	    		this.X = xTo; 
-	    	}
-	    	
-	    	
-	    	if(iTime + yFrom < yTo)
-	    	{
-	    		this.Y = iTime + yFrom;
-	    	}
-	    	
-	    	else if(iTime + yFrom > yTo)
-	    	{
-	    		this.Y = yTo;
-	    	}
-
-	    	batch.draw(t, this.X, this.Y,  Width, Height);        
-	    	//resets the sprites
-	    	/*
-	    	this.X = 0;
-	    	this.Y = 0;
-	    	*/
-	    }
-	    public void DrawObjectSpritesBackwards(int xFrom, int yFrom, int xTo, int yTo, int iTime, Texture t, int Width, int Height)
-	    {
-			System.out.println("YOU ARE INSIDE THE OTHER LOOP");
-	    	if(xFrom - iTime > xTo)
-	    	{
-	    		this.X = xFrom - iTime;
-	    	}
-	    	
-	    	else if(xFrom - iTime <= xTo)
-	    	{
-	    		this.X = xTo; 
-	    	}
-	    	
-	    	
-	    	if(yFrom - iTime > yTo)
-	    	{
-	    		this.Y = yFrom - iTime;
-	    	}
-	    	
-	    	else if(yFrom - iTime <= yTo)
-	    	{
-	    		this.Y = yTo;
-	    	}
-
-	    	batch.draw(t, this.X, this.Y,  Width, Height);        
-	    	//resets the sprites
-	    	/*
-	    	this.X = 0;
-	    	this.Y = 0;
-	    	*/
-	    }
-	    //Draws frames, everything, except for anything that doesn't change
-	    public void drawBack()
-	    {
-
+	    	batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     		batch.draw(black, 0, 0, 802, 165);
-    		
     		//Draw every box
-    		batch.draw(box, 440, 0, 200, 80); 
+    		
+    		batch.draw(box, 440, 0, 200, 80); //
     		batch.draw(box, 235, 85, 200, 80);
     		batch.draw(box, 440, 85, 200, 80);
     		batch.draw(box, 235, 0, 200, 80);
+    		batch.draw(e.getTexture(), 490, 330,120,120);
+    		batch.draw(this.p.getTexture(), 60, 180,100,100);
+    		
+    		batch.draw(frame, 0,0, 110, 165);
         
         
-    		batch.draw(this.frame, 0,0, 110, 165);
-        
-        
-    		//Draw the following commands  		
+    		//Draw the following commands
     		font.draw(batch, "Run", 525,50);
     		font.draw(batch, "Inventory", 505,130);
     		font.draw(batch, "Attack", 315,130);
     		font.draw(batch, "Interact", 310,50);
+    		
 	    }
+	    
+	    
+	    
+	    
+	    
+	    
+	   /**
+	    * not used
+	    */
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	 /**
+	    * not used
+	    */
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	 /**
+	    * not used
+	    */
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	 /**
+	    * not used
+	    */
 	@Override
 	public void render(float arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	 /**
+	    * not used
+	    */
 	@Override
 	public void resize(int arg0, int arg1) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	 /**
+	    * not used
+	    */
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	 /**
+	    * not used
+	    */
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
 	
 }
