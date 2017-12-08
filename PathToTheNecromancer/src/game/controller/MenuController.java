@@ -572,6 +572,7 @@ public class MenuController {
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
 				menu.getScreenManager().getMusicManager().setVolume((int) slider.getValue());
+				menu.getScreenManager().getSettings().setMusicSound((int) slider.getValue());
 				if(disableSoundCheck.isChecked())
 					disableSoundCheck.setChecked(false);
 
