@@ -73,9 +73,6 @@ public class MapManager {
 		world.setContactListener(new WorldContactListener());
 		this.screen.setWorld(world);
 		
-		GameMaps oldMap = this.gameMap;
-		OrthogonalTiledMapRenderer oldRenderer = this.screen.getRenderer();
-		
 		this.gameMap = gameMap;
 		this.gameMap.loadMap(mapLoader);
 
