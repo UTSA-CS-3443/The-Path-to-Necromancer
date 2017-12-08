@@ -24,6 +24,9 @@ import game.controller.ScreenManager;
 
 /**
  * The screen that renders when the player dies
+ * 
+ * Contains an anonymous class of type InputListener
+ * 
  * @author enigma-phi
  *
  */

@@ -33,6 +33,8 @@ import javaFX.model.Difficulty;
  * The controller for the menu. It changes the current stage and sets up the
  * buttons for each stage.
  * 
+ * The controller contains inner classes of type InputListener and ChangeListener
+ * 
  * @author enigma-phi
  * @author HangedDragon96 added settings to the menu controller
  *
@@ -570,6 +572,8 @@ public class MenuController {
 			public void changed(ChangeEvent event, Actor actor) {
 				Slider slider = (Slider) actor;
 				menu.getScreenManager().getMusicManager().setVolume((int) slider.getValue());
+				if(disableSoundCheck.isChecked())
+					disableSoundCheck.setChecked(false);
 
 			}
 		});
