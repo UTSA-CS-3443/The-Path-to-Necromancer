@@ -241,8 +241,8 @@ public class StoryManager {
 					this.nec = new Necromancer();
 					nec.defineBody(world, 238, 1062);
 					manager.addSprite(nec);
-					if (player.getStoryStats().getFinaleEncounter() == 3)
-						player.getStoryStats().setFinaleEncounter(4);
+					if (player.getStoryStats().getFinaleEncounter() == 4)
+						player.getStoryStats().setFinaleEncounter(5);
 					if(player.getStoryStats().getFinaleEncounter() == 0)
 						player.getStoryStats().setFinaleEncounter(1);
 				}
@@ -258,19 +258,21 @@ public class StoryManager {
 						DialogueGraph graph = this.nec.getDialogue(player);
 						manager.getMainScreen().startChat();
 						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
-						player.getStoryStats().setFinaleEncounter(1);
+						player.getStoryStats().setFinaleEncounter(2);
 					}
-					if (player.getStoryStats().getFinaleEncounter() == 2) {
+					else if (player.getStoryStats().getFinaleEncounter() == 3) {
 						manager.setMap(new Dungeon(manager), 200, 200);
-						player.getStoryStats().setFinaleEncounter(3);
+						player.getStoryStats().setFinaleEncounter(4);
 					}
-					if (player.getStoryStats().getFinaleEncounter() == 4 && player.getY() > 960) {
-						player.getStoryStats().setFinaleEncounter(5);
+					else if (player.getStoryStats().getFinaleEncounter() == 5 && player.getY() > 960) {
+						player.getStoryStats().setFinaleEncounter(6);
 						player.addVelocity(new Vector2(0, 10), 4);
 						DialogueGraph graph = this.nec.getDialogue(player);
 						manager.getMainScreen().startChat();
 						manager.setInteraction(new Interaction(graph, manager.getDialogueBox(), player));
 					}
+					else if(player.getX() < 20 && player.getY() < 600 && player.getY() > 200)
+						manager.setMap(new Dungeon(manager), 200, 200);
 				}
 
 			}

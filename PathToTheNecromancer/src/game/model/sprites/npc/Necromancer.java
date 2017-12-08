@@ -195,7 +195,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 			return this.getUnionization();
 		else if (player.getStoryStats().getFinaleEncounter() == 1)
 			return this.getCastleEncounter(player);
-		else if (player.getStoryStats().getFinaleEncounter() == 5)
+		else if (player.getStoryStats().getFinaleEncounter() == 6)
 			return this.preCombatDialogue();
 		DialogueGraph graph = new DialogueGraph();
 		graph.addNode("The Necromancer you are calling is currently unavailable. Please try again later.");
@@ -212,11 +212,12 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 		graph.addNode("Necromancer: You have amused me greatly young Padawan. I do not wish to cut your life short and will allow you to live... this time.");
 		graph.addNode("Necromancer: Enjoy the rest of your travels.");
 		
+		graph.addEdge(0, 1);
 		graph.getNode(0).addActor(new DialogueActor() {
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.getStoryStats().setFinaleEncounter(6);
+				player.getStoryStats().setFinaleEncounter(7);
 			}
 			
 		});
@@ -246,7 +247,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				setVelocity(new Vector2(0, -15));
+				addVelocity(new Vector2(0, -15), 10);
 			}
 
 		});
@@ -525,7 +526,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 
 			@Override
 			public void act(Player player, MapManager manager) {
-				player.getStoryStats().setFinaleEncounter(2);
+				player.getStoryStats().setFinaleEncounter(3);
 			}
 
 		};
@@ -542,7 +543,7 @@ public class Necromancer extends CharacterSprites implements InteractionSprites 
 			@Override
 			public void act(Player player, MapManager manager) {
 				player.setNecromancerTextures();
-				player.getStoryStats().setFinaleEncounter(6);
+				player.getStoryStats().setFinaleEncounter(7);
 			}
 
 		});

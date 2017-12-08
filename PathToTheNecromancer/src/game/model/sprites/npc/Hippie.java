@@ -881,7 +881,7 @@ public class Hippie extends CharacterSprites implements InteractionSprites {
 		graph.addNode("P: Pfft, death is beneath me."); // Node# 39
 		graph.addNode("P: Yes, I do."); // Node# 40
 		graph.addNode("Hippie: Here I'll tell you, imagine waking from a sleep you never slept to."); // Node# 41
-		graph.addNode("I don't know what'll happen."); // Node# 42
+		graph.addNode("P: I don't know what'll happen."); // Node# 42
 		graph.addNode("P: Because the void awaits me."); // Node# 43
 		graph.addNode("Hippie: Why be afraid, you've experienced the void before."); // Node# 44
 		graph.addNode("P: This better not be some sort of ooh I have depression joke."); // Node# 45

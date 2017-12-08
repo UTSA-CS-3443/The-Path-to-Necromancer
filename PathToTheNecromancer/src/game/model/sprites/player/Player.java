@@ -200,6 +200,7 @@ public abstract class Player extends CharacterSprites {
 		Texture necromancerTexture = new Texture("CharacterSprites/Necromancer.png");
 		int width = 50;
 		int height = 51;
+		storyStats.setHasNecroTextures(true);
 
 		// Set the default standing region of the Necromancer.
 		super.setStandingRegion(new TextureRegion(necromancerTexture, 0, 0, width, height));
